@@ -86,11 +86,16 @@ android {
 }
 
 dependencies {
+    implementation(project(BuildModules.CORE))
+    implementation(project(BuildModules.Commons.UI))
+    implementation(project(BuildModules.Commons.VIEWS))
+
     implementation(Dependencies.Kotlin.STDLIB)
     implementation(Dependencies.AndroidX.CORE)
     implementation(Dependencies.AndroidX.APPCOMPAT)
     implementation(Dependencies.AndroidX.CONSTRAINTLAYOUT)
     implementation(Dependencies.AndroidX.Lifecycle.VIEWMODEL)
+    implementation(Dependencies.AndroidX.Lifecycle.EXTENSIONS)
 
     implementation(Dependencies.MATERIAL)
 

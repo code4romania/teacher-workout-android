@@ -78,9 +78,6 @@ android {
 
 dependencies {
     implementation(project(BuildModules.APP))
-    implementation(project(BuildModules.CORE))
-    implementation(project(BuildModules.Commons.UI))
-    implementation(project(BuildModules.Commons.VIEWS))
 
     implementation(Dependencies.Kotlin.STDLIB)
     implementation(Dependencies.Coroutines.CORE)
@@ -92,8 +89,6 @@ dependencies {
     implementation(Dependencies.AndroidX.Navigation.UI)
     implementation(Dependencies.AndroidX.Navigation.DYNAMIC_FEATURE)
     implementation(Dependencies.AndroidX.CONSTRAINTLAYOUT)
-    implementation(Dependencies.AndroidX.Lifecycle.VIEWMODEL)
-    implementation(Dependencies.AndroidX.Lifecycle.EXTENSIONS)
 
     addTestDependencies()
 }
