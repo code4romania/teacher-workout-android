@@ -1,17 +1,50 @@
 package com.teacherworkout.features.home
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
+import com.teacherworkout.commons.ui.base.BaseFragment
+import com.teacherworkout.commons.ui.extensions.setupWithNavController
+import com.teacherworkout.features.home.databinding.FragmentHomeBinding
 
-class HomeFragment : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+class HomeFragment : BaseFragment<FragmentHomeBinding>(
+    layoutId = R.layout.fragment_home
+) {
+    private val navGraphIds = listOf(
+        R.navigation.home_nav_graph
+    )
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        if (savedInstanceState == null) {
+            setupNavigation()
+        }
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        setupNavigation()
+    }
+    
+    private fun setupNavigation() {
+        val navController = viewBinding.bottomNavigation.setupWithNavController(
+            navGraphIds = navGraphIds,
+            fragmentManager = childFragmentManager,
+            containerId = R.id.nav_host_container,
+            intent = requireCompatActivity().intent
+        )
+
+        navController.observe(
+            viewLifecycleOwner,
+            {
+                val appBarConfiguration = AppBarConfiguration
+                    .Builder(R.id.themes_fragment)
+                    .build()
+
+                setupActionBarWithNavController(requireCompatActivity(), it, appBarConfiguration)
+            }
+        )
+
     }
 }

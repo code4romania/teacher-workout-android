@@ -78,6 +78,7 @@ android {
 
 dependencies {
     implementation(project(BuildModules.APP))
+    implementation(project(BuildModules.Commons.UI))
 
     implementation(Dependencies.Kotlin.STDLIB)
     implementation(Dependencies.Coroutines.CORE)
