@@ -1,2 +1,4 @@
 rootProject.name = "teacher-workout"
-include ':app'
+include (
+    ":app"
+)
