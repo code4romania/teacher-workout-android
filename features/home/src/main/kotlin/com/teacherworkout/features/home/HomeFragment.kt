@@ -12,7 +12,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
     layoutId = R.layout.fragment_home
 ) {
     private val navGraphIds = listOf(
-        R.navigation.home_nav_graph
+        R.navigation.themes_nav_graph
     )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,6 +45,5 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
                 setupActionBarWithNavController(requireCompatActivity(), it, appBarConfiguration)
             }
         )
-
     }
 }
