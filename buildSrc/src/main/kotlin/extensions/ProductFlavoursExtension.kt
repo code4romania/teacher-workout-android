@@ -8,8 +8,8 @@ fun addProductFlavours(extension: TestedExtension) {
     val flavourDimension = "env"
     val prod = "prod"
     val staging = "staging"
-    val prodUrl = "\"https://api.reasig.ro/\""
-    val stagingUrl = "\"https://api.staging.reasig.ro/\""
+    val prodUrl = "\"https://teacher.heroesof.tech/graphql\""
+    val stagingUrl = "\"https://teacher.heroesof.tech/graphql\""
 
     extension.flavorDimensions(flavourDimension)
 
