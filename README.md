@@ -1,6 +1,6 @@
 # Teacher Workout
 
-[![GitHub contributors](https://img.shields.io/github/contributors/code4romania/standard-repo-template.svg?style=for-the-badge)](https://github.com/code4romania/standard-repo-template/graphs/contributors) [![GitHub last commit](https://img.shields.io/github/last-commit/code4romania/standard-repo-template.svg?style=for-the-badge)](https://github.com/code4romania/standard-repo-template/commits/master) [![License: MPL 2.0](https://img.shields.io/badge/license-MPL%202.0-brightgreen.svg?style=for-the-badge)](https://opensource.org/licenses/MPL-2.0)
+[![GitHub contributors](https://img.shields.io/github/contributors/code4romania/standard-repo-template.svg?style=for-the-badge)](https://github.com/code4romania/teacher-workout-android/graphs/contributors) [![GitHub last commit](https://img.shields.io/github/last-commit/code4romania/standard-repo-template.svg?style=for-the-badge)](https://github.com/code4romania/teacher-workout-android/commits/master) [![License: MPL 2.0](https://img.shields.io/badge/license-MPL%202.0-brightgreen.svg?style=for-the-badge)](https://opensource.org/licenses/MPL-2.0)
 
 **Check out the [Wiki](https://github.com/code4romania/teacher-workout-backend/wiki)!**
 
@@ -28,19 +28,28 @@ If you would like to suggest new functionality, open an Issue and mark it as a _
 
 ## Built With
 
+* [Jetpack](https://developer.android.com/jetpack)
+  * [Android KTX](https://developer.android.com/kotlin/ktx.html#core)
+  * [AndroidX](https://developer.android.com/jetpack/androidx)
+  * [Data Binding](https://developer.android.com/topic/libraries/data-binding/) 
+  * [Navigation](https://developer.android.com/guide/navigation/)
+  * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
+  * [Compose](https://developer.android.com/jetpack/compose)
+* [Coroutines](https://kotlinlang.org/docs/coroutines-overview.html)
+* [Koin](https://insert-koin.io/)
+* [Apollo](https://www.apollographql.com/docs/android/)
+* Test dependencies
+  * [UIAutomator](https://developer.android.com/training/testing/ui-automator)
+  * [AndroidX](https://github.com/android/android-test)
+  * [Truth](https://truth.dev/) fluent assertions
+
 ### Programming languages
 
-### Platforms
-
-### Frontend framework
-
-### Package managers
-
-### Database technology & provider
+* [kotlin](https://kotlinlang.org/)
 
 ## Repos and projects
 
-Mention all related repos and projects.
+* [the backend](https://github.com/code4romania/teacher-workout-backend)
 
 ## Deployment
 
