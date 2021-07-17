@@ -1,4 +1,10 @@
 rootProject.name = "teacher-workout"
 include (
-    ":app"
+    ":app",
+    ":core",
+    ":commons:ui",
+    ":commons:views",
+    ":features:home",
+    ":features:learn",
+    ":features:profile"
 )
