@@ -3,6 +3,7 @@ object BuildModules {
     const val CORE = ":core"
 
     object Features {
+        const val ACCOUNT = ":features:account"
         const val HOME = ":features:home"
         const val LEARN = ":features:learn"
         const val PROFILE = ":features:profile"

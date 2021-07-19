@@ -4,7 +4,6 @@ import extensions.addProductFlavours
 plugins {
     id(BuildPlugins.ANDROID_APPLICATION)
     id(BuildPlugins.KOTLIN_ANDROID)
-    id(BuildPlugins.KOTLIN_KAPT)
 }
 
 android {
@@ -42,6 +41,7 @@ android {
     addProductFlavours(this)
 
     dynamicFeatures = mutableSetOf(
+        BuildModules.Features.ACCOUNT,
         BuildModules.Features.HOME,
         BuildModules.Features.LEARN,
         BuildModules.Features.PROFILE
@@ -50,6 +50,7 @@ android {
     buildFeatures {
         dataBinding = true
         viewBinding = true
+        compose = true
     }
 
     compileOptions {
@@ -83,6 +84,10 @@ android {
             java.srcDir("src/androidTest/kotlin")
         }
     }
+    composeOptions {
+        kotlinCompilerVersion = "1.5.10"
+        kotlinCompilerExtensionVersion = "1.0.0-rc02"
+    }
 }
 
 dependencies {
@@ -90,7 +95,6 @@ dependencies {
     implementation(project(BuildModules.Commons.UI))
     implementation(project(BuildModules.Commons.VIEWS))
 
-    implementation(Dependencies.Kotlin.STDLIB)
     implementation(Dependencies.AndroidX.CORE)
     implementation(Dependencies.AndroidX.APPCOMPAT)
     implementation(Dependencies.AndroidX.CONSTRAINTLAYOUT)
@@ -102,4 +106,19 @@ dependencies {
     implementation(Dependencies.AndroidX.Navigation.FRAGMENT)
     implementation(Dependencies.AndroidX.Navigation.UI)
     implementation(Dependencies.AndroidX.Navigation.DYNAMIC_FEATURE)
+    implementation(Dependencies.AndroidX.Navigation.COMPOSE)
+
+    implementation(Dependencies.AndroidX.Compose.FOUNDATION)
+    implementation(Dependencies.AndroidX.Compose.UI)
+    implementation(Dependencies.AndroidX.Compose.UI_TOOLING)
+    implementation(Dependencies.AndroidX.Compose.MATERIAL)
+    implementation(Dependencies.AndroidX.Compose.MATERIAL_ICONS)
+    implementation(Dependencies.AndroidX.Compose.MATERIAL_ICONS_EXTENDED)
+    implementation(Dependencies.AndroidX.Compose.ACTIVITY)
+    implementation(Dependencies.AndroidX.Compose.VIEWMODEL)
+    implementation(Dependencies.AndroidX.Compose.LIVEDATA)
+
+    implementation(Dependencies.Koin.CORE)
+    implementation(Dependencies.Koin.ANDROID)
+    implementation(Dependencies.Koin.COMPOSE)
 }

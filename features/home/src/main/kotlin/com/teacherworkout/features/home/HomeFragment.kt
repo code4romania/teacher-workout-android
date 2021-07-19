@@ -6,6 +6,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import com.teacherworkout.commons.ui.base.BaseFragment
 import com.teacherworkout.commons.ui.extensions.setupWithNavController
+import com.teacherworkout.features.home.R
 import com.teacherworkout.features.home.databinding.FragmentHomeBinding
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(

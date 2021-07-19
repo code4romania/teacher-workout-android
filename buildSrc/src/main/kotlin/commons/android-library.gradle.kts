@@ -22,7 +22,6 @@ import dependencies.Dependencies
 plugins {
     id("com.android.library")
     id("kotlin-android")
-    id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
 }
 
@@ -73,7 +72,6 @@ android {
 }
 
 dependencies {
-    implementation(Dependencies.Kotlin.STDLIB)
     implementation(Dependencies.Coroutines.CORE)
     implementation(Dependencies.Coroutines.ANDROID)
 
