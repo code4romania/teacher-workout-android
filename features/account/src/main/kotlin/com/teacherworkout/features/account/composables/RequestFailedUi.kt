@@ -15,8 +15,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 
 @Composable
 fun RequestFailedUi(
@@ -24,25 +24,30 @@ fun RequestFailedUi(
     modifier: Modifier = Modifier,
     onRetry: () -> Unit
 ) {
+    val space8dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_8dp)
+    val space16dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_16dp)
     Column(
-        modifier = modifier.background(Color(0xfff5f5f5), shape = RoundedCornerShape(8.dp)),
+        modifier = modifier.background(
+            Color(0xfff5f5f5),
+            shape = RoundedCornerShape(space8dp)
+        ),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(space8dp))
         Text(
             text = stringResource(id = failureTextId),
             color = MaterialTheme.colors.secondary,
-            modifier = Modifier.padding(start = 16.dp, end = 16.dp)
+            modifier = Modifier.padding(start = space16dp, end = space16dp)
         )
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(space8dp))
         Button(
             onClick = onRetry,
             modifier = Modifier
-                .padding(start = 16.dp, end = 16.dp)
+                .padding(start = space16dp, end = space16dp)
                 .fillMaxWidth()
         ) {
             Text("Retry")
         }
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(space8dp))
     }
 }

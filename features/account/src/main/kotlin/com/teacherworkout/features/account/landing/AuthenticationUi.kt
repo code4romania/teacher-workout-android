@@ -2,17 +2,20 @@ package com.teacherworkout.features.account.landing
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.text.font.FontWeight
 import com.teacherworkout.features.account.R
 
 @Composable
 fun AuthenticationUi(modifier: Modifier = Modifier, onAuthenticationRequest: () -> Unit) {
+    val space16dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_16dp)
     Row(
         modifier = modifier,
         horizontalArrangement = Arrangement.Center
@@ -23,8 +26,16 @@ fun AuthenticationUi(modifier: Modifier = Modifier, onAuthenticationRequest: () 
             color = MaterialTheme.colors.onSurface,
             modifier = Modifier.alignByBaseline()
         )
-        TextButton(onClick = onAuthenticationRequest, modifier = Modifier.alignByBaseline()) {
-            Text(stringResource(id = R.string.landing_btn_auth), fontSize = 16.sp)
+        TextButton(
+            onClick = onAuthenticationRequest,
+            modifier = Modifier.alignByBaseline(),
+            shape = RoundedCornerShape(space16dp)
+        ) {
+            Text(
+                stringResource(id = R.string.landing_btn_auth),
+                fontSize = MaterialTheme.typography.button.fontSize,
+                fontWeight = FontWeight.ExtraBold
+            )
         }
     }
 }

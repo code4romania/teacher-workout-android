@@ -16,8 +16,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.teacherworkout.android.navigation.AppDestinations
 import com.teacherworkout.features.account.R
@@ -36,16 +36,19 @@ fun ResetPasswordScreen(navController: NavController, viewModel: ResetPasswordVi
     val state by viewModel.state.collectAsState()
     var confirmedPassword by rememberSaveable { mutableStateOf("") }
     var confirmedPasswordHasError by rememberSaveable { mutableStateOf(false) }
+    val space8dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_8dp)
+    val space16dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_16dp)
+    val space24dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_24dp)
 
     AccountScreenScaffold(titleId = R.string.reset_password_title, navController = navController) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(space16dp)
                 .verticalScroll(rememberScrollState())
         ) {
             Text(text = stringResource(id = R.string.reset_password_account_notice_label))
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(space8dp))
             EmailField(
                 value = state.email,
                 hasError = state.emailHasError,
@@ -55,9 +58,9 @@ fun ResetPasswordScreen(navController: NavController, viewModel: ResetPasswordVi
                 },
                 labelTextId = R.string.input_email_label,
             ) { viewModel.setEmail(it) }
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(space24dp))
             Text(text = stringResource(id = R.string.reset_password_password_notice_label))
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(space8dp))
             PasswordField(
                 value = state.password,
                 hasError = state.passwordHasError,
@@ -76,7 +79,7 @@ fun ResetPasswordScreen(navController: NavController, viewModel: ResetPasswordVi
                     confirmedPasswordHasError = newPassword != confirmedPassword
                 }
             }
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(space8dp))
             PasswordField(
                 value = confirmedPassword,
                 enabled = state.isNotStarted,
@@ -88,7 +91,7 @@ fun ResetPasswordScreen(navController: NavController, viewModel: ResetPasswordVi
                     newConfirmedPassword != state.password && newConfirmedPassword.isNotEmpty()
                 confirmedPassword = newConfirmedPassword
             }
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(space16dp))
             when (state.resetOutcome) {
                 InProgress -> RegistrationLoadingUi(
                     loadingTextId = R.string.reset_password_loading_label,
@@ -120,7 +123,7 @@ fun ResetPasswordScreen(navController: NavController, viewModel: ResetPasswordVi
                     Text(text = stringResource(id = R.string.register_btn_complete))
                 }
             }
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(space16dp))
         }
     }
 }

@@ -15,7 +15,11 @@ object Dependencies {
     }
 
     object Kotlin {
-        private const val VERSION = "1.5.10"
+        /**
+         * Note: Be careful when changing this because different versions of the compose compiler require different
+         * specific versions of Kotlin to work!
+         */
+        const val VERSION = "1.5.10"
 
         const val STDLIB = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$VERSION"
     }

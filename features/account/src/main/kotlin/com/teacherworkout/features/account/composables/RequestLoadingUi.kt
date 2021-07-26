@@ -13,28 +13,30 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 
 @Composable
 fun RegistrationLoadingUi(
     @StringRes loadingTextId: Int,
     modifier: Modifier = Modifier
 ) {
+    val space8dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_8dp)
+    val space16dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_16dp)
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
         modifier = modifier
-            .background(Color(0xfff5f5f5), shape = RoundedCornerShape(8.dp)),
+            .background(Color(0xfff5f5f5), shape = RoundedCornerShape(space8dp)),
     ) {
         CircularProgressIndicator(
             color = MaterialTheme.colors.secondary,
-            modifier = Modifier.padding(top = 16.dp, bottom = 16.dp)
+            modifier = Modifier.padding(top = space16dp, bottom = space16dp)
         )
         Text(
             text = stringResource(id = loadingTextId),
             color = MaterialTheme.colors.secondary,
-            modifier = Modifier.padding(start = 16.dp, bottom = 16.dp, top = 16.dp)
+            modifier = Modifier.padding(start = space16dp, bottom = space16dp, top = space16dp)
         )
     }
 }

@@ -11,12 +11,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.unit.dp
 import com.teacherworkout.features.account.BuildConfig
 import com.teacherworkout.features.account.R
 import com.teacherworkout.features.account.composables.ErrorText
@@ -29,6 +29,7 @@ fun TermsAndConditions(
     enabled: Boolean = true,
     onTosStatusChange: (Boolean) -> Unit
 ) {
+    val space16dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_16dp)
     Column(modifier = modifier.fillMaxWidth()) {
         Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
             Checkbox(checked = isAccepted, enabled = enabled, onCheckedChange = onTosStatusChange)
@@ -55,7 +56,7 @@ fun TermsAndConditions(
             }
             val uriHandler = LocalUriHandler.current
             ClickableText(
-                modifier = Modifier.padding(start = 16.dp),
+                modifier = Modifier.padding(start = space16dp),
                 text = annotatedLinkString,
                 onClick = {
                     annotatedLinkString

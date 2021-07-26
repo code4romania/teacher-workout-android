@@ -22,7 +22,7 @@
     <string name="cd_password_lock_icon">Lock icon</string>
     <string name="cd_password_toggle_icon">Toggle visibility icon</string>
     <!-- Landing screen related strings -->
-    <string name="landing_btn_register">Register</string>
+    <string name="landing_btn_register">REGISTER</string>
     <string name="landing_label_question">Already have an account?</string>
     <string name="landing_btn_auth">Sign in</string>
     <!-- Register screen related screen -->

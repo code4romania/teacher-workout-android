@@ -13,27 +13,37 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 
 @Composable
 fun RequestSuccessfulUi(
     @StringRes successTextId: Int,
     modifier: Modifier = Modifier, onSuccess: () -> Unit
 ) {
+    val space8dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_8dp)
+    val space16dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_16dp)
     Column(
-        modifier = modifier.background(Color(0xfff5f5f5), shape = RoundedCornerShape(8.dp)),
+        modifier = modifier.background(
+            Color(0xfff5f5f5),
+            shape = RoundedCornerShape(space8dp)
+        ),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
             text = stringResource(id = successTextId),
             color = MaterialTheme.colors.secondary,
-            modifier = Modifier.padding(top = 8.dp, start = 16.dp, end = 16.dp, bottom = 8.dp)
+            modifier = Modifier.padding(
+                top = space8dp,
+                start = space16dp,
+                end = space16dp,
+                bottom = space8dp
+            )
         )
         Button(
             onClick = onSuccess,
             modifier = Modifier
-                .padding(bottom = 8.dp, start = 16.dp, end = 16.dp)
+                .padding(bottom = space8dp, start = space16dp, end = space16dp)
                 .fillMaxWidth()
         ) {
             Text("Sign In")
