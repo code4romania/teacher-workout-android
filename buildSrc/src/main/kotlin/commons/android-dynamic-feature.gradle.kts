@@ -16,14 +16,14 @@
 
 package commons
 
-import extensions.addTestDependencies
+import BuildAndroidConfig
 import BuildModules
 import dependencies.Dependencies
+import extensions.addTestDependencies
 
 plugins {
     id("com.android.dynamic-feature")
     id("kotlin-android")
-    id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
 }
 
@@ -33,6 +33,8 @@ android {
     defaultConfig {
         minSdkVersion(BuildAndroidConfig.MIN_SDK_VERSION)
         targetSdkVersion(BuildAndroidConfig.TARGET_SDK_VERSION)
+        // TODO get this from env properties file
+        buildConfigField("String", "TOS_URL", "\"code4.ro\"")
     }
 
     compileOptions {
@@ -51,6 +53,8 @@ android {
     dataBinding {
         isEnabled = true
     }
+
+    buildFeatures.compose = true
 
     sourceSets {
         getByName("main") {
@@ -74,22 +78,42 @@ android {
         unitTests.isIncludeAndroidResources = true
         unitTests.isReturnDefaultValues = true
     }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.0.0-rc02"
+        kotlinCompilerVersion = Dependencies.Kotlin.VERSION
+    }
 }
 
 dependencies {
     implementation(project(BuildModules.APP))
     implementation(project(BuildModules.Commons.UI))
 
-    implementation(Dependencies.Kotlin.STDLIB)
     implementation(Dependencies.Coroutines.CORE)
     implementation(Dependencies.Coroutines.ANDROID)
-
+    implementation(Dependencies.Kotlin.STDLIB)
     implementation(Dependencies.AndroidX.CORE)
     implementation(Dependencies.AndroidX.APPCOMPAT)
     implementation(Dependencies.AndroidX.Navigation.FRAGMENT)
     implementation(Dependencies.AndroidX.Navigation.UI)
     implementation(Dependencies.AndroidX.Navigation.DYNAMIC_FEATURE)
     implementation(Dependencies.AndroidX.CONSTRAINTLAYOUT)
+
+    implementation(Dependencies.AndroidX.Navigation.COMPOSE)
+
+    implementation(Dependencies.AndroidX.Compose.FOUNDATION)
+    implementation(Dependencies.AndroidX.Compose.UI)
+    implementation(Dependencies.AndroidX.Compose.UI_TOOLING)
+    implementation(Dependencies.AndroidX.Compose.MATERIAL)
+    implementation(Dependencies.AndroidX.Compose.MATERIAL_ICONS)
+    implementation(Dependencies.AndroidX.Compose.MATERIAL_ICONS_EXTENDED)
+    implementation(Dependencies.AndroidX.Compose.ACTIVITY)
+    implementation(Dependencies.AndroidX.Compose.VIEWMODEL)
+    implementation(Dependencies.AndroidX.Compose.LIVEDATA)
+
+    implementation(Dependencies.Koin.CORE)
+    implementation(Dependencies.Koin.ANDROID)
+    implementation(Dependencies.Koin.COMPOSE)
 
     addTestDependencies()
 }

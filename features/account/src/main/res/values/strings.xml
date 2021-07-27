@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_label">Teacher Workout</string>
+
+    <string name="cd_logo">Application logo image</string>
+    <!--suppress CheckTagEmptyBody -->
+    <!-- empty string to be placed as filler -->
+    <string name="empty"></string>
+    <!-- common errors for email and passwords fields -->
+    <string name="email_invalid_error">* Please enter a valid email!</string>
+    <string name="password_too_short_error">* The password must have at least 8 characters!</string>
+    <string name="password_no_lowercase_error">* The password must contain at least one lowercase character!</string>
+    <string name="password_no_uppercase_error">* The password must contain at least one uppercase character!</string>
+    <string name="password_no_digit_error">* The password must contain at least one digit!</string>
+    <string name="password_no_special_char_error">* The password must contain at least one special character!</string>
+    <string name="password_not_matching_error">Passwords do not match!</string>
+    <!-- Common email and password related strings -->
+    <string name="input_email_label">Email</string>
+    <string name="cd_email_icon">Email icon</string>
+    <string name="input_confirm_password_label">Confirm password</string>
+    <string name="input_password_label">Password</string>
+    <string name="cd_password_lock_icon">Lock icon</string>
+    <string name="cd_password_toggle_icon">Toggle visibility icon</string>
+    <!-- Landing screen related strings -->
+    <string name="landing_btn_register">REGISTER</string>
+    <string name="landing_label_question">Already have an account?</string>
+    <string name="landing_btn_auth">Sign in</string>
+    <!-- Register screen related screen -->
+    <string name="register_title">Create an account</string>
+    <string name="register_tos">I have read and I accept the terms and conditions.</string>
+    <string name="register_tos_error">* You must accept the terms and conditions to create an account!</string>
+    <string name="register_btn_complete">Create account</string>
+    <string name="register_failure_label">There was a problem creating your account. Please try again!</string>
+    <string name="register_loading_label">Creating account…</string>
+    <string name="register_success_label">Your account was created! We\'ve sent you an email with an activation link.
+        After clicking that link you can sign in into your account!</string>
+    <!-- Authentication screen related strings -->
+    <string name="auth_title">Sign into your account</string>
+    <string name="auth_btn_forgot_password">Forgot password?</string>
+    <string name="auth_btn_auth">Sign In</string>
+    <string name="auth_loading_label">Signing in into your account…</string>
+    <string name="auth_failure_label">There was a problem signing in. Make sure the credentials are correct and
+        try again!</string>
+    <!-- Reset password screen related strings -->
+    <string name="reset_password_title">Reset the account password</string>
+    <string name="reset_password_account_notice_label">The email of the account</string>
+    <string name="reset_password_password_notice_label">Enter the new password</string>
+    <string name="reset_password_btn_complete">Reset Password</string>
+    <string name="reset_password_loading_label">Trying to reset your password…</string>
+    <string name="reset_password_failure_label">Could not reset your password. Please try again!</string>
+    <string name="reset_password_success_label">We\'ve sent a confirmation link to the email you provided. After
+        clicking that link you can then sign in using the new password!</string>
+</resources>
+
