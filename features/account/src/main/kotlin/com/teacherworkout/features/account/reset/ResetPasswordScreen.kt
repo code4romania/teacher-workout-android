@@ -130,4 +130,3 @@ fun ResetPasswordScreen(
         }
     }
 }
-
