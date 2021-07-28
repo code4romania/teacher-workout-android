@@ -27,7 +27,10 @@ import com.teacherworkout.features.account.composables.RequestFailedUi
 import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun AuthenticateScreen(navController: NavHostController, viewModel: AuthViewModel = getViewModel()) {
+fun AuthenticateScreen(
+    navController: NavHostController,
+    viewModel: AuthViewModel = getViewModel()
+) {
     val state by viewModel.state.collectAsState()
     val space16dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_16dp)
     val space8dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_8dp)
@@ -62,7 +65,7 @@ fun AuthenticateScreen(navController: NavHostController, viewModel: AuthViewMode
                     modifier = Modifier.fillMaxWidth()
                 ) { viewModel.auth() }
                 Succeeded -> { /* the user is sent to onboarding/main screen */
-                    Text("Logged in but nothing to do...")
+                    navController.navigate(AppDestinations.on_boarding_screen)
                 }
                 NotInitiated -> {
                     Button(

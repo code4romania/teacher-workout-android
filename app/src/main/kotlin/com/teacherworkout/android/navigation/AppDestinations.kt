@@ -40,4 +40,6 @@ object AppDestinations {
      * (with the option to close the dialog and try again)!
      */
     const val reset_password_outcome = "reset_password_outcome"
+
+    const val on_boarding_screen = "on_boarding_screen"
 }

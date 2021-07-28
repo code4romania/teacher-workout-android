@@ -121,4 +121,9 @@ dependencies {
     implementation(Dependencies.Koin.CORE)
     implementation(Dependencies.Koin.ANDROID)
     implementation(Dependencies.Koin.COMPOSE)
+
+    implementation(Dependencies.GoogleAccompanist.PAGER_INDICATORS)
+    implementation(Dependencies.GoogleAccompanist.PAGER)
+    implementation(Dependencies.GoogleAccompanist.COIL)
+    implementation(Dependencies.GoogleAccompanist.GLIDE)
 }

@@ -71,7 +71,8 @@ object Dependencies {
 
             // Material design icons
             const val MATERIAL_ICONS = "androidx.compose.material:material-icons-core:$VERSION"
-            const val MATERIAL_ICONS_EXTENDED = "androidx.compose.material:material-icons-extended:$VERSION"
+            const val MATERIAL_ICONS_EXTENDED =
+                "androidx.compose.material:material-icons-extended:$VERSION"
 
             // Integration with activities
             const val ACTIVITY = "androidx.activity:activity-compose:1.3.0-rc02"
@@ -103,4 +104,14 @@ object Dependencies {
         const val RUNTIME = "com.apollographql.apollo:apollo-runtime:$VERSION"
         const val COROUTINES_SUPPORT = "com.apollographql.apollo:apollo-coroutines-support:$VERSION"
     }
+
+    object GoogleAccompanist {
+        const val VERSION = "0.11.0"
+
+        const val PAGER = "com.google.accompanist:accompanist-pager:$VERSION"
+        const val PAGER_INDICATORS = "com.google.accompanist:accompanist-pager-indicators:$VERSION"
+        const val COIL = "com.google.accompanist:accompanist-coil:$VERSION"
+        const val GLIDE = "com.google.accompanist:accompanist-glide:$VERSION"
+    }
+
 }
