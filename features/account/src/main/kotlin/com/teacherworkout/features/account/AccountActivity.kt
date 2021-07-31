@@ -17,6 +17,7 @@ import com.teacherworkout.features.account.landing.LandingScreen
 import com.teacherworkout.features.account.register.RegisterScreen
 import com.teacherworkout.features.account.register.RegisterViewModel
 import com.teacherworkout.features.account.reset.ResetPasswordScreen
+import com.teacherworkout.features.account.reset.ResetPasswordViewModel
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.core.context.loadKoinModules
 
@@ -39,7 +40,7 @@ class AccountActivity : AppCompatActivity() {
                         AuthScreenDestination(navController)
                     }
                     composable(AppDestinations.reset_password) {
-                        ResetPasswordScreen(navController)
+                        ResetPasswordScreenDestination(navController)
                     }
                 }
             }
@@ -63,6 +64,18 @@ class AccountActivity : AppCompatActivity() {
         val viewModel: AuthViewModel = getViewModel()
 
         AuthScreen(
+            state = viewModel.viewState.value,
+            effectFlow = viewModel.effect,
+            onEventSent = { event -> viewModel.setEvent(event) },
+            navController = navController
+        )
+    }
+
+    @Composable
+    private fun ResetPasswordScreenDestination(navController: NavHostController) {
+        val viewModel: ResetPasswordViewModel = getViewModel()
+
+        ResetPasswordScreen(
             state = viewModel.viewState.value,
             effectFlow = viewModel.effect,
             onEventSent = { event -> viewModel.setEvent(event) },

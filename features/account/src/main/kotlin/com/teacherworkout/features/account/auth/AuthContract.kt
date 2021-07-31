@@ -3,7 +3,6 @@ package com.teacherworkout.features.account.auth
 import com.teacherworkout.commons.ui.base.ViewEvent
 import com.teacherworkout.commons.ui.base.ViewSideEffect
 import com.teacherworkout.commons.ui.base.ViewState
-import com.teacherworkout.features.account.register.RegisterContract
 
 class AuthContract {
     sealed class Event : ViewEvent {

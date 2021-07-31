@@ -27,13 +27,19 @@ import com.teacherworkout.features.account.composables.PasswordField
 import com.teacherworkout.features.account.composables.RegistrationLoadingUi
 import com.teacherworkout.features.account.composables.RequestFailedUi
 import com.teacherworkout.features.account.composables.RequestSuccessfulUi
+import com.teacherworkout.features.account.register.RegisterContract
 import com.teacherworkout.features.account.validators.EmailValidationStatus
 import com.teacherworkout.features.account.validators.PasswordValidationStatus
+import kotlinx.coroutines.flow.Flow
 import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun ResetPasswordScreen(navController: NavController, viewModel: ResetPasswordViewModel = getViewModel()) {
-    val state by viewModel.state.collectAsState()
+fun ResetPasswordScreen(
+    state: ResetPasswordContract.State,
+    effectFlow: Flow<ResetPasswordContract.Effect>?,
+    onEventSent: (event: ResetPasswordContract.Event) -> Unit,
+    navController: NavController,
+) {
     var confirmedPassword by rememberSaveable { mutableStateOf("") }
     var confirmedPasswordHasError by rememberSaveable { mutableStateOf(false) }
     val space8dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_8dp)
@@ -57,7 +63,7 @@ fun ResetPasswordScreen(navController: NavController, viewModel: ResetPasswordVi
                     EmailValidationStatus.Valid -> R.string.empty // not visible in this case
                 },
                 labelTextId = R.string.input_email_label,
-            ) { viewModel.setEmail(it) }
+            ) { onEventSent(ResetPasswordContract.Event.SetEmail(it)) }
             Spacer(modifier = Modifier.height(space24dp))
             Text(text = stringResource(id = R.string.reset_password_password_notice_label))
             Spacer(modifier = Modifier.height(space8dp))
@@ -74,7 +80,7 @@ fun ResetPasswordScreen(navController: NavController, viewModel: ResetPasswordVi
                 },
                 labelTextId = R.string.input_password_label,
             ) { newPassword ->
-                viewModel.setPassword(newPassword)
+                onEventSent(ResetPasswordContract.Event.SetPassword(newPassword))
                 if (confirmedPasswordHasError) {
                     confirmedPasswordHasError = newPassword != confirmedPassword
                 }
@@ -100,7 +106,7 @@ fun ResetPasswordScreen(navController: NavController, viewModel: ResetPasswordVi
                 Failed -> RequestFailedUi(
                     failureTextId = R.string.reset_password_failure_label,
                     modifier = Modifier.fillMaxWidth()
-                ) { viewModel.resetAccountPassword() }
+                ) { onEventSent(ResetPasswordContract.Event.ResetPassword) }
                 Succeeded -> RequestSuccessfulUi(
                     successTextId = R.string.reset_password_success_label,
                     modifier = Modifier.fillMaxWidth()
@@ -113,7 +119,7 @@ fun ResetPasswordScreen(navController: NavController, viewModel: ResetPasswordVi
                     enabled = state.isNotStarted,
                     onClick = {
                         if (confirmedPassword == state.password) {
-                            viewModel.resetAccountPassword()
+                            onEventSent(ResetPasswordContract.Event.ResetPassword)
                         } else {
                             confirmedPasswordHasError = true
                         }
