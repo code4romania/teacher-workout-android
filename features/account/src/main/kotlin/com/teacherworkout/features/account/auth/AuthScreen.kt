@@ -24,11 +24,17 @@ import com.teacherworkout.features.account.composables.EmailField
 import com.teacherworkout.features.account.composables.PasswordField
 import com.teacherworkout.features.account.composables.RegistrationLoadingUi
 import com.teacherworkout.features.account.composables.RequestFailedUi
+import com.teacherworkout.features.account.register.RegisterContract
+import kotlinx.coroutines.flow.Flow
 import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun AuthenticateScreen(navController: NavHostController, viewModel: AuthViewModel = getViewModel()) {
-    val state by viewModel.state.collectAsState()
+fun AuthScreen(
+    state: AuthContract.State,
+    effectFlow: Flow<AuthContract.Effect>?,
+    onEventSent: (event: AuthContract.Event) -> Unit,
+    navController: NavHostController,
+) {
     val space16dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_16dp)
     val space8dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_8dp)
     AccountScreenScaffold(titleId = R.string.auth_title, navController = navController) {
@@ -41,12 +47,12 @@ fun AuthenticateScreen(navController: NavHostController, viewModel: AuthViewMode
             EmailField(
                 value = state.email,
                 labelTextId = R.string.input_email_label,
-            ) { viewModel.setEmail(it) }
+            ) { onEventSent(AuthContract.Event.SetEmail(it)) }
             Spacer(modifier = Modifier.height(space16dp))
             PasswordField(
                 value = state.password,
                 labelTextId = R.string.input_password_label,
-            ) { viewModel.setPassword(it) }
+            ) { onEventSent(AuthContract.Event.SetPassword(it)) }
             Spacer(modifier = Modifier.height(space8dp))
             TextButton(onClick = { navController.navigate(AppDestinations.reset_password) }) {
                 Text(text = stringResource(id = R.string.auth_btn_forgot_password))
@@ -60,13 +66,13 @@ fun AuthenticateScreen(navController: NavHostController, viewModel: AuthViewMode
                 Failed -> RequestFailedUi(
                     failureTextId = R.string.auth_failure_label,
                     modifier = Modifier.fillMaxWidth()
-                ) { viewModel.auth() }
+                ) { onEventSent(AuthContract.Event.Auth) }
                 Succeeded -> { /* the user is sent to onboarding/main screen */
                     Text("Logged in but nothing to do...")
                 }
                 NotInitiated -> {
                     Button(
-                        onClick = { viewModel.auth() },
+                        onClick = { onEventSent(AuthContract.Event.Auth) },
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Text(text = stringResource(id = R.string.auth_btn_auth))

@@ -8,7 +8,7 @@ import com.teacherworkout.features.account.validators.PasswordValidationStatus
 
 class RegisterContract {
     sealed class Event : ViewEvent {
-        object CreateAccountClicked : Event()
+        object CreateAccount : Event()
 
         data class SetEmail(val email: String) : Event()
 

@@ -20,7 +20,7 @@ class RegisterViewModel :
 
     override fun handleEvents(event: RegisterContract.Event) {
         when (event) {
-            is RegisterContract.Event.CreateAccountClicked -> createAccount()
+            is RegisterContract.Event.CreateAccount -> createAccount()
             is RegisterContract.Event.SetEmail -> setEmail(event.email)
             is RegisterContract.Event.SetPassword -> setPassword(event.password)
             is RegisterContract.Event.SetTos -> setTosStatus(event.newStatus)

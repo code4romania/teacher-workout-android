@@ -105,7 +105,7 @@ fun RegisterScreen(
                 Failed -> RequestFailedUi(
                     failureTextId = R.string.register_failure_label,
                     modifier = Modifier.fillMaxWidth()
-                ) { onEventSent(RegisterContract.Event.CreateAccountClicked) }
+                ) { onEventSent(RegisterContract.Event.CreateAccount) }
                 Succeeded -> RequestSuccessfulUi(
                     successTextId = R.string.register_success_label,
                     modifier = Modifier.fillMaxWidth()
@@ -119,7 +119,7 @@ fun RegisterScreen(
                     onClick = {
                         if (state.hasAcceptedTos) {
                             if (confirmedPassword == state.password) {
-                                onEventSent(RegisterContract.Event.CreateAccountClicked)
+                                onEventSent(RegisterContract.Event.CreateAccount)
                             } else {
                                 confirmedPasswordHasError = true
                             }
