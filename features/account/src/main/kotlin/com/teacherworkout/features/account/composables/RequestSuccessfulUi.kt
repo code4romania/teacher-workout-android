@@ -19,7 +19,8 @@ import androidx.compose.ui.res.stringResource
 @Composable
 fun RequestSuccessfulUi(
     @StringRes successTextId: Int,
-    modifier: Modifier = Modifier, onSuccess: () -> Unit
+    modifier: Modifier = Modifier,
+    onSuccess: () -> Unit
 ) {
     val space8dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_8dp)
     val space16dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_16dp)
