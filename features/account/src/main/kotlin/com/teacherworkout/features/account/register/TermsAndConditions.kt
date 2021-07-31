@@ -1,4 +1,4 @@
-package com.teacherworkout.features.account.register
+    package com.teacherworkout.features.account.register
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row

@@ -1,43 +1,43 @@
 package com.teacherworkout.features.account.auth
 
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.teacherworkout.commons.ui.base.BaseViewModel
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class AuthViewModel : ViewModel() {
-
-    private val _state = MutableStateFlow(AuthState())
-    val state: StateFlow<AuthState> = _state
+class AuthViewModel : BaseViewModel<AuthContract.Event, AuthContract.State, AuthContract.Effect>() {
     var count = 0
 
+    override fun setInitialState(): AuthContract.State =
+        AuthContract.State()
+
+    override fun handleEvents(event: AuthContract.Event) {
+        when (event) {
+            is AuthContract.Event.Auth -> auth()
+            is AuthContract.Event.SetEmail -> setEmail(event.email)
+            is AuthContract.Event.SetPassword -> setPassword(event.password)
+        }
+    }
+
     // TODO connect with backend, at the moment the call just fails and the succeeds on retry
-    fun auth() {
+    private fun auth() {
         viewModelScope.launch {
-            _state.value = _state.value.copy(authOutcome = InProgress)
+            setState { viewState.value.copy(authOutcome = InProgress) }
             delay(3000)
             if (count == 0) {
-                _state.value = _state.value.copy(authOutcome = Failed)
+                setState { viewState.value.copy(authOutcome = Failed) }
                 count++
             } else {
-                _state.value = _state.value.copy(authOutcome = Succeeded)
+                setState { viewState.value.copy(authOutcome = Succeeded) }
             }
         }
     }
 
-    fun setEmail(email: String) {
-        _state.value = _state.value.copy(email = email)
+    private fun setEmail(email: String) {
+        setState { viewState.value.copy(email = email) }
     }
 
-    fun setPassword(password: String) {
-        _state.value = _state.value.copy(password = password)
+    private fun setPassword(password: String) {
+        setState { viewState.value.copy(password = password) }
     }
 }
-
-sealed class AuthOutcome
-object NotInitiated : AuthOutcome()
-object InProgress : AuthOutcome()
-object Succeeded : AuthOutcome()
-object Failed : AuthOutcome()

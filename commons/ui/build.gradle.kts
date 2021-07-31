@@ -16,4 +16,6 @@ dependencies {
     implementation(Dependencies.AndroidX.Navigation.DYNAMIC_FEATURE)
 
     implementation(Dependencies.AndroidX.Paging.RUNTIME)
+
+    implementation(Dependencies.AndroidX.Compose.VIEWMODEL)
 }

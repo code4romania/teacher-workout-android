@@ -29,11 +29,17 @@ import com.teacherworkout.features.account.composables.RequestFailedUi
 import com.teacherworkout.features.account.composables.RequestSuccessfulUi
 import com.teacherworkout.features.account.validators.EmailValidationStatus
 import com.teacherworkout.features.account.validators.PasswordValidationStatus
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun RegistrationScreen(navController: NavHostController, viewModel: RegistrationViewModel = getViewModel()) {
-    val state by viewModel.state.collectAsState()
+fun RegisterScreen(
+    state: RegisterContract.State,
+    effectFlow: Flow<RegisterContract.Effect>?,
+    onEventSent: (event: RegisterContract.Event) -> Unit,
+    navController: NavHostController,
+) {
     var confirmedPassword by rememberSaveable { mutableStateOf("") }
     var confirmedPasswordHasError by rememberSaveable { mutableStateOf(false) }
     val space8dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_8dp)
@@ -49,18 +55,13 @@ fun RegistrationScreen(navController: NavHostController, viewModel: Registration
         ) {
             EmailField(
                 value = state.email,
-                enabled = state.isNotStarted,
                 hasError = state.emailHasError,
-                errorTextId = when (state.emailStatus) {
-                    EmailValidationStatus.Invalid -> R.string.email_invalid_error
-                    EmailValidationStatus.Valid -> R.string.empty // not visible in this case
-                },
+                errorTextId = R.string.email_invalid_error,
                 labelTextId = R.string.input_email_label,
-            ) { viewModel.setEmail(it) }
+            ) { onEventSent(RegisterContract.Event.SetEmail(it)) }
             Spacer(modifier = Modifier.height(space8dp))
             PasswordField(
                 value = state.password,
-                enabled = state.isNotStarted,
                 hasError = state.passwordHasError,
                 errorTextId = when (state.passwordStatus) {
                     PasswordValidationStatus.NoDigit -> R.string.password_no_digit_error
@@ -72,7 +73,7 @@ fun RegistrationScreen(navController: NavHostController, viewModel: Registration
                 },
                 labelTextId = R.string.input_password_label,
             ) { newPassword ->
-                viewModel.setPassword(newPassword)
+                onEventSent(RegisterContract.Event.SetPassword(newPassword))
                 if (confirmedPasswordHasError) {
                     confirmedPasswordHasError = newPassword != confirmedPassword
                 }
@@ -80,7 +81,6 @@ fun RegistrationScreen(navController: NavHostController, viewModel: Registration
             Spacer(modifier = Modifier.height(space8dp))
             PasswordField(
                 value = confirmedPassword,
-                enabled = state.isNotStarted,
                 hasError = confirmedPasswordHasError,
                 errorTextId = R.string.password_not_matching_error,
                 labelTextId = R.string.input_confirm_password_label,
@@ -92,10 +92,9 @@ fun RegistrationScreen(navController: NavHostController, viewModel: Registration
             Spacer(modifier = Modifier.height(space8dp))
             TermsAndConditions(
                 isAccepted = state.hasAcceptedTos,
-                enabled = state.isNotStarted,
                 hasError = !state.hasAcceptedTos,
             ) { newStatus ->
-                viewModel.setTosStatus(newStatus)
+                onEventSent(RegisterContract.Event.SetTos(newStatus))
             }
             Spacer(modifier = Modifier.height(space24dp))
             when (state.registrationOutcome) {
@@ -106,7 +105,7 @@ fun RegistrationScreen(navController: NavHostController, viewModel: Registration
                 Failed -> RequestFailedUi(
                     failureTextId = R.string.register_failure_label,
                     modifier = Modifier.fillMaxWidth()
-                ) { viewModel.createAccount() }
+                ) { onEventSent(RegisterContract.Event.CreateAccount) }
                 Succeeded -> RequestSuccessfulUi(
                     successTextId = R.string.register_success_label,
                     modifier = Modifier.fillMaxWidth()
@@ -120,7 +119,7 @@ fun RegistrationScreen(navController: NavHostController, viewModel: Registration
                     onClick = {
                         if (state.hasAcceptedTos) {
                             if (confirmedPassword == state.password) {
-                                viewModel.createAccount()
+                                onEventSent(RegisterContract.Event.CreateAccount)
                             } else {
                                 confirmedPasswordHasError = true
                             }
