@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="settings_options">
+        <item>@string/setting_change_photo</item>
+        <item>@string/setting_change_password</item>
+        <item>@string/setting_notification</item>
+        <item>@string/setting_logout</item>
+        <item>@string/setting_delete_account</item>
+    </string-array>
+</resources>

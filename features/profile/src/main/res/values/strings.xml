@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cd_profile_photo">Your profile photo</string>
+    <string name="experience_level">%1$s XP</string>
+    <string name="tab_label_results">Results</string>
+    <string name="tab_label_settings">Settings</string>
+
+    <string name="label_lessons_finished">Finished lessons</string>
+    <string name="cd_lesson">Image for %1$s lessons</string>
+    <string name="lesson_progress">%1$s/%2$s</string>
+    <string name="setting_change_photo">Change profile photo</string>
+    <string name="setting_change_password">Change password</string>
+    <string name="setting_notification">Notifications</string>
+    <string name="setting_logout">Logout</string>
+    <string name="setting_delete_account">Delete account</string>
+</resources>
