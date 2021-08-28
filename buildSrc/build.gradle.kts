@@ -30,7 +30,7 @@ object PluginsVersions {
 }
 
 dependencies {
-    implementation("com.android.tools.build:gradle:7.0.0")
+    implementation("com.android.tools.build:gradle:7.0.1")
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:${PluginsVersions.KOTLIN}")
 
     implementation("androidx.navigation:navigation-safe-args-gradle-plugin:${PluginsVersions.NAVIGATION}")
