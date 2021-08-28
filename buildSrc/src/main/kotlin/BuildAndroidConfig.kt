@@ -1,10 +1,10 @@
 object BuildAndroidConfig {
     const val APPLICATION_ID = "com.teacherworkout.android"
 
-    const val COMPILE_SDK_VERSION = 30
+    const val COMPILE_SDK_VERSION = 31
     const val BUILD_TOOLS_VERSION = "30.0.3"
     const val MIN_SDK_VERSION = 24
-    const val TARGET_SDK_VERSION = 30
+    const val TARGET_SDK_VERSION = 31
 
     private const val VERSION_MAJOR = 1
     private const val VERSION_MINOR = 0

@@ -1,4 +1,4 @@
-package com.teacherworkout.android.theming
+package com.teacherworkout.commons.ui.theming
 
 import androidx.compose.material.lightColors
 import androidx.compose.ui.graphics.Color

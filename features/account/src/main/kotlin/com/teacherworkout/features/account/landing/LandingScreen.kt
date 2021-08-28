@@ -11,13 +11,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.navigation.NavController
-import com.teacherworkout.android.navigation.AppDestinations
+import com.teacherworkout.commons.ui.navigation.AppDestinations
+import com.teacherworkout.features.account.R
 
 @Composable
 fun LandingScreen(navController: NavController) {
-    val space16dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_16dp)
-    val space24dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_24dp)
-    val backgroundColor = colorResource(id = com.teacherworkout.android.R.color.landing_background)
+    val space16dp = dimensionResource(id =  R.dimen.space_16dp)
+    val space24dp = dimensionResource(id =  R.dimen.space_24dp)
+    val backgroundColor = colorResource(id =  R.color.landing_background)
     Box(modifier = Modifier.background(backgroundColor)) {
         Column(modifier = Modifier.padding(space16dp)) {
             ApplicationLogo(

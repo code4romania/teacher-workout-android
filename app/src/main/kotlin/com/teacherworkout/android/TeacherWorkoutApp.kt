@@ -15,7 +15,6 @@ class TeacherWorkoutApp : SplitCompatApplication() {
     private fun initDependencyInjection() {
         startKoin {
             androidLogger()
-            //inject Android context
             androidContext(this@TeacherWorkoutApp)
         }
     }

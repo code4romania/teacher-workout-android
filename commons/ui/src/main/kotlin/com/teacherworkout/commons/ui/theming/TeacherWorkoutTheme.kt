@@ -1,4 +1,4 @@
-package com.teacherworkout.android.theming
+package com.teacherworkout.commons.ui.theming
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
