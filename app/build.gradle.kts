@@ -7,13 +7,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion(BuildAndroidConfig.COMPILE_SDK_VERSION)
+    compileSdk= BuildAndroidConfig.COMPILE_SDK_VERSION
 
     defaultConfig {
         applicationId = BuildAndroidConfig.APPLICATION_ID
-        minSdkVersion(BuildAndroidConfig.MIN_SDK_VERSION)
-        targetSdkVersion(BuildAndroidConfig.TARGET_SDK_VERSION)
-        buildToolsVersion(BuildAndroidConfig.BUILD_TOOLS_VERSION)
+        minSdk=BuildAndroidConfig.MIN_SDK_VERSION
+        targetSdk=BuildAndroidConfig.TARGET_SDK_VERSION
+        buildToolsVersion=BuildAndroidConfig.BUILD_TOOLS_VERSION
 
         versionCode = BuildAndroidConfig.VERSION_CODE
         versionName = BuildAndroidConfig.VERSION_NAME
@@ -40,13 +40,6 @@ android {
 
     addProductFlavours(this)
 
-    dynamicFeatures = mutableSetOf(
-        BuildModules.Features.ACCOUNT,
-        BuildModules.Features.HOME,
-        BuildModules.Features.LEARN,
-        BuildModules.Features.PROFILE
-    )
-
     buildFeatures {
         dataBinding = true
         viewBinding = true
@@ -62,7 +55,7 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
-    lintOptions {
+    lint {
         lintConfig = rootProject.file(".lint/config.xml")
         isCheckAllWarnings = true
         isWarningsAsErrors = true
@@ -92,6 +85,10 @@ android {
 
 dependencies {
     implementation(project(BuildModules.CORE))
+    implementation(project(BuildModules.Features.ACCOUNT))
+    implementation(project(BuildModules.Features.HOME))
+    implementation(project(BuildModules.Features.LEARN))
+    implementation(project(BuildModules.Features.PROFILE))
     implementation(project(BuildModules.Commons.UI))
     implementation(project(BuildModules.Commons.VIEWS))
 

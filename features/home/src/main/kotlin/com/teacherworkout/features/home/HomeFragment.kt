@@ -27,7 +27,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
         super.onViewStateRestored(savedInstanceState)
         setupNavigation()
     }
-    
+
     private fun setupNavigation() {
         val navController = viewBinding.bottomNavigation.setupWithNavController(
             navGraphIds = navGraphIds,
@@ -37,14 +37,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
         )
 
         navController.observe(
-            viewLifecycleOwner,
-            {
-                val appBarConfiguration = AppBarConfiguration
-                    .Builder(R.id.themes_fragment)
-                    .build()
+            viewLifecycleOwner
+        ) {
+            val appBarConfiguration = AppBarConfiguration
+                .Builder(R.id.themes_fragment)
+                .build()
 
-                setupActionBarWithNavController(requireCompatActivity(), it, appBarConfiguration)
-            }
-        )
+            setupActionBarWithNavController(requireCompatActivity(), it, appBarConfiguration)
+        }
     }
 }

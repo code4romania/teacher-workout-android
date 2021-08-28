@@ -1,4 +1,4 @@
-package com.teacherworkout.features.account
+package com.teacherworkout.android
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
@@ -10,21 +10,18 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.teacherworkout.android.navigation.AppDestinations
 import com.teacherworkout.android.theming.TeacherWorkoutTheme
-import com.teacherworkout.features.account.auth.AuthViewModel
 import com.teacherworkout.features.account.auth.AuthScreen
-import com.teacherworkout.features.account.di.accountModule
+import com.teacherworkout.features.account.auth.AuthViewModel
 import com.teacherworkout.features.account.landing.LandingScreen
 import com.teacherworkout.features.account.register.RegisterScreen
 import com.teacherworkout.features.account.register.RegisterViewModel
 import com.teacherworkout.features.account.reset.ResetPasswordScreen
 import com.teacherworkout.features.account.reset.ResetPasswordViewModel
 import org.koin.androidx.viewmodel.ext.android.getViewModel
-import org.koin.core.context.loadKoinModules
 
-class AccountActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        loadKoinModules(accountModule)
         super.onCreate(savedInstanceState)
         setContent {
             val navController = rememberNavController()
