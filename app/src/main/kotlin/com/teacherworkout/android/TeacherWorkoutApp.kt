@@ -1,6 +1,7 @@
 package com.teacherworkout.android
 
 import com.google.android.play.core.splitcompat.SplitCompatApplication
+import com.teacherworkout.features.account.di.accountModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -13,8 +14,8 @@ class TeacherWorkoutApp : SplitCompatApplication() {
 
     private fun initDependencyInjection() {
         startKoin {
-            androidContext(this@TeacherWorkoutApp)
             androidLogger()
+            androidContext(this@TeacherWorkoutApp)
         }
     }
 }

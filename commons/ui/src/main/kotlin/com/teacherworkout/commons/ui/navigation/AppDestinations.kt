@@ -1,5 +1,4 @@
-package com.teacherworkout.android.navigation
-
+package com.teacherworkout.commons.ui.navigation
 
 object AppDestinations {
 

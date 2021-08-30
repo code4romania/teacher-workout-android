@@ -15,7 +15,7 @@ import com.teacherworkout.features.account.R
 
 @Composable
 fun AuthenticationUi(modifier: Modifier = Modifier, onAuthenticationRequest: () -> Unit) {
-    val space16dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_16dp)
+    val space16dp = dimensionResource(id =  R.dimen.space_16dp)
     Row(
         modifier = modifier,
         horizontalArrangement = Arrangement.Center

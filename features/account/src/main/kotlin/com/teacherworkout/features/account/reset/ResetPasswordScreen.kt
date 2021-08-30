@@ -10,7 +10,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -19,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
-import com.teacherworkout.android.navigation.AppDestinations
+import com.teacherworkout.commons.ui.navigation.AppDestinations
 import com.teacherworkout.features.account.R
 import com.teacherworkout.features.account.composables.AccountScreenScaffold
 import com.teacherworkout.features.account.composables.EmailField
@@ -27,11 +26,9 @@ import com.teacherworkout.features.account.composables.PasswordField
 import com.teacherworkout.features.account.composables.RegistrationLoadingUi
 import com.teacherworkout.features.account.composables.RequestFailedUi
 import com.teacherworkout.features.account.composables.RequestSuccessfulUi
-import com.teacherworkout.features.account.register.RegisterContract
 import com.teacherworkout.features.account.validators.EmailValidationStatus
 import com.teacherworkout.features.account.validators.PasswordValidationStatus
 import kotlinx.coroutines.flow.Flow
-import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun ResetPasswordScreen(
@@ -42,9 +39,9 @@ fun ResetPasswordScreen(
 ) {
     var confirmedPassword by rememberSaveable { mutableStateOf("") }
     var confirmedPasswordHasError by rememberSaveable { mutableStateOf(false) }
-    val space8dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_8dp)
-    val space16dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_16dp)
-    val space24dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_24dp)
+    val space8dp = dimensionResource(id =  R.dimen.space_8dp)
+    val space16dp = dimensionResource(id =  R.dimen.space_16dp)
+    val space24dp = dimensionResource(id =  R.dimen.space_24dp)
 
     AccountScreenScaffold(titleId = R.string.reset_password_title, navController = navController) {
         Column(

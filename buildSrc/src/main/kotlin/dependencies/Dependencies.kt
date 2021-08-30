@@ -28,11 +28,11 @@ object Dependencies {
         const val CORE = "androidx.core:core-ktx:1.6.0"
         const val APPCOMPAT = "androidx.appcompat:appcompat:1.3.0"
         const val CONSTRAINTLAYOUT = "androidx.constraintlayout:constraintlayout:2.0.4"
-        const val FRAGMENT = "androidx.fragment:fragment-ktx:1.4.0-alpha04"
+        const val FRAGMENT = "androidx.fragment:fragment-ktx:1.4.0-alpha05"
         const val RECYCLERVIEW = "androidx.recyclerview:recyclerview:1.1.0"
 
         object Navigation {
-            private const val VERSION = "2.4.0-alpha04"
+            private const val VERSION = "2.4.0-alpha07"
 
             const val FRAGMENT = "androidx.navigation:navigation-fragment-ktx:$VERSION"
             const val UI = "androidx.navigation:navigation-ui-ktx:$VERSION"
@@ -71,7 +71,8 @@ object Dependencies {
 
             // Material design icons
             const val MATERIAL_ICONS = "androidx.compose.material:material-icons-core:$VERSION"
-            const val MATERIAL_ICONS_EXTENDED = "androidx.compose.material:material-icons-extended:$VERSION"
+            const val MATERIAL_ICONS_EXTENDED =
+                "androidx.compose.material:material-icons-extended:$VERSION"
 
             // Integration with activities
             const val ACTIVITY = "androidx.activity:activity-compose:1.3.0-rc02"
@@ -95,6 +96,8 @@ object Dependencies {
 
         // Koin for Jetpack Compose
         const val COMPOSE = "io.insert-koin:koin-androidx-compose:$VERSION"
+
+        const val VIEWMODEL = "io.insert-koin:koin-android-viewmodel:$VERSION"
     }
 
     object Apollo {

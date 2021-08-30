@@ -17,7 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
-import com.teacherworkout.android.navigation.AppDestinations
+import com.teacherworkout.commons.ui.navigation.AppDestinations
 import com.teacherworkout.features.account.R
 import com.teacherworkout.features.account.composables.AccountScreenScaffold
 import com.teacherworkout.features.account.composables.EmailField
@@ -27,6 +27,7 @@ import com.teacherworkout.features.account.composables.RequestFailedUi
 import com.teacherworkout.features.account.register.RegisterContract
 import kotlinx.coroutines.flow.Flow
 import org.koin.androidx.compose.getViewModel
+import com.teacherworkout.features.account.*
 
 @Composable
 fun AuthScreen(
@@ -35,8 +36,8 @@ fun AuthScreen(
     onEventSent: (event: AuthContract.Event) -> Unit,
     navController: NavHostController,
 ) {
-    val space16dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_16dp)
-    val space8dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_8dp)
+    val space16dp = dimensionResource(id = R.dimen.space_16dp)
+    val space8dp = dimensionResource(id = R.dimen.space_8dp)
     AccountScreenScaffold(titleId = R.string.auth_title, navController = navController) {
         Column(
             modifier = Modifier

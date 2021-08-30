@@ -15,14 +15,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import com.teacherworkout.features.account.R
 
 @Composable
 fun RegistrationLoadingUi(
     @StringRes loadingTextId: Int,
     modifier: Modifier = Modifier
 ) {
-    val space8dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_8dp)
-    val space16dp = dimensionResource(id = com.teacherworkout.android.R.dimen.space_16dp)
+    val space8dp = dimensionResource(id =  R.dimen.space_8dp)
+    val space16dp = dimensionResource(id =  R.dimen.space_16dp)
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
