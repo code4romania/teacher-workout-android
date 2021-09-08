@@ -6,7 +6,7 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
 
     <color name="colorPrimary">#0d92b1</color>
     <color name="colorPrimaryVariant">#006481</color>
@@ -15,4 +15,7 @@
     <color name="colorOnBackground">#0d92b1</color>
     <color name="colorOnSurface">#0d92b1</color>
     <color name="landing_background">#ecfdf5</color>
+    <color name="faded_gray">#c1c1c1</color>
+    <color name="dark_gray">#727272</color>
+    <color name="white">#ffffffff</color>
 </resources>

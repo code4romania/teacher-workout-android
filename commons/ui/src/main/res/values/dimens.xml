@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="space_1dp">1dp</dimen>
+    <dimen name="space_4dp">4dp</dimen>
     <dimen name="space_8dp">8dp</dimen>
     <dimen name="space_12dp">12dp</dimen>
     <dimen name="space_16dp">16dp</dimen>
     <dimen name="space_24dp">24dp</dimen>
     <dimen name="space_32dp">32dp</dimen>
+
+    <dimen name="min_tab_height">48dp</dimen>
+    <dimen name="min_setting_row_height">60dp</dimen>
+    <dimen name="profile_photo_size">128dp</dimen>
+    <dimen name="lesson_photo_size">72dp</dimen>
+    <dimen name="border_1dp">1dp</dimen>
+    <dimen name="corner_4dp">4dp</dimen>
 </resources>
