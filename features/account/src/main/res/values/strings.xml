@@ -24,7 +24,7 @@
     <!-- Landing screen related strings -->
     <string name="landing_btn_register">REGISTER</string>
     <string name="landing_label_question">Already have an account?</string>
-    <string name="landing_btn_auth">Sign in</string>
+    <string name="landing_btn_auth">Log in</string>
     <!-- Register screen related screen -->
     <string name="register_title">Create an account</string>
     <string name="register_tos">I have read and I accept the terms and conditions.</string>
@@ -51,4 +51,3 @@
     <string name="reset_password_success_label">We\'ve sent a confirmation link to the email you provided. After
         clicking that link you can then sign in using the new password!</string>
 </resources>
-

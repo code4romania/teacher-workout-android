@@ -7,4 +7,9 @@ object BuildPlugins {
     const val KOTLIN_KAPT = "kotlin-kapt"
 
     const val NAVIGATION_SAFE_ARGS = "androidx.navigation.safeargs.kotlin"
+
+    const val DETEKT = "plugins.detekt"
+    const val KTLINT = "plugins.ktlint"
+    const val SPOTLESS = "plugins.spotless"
+    const val UPDATE_DEPENDENCIES = "plugins.update-dependencies"
 }
