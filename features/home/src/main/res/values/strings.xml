@@ -1,3 +1,4 @@
 <resources>
     <string name="default_label">Teacher Workout</string>
+    <string name="landing">Home landing screen</string>
 </resources>

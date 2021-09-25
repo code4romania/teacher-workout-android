@@ -12,8 +12,13 @@ object AppDestinations {
          * The home feature
          */
         const val home = "home"
+    }
 
-        const val test = "test"
+    object Home {
+        /**
+         * The landing screen for home feature
+         */
+        const val landing = "home-landing"
     }
 
     /**

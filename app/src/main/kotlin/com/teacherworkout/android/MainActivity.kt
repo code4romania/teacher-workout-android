@@ -11,6 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import com.teacherworkout.commons.ui.navigation.AppDestinations
 import com.teacherworkout.commons.ui.theming.TeacherWorkoutTheme
 import com.teacherworkout.features.account.accountFeature
+import com.teacherworkout.features.home.homeFeature
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,18 +20,12 @@ class MainActivity : AppCompatActivity() {
         setContent {
             val navHostController = rememberNavController()
             TeacherWorkoutTheme {
+                // TODO: startDestination will probably need to be dynamic depending if the user is logged or not
                 NavHost(navController = navHostController, startDestination = AppDestinations.Features.account) {
                     accountFeature(navHostController)
-
-                    composable(AppDestinations.Features.home) {
-                        HomeScreen(navHostController)
-                    }
+                    homeFeature(navHostController)
                 }
             }
         }
-    }
-
-    @Composable
-    private fun HomeScreen(navHostController: NavHostController) {
     }
 }
