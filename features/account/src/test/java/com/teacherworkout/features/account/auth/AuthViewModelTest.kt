@@ -17,7 +17,7 @@ class AuthViewModelTest {
 
         viewModel.handleEvents(AuthContract.Event.SetEmail("ion@code4.ro"))
 
-        assertThat(viewModel.viewState.value.email).isEqualTo("ion@xxx.ro")
+        assertThat(viewModel.viewState.value.email).isEqualTo("ion@code4.ro")
     }
 
     @Test
