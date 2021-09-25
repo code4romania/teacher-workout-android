@@ -13,17 +13,19 @@ import androidx.compose.material.icons.filled.Email
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import com.teacherworkout.features.account.R
 
 @Composable
+@Preview
 fun EmailField(
-    value: String,
-    @StringRes labelTextId: Int,
+    value: String = "some value",
+    @StringRes labelTextId: Int = R.string.input_email_label,
     modifier: Modifier = Modifier,
     @StringRes errorTextId: Int = View.NO_ID,
     hasError: Boolean = false,
     enabled: Boolean = true,
-    onValueChanged: (String) -> Unit,
+    onValueChanged: (String) -> Unit = { },
 ) {
     Column(modifier = modifier) {
         OutlinedTextField(
