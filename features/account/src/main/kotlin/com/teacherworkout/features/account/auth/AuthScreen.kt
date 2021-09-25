@@ -68,8 +68,10 @@ fun AuthScreen(
                     failureTextId = R.string.auth_failure_label,
                     modifier = Modifier.fillMaxWidth()
                 ) { onEventSent(AuthContract.Event.Auth) }
-                Succeeded -> { /* the user is sent to onboarding/main screen */
-                    Text("Logged in but nothing to do...")
+                Succeeded -> {
+                    navController.navigate(AppDestinations.Home.landing) {
+                        popUpTo(AppDestinations.Features.home) { inclusive = true}
+                    }
                 }
                 NotInitiated -> {
                     Button(
