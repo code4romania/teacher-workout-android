@@ -2,7 +2,7 @@ package com.teacherworkout.commons.ui.navigation
 
 object AppDestinations {
 
-    object Features {
+    object Routes {
         /**
          * The account feature
          */

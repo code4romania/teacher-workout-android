@@ -20,7 +20,7 @@ import org.koin.core.context.loadKoinModules
 fun NavGraphBuilder.accountFeature(navHostController: NavHostController) {
     loadKoinModules(accountModule)
 
-    navigation(startDestination = AppDestinations.landing, route = AppDestinations.Features.account) {
+    navigation(startDestination = AppDestinations.landing, route = AppDestinations.Routes.account) {
         composable(route = AppDestinations.landing) {
             LandingScreen(navHostController)
         }

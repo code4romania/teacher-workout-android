@@ -11,8 +11,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
@@ -24,10 +23,7 @@ import com.teacherworkout.features.account.composables.EmailField
 import com.teacherworkout.features.account.composables.PasswordField
 import com.teacherworkout.features.account.composables.RegistrationLoadingUi
 import com.teacherworkout.features.account.composables.RequestFailedUi
-import com.teacherworkout.features.account.register.RegisterContract
 import kotlinx.coroutines.flow.Flow
-import org.koin.androidx.compose.getViewModel
-import com.teacherworkout.features.account.*
 
 @Composable
 fun AuthScreen(
@@ -69,8 +65,10 @@ fun AuthScreen(
                     modifier = Modifier.fillMaxWidth()
                 ) { onEventSent(AuthContract.Event.Auth) }
                 Succeeded -> {
-                    navController.navigate(AppDestinations.Home.landing) {
-                        popUpTo(AppDestinations.Features.home) { inclusive = true}
+                    LaunchedEffect(Unit) {
+                        navController.navigate(AppDestinations.Home.landing) {
+                            popUpTo(AppDestinations.Routes.home) { inclusive = true }
+                        }
                     }
                 }
                 NotInitiated -> {
