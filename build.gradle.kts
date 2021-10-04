@@ -13,7 +13,7 @@ allprojects {
 
 buildscript {
     val kotlinVersion by extra("1.5.10")
-    val gradleVersion by extra("7.0.1")
+    val gradleVersion by extra("7.0.2")
     repositories {
         google()
         mavenCentral()
