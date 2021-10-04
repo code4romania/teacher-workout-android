@@ -2,6 +2,25 @@ package com.teacherworkout.commons.ui.navigation
 
 object AppDestinations {
 
+    object Features {
+        /**
+         * The account feature
+         */
+        const val account = "account"
+
+        /**
+         * The home feature
+         */
+        const val home = "home"
+    }
+
+    object Home {
+        /**
+         * The landing screen for home feature
+         */
+        const val landing = "home-landing"
+    }
+
     /**
      * Represent the initial screen the user sees, where he can choose to register a new account or authenticate into
      * the one he already has.

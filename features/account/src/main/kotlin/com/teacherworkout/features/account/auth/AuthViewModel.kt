@@ -23,7 +23,7 @@ class AuthViewModel : BaseViewModel<AuthContract.Event, AuthContract.State, Auth
     private fun auth() {
         viewModelScope.launch {
             setState { viewState.value.copy(authOutcome = InProgress) }
-            delay(3000)
+            delay(1000)
             if (count == 0) {
                 setState { viewState.value.copy(authOutcome = Failed) }
                 count++

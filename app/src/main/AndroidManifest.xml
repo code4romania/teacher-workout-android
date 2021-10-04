@@ -22,7 +22,7 @@
         tools:targetApi="s"
         android:dataExtractionRules="@xml/data_extraction_rules">
         <activity
-            android:name="com.teacherworkout.features.account.MainActivity"
+            android:name="com.teacherworkout.android.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.TeacherWorkout">
             <intent-filter>

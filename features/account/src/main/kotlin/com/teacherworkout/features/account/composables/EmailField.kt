@@ -17,13 +17,13 @@ import com.teacherworkout.features.account.R
 
 @Composable
 fun EmailField(
-    value: String,
-    @StringRes labelTextId: Int,
     modifier: Modifier = Modifier,
+    value: String = "some value",
+    @StringRes labelTextId: Int = R.string.input_email_label,
     @StringRes errorTextId: Int = View.NO_ID,
     hasError: Boolean = false,
     enabled: Boolean = true,
-    onValueChanged: (String) -> Unit,
+    onValueChanged: (String) -> Unit = { },
 ) {
     Column(modifier = modifier) {
         OutlinedTextField(

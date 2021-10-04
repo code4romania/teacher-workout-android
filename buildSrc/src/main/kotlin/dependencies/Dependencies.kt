@@ -32,7 +32,7 @@ object Dependencies {
         const val RECYCLERVIEW = "androidx.recyclerview:recyclerview:1.1.0"
 
         object Navigation {
-            private const val VERSION = "2.4.0-alpha07"
+            private const val VERSION = "2.4.0-alpha09"
 
             const val FRAGMENT = "androidx.navigation:navigation-fragment-ktx:$VERSION"
             const val UI = "androidx.navigation:navigation-ui-ktx:$VERSION"
