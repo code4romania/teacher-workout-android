@@ -7,7 +7,7 @@ import androidx.navigation.navigation
 import com.teacherworkout.commons.ui.navigation.AppDestinations
 
 fun NavGraphBuilder.homeFeature(_navHostController: NavHostController) {
-    navigation(startDestination = AppDestinations.Home.landing, route = AppDestinations.Routes.home) {
+    navigation(startDestination = AppDestinations.Home.landing, route = AppDestinations.Features.home) {
         composable(route = AppDestinations.Home.landing) {
             LandingScreen()
         }

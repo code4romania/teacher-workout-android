@@ -67,7 +67,7 @@ fun AuthScreen(
                 Succeeded -> {
                     LaunchedEffect(Unit) {
                         navController.navigate(AppDestinations.Home.landing) {
-                            popUpTo(AppDestinations.Routes.home) { inclusive = true }
+                            popUpTo(AppDestinations.Features.home) { inclusive = true }
                         }
                     }
                 }

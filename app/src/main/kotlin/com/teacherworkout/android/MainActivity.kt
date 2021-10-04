@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
             val navHostController = rememberNavController()
             TeacherWorkoutTheme {
                 // TODO: startDestination will probably need to be dynamic depending if the user is logged or not
-                NavHost(navController = navHostController, startDestination = AppDestinations.Routes.account) {
+                NavHost(navController = navHostController, startDestination = AppDestinations.Features.account) {
                     accountFeature(navHostController)
                     homeFeature(navHostController)
                 }
