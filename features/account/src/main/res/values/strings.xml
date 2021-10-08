@@ -4,6 +4,8 @@
 
     <string name="cd_logo">Application logo image</string>
     <!--suppress CheckTagEmptyBody -->
+    <!-- empty string to be placed as filler -->
+    <string name="empty" translatable="false"></string>
     <!-- common errors for email and passwords fields -->
     <string name="email_invalid_error">Please enter a valid email!</string>
     <string name="password_too_short_error">The password must have at least 8 characters!</string>
