@@ -1,4 +1,4 @@
-    package com.teacherworkout.features.account.register
+package com.teacherworkout.features.account.register
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.Checkbox
+import androidx.compose.material.CheckboxDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -29,10 +30,17 @@ fun TermsAndConditions(
     enabled: Boolean = true,
     onTosStatusChange: (Boolean) -> Unit
 ) {
-    val space16dp = dimensionResource(id =  R.dimen.space_16dp)
+    val space16dp = dimensionResource(id = R.dimen.space_16dp)
     Column(modifier = modifier.fillMaxWidth()) {
-        Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-            Checkbox(checked = isAccepted, enabled = enabled, onCheckedChange = onTosStatusChange)
+        Row(
+            modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically
+        ) {
+            Checkbox(
+                checked = isAccepted,
+                enabled = enabled,
+                onCheckedChange = onTosStatusChange,
+                colors = CheckboxDefaults.colors(checkedColor = MaterialTheme.colors.primary)
+            )
             val annotatedLinkString: AnnotatedString = buildAnnotatedString {
                 // TODO find a way to handle translated strings when creating the link
                 val target = "terms and conditions"

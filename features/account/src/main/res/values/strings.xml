@@ -16,9 +16,11 @@
     <string name="password_not_matching_error">Passwords do not match!</string>
     <!-- Common email and password related strings -->
     <string name="input_email_label">Email</string>
+    <string name="input_email_placeholder">name@email.com</string>
     <string name="cd_email_icon" translatable="false">Email icon</string>
     <string name="input_confirm_password_label">Confirm password</string>
     <string name="input_password_label">Password</string>
+    <string name="input_password_placeholder">********</string>
     <string name="cd_password_lock_icon" translatable="false">Lock icon</string>
     <string name="cd_password_toggle_icon" translatable="false">Toggle visibility icon</string>
     <!-- Landing screen related strings -->
