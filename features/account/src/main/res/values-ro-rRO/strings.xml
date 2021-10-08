@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_label">Teacher Workout</string>
+    <string name="cd_logo">Logo</string>
+    <string name="email_invalid_error">Adresa de e-mail introdusă este invalidă.</string>
+    <string name="password_too_short_error">Parola trebuie să aibă cel puțin 8 caractere!</string>
+    <string name="password_no_lowercase_error">Parola trebuie să conțină cel puțin un caracter minuscul!</string>
+    <string name="password_no_uppercase_error">Parola trebuie să conțină cel puțin un caracter cu majuscule!</string>
+    <string name="password_no_digit_error">Parola trebuie să conțină cel puțin o cifră!</string>
+    <string name="password_no_special_char_error">Parola trebuie să conțină cel puțin un caracter special!</string>
+    <string name="password_not_matching_error">Parolele nu sunt identice!</string>
+    <string name="input_email_label">Email</string>
+    <string name="input_confirm_password_label">Confirmă parola</string>
+    <string name="input_password_label">Parola</string>
+    <string name="landing_btn_register">ÎNREGISTREAZĂ-TE</string>
+    <string name="landing_label_question">Ai deja cont?</string>
+    <string name="landing_btn_auth">Autentifică-te</string>
+    <string name="register_title">Creează-ți contul</string>
+    <string name="register_tos">Sunt de acord cu termenii si conditiile acestei aplicatii GDPR si alte detalii go BRRR and you know it</string>
+    <string name="register_tos_error">Trebuie să acceptați termenii și condițiile pentru a vă crea un cont!</string>
+    <string name="register_btn_complete">Înregistrează-te</string>
+    <string name="register_failure_label">E-mail-ul sau parola sunt incorecte.</string>
+    <string name="register_loading_label">Creare cont</string>
+    <string name="register_success_label">Un e-mail pentru resetarea parolei a fost trimis la adresa de e-mail introdusă.</string>
+    <string name="auth_title">Logheaza-te în contul tau</string>
+    <string name="auth_btn_forgot_password">Ți-ai uitat parola?</string>
+    <string name="auth_loading_label">Logheaza-te în contul tau</string>
+    <string name="auth_btn_auth">Autentifică-te</string>
+    <string name="auth_failure_label">E-mail-ul sau parola sunt incorecte.</string>
+    <string name="reset_password_title">Resetează-ți parola</string>
+    <string name="reset_password_account_notice_label">Adresa de email</string>
+    <string name="reset_password_password_notice_label">Parola nouă</string>
+    <string name="reset_password_btn_complete">Setează noua parolă</string>
+    <string name="reset_password_loading_label">Resetează</string>
+    <string name="reset_password_failure_label">Nu v-am putut reseta parola. Vă rugăm să încercați din nou!</string>
+    <string name="reset_password_success_label">Un e-mail pentru resetarea parolei a fost trimis la adresa de e-mail introdusă.</string>
+</resources>
