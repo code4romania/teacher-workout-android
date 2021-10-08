@@ -75,20 +75,22 @@ fun ResetPasswordScreen(
                     PasswordValidationStatus.TooShort -> R.string.password_too_short_error
                     PasswordValidationStatus.Valid -> R.string.empty // not visible in this case
                 },
-                labelTextId = R.string.input_password_label,
+                labelTextId = R.string.input_password_placeholder,
             ) { newPassword ->
                 onEventSent(ResetPasswordContract.Event.SetPassword(newPassword))
                 if (confirmedPasswordHasError) {
                     confirmedPasswordHasError = newPassword != confirmedPassword
                 }
             }
+            Spacer(modifier = Modifier.height(space24dp))
+            Text(text = stringResource(id = R.string.input_confirm_password_label))
             Spacer(modifier = Modifier.height(space8dp))
             PasswordField(
                 value = confirmedPassword,
                 enabled = state.isNotStarted,
                 hasError = confirmedPasswordHasError,
                 errorTextId = R.string.password_not_matching_error,
-                labelTextId = R.string.input_confirm_password_label,
+                labelTextId = R.string.input_password_placeholder,
             ) { newConfirmedPassword ->
                 confirmedPasswordHasError =
                     newConfirmedPassword != state.password && newConfirmedPassword.isNotEmpty()

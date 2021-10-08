@@ -1,10 +1,6 @@
 package com.teacherworkout.features.account.auth
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
@@ -34,6 +30,8 @@ fun AuthScreen(
 ) {
     val space16dp = dimensionResource(id = R.dimen.space_16dp)
     val space8dp = dimensionResource(id = R.dimen.space_8dp)
+    val space24dp = dimensionResource(id = R.dimen.space_24dp)
+
     AccountScreenScaffold(titleId = R.string.auth_title, navController = navController) {
         Column(
             modifier = Modifier
@@ -41,14 +39,18 @@ fun AuthScreen(
                 .padding(space16dp)
                 .verticalScroll(rememberScrollState())
         ) {
+            Text(text = stringResource(id = R.string.input_email_label))
+            Spacer(modifier = Modifier.height(space8dp))
             EmailField(
                 value = state.email,
-                labelTextId = R.string.input_email_label,
+                labelTextId = R.string.input_email_placeholder,
             ) { onEventSent(AuthContract.Event.SetEmail(it)) }
+            Spacer(modifier = Modifier.height(space24dp))
+            Text(text = stringResource(id = R.string.input_password_label))
             Spacer(modifier = Modifier.height(space16dp))
             PasswordField(
                 value = state.password,
-                labelTextId = R.string.input_password_label,
+                labelTextId = R.string.input_password_placeholder,
             ) { onEventSent(AuthContract.Event.SetPassword(it)) }
             Spacer(modifier = Modifier.height(space8dp))
             TextButton(onClick = { navController.navigate(AppDestinations.reset_password) }) {
