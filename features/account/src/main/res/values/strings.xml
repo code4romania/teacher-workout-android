@@ -5,22 +5,24 @@
     <string name="cd_logo">Application logo image</string>
     <!--suppress CheckTagEmptyBody -->
     <!-- empty string to be placed as filler -->
-    <string name="empty"></string>
+    <string name="empty" translatable="false"></string>
     <!-- common errors for email and passwords fields -->
-    <string name="email_invalid_error">* Please enter a valid email!</string>
-    <string name="password_too_short_error">* The password must have at least 8 characters!</string>
-    <string name="password_no_lowercase_error">* The password must contain at least one lowercase character!</string>
-    <string name="password_no_uppercase_error">* The password must contain at least one uppercase character!</string>
-    <string name="password_no_digit_error">* The password must contain at least one digit!</string>
-    <string name="password_no_special_char_error">* The password must contain at least one special character!</string>
+    <string name="email_invalid_error">Please enter a valid email!</string>
+    <string name="password_too_short_error">The password must have at least 8 characters!</string>
+    <string name="password_no_lowercase_error">The password must contain at least one lowercase character!</string>
+    <string name="password_no_uppercase_error">The password must contain at least one uppercase character!</string>
+    <string name="password_no_digit_error">The password must contain at least one digit!</string>
+    <string name="password_no_special_char_error">The password must contain at least one special character!</string>
     <string name="password_not_matching_error">Passwords do not match!</string>
     <!-- Common email and password related strings -->
     <string name="input_email_label">Email</string>
-    <string name="cd_email_icon">Email icon</string>
+    <string name="input_email_placeholder">name@email.com</string>
+    <string name="cd_email_icon" translatable="false">Email icon</string>
     <string name="input_confirm_password_label">Confirm password</string>
     <string name="input_password_label">Password</string>
-    <string name="cd_password_lock_icon">Lock icon</string>
-    <string name="cd_password_toggle_icon">Toggle visibility icon</string>
+    <string name="input_password_placeholder">********</string>
+    <string name="cd_password_lock_icon" translatable="false">Lock icon</string>
+    <string name="cd_password_toggle_icon" translatable="false">Toggle visibility icon</string>
     <!-- Landing screen related strings -->
     <string name="landing_btn_register">REGISTER</string>
     <string name="landing_label_question">Already have an account?</string>
@@ -28,7 +30,7 @@
     <!-- Register screen related screen -->
     <string name="register_title">Create an account</string>
     <string name="register_tos">I have read and I accept the terms and conditions.</string>
-    <string name="register_tos_error">* You must accept the terms and conditions to create an account!</string>
+    <string name="register_tos_error">You must accept the terms and conditions to create an account!</string>
     <string name="register_btn_complete">Create account</string>
     <string name="register_failure_label">There was a problem creating your account. Please try again!</string>
     <string name="register_loading_label">Creating account…</string>

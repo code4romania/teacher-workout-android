@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tab_label_results">Rezultate</string>
+    <string name="tab_label_settings">Setări</string>
+    <string name="label_lessons_finished">Lecții parcurse</string>
+    <string name="setting_change_photo">Schimbă fotografie</string>
+    <string name="setting_change_password">Schimbă parola</string>
+    <string name="setting_notification">Notificări</string>
+    <string name="setting_logout">Log out</string>
+    <string name="setting_delete_account">Șterge cont</string>
+</resources>

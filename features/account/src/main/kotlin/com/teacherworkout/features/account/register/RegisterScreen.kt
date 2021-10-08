@@ -1,10 +1,6 @@
 package com.teacherworkout.features.account.register
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
@@ -20,12 +16,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import com.teacherworkout.commons.ui.navigation.AppDestinations
 import com.teacherworkout.features.account.R
-import com.teacherworkout.features.account.composables.AccountScreenScaffold
-import com.teacherworkout.features.account.composables.EmailField
-import com.teacherworkout.features.account.composables.PasswordField
-import com.teacherworkout.features.account.composables.RegistrationLoadingUi
-import com.teacherworkout.features.account.composables.RequestFailedUi
-import com.teacherworkout.features.account.composables.RequestSuccessfulUi
+import com.teacherworkout.features.account.composables.*
 import com.teacherworkout.features.account.validators.PasswordValidationStatus
 import kotlinx.coroutines.flow.Flow
 
@@ -38,9 +29,9 @@ fun RegisterScreen(
 ) {
     var confirmedPassword by rememberSaveable { mutableStateOf("") }
     var confirmedPasswordHasError by rememberSaveable { mutableStateOf(false) }
-    val space8dp = dimensionResource(id =  R.dimen.space_8dp)
-    val space16dp = dimensionResource(id =  R.dimen.space_16dp)
-    val space24dp = dimensionResource(id =  R.dimen.space_24dp)
+    val space8dp = dimensionResource(id = R.dimen.space_8dp)
+    val space16dp = dimensionResource(id = R.dimen.space_16dp)
+    val space24dp = dimensionResource(id = R.dimen.space_24dp)
 
     AccountScreenScaffold(titleId = R.string.register_title, navController = navController) {
         Column(
@@ -49,12 +40,16 @@ fun RegisterScreen(
                 .padding(space16dp)
                 .verticalScroll(rememberScrollState())
         ) {
+            Text(text = stringResource(id = R.string.input_email_label))
+            Spacer(modifier = Modifier.height(space8dp))
             EmailField(
                 value = state.email,
                 hasError = state.emailHasError,
                 errorTextId = R.string.email_invalid_error,
-                labelTextId = R.string.input_email_label,
+                labelTextId = R.string.input_email_placeholder,
             ) { onEventSent(RegisterContract.Event.SetEmail(it)) }
+            Spacer(modifier = Modifier.height(space24dp))
+            Text(text = stringResource(id = R.string.input_password_label))
             Spacer(modifier = Modifier.height(space8dp))
             PasswordField(
                 value = state.password,
@@ -67,19 +62,21 @@ fun RegisterScreen(
                     PasswordValidationStatus.TooShort -> R.string.password_too_short_error
                     PasswordValidationStatus.Valid -> R.string.empty // not visible in this case
                 },
-                labelTextId = R.string.input_password_label,
+                labelTextId = R.string.input_password_placeholder,
             ) { newPassword ->
                 onEventSent(RegisterContract.Event.SetPassword(newPassword))
                 if (confirmedPasswordHasError) {
                     confirmedPasswordHasError = newPassword != confirmedPassword
                 }
             }
+            Spacer(modifier = Modifier.height(space24dp))
+            Text(text = stringResource(id = R.string.input_confirm_password_label))
             Spacer(modifier = Modifier.height(space8dp))
             PasswordField(
                 value = confirmedPassword,
                 hasError = confirmedPasswordHasError,
                 errorTextId = R.string.password_not_matching_error,
-                labelTextId = R.string.input_confirm_password_label,
+                labelTextId = R.string.input_password_placeholder,
             ) { newConfirmedPassword ->
                 confirmedPasswordHasError =
                     newConfirmedPassword != state.password && newConfirmedPassword.isNotEmpty()
