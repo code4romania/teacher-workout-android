@@ -3,6 +3,7 @@ package plugins
 val ktlint: Configuration by configurations.creating
 
 dependencies {
+    // latest version 0.42.1 has a bug which prevents ktlint to run
     ktlint("com.pinterest:ktlint:0.40.0")
 }
 

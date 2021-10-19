@@ -16,8 +16,9 @@
 
 package commons
 
-import extensions.addTestDependencies
 import dependencies.Dependencies
+import dependencies.TestAndroidDependencies
+import dependencies.TestDependencies
 
 plugins {
     id("com.android.library")
@@ -45,8 +46,6 @@ android {
     }
 
     buildFeatures {
-        dataBinding = true
-        viewBinding = true
         compose = true
     }
 
@@ -74,30 +73,20 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.0.0-rc02"
-        kotlinCompilerVersion = Dependencies.Kotlin.VERSION
+        kotlinCompilerExtensionVersion = Dependencies.AndroidX.Compose.VERSION
     }
 }
 
 dependencies {
     implementation(Dependencies.Coroutines.CORE)
     implementation(Dependencies.Coroutines.ANDROID)
-    implementation(Dependencies.Kotlin.STDLIB)
+
     implementation(Dependencies.AndroidX.CORE)
     implementation(Dependencies.AndroidX.APPCOMPAT)
-    implementation(Dependencies.AndroidX.CONSTRAINTLAYOUT)
-
-    implementation(Dependencies.LOTTIE)
-
-    implementation(Dependencies.COIL)
-
-    implementation(Dependencies.AndroidX.Navigation.FRAGMENT)
-    implementation(Dependencies.AndroidX.Navigation.UI)
-    implementation(Dependencies.AndroidX.Navigation.DYNAMIC_FEATURE)
-
-    implementation(Dependencies.Koin.ANDROID)
-    implementation(Dependencies.AndroidX.Navigation.COMPOSE)
     implementation(Dependencies.MATERIAL)
+
+    implementation(Dependencies.AndroidX.Navigation.UI)
+    implementation(Dependencies.AndroidX.Navigation.COMPOSE)
 
     implementation(Dependencies.AndroidX.Compose.FOUNDATION)
     implementation(Dependencies.AndroidX.Compose.UI)
@@ -106,11 +95,18 @@ dependencies {
     implementation(Dependencies.AndroidX.Compose.MATERIAL_ICONS)
     implementation(Dependencies.AndroidX.Compose.MATERIAL_ICONS_EXTENDED)
     implementation(Dependencies.AndroidX.Compose.ACTIVITY)
-    implementation(Dependencies.AndroidX.Compose.VIEWMODEL)
+    implementation(Dependencies.AndroidX.Lifecycle.VIEWMODEL_COMPOSE)
     implementation(Dependencies.AndroidX.Compose.LIVEDATA)
 
     implementation(Dependencies.Koin.CORE)
+    implementation(Dependencies.Koin.ANDROID)
     implementation(Dependencies.Koin.COMPOSE)
 
-    addTestDependencies()
+    testImplementation(TestDependencies.JUNIT)
+    testImplementation(TestDependencies.TRUTH)
+    testImplementation(TestDependencies.AndroidX.CORE_TESTING)
+    testImplementation(TestDependencies.COROUTINES_TEST)
+
+    androidTestImplementation(TestAndroidDependencies.AndroidX.ESPRESSO_CORE)
+    androidTestImplementation(TestAndroidDependencies.AndroidX.JUNIT)
 }

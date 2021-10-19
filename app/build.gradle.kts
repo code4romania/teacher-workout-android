@@ -41,8 +41,6 @@ android {
     addProductFlavours(this)
 
     buildFeatures {
-        dataBinding = true
-        viewBinding = true
         compose = true
     }
 
@@ -78,8 +76,7 @@ android {
         }
     }
     composeOptions {
-        kotlinCompilerVersion = Dependencies.Kotlin.VERSION
-        kotlinCompilerExtensionVersion = "1.0.0-rc02"
+        kotlinCompilerExtensionVersion = Dependencies.AndroidX.Compose.VERSION
     }
 }
 
@@ -94,15 +91,14 @@ dependencies {
 
     implementation(Dependencies.AndroidX.CORE)
     implementation(Dependencies.AndroidX.APPCOMPAT)
-    implementation(Dependencies.AndroidX.CONSTRAINTLAYOUT)
-    implementation(Dependencies.AndroidX.Lifecycle.VIEWMODEL)
-    implementation(Dependencies.AndroidX.Lifecycle.EXTENSIONS)
-
     implementation(Dependencies.MATERIAL)
 
-    implementation(Dependencies.AndroidX.Navigation.FRAGMENT)
+    implementation(Dependencies.AndroidX.Lifecycle.VIEWMODEL)
+    implementation(Dependencies.AndroidX.Lifecycle.LIVEDATA)
+    implementation(Dependencies.AndroidX.Lifecycle.RUNTIME_KTX)
+    implementation(Dependencies.AndroidX.Lifecycle.COMMON_JAVA8)
+
     implementation(Dependencies.AndroidX.Navigation.UI)
-    implementation(Dependencies.AndroidX.Navigation.DYNAMIC_FEATURE)
     implementation(Dependencies.AndroidX.Navigation.COMPOSE)
 
     implementation(Dependencies.AndroidX.Compose.FOUNDATION)
@@ -112,7 +108,7 @@ dependencies {
     implementation(Dependencies.AndroidX.Compose.MATERIAL_ICONS)
     implementation(Dependencies.AndroidX.Compose.MATERIAL_ICONS_EXTENDED)
     implementation(Dependencies.AndroidX.Compose.ACTIVITY)
-    implementation(Dependencies.AndroidX.Compose.VIEWMODEL)
+    implementation(Dependencies.AndroidX.Lifecycle.VIEWMODEL_COMPOSE)
     implementation(Dependencies.AndroidX.Compose.LIVEDATA)
 
     implementation(Dependencies.Koin.CORE)

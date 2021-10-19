@@ -1,4 +1,3 @@
-import dependencies.Dependencies
 import extensions.addProductFlavours
 
 plugins {
@@ -7,9 +6,4 @@ plugins {
 
 android {
     addProductFlavours(this)
-}
-
-dependencies {
-    implementation(Dependencies.AndroidX.Navigation.FRAGMENT)
-    implementation(Dependencies.AndroidX.Navigation.UI)
 }
