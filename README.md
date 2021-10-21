@@ -31,7 +31,6 @@ If you would like to suggest new functionality, open an Issue and mark it as a _
 * [Jetpack](https://developer.android.com/jetpack)
   * [Android KTX](https://developer.android.com/kotlin/ktx.html#core)
   * [AndroidX](https://developer.android.com/jetpack/androidx)
-  * [Data Binding](https://developer.android.com/topic/libraries/data-binding/)
   * [Navigation](https://developer.android.com/guide/navigation/)
   * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
   * [Compose](https://developer.android.com/jetpack/compose)

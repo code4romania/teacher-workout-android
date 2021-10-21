@@ -1,12 +1,11 @@
 package com.teacherworkout.android
 
-import com.google.android.play.core.splitcompat.SplitCompatApplication
-import com.teacherworkout.features.account.di.accountModule
+import android.app.Application
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
-class TeacherWorkoutApp : SplitCompatApplication() {
+class TeacherWorkoutApp : Application() {
     override fun onCreate() {
         super.onCreate()
         initDependencyInjection()
