@@ -19,6 +19,8 @@ object AppDestinations {
          * The landing screen for home feature
          */
         const val landing = "home-landing"
+
+        const val profile = "home-profile"
     }
 
     object Account {

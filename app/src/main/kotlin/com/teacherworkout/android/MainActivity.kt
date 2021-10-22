@@ -23,9 +23,12 @@ import com.teacherworkout.features.account.accountFeature
 import com.teacherworkout.features.home.homeFeature
 
 sealed class Screen(val route: String, @StringRes val resourceId: Int, val icon: ImageVector) {
-    object Home : Screen("home", R.string.title_home, Icons.Outlined.Home)
-    object Discover : Screen("discover", R.string.title_discover, Icons.Outlined.Search)
-    object Profile : Screen("profile", R.string.title_profile, Icons.Outlined.Person)
+    object Home : Screen(AppDestinations.Home.landing, R.string.title_home, Icons.Outlined.Home)
+    object Discover :
+        Screen(AppDestinations.Home.landing, R.string.title_discover, Icons.Outlined.Search)
+
+    object Profile :
+        Screen(AppDestinations.Home.profile, R.string.title_profile, Icons.Outlined.Person)
 }
 
 class MainActivity : AppCompatActivity() {
@@ -46,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             TeacherWorkoutTheme {
                 Scaffold(
                     bottomBar = {
-                        if (currentRoute == "home-landing") {
+                        if (currentRoute == "home-landing" || currentRoute == "home-profile") {
                             BottomNavigation {
                                 val currentDestination = navBackStackEntry?.destination
                                 items.forEach { screen ->

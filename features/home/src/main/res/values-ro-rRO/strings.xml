@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="default_label">Teacher Workout</string>
-    <string name="home_landing">Home landing screen</string>
     <string name="profile">Profile screen</string>
+    <string name="home_landing">Home landing screen</string>
 </resources>

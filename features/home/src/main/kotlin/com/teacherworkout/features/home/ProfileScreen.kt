@@ -11,7 +11,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 
 @Composable
-fun LandingScreen() {
+fun ProfileScreen() {
     val space16dp = dimensionResource(id = R.dimen.space_16dp)
     val backgroundColor = colorResource(id = R.color.landing_background)
     Box(modifier = Modifier.fillMaxSize()) {
@@ -27,7 +27,7 @@ fun LandingScreen() {
                     .fillMaxSize()
             ) {
                 Text(
-                    text = stringResource(id = R.string.title_discover),
+                    text = stringResource(id = R.string.title_profile),
                     fontSize = MaterialTheme.typography.button.fontSize,
                     color = MaterialTheme.colors.error,
                     modifier = Modifier.alignByBaseline()
