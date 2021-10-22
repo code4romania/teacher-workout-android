@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">teacher-workout</string>
+    <string name="app_name" translatable="false">teacher-workout</string>
     <string name="title_account">Account</string>
     <string name="title_home">Home</string>
     <string name="title_learn">Learn</string>
+    <string name="title_discover">Discover</string>
     <string name="title_profile">Profile</string>
 </resources>
