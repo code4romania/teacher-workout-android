@@ -52,4 +52,12 @@
     <string name="reset_password_failure_label">Could not reset your password. Please try again!</string>
     <string name="reset_password_success_label">We\'ve sent a confirmation link to the email you provided. After
         clicking that link you can then sign in using the new password!</string>
+
+    <!-- OnBoarding screen related strings -->
+    <string name="onboarding_btn_skip">SKIP</string>
+    <string name="onboarding_btn_next_step">NEXT</string>
+    <string name="onboarding_btn_next_finish">FINISH</string>
+    <string name="onboarding_cd_forward">Forward icon</string>
+    <string name="onboarding_0_title" translatable="false">Onboarding</string>
+    <string name="onboarding_0_description" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elit enim, rutrum a rutrum a, porttitor ut neque. Sed tempus, diam eget aliquet ullamcorper, dui nunc dictum ligula, a euismod metus metus id ligula.</string>
 </resources>

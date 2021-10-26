@@ -1,6 +1,10 @@
 package com.teacherworkout.features.account.auth
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
@@ -13,6 +17,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import com.teacherworkout.commons.ui.navigation.AppDestinations
+import com.teacherworkout.features.account.BuildConfig
 import com.teacherworkout.features.account.R
 import com.teacherworkout.features.account.composables.AccountScreenScaffold
 import com.teacherworkout.features.account.composables.EmailField
@@ -80,6 +85,13 @@ fun AuthScreen(
                     ) {
                         Text(text = stringResource(id = R.string.auth_btn_auth))
                     }
+                }
+            }
+            // TODO remove this after onboarding is fully implemented
+            if (BuildConfig.DEBUG) {
+                Spacer(modifier = Modifier.height(space16dp))
+                Button(onClick = { navController.navigate("onboarding") }) {
+                    Text("Sneak to onboarding!")
                 }
             }
             Spacer(modifier = Modifier.height(space16dp))

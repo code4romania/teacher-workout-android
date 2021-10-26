@@ -1,3 +1,4 @@
+import dependencies.Dependencies
 import extensions.addProductFlavours
 
 plugins {
@@ -10,4 +11,12 @@ android {
 
 dependencies {
     implementation(project(":commons:ui"))
+    implementation(Dependencies.AndroidX.Compose.PAGER)
+}
+
+// needed to build the app because the compose pager is currently marked as experimental
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions.freeCompilerArgs = listOf(
+        "-Xopt-in=com.google.accompanist.pager.ExperimentalPagerApi"
+    )
 }

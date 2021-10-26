@@ -10,6 +10,7 @@ import com.teacherworkout.features.account.auth.AuthScreen
 import com.teacherworkout.features.account.auth.AuthViewModel
 import com.teacherworkout.features.account.di.accountModule
 import com.teacherworkout.features.account.landing.LandingScreen
+import com.teacherworkout.features.account.onboarding.OnBoardingScreen
 import com.teacherworkout.features.account.register.RegisterScreen
 import com.teacherworkout.features.account.register.RegisterViewModel
 import com.teacherworkout.features.account.reset.ResetPasswordScreen
@@ -32,6 +33,12 @@ fun NavGraphBuilder.accountFeature(navHostController: NavHostController) {
         }
         composable(AppDestinations.reset_password) {
             ResetPasswordScreenDestination(navHostController)
+        }
+
+        composable("onboarding") {
+            OnBoardingScreen {
+                // navigate to main here
+            }
         }
     }
 }

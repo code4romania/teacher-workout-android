@@ -7,6 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
 
+    <color name="landing_background">#ecfdf5</color>
+    <color name="onboarding_skip">#323F4B</color>
+    <color name="onboarding_text_description">#323F4B</color>
 
     <color name="colorPrimary">#0d92b1</color>
     <color name="colorPrimaryVariant">#006481</color>
@@ -14,7 +17,6 @@
     <color name="colorSecondaryVariant">#7a0000</color>
     <color name="colorOnBackground">#0d92b1</color>
     <color name="colorOnSurface">#0d92b1</color>
-    <color name="landing_background">#ecfdf5</color>
     <color name="faded_gray">#c1c1c1</color>
     <color name="dark_gray">#727272</color>
     <color name="white">#ffffffff</color>
