@@ -110,8 +110,8 @@ fun ResetPasswordScreen(
                     successTextId = R.string.reset_password_success_label,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    navController.navigate(AppDestinations.authentication) {
-                        popUpTo(AppDestinations.landing)
+                    navController.navigate(AppDestinations.Account.authentication) {
+                        popUpTo(AppDestinations.Account.landing)
                     }
                 }
                 NotInitiated -> Button(

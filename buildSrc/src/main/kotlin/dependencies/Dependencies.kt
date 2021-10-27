@@ -45,6 +45,7 @@ object Dependencies {
 
         object Compose {
             const val VERSION = "1.0.4"
+            private const val ACCOMPANIST_PAGER_VERSION = "0.20.0"
 
             const val UI = "androidx.compose.ui:ui:$VERSION"
 
@@ -66,6 +67,8 @@ object Dependencies {
 
             // Integration with observables
             const val LIVEDATA = "androidx.compose.runtime:runtime-livedata:$VERSION"
+
+            const val PAGER = "com.google.accompanist:accompanist-pager:$ACCOMPANIST_PAGER_VERSION"
         }
     }
 

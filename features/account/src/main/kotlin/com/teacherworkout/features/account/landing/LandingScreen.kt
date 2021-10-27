@@ -31,14 +31,14 @@ fun LandingScreen(navController: NavController) {
                     .fillMaxWidth()
                     .padding(bottom = space16dp)
             ) {
-                navController.navigate(AppDestinations.registration)
+                navController.navigate(AppDestinations.Account.registration)
             }
             AuthenticationUi(
                 modifier = Modifier
                     .padding(bottom = space24dp)
                     .fillMaxWidth()
             ) {
-                navController.navigate(AppDestinations.authentication)
+                navController.navigate(AppDestinations.Account.authentication)
             }
         }
     }

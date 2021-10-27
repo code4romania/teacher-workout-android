@@ -1,6 +1,10 @@
 package com.teacherworkout.features.account.auth
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
@@ -53,7 +57,7 @@ fun AuthScreen(
                 labelTextId = R.string.input_password_placeholder,
             ) { onEventSent(AuthContract.Event.SetPassword(it)) }
             Spacer(modifier = Modifier.height(space8dp))
-            TextButton(onClick = { navController.navigate(AppDestinations.reset_password) }) {
+            TextButton(onClick = { navController.navigate(AppDestinations.Account.reset_password) }) {
                 Text(text = stringResource(id = R.string.auth_btn_forgot_password))
             }
             Spacer(modifier = Modifier.height(space16dp))
@@ -68,9 +72,9 @@ fun AuthScreen(
                 ) { onEventSent(AuthContract.Event.Auth) }
                 Succeeded -> {
                     LaunchedEffect(Unit) {
-                        navController.navigate(AppDestinations.Home.landing) {
-                            popUpTo(AppDestinations.Features.home) { inclusive = true }
-                        }
+                        // TODO when backend is available implement logic to determine the proper destination, either
+                        //  onboarding or main if onboarding was already completed!
+                        navController.navigate(AppDestinations.Account.onboarding)
                     }
                 }
                 NotInitiated -> {

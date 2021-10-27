@@ -21,27 +21,34 @@ object AppDestinations {
         const val landing = "home-landing"
     }
 
-    /**
-     * Represent the initial screen the user sees, where he can choose to register a new account or authenticate into
-     * the one he already has.
-     */
-    const val landing = "landing"
+    object Account {
+        /**
+         * Represent the initial screen the user sees, where he can choose to register a new account or authenticate into
+         * the one he already has.
+         */
+        const val landing = "landing"
 
-    /**
-     * Represents the screen where the user can register a new account.
-     */
-    const val registration = "registration"
+        /**
+         * Represents the screen where the user can register a new account.
+         */
+        const val registration = "registration"
 
-    /**
-     * Represents the screen where the user can enter his account, once he has one.
-     * From this destination the user can go the (onboarding/main) screen or the reset password screen.
-     */
-    const val authentication = "authentication"
+        /**
+         * Represents the screen where the user can enter his account, once he has one.
+         * From this destination the user can go the (onboarding/main) screen or the reset password screen.
+         */
+        const val authentication = "authentication"
 
-    /**
-     * Represents the screen where the user can reset his password.
-     */
-    const val reset_password = "reset_password"
+        /**
+         * Represents the screen where the user can reset his password.
+         */
+        const val reset_password = "reset_password"
+
+        /**
+         * Represents the screen where the user is shown how to use the app.
+         */
+        const val onboarding = "onboarding"
+    }
 
     /**
      * Dialog destination which will be seen by the user once he entered valid credentials to authenticate into his

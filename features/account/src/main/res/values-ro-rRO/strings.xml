@@ -37,4 +37,10 @@
     <string name="reset_password_loading_label">Resetează</string>
     <string name="reset_password_failure_label">Nu v-am putut reseta parola. Vă rugăm să încercați din nou!</string>
     <string name="reset_password_success_label">Un e-mail pentru resetarea parolei a fost trimis la adresa de e-mail introdusă.</string>
+
+    <!-- OnBoarding screen related strings -->
+    <string name="onboarding_btn_skip">TRECI PESTE</string>
+    <string name="onboarding_btn_next_step">URMĂTORUL PAS</string>
+    <string name="onboarding_btn_next_finish">TERMINĂ</string>
+    <string name="onboarding_cd_forward">Iconiță înainte</string>
 </resources>
