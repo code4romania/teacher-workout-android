@@ -17,7 +17,6 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import com.teacherworkout.commons.ui.navigation.AppDestinations
-import com.teacherworkout.features.account.BuildConfig
 import com.teacherworkout.features.account.R
 import com.teacherworkout.features.account.composables.AccountScreenScaffold
 import com.teacherworkout.features.account.composables.EmailField
@@ -58,7 +57,7 @@ fun AuthScreen(
                 labelTextId = R.string.input_password_placeholder,
             ) { onEventSent(AuthContract.Event.SetPassword(it)) }
             Spacer(modifier = Modifier.height(space8dp))
-            TextButton(onClick = { navController.navigate(AppDestinations.reset_password) }) {
+            TextButton(onClick = { navController.navigate(AppDestinations.Account.reset_password) }) {
                 Text(text = stringResource(id = R.string.auth_btn_forgot_password))
             }
             Spacer(modifier = Modifier.height(space16dp))
@@ -73,9 +72,9 @@ fun AuthScreen(
                 ) { onEventSent(AuthContract.Event.Auth) }
                 Succeeded -> {
                     LaunchedEffect(Unit) {
-                        navController.navigate(AppDestinations.Home.landing) {
-                            popUpTo(AppDestinations.Features.home) { inclusive = true }
-                        }
+                        // TODO when backend is available implement logic to determine the proper destination, either
+                        //  onboarding or main if onboarding was already completed!
+                        navController.navigate(AppDestinations.Account.onboarding)
                     }
                 }
                 NotInitiated -> {
@@ -85,13 +84,6 @@ fun AuthScreen(
                     ) {
                         Text(text = stringResource(id = R.string.auth_btn_auth))
                     }
-                }
-            }
-            // TODO remove this after onboarding is fully implemented
-            if (BuildConfig.DEBUG) {
-                Spacer(modifier = Modifier.height(space16dp))
-                Button(onClick = { navController.navigate("onboarding") }) {
-                    Text("Sneak to onboarding!")
                 }
             }
             Spacer(modifier = Modifier.height(space16dp))

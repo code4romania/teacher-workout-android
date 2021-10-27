@@ -3,6 +3,7 @@ package com.teacherworkout.features.account
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
+import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.teacherworkout.commons.ui.navigation.AppDestinations
@@ -21,23 +22,25 @@ import org.koin.core.context.loadKoinModules
 fun NavGraphBuilder.accountFeature(navHostController: NavHostController) {
     loadKoinModules(accountModule)
 
-    navigation(startDestination = AppDestinations.landing, route = AppDestinations.Features.account) {
-        composable(route = AppDestinations.landing) {
+    navigation(startDestination = AppDestinations.Account.landing, route = AppDestinations.Features.account) {
+        composable(route = AppDestinations.Account.landing) {
             LandingScreen(navHostController)
         }
-        composable(AppDestinations.registration) {
+        composable(AppDestinations.Account.registration) {
             RegisterScreenDestination(navHostController)
         }
-        composable(AppDestinations.authentication) {
+        composable(AppDestinations.Account.authentication) {
             AuthScreenDestination(navHostController)
         }
-        composable(AppDestinations.reset_password) {
+        composable(AppDestinations.Account.reset_password) {
             ResetPasswordScreenDestination(navHostController)
         }
 
-        composable("onboarding") {
+        composable(AppDestinations.Account.onboarding) {
             OnBoardingScreen {
-                // navigate to main here
+                navHostController.navigate(AppDestinations.Features.home) {
+                    popUpTo(AppDestinations.Account.landing)
+                }
             }
         }
     }

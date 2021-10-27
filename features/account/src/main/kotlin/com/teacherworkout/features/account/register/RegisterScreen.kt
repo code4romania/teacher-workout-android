@@ -103,8 +103,8 @@ fun RegisterScreen(
                     successTextId = R.string.register_success_label,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    navController.navigate(AppDestinations.authentication) {
-                        popUpTo(AppDestinations.landing)
+                    navController.navigate(AppDestinations.Account.authentication) {
+                        popUpTo(AppDestinations.Account.landing)
                     }
                 }
                 NotInitiated -> Button(
