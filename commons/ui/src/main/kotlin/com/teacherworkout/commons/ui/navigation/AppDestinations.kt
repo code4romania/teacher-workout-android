@@ -31,6 +31,8 @@ object AppDestinations {
 
         object Landing : AccountScreen("account-landing")
 
+        object Onboarding : AccountScreen("account-onboarding")
+
         object Registration : AccountScreen("account-registration")
 
         object Authentication : AccountScreen("account-authentication")

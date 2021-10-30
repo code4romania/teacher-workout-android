@@ -23,7 +23,6 @@ import com.teacherworkout.features.account.composables.EmailField
 import com.teacherworkout.features.account.composables.PasswordField
 import com.teacherworkout.features.account.composables.RegistrationLoadingUi
 import com.teacherworkout.features.account.composables.RequestFailedUi
-import kotlinx.coroutines.flow.Flow
 
 @Composable
 fun AuthScreen(
@@ -71,6 +70,7 @@ fun AuthScreen(
                 ) { onEventSent(AuthContract.Event.Auth) }
                 Succeeded -> {
                     LaunchedEffect(Unit) {
+                        navController.navigate(AppDestinations.Account.Onboarding.route)
                     }
                 }
                 NotInitiated -> {
