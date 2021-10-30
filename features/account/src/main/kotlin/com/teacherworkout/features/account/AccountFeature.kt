@@ -22,17 +22,17 @@ import org.koin.core.context.loadKoinModules
 fun NavGraphBuilder.accountFeature(navHostController: NavHostController) {
     loadKoinModules(accountModule)
 
-    navigation(startDestination = AppDestinations.Account.landing, route = AppDestinations.Features.account) {
-        composable(route = AppDestinations.Account.landing) {
+    navigation(startDestination = AppDestinations.Account.Landing.route, route = AppDestinations.Features.account) {
+        composable(route = AppDestinations.Account.Landing.route) {
             LandingScreen(navHostController)
         }
-        composable(AppDestinations.Account.registration) {
+        composable(AppDestinations.Account.Registration.route) {
             RegisterScreenDestination(navHostController)
         }
-        composable(AppDestinations.Account.authentication) {
+        composable(AppDestinations.Account.Authentication.route) {
             AuthScreenDestination(navHostController)
         }
-        composable(AppDestinations.Account.reset_password) {
+        composable(AppDestinations.Account.ResetPassword.route) {
             ResetPasswordScreenDestination(navHostController)
         }
 
@@ -52,7 +52,6 @@ private fun RegisterScreenDestination(navHostController: NavHostController) {
 
     RegisterScreen(
         state = viewModel.viewState.value,
-        effectFlow = viewModel.effect,
         onEventSent = { event -> viewModel.setEvent(event) },
         navController = navHostController
     )
@@ -64,7 +63,6 @@ private fun AuthScreenDestination(navHostController: NavHostController) {
 
     AuthScreen(
         state = viewModel.viewState.value,
-        effectFlow = viewModel.effect,
         onEventSent = { event -> viewModel.setEvent(event) },
         navController = navHostController
     )
@@ -76,7 +74,6 @@ private fun ResetPasswordScreenDestination(navHostController: NavHostController)
 
     ResetPasswordScreen(
         state = viewModel.viewState.value,
-        effectFlow = viewModel.effect,
         onEventSent = { event -> viewModel.setEvent(event) },
         navController = navHostController
     )

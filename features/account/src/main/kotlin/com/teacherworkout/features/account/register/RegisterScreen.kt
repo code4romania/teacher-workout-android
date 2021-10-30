@@ -23,7 +23,6 @@ import kotlinx.coroutines.flow.Flow
 @Composable
 fun RegisterScreen(
     state: RegisterContract.State,
-    effectFlow: Flow<RegisterContract.Effect>?,
     onEventSent: (event: RegisterContract.Event) -> Unit,
     navController: NavHostController,
 ) {
@@ -103,8 +102,8 @@ fun RegisterScreen(
                     successTextId = R.string.register_success_label,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    navController.navigate(AppDestinations.Account.authentication) {
-                        popUpTo(AppDestinations.Account.landing)
+                    navController.navigate(AppDestinations.Account.Authentication.route) {
+                        popUpTo(AppDestinations.Account.Landing.route)
                     }
                 }
                 NotInitiated -> Button(

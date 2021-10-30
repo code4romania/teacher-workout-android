@@ -28,7 +28,6 @@ import kotlinx.coroutines.flow.Flow
 @Composable
 fun AuthScreen(
     state: AuthContract.State,
-    effectFlow: Flow<AuthContract.Effect>?,
     onEventSent: (event: AuthContract.Event) -> Unit,
     navController: NavHostController,
 ) {
@@ -57,7 +56,7 @@ fun AuthScreen(
                 labelTextId = R.string.input_password_placeholder,
             ) { onEventSent(AuthContract.Event.SetPassword(it)) }
             Spacer(modifier = Modifier.height(space8dp))
-            TextButton(onClick = { navController.navigate(AppDestinations.Account.reset_password) }) {
+            TextButton(onClick = { navController.navigate(AppDestinations.Account.ResetPassword.route) }) {
                 Text(text = stringResource(id = R.string.auth_btn_forgot_password))
             }
             Spacer(modifier = Modifier.height(space16dp))

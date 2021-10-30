@@ -8,13 +8,16 @@ import com.teacherworkout.commons.ui.navigation.AppDestinations
 
 fun NavGraphBuilder.homeFeature(_navHostController: NavHostController) {
     navigation(
-        startDestination = AppDestinations.Home.landing,
+        startDestination = AppDestinations.Home.Landing.route,
         route = AppDestinations.Features.home
     ) {
-        composable(route = AppDestinations.Home.landing) {
+        composable(route = AppDestinations.Home.Landing.route) {
             LandingScreen()
         }
-        composable(route = AppDestinations.Home.profile) {
+        composable(route = AppDestinations.Home.Discover.route) {
+            DiscoverScreen()
+        }
+        composable(route = AppDestinations.Home.Profile.route) {
             ProfileScreen()
         }
     }
