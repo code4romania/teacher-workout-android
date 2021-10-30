@@ -71,9 +71,6 @@ fun AuthScreen(
                 ) { onEventSent(AuthContract.Event.Auth) }
                 Succeeded -> {
                     LaunchedEffect(Unit) {
-                        // TODO when backend is available implement logic to determine the proper destination, either
-                        //  onboarding or main if onboarding was already completed!
-                        navController.navigate(AppDestinations.Account.onboarding)
                     }
                 }
                 NotInitiated -> {

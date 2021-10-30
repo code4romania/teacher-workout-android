@@ -9,3 +9,6 @@ plugins {
 android {
     addProductFlavours(this)
 }
+dependencies {
+    implementation(project(mapOf("path" to ":commons:ui")))
+}

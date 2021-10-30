@@ -10,5 +10,6 @@ android {
     addProductFlavours(this)
 }
 dependencies {
-    implementation(project(mapOf("path" to ":commons:ui")))
+    implementation(project(BuildModules.Features.LEARN))
+    implementation(project(BuildModules.Commons.UI))
 }

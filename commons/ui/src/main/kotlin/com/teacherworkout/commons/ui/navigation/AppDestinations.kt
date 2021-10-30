@@ -19,16 +19,11 @@ object AppDestinations {
          * The home feature
          */
         const val home = "home"
-    }
 
-    object Home {
-        object Landing : Screen("home-landing", R.string.title_home, Icons.Outlined.Home)
-
-        object Discover :
-            Screen("home-discover", R.string.title_discover, Icons.Outlined.Search)
-
-        object Profile :
-            Screen("home-profile", R.string.title_profile, Icons.Outlined.Person)
+        /**
+         * The learn feature
+         */
+        const val learn = "learn"
     }
 
     object Account {
@@ -41,5 +36,17 @@ object AppDestinations {
         object Authentication : AccountScreen("account-authentication")
 
         object ResetPassword : AccountScreen("account-reset-password")
+    }
+
+    object Home {
+        object Profile :
+            Screen("home-profile", R.string.title_profile, Icons.Outlined.Person)
+    }
+
+    object Learn {
+        object Landing : Screen("learn-landing", R.string.title_home, Icons.Outlined.Home)
+
+        object Discover :
+            Screen("lear-discover", R.string.title_discover, Icons.Outlined.Search)
     }
 }

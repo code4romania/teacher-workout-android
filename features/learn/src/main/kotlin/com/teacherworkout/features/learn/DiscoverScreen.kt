@@ -1,4 +1,4 @@
-package com.teacherworkout.features.home
+package com.teacherworkout.features.learn
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -11,7 +11,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 
 @Composable
-fun LandingScreen() {
+fun DiscoverScreen() {
     val space16dp = dimensionResource(id = R.dimen.space_16dp)
     val backgroundColor = colorResource(id = R.color.landing_background)
     Box(modifier = Modifier.fillMaxSize()) {
@@ -27,7 +27,7 @@ fun LandingScreen() {
                     .fillMaxSize()
             ) {
                 Text(
-                    text = stringResource(id = R.string.title_home),
+                    text = stringResource(id = R.string.title_discover),
                     fontSize = MaterialTheme.typography.button.fontSize,
                     color = MaterialTheme.colors.error,
                     modifier = Modifier.alignByBaseline()
