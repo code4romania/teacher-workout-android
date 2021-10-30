@@ -7,7 +7,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import com.teacherworkout.commons.ui.R
 
 object AppDestinations {
-    abstract class Screen(val route: String, @StringRes val resourceId: Int, val icon: ImageVector, val hasBottomNavigation: Boolean = true)
+    abstract class Screen(val route: String, @StringRes val resourceId: Int, val icon: ImageVector)
 
     object Features {
         /**
@@ -22,8 +22,6 @@ object AppDestinations {
     }
 
     object Home {
-        val Screens = listOf(Landing, Discover, Profile)
-
         object Landing : Screen("home-landing", R.string.title_home, Icons.Outlined.Home)
 
         object Discover :
@@ -34,9 +32,7 @@ object AppDestinations {
     }
 
     object Account {
-        abstract class AccountScreen(route : String) : Screen(route, R.string.title_account, Icons.Outlined.AccountCircle, hasBottomNavigation = false)
-
-        val Screens = listOf(Landing, Registration, Authentication, ResetPassword)
+        abstract class AccountScreen(route : String) : Screen(route, R.string.title_account, Icons.Outlined.AccountCircle)
 
         object Landing : AccountScreen("account-landing")
 
@@ -45,9 +41,5 @@ object AppDestinations {
         object Authentication : AccountScreen("account-authentication")
 
         object ResetPassword : AccountScreen("account-reset-password")
-    }
-
-    fun routeToScreen(route: String): Screen? {
-        return (Home.Screens + Account.Screens).find { it.route == route }
     }
 }
