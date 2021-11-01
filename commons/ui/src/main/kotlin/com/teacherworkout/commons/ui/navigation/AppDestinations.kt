@@ -2,7 +2,10 @@ package com.teacherworkout.commons.ui.navigation
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.*
+import androidx.compose.material.icons.outlined.AccountCircle
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material.icons.outlined.Search
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.teacherworkout.commons.ui.R
 
@@ -24,6 +27,12 @@ object AppDestinations {
          * The learn feature
          */
         const val learn = "learn"
+
+
+        /**
+         * The profile feature
+         */
+        const val profile = "profile"
     }
 
     object Account {
@@ -41,14 +50,14 @@ object AppDestinations {
     }
 
     object Home {
-        object Profile :
-            Screen("home-profile", R.string.title_profile, Icons.Outlined.Person)
+        object Landing : Screen("home-landing", R.string.title_home, Icons.Outlined.Home)
     }
 
     object Learn {
-        object Landing : Screen("learn-landing", R.string.title_home, Icons.Outlined.Home)
+        object Discover : Screen("home-discover", R.string.title_discover, Icons.Outlined.Search)
+    }
 
-        object Discover :
-            Screen("lear-discover", R.string.title_discover, Icons.Outlined.Search)
+    object Profile {
+        object Profile : Screen("home-profile", R.string.title_profile, Icons.Outlined.Person)
     }
 }

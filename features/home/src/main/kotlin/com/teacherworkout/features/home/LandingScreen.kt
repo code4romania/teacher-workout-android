@@ -9,9 +9,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
+import com.teacherworkout.features.learn.R
 
 @Composable
-fun ProfileScreen() {
+fun LandingScreen() {
     val space16dp = dimensionResource(id = R.dimen.space_16dp)
     val backgroundColor = colorResource(id = R.color.landing_background)
     Box(modifier = Modifier.fillMaxSize()) {
@@ -27,7 +29,7 @@ fun ProfileScreen() {
                     .fillMaxSize()
             ) {
                 Text(
-                    text = stringResource(id = R.string.title_profile),
+                    text = stringResource(id = R.string.title_home),
                     fontSize = MaterialTheme.typography.button.fontSize,
                     color = MaterialTheme.colors.error,
                     modifier = Modifier.alignByBaseline()
@@ -35,4 +37,10 @@ fun ProfileScreen() {
             }
         }
     }
+}
+
+@Preview
+@Composable
+fun OnLandingScreenPreview() {
+    LandingScreen()
 }

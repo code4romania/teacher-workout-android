@@ -36,7 +36,7 @@ fun NavGraphBuilder.accountFeature(navHostController: NavHostController) {
         }
         composable(AppDestinations.Account.Onboarding.route) {
             OnBoardingScreen {
-                navHostController.navigate(AppDestinations.Learn.Landing.route) {
+                navHostController.navigate(AppDestinations.Home.Landing.route) {
                     popUpTo(AppDestinations.Features.home) { inclusive = true }
                 }
             }
