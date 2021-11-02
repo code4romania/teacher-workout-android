@@ -84,7 +84,6 @@ dependencies {
     implementation(project(BuildModules.CORE))
     implementation(project(BuildModules.Features.ACCOUNT))
     implementation(project(BuildModules.Features.HOME))
-    implementation(project(BuildModules.Features.PROFILE))
     implementation(project(BuildModules.Commons.UI))
     implementation(project(BuildModules.Commons.VIEWS))
 
