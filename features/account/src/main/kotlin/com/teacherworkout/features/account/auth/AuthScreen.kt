@@ -23,12 +23,10 @@ import com.teacherworkout.features.account.composables.EmailField
 import com.teacherworkout.features.account.composables.PasswordField
 import com.teacherworkout.features.account.composables.RegistrationLoadingUi
 import com.teacherworkout.features.account.composables.RequestFailedUi
-import kotlinx.coroutines.flow.Flow
 
 @Composable
 fun AuthScreen(
     state: AuthContract.State,
-    effectFlow: Flow<AuthContract.Effect>?,
     onEventSent: (event: AuthContract.Event) -> Unit,
     navController: NavHostController,
 ) {
@@ -57,7 +55,7 @@ fun AuthScreen(
                 labelTextId = R.string.input_password_placeholder,
             ) { onEventSent(AuthContract.Event.SetPassword(it)) }
             Spacer(modifier = Modifier.height(space8dp))
-            TextButton(onClick = { navController.navigate(AppDestinations.Account.reset_password) }) {
+            TextButton(onClick = { navController.navigate(AppDestinations.Account.ResetPassword.route) }) {
                 Text(text = stringResource(id = R.string.auth_btn_forgot_password))
             }
             Spacer(modifier = Modifier.height(space16dp))
@@ -72,9 +70,7 @@ fun AuthScreen(
                 ) { onEventSent(AuthContract.Event.Auth) }
                 Succeeded -> {
                     LaunchedEffect(Unit) {
-                        // TODO when backend is available implement logic to determine the proper destination, either
-                        //  onboarding or main if onboarding was already completed!
-                        navController.navigate(AppDestinations.Account.onboarding)
+                        navController.navigate(AppDestinations.Account.Onboarding.route)
                     }
                 }
                 NotInitiated -> {

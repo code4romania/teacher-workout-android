@@ -33,7 +33,6 @@ import kotlinx.coroutines.flow.Flow
 @Composable
 fun ResetPasswordScreen(
     state: ResetPasswordContract.State,
-    effectFlow: Flow<ResetPasswordContract.Effect>?,
     onEventSent: (event: ResetPasswordContract.Event) -> Unit,
     navController: NavController,
 ) {
@@ -110,8 +109,8 @@ fun ResetPasswordScreen(
                     successTextId = R.string.reset_password_success_label,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    navController.navigate(AppDestinations.Account.authentication) {
-                        popUpTo(AppDestinations.Account.landing)
+                    navController.navigate(AppDestinations.Account.Authentication.route) {
+                        popUpTo(AppDestinations.Account.Landing.route)
                     }
                 }
                 NotInitiated -> Button(

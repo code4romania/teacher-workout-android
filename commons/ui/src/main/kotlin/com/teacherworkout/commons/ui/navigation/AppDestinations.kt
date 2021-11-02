@@ -1,6 +1,16 @@
 package com.teacherworkout.commons.ui.navigation
 
+import androidx.annotation.StringRes
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.AccountCircle
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material.icons.outlined.Search
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.teacherworkout.commons.ui.R
+
 object AppDestinations {
+    abstract class Screen(val route: String, @StringRes val resourceId: Int, val icon: ImageVector)
 
     object Features {
         /**
@@ -12,57 +22,42 @@ object AppDestinations {
          * The home feature
          */
         const val home = "home"
-    }
 
-    object Home {
         /**
-         * The landing screen for home feature
+         * The learn feature
          */
-        const val landing = "home-landing"
+        const val learn = "learn"
+
+
+        /**
+         * The profile feature
+         */
+        const val profile = "profile"
     }
 
     object Account {
-        /**
-         * Represent the initial screen the user sees, where he can choose to register a new account or authenticate into
-         * the one he already has.
-         */
-        const val landing = "landing"
+        abstract class AccountScreen(route : String) : Screen(route, R.string.title_account, Icons.Outlined.AccountCircle)
 
-        /**
-         * Represents the screen where the user can register a new account.
-         */
-        const val registration = "registration"
+        object Landing : AccountScreen("account-landing")
 
-        /**
-         * Represents the screen where the user can enter his account, once he has one.
-         * From this destination the user can go the (onboarding/main) screen or the reset password screen.
-         */
-        const val authentication = "authentication"
+        object Onboarding : AccountScreen("account-onboarding")
 
-        /**
-         * Represents the screen where the user can reset his password.
-         */
-        const val reset_password = "reset_password"
+        object Registration : AccountScreen("account-registration")
 
-        /**
-         * Represents the screen where the user is shown how to use the app.
-         */
-        const val onboarding = "onboarding"
+        object Authentication : AccountScreen("account-authentication")
+
+        object ResetPassword : AccountScreen("account-reset-password")
     }
 
-    /**
-     * Dialog destination which will be seen by the user once he entered valid credentials to authenticate into his
-     * account.This destination will then show the user the status for the request of creating a new account:
-     * in progress, successful(with the option to go to the onboarding/main screen) or failed(with the option to close
-     * the dialog and try again)!
-     */
-    const val authentication_outcome = "authentication_outcome"
+    object Home {
+        object Landing : Screen("home-landing", R.string.title_home, Icons.Outlined.Home)
+    }
 
-    /**
-     * Dialog destination which will be seen by the user once he entered valid information to reset his password.
-     * This destination will then show the user the status for the request of resetting the account: in progress,
-     * successful(a email with reset link was sent by the backend, offer the option to go to authentication) or failed
-     * (with the option to close the dialog and try again)!
-     */
-    const val reset_password_outcome = "reset_password_outcome"
+    object Learn {
+        object Discover : Screen("home-discover", R.string.title_discover, Icons.Outlined.Search)
+    }
+
+    object Profile {
+        object Profile : Screen("home-profile", R.string.title_profile, Icons.Outlined.Person)
+    }
 }

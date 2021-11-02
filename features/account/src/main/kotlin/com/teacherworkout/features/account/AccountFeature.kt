@@ -3,7 +3,6 @@ package com.teacherworkout.features.account
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
-import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.teacherworkout.commons.ui.navigation.AppDestinations
@@ -22,24 +21,23 @@ import org.koin.core.context.loadKoinModules
 fun NavGraphBuilder.accountFeature(navHostController: NavHostController) {
     loadKoinModules(accountModule)
 
-    navigation(startDestination = AppDestinations.Account.landing, route = AppDestinations.Features.account) {
-        composable(route = AppDestinations.Account.landing) {
+    navigation(startDestination = AppDestinations.Account.Landing.route, route = AppDestinations.Features.account) {
+        composable(route = AppDestinations.Account.Landing.route) {
             LandingScreen(navHostController)
         }
-        composable(AppDestinations.Account.registration) {
+        composable(AppDestinations.Account.Registration.route) {
             RegisterScreenDestination(navHostController)
         }
-        composable(AppDestinations.Account.authentication) {
+        composable(AppDestinations.Account.Authentication.route) {
             AuthScreenDestination(navHostController)
         }
-        composable(AppDestinations.Account.reset_password) {
+        composable(AppDestinations.Account.ResetPassword.route) {
             ResetPasswordScreenDestination(navHostController)
         }
-
-        composable(AppDestinations.Account.onboarding) {
+        composable(AppDestinations.Account.Onboarding.route) {
             OnBoardingScreen {
-                navHostController.navigate(AppDestinations.Features.home) {
-                    popUpTo(AppDestinations.Account.landing)
+                navHostController.navigate(AppDestinations.Home.Landing.route) {
+                    popUpTo(AppDestinations.Features.home) { inclusive = true }
                 }
             }
         }
@@ -52,7 +50,6 @@ private fun RegisterScreenDestination(navHostController: NavHostController) {
 
     RegisterScreen(
         state = viewModel.viewState.value,
-        effectFlow = viewModel.effect,
         onEventSent = { event -> viewModel.setEvent(event) },
         navController = navHostController
     )
@@ -64,7 +61,6 @@ private fun AuthScreenDestination(navHostController: NavHostController) {
 
     AuthScreen(
         state = viewModel.viewState.value,
-        effectFlow = viewModel.effect,
         onEventSent = { event -> viewModel.setEvent(event) },
         navController = navHostController
     )
@@ -76,7 +72,6 @@ private fun ResetPasswordScreenDestination(navHostController: NavHostController)
 
     ResetPasswordScreen(
         state = viewModel.viewState.value,
-        effectFlow = viewModel.effect,
         onEventSent = { event -> viewModel.setEvent(event) },
         navController = navHostController
     )
