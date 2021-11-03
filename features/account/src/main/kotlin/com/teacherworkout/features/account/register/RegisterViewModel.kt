@@ -39,7 +39,7 @@ class RegisterViewModel :
             val passwordStatus = passwordValidator.validate(viewState.value.password)
 
             if (emailStatus.isValid && passwordStatus.isValid) {
-                delay(3000)
+                delay(1000)
                 if (count == 0) {
                     setState {
                         viewState.value.copy(registrationOutcome = Failed)

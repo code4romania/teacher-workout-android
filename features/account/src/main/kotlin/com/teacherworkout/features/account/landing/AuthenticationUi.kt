@@ -15,7 +15,6 @@ import com.teacherworkout.features.account.R
 
 @Composable
 fun AuthenticationUi(modifier: Modifier = Modifier, onAuthenticationRequest: () -> Unit) {
-    val space16dp = dimensionResource(id =  R.dimen.space_16dp)
     Row(
         modifier = modifier,
         horizontalArrangement = Arrangement.Center
@@ -29,7 +28,7 @@ fun AuthenticationUi(modifier: Modifier = Modifier, onAuthenticationRequest: () 
         TextButton(
             onClick = onAuthenticationRequest,
             modifier = Modifier.alignByBaseline(),
-            shape = RoundedCornerShape(space16dp)
+            shape = RoundedCornerShape(50)
         ) {
             Text(
                 stringResource(id = R.string.landing_btn_auth),

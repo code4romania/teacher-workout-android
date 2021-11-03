@@ -4,6 +4,7 @@ import android.view.View
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
@@ -20,6 +21,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import com.teacherworkout.features.account.R
@@ -55,7 +57,9 @@ fun PasswordField(
             },
             isError = hasError,
             modifier = Modifier.fillMaxWidth(),
-            label = { Text(text = stringResource(labelTextId)) })
+            label = { Text(text = stringResource(labelTextId)) },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
+        )
         if (hasError) {
             ErrorText(errorTextId = errorTextId)
         }

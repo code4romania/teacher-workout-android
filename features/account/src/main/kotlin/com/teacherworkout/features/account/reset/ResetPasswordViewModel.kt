@@ -1,15 +1,10 @@
 package com.teacherworkout.features.account.reset
 
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.teacherworkout.commons.ui.base.BaseViewModel
-import com.teacherworkout.features.account.register.RegisterContract
 import com.teacherworkout.features.account.validators.EmailValidator
-import com.teacherworkout.features.account.validators.PasswordValidator
 import com.teacherworkout.features.account.validators.isValid
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class ResetPasswordViewModel :
@@ -19,18 +14,14 @@ class ResetPasswordViewModel :
             ResetPasswordContract.Effect>() {
 
     private val emailValidator = EmailValidator()
-    private val passwordValidator = PasswordValidator()
     private var count = 0
 
-
-    override fun setInitialState(): ResetPasswordContract.State =
-        ResetPasswordContract.State()
+    override fun setInitialState(): ResetPasswordContract.State = ResetPasswordContract.State()
 
     override fun handleEvents(event: ResetPasswordContract.Event) {
         when (event) {
             is ResetPasswordContract.Event.ResetPassword -> resetAccountPassword()
             is ResetPasswordContract.Event.SetEmail -> setEmail(event.email)
-            is ResetPasswordContract.Event.SetPassword -> setPassword(event.password)
         }
     }
 
@@ -40,9 +31,8 @@ class ResetPasswordViewModel :
         viewModelScope.launch {
             setState { viewState.value.copy(resetOutcome = InProgress) }
             val emailStatus = emailValidator.validate(viewState.value.email)
-            val passwordStatus = passwordValidator.validate(viewState.value.password)
-            if (emailStatus.isValid && passwordStatus.isValid) {
-                delay(3000)
+            if (emailStatus.isValid) {
+                delay(1000)
                 if (count == 0) {
                     setState { viewState.value.copy(resetOutcome = Failed) }
                     count++
@@ -53,7 +43,6 @@ class ResetPasswordViewModel :
                 setState {
                     viewState.value.copy(
                         emailStatus = emailStatus,
-                        passwordStatus = passwordStatus,
                         resetOutcome = NotInitiated
                     )
                 }
@@ -63,13 +52,6 @@ class ResetPasswordViewModel :
 
     private fun setEmail(email: String) {
         val status = emailValidator.validate(email)
-
         setState { viewState.value.copy(email = email, emailStatus = status) }
-    }
-
-    private fun setPassword(password: String) {
-        val status = passwordValidator.validate(password)
-
-        setState { viewState.value.copy(password = password, passwordStatus = status) }
     }
 }
