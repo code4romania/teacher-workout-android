@@ -1,31 +1,34 @@
 package com.teacherworkout.features.account.auth
 
 import com.google.common.truth.Truth.assertThat
+import com.teacherworkout.features.account.data.AccountTestData.VALID_EMAIL
+import com.teacherworkout.features.account.data.AccountTestData.VALID_PASSWORD
+import org.junit.Before
 import org.junit.Test
 
 class AuthViewModelTest {
-    @Test
-    fun `setInitialState will set the initial state`() {
-        val viewModel = AuthViewModel()
 
+    private lateinit var viewModel: AuthViewModel
+
+    @Before
+    fun setUp() {
+        viewModel = AuthViewModel()
+    }
+
+    @Test
+    fun `initialState is expected state`() {
         assertThat(viewModel.setInitialState()).isEqualTo(AuthContract.State())
     }
 
     @Test
     fun `handleEvents will handle SetEmail`() {
-        val viewModel = AuthViewModel()
-
-        viewModel.handleEvents(AuthContract.Event.SetEmail("ion@code4.ro"))
-
-        assertThat(viewModel.viewState.value.email).isEqualTo("ion@code4.ro")
+        viewModel.handleEvents(AuthContract.Event.SetEmail(VALID_EMAIL))
+        assertThat(viewModel.viewState.value.email).isEqualTo(VALID_EMAIL)
     }
 
     @Test
     fun `handleEvents will handle SetPassword`() {
-        val viewModel = AuthViewModel()
-
-        viewModel.handleEvents(AuthContract.Event.SetPassword("horsestampler"))
-
-        assertThat(viewModel.viewState.value.password).isEqualTo("horsestampler")
+        viewModel.handleEvents(AuthContract.Event.SetPassword(VALID_PASSWORD))
+        assertThat(viewModel.viewState.value.password).isEqualTo(VALID_PASSWORD)
     }
 }

@@ -15,9 +15,8 @@ import com.teacherworkout.features.account.R
 @Composable
 fun RegistrationButton(modifier: Modifier = Modifier, onRegistrationRequest: () -> Unit) {
     val space8dp = dimensionResource(id =  R.dimen.space_8dp)
-    val space32dp = dimensionResource(id =  R.dimen.space_32dp)
     Button(
-        onClick = onRegistrationRequest, modifier = modifier, shape = RoundedCornerShape(space32dp)
+        onClick = onRegistrationRequest, modifier = modifier, shape = RoundedCornerShape(50)
     ) {
         Text(
             stringResource(id = R.string.landing_btn_register),

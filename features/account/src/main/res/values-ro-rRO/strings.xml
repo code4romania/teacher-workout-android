@@ -30,13 +30,15 @@
     <string name="auth_loading_label">Logheaza-te în contul tau…</string>
     <string name="auth_btn_auth">Autentifică-te</string>
     <string name="auth_failure_label">E-mail-ul sau parola sunt incorecte.</string>
+    <!-- Reset password screen related strings -->
     <string name="reset_password_title">Resetează-ți parola</string>
-    <string name="reset_password_account_notice_label">Adresa de email</string>
-    <string name="reset_password_password_notice_label">Parola nouă</string>
     <string name="reset_password_btn_complete">Setează noua parolă</string>
     <string name="reset_password_loading_label">Resetează</string>
     <string name="reset_password_failure_label">Nu v-am putut reseta parola. Vă rugăm să încercați din nou!</string>
-    <string name="reset_password_success_label">Un e-mail pentru resetarea parolei a fost trimis la adresa de e-mail introdusă.</string>
+    <string name="reset_password_succeeded_title">Verifică-ți e-mailul</string>
+    <string name="reset_password_cd_email">Iconiță pentru email</string>
+    <string name="reset_password_success_label">Un e-mail pentru resetarea parolei a fost trimis la adresa de e-mail
+        introdusă. După ce veți urma acel link veți putea folosi noua parolă!</string>
 
     <!-- OnBoarding screen related strings -->
     <string name="onboarding_btn_skip">TRECI PESTE</string>

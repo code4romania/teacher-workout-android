@@ -2,6 +2,7 @@ package com.teacherworkout.features.account.register
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.Text
@@ -31,6 +32,7 @@ fun RegisterScreen(
     val space8dp = dimensionResource(id = R.dimen.space_8dp)
     val space16dp = dimensionResource(id = R.dimen.space_16dp)
     val space24dp = dimensionResource(id = R.dimen.space_24dp)
+    val minTouchSize = dimensionResource(id = R.dimen.min_touch_size)
 
     AccountScreenScaffold(titleId = R.string.register_title, navController = navController) {
         Column(
@@ -107,6 +109,7 @@ fun RegisterScreen(
                     }
                 }
                 NotInitiated -> Button(
+                    shape = RoundedCornerShape(50),
                     enabled = state.isNotStarted,
                     onClick = {
                         if (state.hasAcceptedTos) {
@@ -117,7 +120,9 @@ fun RegisterScreen(
                             }
                         }
                     },
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .heightIn(min = minTouchSize)
                 ) {
                     Text(text = stringResource(id = R.string.register_btn_complete))
                 }

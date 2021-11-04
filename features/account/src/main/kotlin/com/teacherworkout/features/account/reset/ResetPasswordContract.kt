@@ -11,16 +11,11 @@ class ResetPasswordContract {
         object ResetPassword : Event()
 
         data class SetEmail(val email: String) : Event()
-
-        data class SetPassword(val password: String) : Event()
     }
 
     data class State(
         val email: String = "",
         val emailStatus: EmailValidationStatus = EmailValidationStatus.Valid,
-        val password: String = "",
-        val passwordStatus: PasswordValidationStatus = PasswordValidationStatus.Valid,
-        val hasAcceptedTos: Boolean = false,
         val resetOutcome: ResetPasswordOutcome = NotInitiated,
     ) : ViewState
 
@@ -29,9 +24,6 @@ class ResetPasswordContract {
 
 val ResetPasswordContract.State.emailHasError
     get() = emailStatus != EmailValidationStatus.Valid
-
-val ResetPasswordContract.State.passwordHasError
-    get() = passwordStatus != PasswordValidationStatus.Valid
 
 val ResetPasswordContract.State.isNotStarted
     get() = this.resetOutcome == NotInitiated

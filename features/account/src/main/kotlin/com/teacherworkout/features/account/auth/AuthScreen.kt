@@ -4,8 +4,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.Text
@@ -33,6 +35,7 @@ fun AuthScreen(
     val space16dp = dimensionResource(id = R.dimen.space_16dp)
     val space8dp = dimensionResource(id = R.dimen.space_8dp)
     val space24dp = dimensionResource(id = R.dimen.space_24dp)
+    val minTouchSize = dimensionResource(id = R.dimen.min_touch_size)
 
     AccountScreenScaffold(titleId = R.string.auth_title, navController = navController) {
         Column(
@@ -55,7 +58,11 @@ fun AuthScreen(
                 labelTextId = R.string.input_password_placeholder,
             ) { onEventSent(AuthContract.Event.SetPassword(it)) }
             Spacer(modifier = Modifier.height(space8dp))
-            TextButton(onClick = { navController.navigate(AppDestinations.Account.ResetPassword.route) }) {
+            TextButton(
+                onClick = { navController.navigate(AppDestinations.Account.ResetPassword.route) },
+                shape = RoundedCornerShape(50),
+                modifier = Modifier.heightIn(min = minTouchSize)
+            ) {
                 Text(text = stringResource(id = R.string.auth_btn_forgot_password))
             }
             Spacer(modifier = Modifier.height(space16dp))
@@ -75,8 +82,11 @@ fun AuthScreen(
                 }
                 NotInitiated -> {
                     Button(
+                        shape = RoundedCornerShape(50),
                         onClick = { onEventSent(AuthContract.Event.Auth) },
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .heightIn(min = minTouchSize)
                     ) {
                         Text(text = stringResource(id = R.string.auth_btn_auth))
                     }

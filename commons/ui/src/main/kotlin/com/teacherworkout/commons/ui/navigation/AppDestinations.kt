@@ -47,6 +47,8 @@ object AppDestinations {
         object Authentication : AccountScreen("account-authentication")
 
         object ResetPassword : AccountScreen("account-reset-password")
+
+        object ResetPasswordSucceeded: AccountScreen("account-reset-password-succeeded")
     }
 
     object Home {

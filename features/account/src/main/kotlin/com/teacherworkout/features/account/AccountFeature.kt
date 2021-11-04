@@ -14,6 +14,7 @@ import com.teacherworkout.features.account.onboarding.OnBoardingScreen
 import com.teacherworkout.features.account.register.RegisterScreen
 import com.teacherworkout.features.account.register.RegisterViewModel
 import com.teacherworkout.features.account.reset.ResetPasswordScreen
+import com.teacherworkout.features.account.reset.ResetPasswordSucceededScreen
 import com.teacherworkout.features.account.reset.ResetPasswordViewModel
 import org.koin.androidx.compose.getViewModel
 import org.koin.core.context.loadKoinModules
@@ -33,6 +34,9 @@ fun NavGraphBuilder.accountFeature(navHostController: NavHostController) {
         }
         composable(AppDestinations.Account.ResetPassword.route) {
             ResetPasswordScreenDestination(navHostController)
+        }
+        composable(AppDestinations.Account.ResetPasswordSucceeded.route) {
+            ResetPasswordSucceededScreenDestination(navHostController)
         }
         composable(AppDestinations.Account.Onboarding.route) {
             OnBoardingScreen {
@@ -75,4 +79,9 @@ private fun ResetPasswordScreenDestination(navHostController: NavHostController)
         onEventSent = { event -> viewModel.setEvent(event) },
         navController = navHostController
     )
+}
+
+@Composable
+private fun ResetPasswordSucceededScreenDestination(navHostController: NavHostController) {
+    ResetPasswordSucceededScreen(navHostController)
 }
