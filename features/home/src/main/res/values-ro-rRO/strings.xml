@@ -3,4 +3,7 @@
     <string name="default_label">Teacher Workout</string>
     <string name="profile">Profile screen</string>
     <string name="home_landing">Home landing screen</string>
+    <string name="themes_title">Categorii de lecții</string>
+    <string name="discover_lessons_title">Descoperă lecțiile</string>
+    <string name="search_label">Caută un subiect</string>
 </resources>
