@@ -18,7 +18,6 @@ fun NavGraphBuilder.homeFeature(navHostController: NavHostController) {
         route = AppDestinations.Features.home
     ) {
         composable(route = AppDestinations.Home.Landing.route) {
-            //without applying the inner padding the bottom bar would overlap our content
             BottomBarScaffold(navHostController) { innerPadding ->
                 Box(modifier = Modifier.padding(innerPadding)) {
                     LandingScreen()

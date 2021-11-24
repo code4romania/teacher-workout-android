@@ -21,19 +21,19 @@ import androidx.compose.ui.text.input.TextFieldValue
 @Composable
 fun SearchView(
     modifier: Modifier = Modifier,
-    value: MutableState<TextFieldValue>,
-    onValueChange: (TextFieldValue) -> Unit,
+    searchInput: MutableState<TextFieldValue>,
+    onSearchInputChange: (TextFieldValue) -> Unit,
     onClear: () -> Unit,
     placeholderText: String
 ) {
-    val corner8dp = dimensionResource(id = R.dimen.space_16dp)
+    val corner8dp = dimensionResource(id = R.dimen.corner_8dp)
     val focusManager = LocalFocusManager.current
 
     OutlinedTextField(
         modifier = modifier,
         shape = RoundedCornerShape(corner8dp),
-        value = value.value,
-        onValueChange = onValueChange,
+        value = searchInput.value,
+        onValueChange = onSearchInputChange,
         singleLine = true,
         keyboardOptions = KeyboardOptions(
             imeAction = ImeAction.Done
@@ -47,16 +47,16 @@ fun SearchView(
         leadingIcon = {
             Icon(
                 imageVector = Icons.Default.Search,
-                //TODO update this
+                //TODO: add a string resource for the Search icon's content description
                 contentDescription = ""
             )
         },
         trailingIcon = {
-            if(value.value.text.isNotEmpty()) {
+            if(searchInput.value.text.isNotEmpty()) {
                 Icon(
                     modifier = Modifier.clickable { onClear() },
                     imageVector = Icons.Default.Close,
-                    //TODO update this
+                    //TODO: add a string resource for the Close icon's content description
                     contentDescription = "",
                 )
             }
