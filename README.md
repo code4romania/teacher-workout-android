@@ -49,8 +49,8 @@ If you would like to suggest new functionality, open an Issue and mark it as a _
 ### FORMATTING
 
 To check and fix formatting issues use the following commands:
-./gradlew ktlintFormat 
-./gradlew detekt 
+./gradlew ktlintFormat
+./gradlew detekt
 ./gradlew lint
 ./gradlew spotlessKotlinCheck
 
