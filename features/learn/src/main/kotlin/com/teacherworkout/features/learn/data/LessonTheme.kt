@@ -1,7 +1,7 @@
-package com.teacherworkout.features.home.data
+package com.teacherworkout.features.learn.data
 
 import androidx.annotation.DrawableRes
-import com.teacherworkout.features.home.R
+import com.teacherworkout.features.learn.R
 
 data class LessonTheme(
     @DrawableRes val imageResourceId: Int,

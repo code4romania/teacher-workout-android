@@ -1,4 +1,4 @@
-package com.teacherworkout.features.home
+package com.teacherworkout.features.learn
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -52,7 +52,7 @@ fun SearchView(
             )
         },
         trailingIcon = {
-            if(searchInput.value.text.isNotEmpty()) {
+            if (searchInput.value.text.isNotEmpty()) {
                 Icon(
                     modifier = Modifier.clickable { onClear() },
                     imageVector = Icons.Default.Close,
