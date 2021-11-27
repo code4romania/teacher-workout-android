@@ -1,4 +1,4 @@
-package com.teacherworkout.features.home
+package com.teacherworkout.features.learn
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -17,7 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
-import com.teacherworkout.features.home.data.LessonTheme
+import com.teacherworkout.features.learn.data.LessonTheme
 
 @Composable
 fun LessonThemeCard(
