@@ -3,12 +3,18 @@ package com.teacherworkout.features.learn.discover
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.lifecycle.viewModelScope
 import com.teacherworkout.commons.ui.base.BaseViewModel
-import com.teacherworkout.features.learn.data.HomeData
-import com.teacherworkout.features.learn.data.LessonTheme
+import com.teacherworkout.features.learn.data.LessonsRepository
+import com.teacherworkout.features.learn.data.Result
+import com.teacherworkout.features.learn.model.LessonTheme
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
-class DiscoverViewModel: BaseViewModel<DiscoverContract.Event, DiscoverContract.State, DiscoverContract.Effect>() {
+class DiscoverViewModel(
+    private val lessonsRepository: LessonsRepository
+): BaseViewModel<DiscoverContract.Event, DiscoverContract.State, DiscoverContract.Effect>() {
+
+    private var allLessonThemes: List<LessonTheme> = emptyList()
+
     override fun setInitialState(): DiscoverContract.State {
         return DiscoverContract.State()
     }
@@ -26,8 +32,16 @@ class DiscoverViewModel: BaseViewModel<DiscoverContract.Event, DiscoverContract.
 
     private fun refreshLessonThemes() {
         viewModelScope.launch {
-            val lessonThemes = HomeData.dummyLessonThemes
-            setState { copy(lessonThemes = lessonThemes) }
+            val result = lessonsRepository.getAllLessonThemes()
+            when(result) {
+                is Result.Success -> {
+                    allLessonThemes = result.data
+                    setState { copy(searchInput = TextFieldValue(), lessonThemes = allLessonThemes) }
+                }
+                is Result.Error -> {
+
+                }
+            }
         }
     }
 
@@ -48,12 +62,12 @@ class DiscoverViewModel: BaseViewModel<DiscoverContract.Event, DiscoverContract.
     //TODO: This will be changed when we will integrate the app with the backend
     private fun applyFilter(searchInput: String) {
         if (searchInput.isBlank()) {
-             setState{ copy(lessonThemes = HomeData.dummyLessonThemes) }
+             setState{ copy(lessonThemes = allLessonThemes) }
         } else {
-            val randomNumberOfLessonThemes = Random.nextInt(1, HomeData.dummyLessonThemes.size)
+            val randomNumberOfLessonThemes = Random.nextInt(1, allLessonThemes.size)
             val someLessonThemes = mutableListOf<LessonTheme>()
             repeat(randomNumberOfLessonThemes) {
-                someLessonThemes.add(HomeData.dummyLessonThemes[Random.nextInt(0, HomeData.dummyLessonThemes.size)])
+                someLessonThemes.add(allLessonThemes[Random.nextInt(0, allLessonThemes.size)])
             }
             setState{ copy(lessonThemes = someLessonThemes) }
         }
