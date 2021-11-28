@@ -1,4 +1,4 @@
-package com.teacherworkout.features.learn
+package com.teacherworkout.features.learn.discover
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -7,38 +7,25 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.tooling.preview.Preview
-import com.teacherworkout.features.learn.data.HomeData.dummyLessonThemes
-import com.teacherworkout.features.learn.data.LessonTheme
-import kotlin.random.Random
+import androidx.navigation.NavController
+import com.teacherworkout.features.learn.LessonThemeCard
+import com.teacherworkout.features.learn.R
+import com.teacherworkout.features.learn.SearchView
 
-val lessonThemes = mutableStateOf(dummyLessonThemes)
-var searchInput = mutableStateOf(TextFieldValue())
-val listState = LazyListState()
-
-//TODO: This will be changed when we will integrate the app with the backend
-fun applyFilter(searchInput: String) {
-    if (searchInput.isBlank()) {
-        lessonThemes.value = dummyLessonThemes
-    } else {
-        val randomNumberOfLessonThemes = Random.nextInt(1, dummyLessonThemes.size)
-        val someLessonThemes = mutableListOf<LessonTheme>()
-        repeat(randomNumberOfLessonThemes) {
-            someLessonThemes.add(dummyLessonThemes[Random.nextInt(0, dummyLessonThemes.size)])
-        }
-        lessonThemes.value = someLessonThemes
-    }
-}
+private val listState = LazyListState()
 
 @Composable
-fun DiscoverScreen() {
+fun DiscoverScreen(
+    state: DiscoverContract.State,
+    sendEvent: (DiscoverContract.Event) -> Unit,
+    navController: NavController
+) {
     val space32dp = dimensionResource(id = R.dimen.space_32dp)
     val space16dp = dimensionResource(id = R.dimen.space_16dp)
     val space8dp = dimensionResource(id = R.dimen.space_8dp)
@@ -64,14 +51,12 @@ fun DiscoverScreen() {
             Spacer(modifier = Modifier.height(space8dp))
             SearchView(
                 modifier = Modifier.fillMaxWidth(),
-                searchInput = searchInput,
+                searchInput = state.searchInput,
                 onSearchInputChange = {
-                    searchInput.value = it
-                    applyFilter(it.text)
+                    sendEvent(DiscoverContract.Event.SetSearchInput(it))
                 },
                 onClear = {
-                    searchInput.value = TextFieldValue()
-                    applyFilter("")
+                    sendEvent(DiscoverContract.Event.SetSearchInput(TextFieldValue("")))
                 },
                 placeholderText = stringResource(id = R.string.search_label)
             )
@@ -85,7 +70,7 @@ fun DiscoverScreen() {
                 )
             )
         }
-        items(lessonThemes.value.chunked(2)) { oneOrTwoThemes ->
+        items(state.lessonThemes.chunked(2)) { oneOrTwoThemes ->
             Row(horizontalArrangement = Arrangement.SpaceBetween) {
                 val heightLessonThemeCard = dimensionResource(id = R.dimen.lesson_theme_card_height)
                 LessonThemeCard(
@@ -113,8 +98,8 @@ fun DiscoverScreen() {
     }
 }
 
-@Preview
+/*@Preview
 @Composable
 fun OnDiscoverScreenPreview() {
     DiscoverScreen()
-}
+}*/

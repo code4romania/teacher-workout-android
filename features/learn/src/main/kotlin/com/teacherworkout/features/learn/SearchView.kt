@@ -21,7 +21,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 @Composable
 fun SearchView(
     modifier: Modifier = Modifier,
-    searchInput: MutableState<TextFieldValue>,
+    searchInput: TextFieldValue,
     onSearchInputChange: (TextFieldValue) -> Unit,
     onClear: () -> Unit,
     placeholderText: String
@@ -32,7 +32,7 @@ fun SearchView(
     OutlinedTextField(
         modifier = modifier,
         shape = RoundedCornerShape(corner8dp),
-        value = searchInput.value,
+        value = searchInput,
         onValueChange = onSearchInputChange,
         singleLine = true,
         keyboardOptions = KeyboardOptions(
@@ -52,7 +52,7 @@ fun SearchView(
             )
         },
         trailingIcon = {
-            if (searchInput.value.text.isNotEmpty()) {
+            if (searchInput.text.isNotEmpty()) {
                 Icon(
                     modifier = Modifier.clickable { onClear() },
                     imageVector = Icons.Default.Close,
