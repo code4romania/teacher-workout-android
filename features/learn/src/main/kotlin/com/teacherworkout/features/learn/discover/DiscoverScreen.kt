@@ -98,25 +98,23 @@ fun DiscoverScreen(
             }
             items(state.lessonThemes.chunked(2)) { oneOrTwoThemes ->
                 Row(horizontalArrangement = Arrangement.SpaceBetween) {
-                    val heightLessonThemeCard = dimensionResource(id = R.dimen.lesson_theme_card_height)
-                    LessonThemeCard(
-                        modifier = Modifier
-                            .height(heightLessonThemeCard)
-                            .weight(1f),
-                        lessonTheme = oneOrTwoThemes[0],
-                        onClick = { onSendEvent(DiscoverContract.Event.SelectLessonTheme(oneOrTwoThemes[0].title))}
-                    )
-                    Spacer(modifier = Modifier.width(space16dp))
-                    if (oneOrTwoThemes.size == 1) {
-                        Spacer(modifier = Modifier.weight(1f))
-                    } else {
+                    @Composable
+                    fun LessonThemeCardUtil(themeIndex: Int) {
+                        val heightLessonThemeCard = dimensionResource(id = R.dimen.lesson_theme_card_height)
                         LessonThemeCard(
                             modifier = Modifier
                                 .height(heightLessonThemeCard)
                                 .weight(1f),
-                            lessonTheme = oneOrTwoThemes[1],
-                            onClick = { onSendEvent(DiscoverContract.Event.SelectLessonTheme(oneOrTwoThemes[1].title))}
+                            lessonTheme = oneOrTwoThemes[themeIndex],
+                            onClick = { onSendEvent(DiscoverContract.Event.SelectLessonTheme(oneOrTwoThemes[themeIndex].title)) }
                         )
+                    }
+                    LessonThemeCardUtil(themeIndex = 0)
+                    Spacer(modifier = Modifier.width(space16dp))
+                    if (oneOrTwoThemes.size == 1) {
+                        Spacer(modifier = Modifier.weight(1f))
+                    } else {
+                        LessonThemeCardUtil(themeIndex = 1)
                     }
                 }
             }
@@ -141,7 +139,7 @@ fun OnDiscoverScreenPreview() {
             isLoading = false
         ),
         onSendEvent = {},
-        effects = flow{},
+        effects = flow {},
         onNavigationRequest = {}
     )
 }

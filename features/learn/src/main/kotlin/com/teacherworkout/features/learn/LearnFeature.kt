@@ -37,7 +37,7 @@ private fun DiscoverScreenDestination(navHostController: NavHostController) {
         Box(modifier = androidx.compose.ui.Modifier.padding(innerPadding)) {
             DiscoverScreen(
                 state = viewModel.viewState.value,
-                onSendEvent = { event -> viewModel.setEvent(event)},
+                onSendEvent = { event -> viewModel.setEvent(event) },
                 effects = viewModel.effect,
                 onNavigationRequest = { navigationEffect: DiscoverContract.Effect.Navigation ->
                     when(navigationEffect) {
