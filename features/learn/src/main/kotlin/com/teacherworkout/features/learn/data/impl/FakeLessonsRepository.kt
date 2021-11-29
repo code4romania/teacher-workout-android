@@ -6,7 +6,7 @@ import com.teacherworkout.features.learn.data.LessonsRepository
 import com.teacherworkout.features.learn.data.Result
 
 class FakeLessonsRepository: LessonsRepository {
-    private val dummyLessonThemes = listOf(
+    val dummyLessonThemes = listOf(
             LessonTheme(
                 R.drawable.art1,
                 "Dictie si vorbire"

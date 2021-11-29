@@ -15,11 +15,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.tooling.preview.Preview
 import com.teacherworkout.features.learn.LessonThemeCard
 import com.teacherworkout.features.learn.R
 import com.teacherworkout.features.learn.SearchView
+import com.teacherworkout.features.learn.data.impl.FakeLessonsRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.onEach
 
 private val listState = LazyListState()
@@ -128,8 +131,17 @@ fun DiscoverScreen(
     }
 }
 
-/*@Preview
+@Preview
 @Composable
 fun OnDiscoverScreenPreview() {
-    DiscoverScreen()
-}*/
+    DiscoverScreen(
+        state = DiscoverContract.State(
+            searchInput = TextFieldValue(),
+            lessonThemes = FakeLessonsRepository().dummyLessonThemes,
+            isLoading = false
+        ),
+        onSendEvent = {},
+        effects = flow{},
+        onNavigationRequest = {}
+    )
+}
