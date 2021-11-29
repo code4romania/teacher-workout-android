@@ -4,6 +4,7 @@ import com.teacherworkout.features.learn.R
 import com.teacherworkout.features.learn.model.LessonTheme
 import com.teacherworkout.features.learn.data.LessonsRepository
 import com.teacherworkout.features.learn.data.Result
+import kotlinx.coroutines.delay
 
 class FakeLessonsRepository: LessonsRepository {
     val dummyLessonThemes = listOf(
@@ -66,6 +67,7 @@ class FakeLessonsRepository: LessonsRepository {
         )
 
     override suspend fun getAllLessonThemes(): Result<List<LessonTheme>> {
+        delay(1000)
         return Result.Success(dummyLessonThemes)
     }
 }

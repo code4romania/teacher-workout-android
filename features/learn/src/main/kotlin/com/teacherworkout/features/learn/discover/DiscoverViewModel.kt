@@ -32,7 +32,9 @@ class DiscoverViewModel(
 
     private fun refreshLessonThemes() {
         viewModelScope.launch {
+            setState { copy(isLoading = true) }
             val result = lessonsRepository.getAllLessonThemes()
+            setState { copy(isLoading = false) }
             when(result) {
                 is Result.Success -> {
                     allLessonThemes = result.data
