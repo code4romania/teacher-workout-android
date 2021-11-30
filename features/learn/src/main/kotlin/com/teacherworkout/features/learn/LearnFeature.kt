@@ -3,7 +3,7 @@ package com.teacherworkout.features.learn
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
@@ -14,7 +14,6 @@ import com.teacherworkout.features.learn.di.learnModule
 import com.teacherworkout.features.learn.discover.DiscoverContract
 import com.teacherworkout.features.learn.discover.DiscoverScreen
 import com.teacherworkout.features.learn.discover.DiscoverViewModel
-import kotlinx.coroutines.flow.collect
 import org.koin.androidx.compose.getViewModel
 import org.koin.core.context.GlobalContext.loadKoinModules
 
@@ -34,7 +33,7 @@ fun NavGraphBuilder.learnFeature(navHostController: NavHostController) {
 private fun DiscoverScreenDestination(navHostController: NavHostController) {
     val viewModel: DiscoverViewModel = getViewModel()
     BottomBarScaffold(navHostController) { innerPadding ->
-        Box(modifier = androidx.compose.ui.Modifier.padding(innerPadding)) {
+        Box(modifier = Modifier.padding(innerPadding)) {
             DiscoverScreen(
                 state = viewModel.viewState.value,
                 onSendEvent = { event -> viewModel.setEvent(event) },

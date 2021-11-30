@@ -9,7 +9,7 @@ import com.teacherworkout.features.learn.model.LessonTheme
 class DiscoverContract {
     sealed class Event : ViewEvent {
         data class SetSearchInput(val searchInput: TextFieldValue) : Event()
-        data class SelectLessonTheme(val lessonName: String): Event()
+        data class SelectLessonTheme(val lessonThemeName: String): Event()
     }
 
     data class State(

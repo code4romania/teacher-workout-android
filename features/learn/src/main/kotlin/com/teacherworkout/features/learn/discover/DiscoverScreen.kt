@@ -2,6 +2,7 @@ package com.teacherworkout.features.learn.discover
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
@@ -20,6 +21,7 @@ import com.teacherworkout.features.learn.LessonThemeCard
 import com.teacherworkout.features.learn.R
 import com.teacherworkout.features.learn.SearchView
 import com.teacherworkout.features.learn.data.impl.FakeLessonsRepository
+import com.teacherworkout.features.learn.model.LessonTheme
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
@@ -34,9 +36,8 @@ fun DiscoverScreen(
     effects: Flow<DiscoverContract.Effect>,
     onNavigationRequest: (DiscoverContract.Effect.Navigation) -> Unit
 ) {
-    val space32dp = dimensionResource(id = R.dimen.space_32dp)
-    val space16dp = dimensionResource(id = R.dimen.space_16dp)
     val space8dp = dimensionResource(id = R.dimen.space_8dp)
+    val space16dp = dimensionResource(id = R.dimen.space_16dp)
 
     val snackbarHostState = remember { SnackbarHostState() }
 
@@ -86,55 +87,27 @@ fun DiscoverScreen(
                     },
                     placeholderText = stringResource(id = R.string.search_label)
                 )
-                Spacer(modifier = Modifier.height(space32dp))
-                Text(
-                    text = stringResource(id = R.string.themes_title),
-                    style = TextStyle(
-                        color = MaterialTheme.colors.primary,
-                        fontSize = MaterialTheme.typography.h5.fontSize,
-                        fontWeight = FontWeight.Bold
-                    )
-                )
+                Spacer(modifier = Modifier.height(space16dp))
             }
             if(state.isLoading) {
                 item {
                     Box(
                         //TODO: look for a better way to center the progress bar
-                        modifier = Modifier.fillMaxWidth().fillParentMaxHeight(0.5f),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillParentMaxHeight(0.5f),
                         contentAlignment = Alignment.Center
                     ) {
                         CircularProgressIndicator()
                     }
                 }
             } else {
-                items(state.lessonThemes.chunked(2)) { oneOrTwoThemes ->
-                    Row(horizontalArrangement = Arrangement.SpaceBetween) {
-                        @Composable
-                        fun LessonThemeCardUtil(themeIndex: Int) {
-                            val heightLessonThemeCard = dimensionResource(id = R.dimen.lesson_theme_card_height)
-                            LessonThemeCard(
-                                modifier = Modifier
-                                    .height(heightLessonThemeCard)
-                                    .weight(1f),
-                                lessonTheme = oneOrTwoThemes[themeIndex],
-                                onClick = {
-                                    onSendEvent(
-                                        DiscoverContract.Event.SelectLessonTheme(
-                                            oneOrTwoThemes[themeIndex].title
-                                        )
-                                    )
-                                }
-                            )
-                        }
-                        LessonThemeCardUtil(themeIndex = 0)
-                        Spacer(modifier = Modifier.width(space16dp))
-                        if (oneOrTwoThemes.size == 1) {
-                            Spacer(modifier = Modifier.weight(1f))
-                        } else {
-                            LessonThemeCardUtil(themeIndex = 1)
-                        }
+                LessonThemes(
+                    lessonThemes = state.lessonThemes,
+                    onLessonThemeClick = { lessonTheme ->
+                        onSendEvent(DiscoverContract.Event.SelectLessonTheme(lessonTheme.title))
                     }
-                }
+                )
                 item {
                     Spacer(modifier = Modifier.height(space16dp))
                 }
@@ -144,6 +117,49 @@ fun DiscoverScreen(
             modifier = Modifier.align(Alignment.BottomCenter),
             hostState = snackbarHostState
         )
+    }
+}
+
+//TODO: reuse this in `HomeScreen`
+fun LazyListScope.LessonThemes(
+    lessonThemes: List<LessonTheme>,
+    onLessonThemeClick: (LessonTheme) -> Unit
+) {
+    item {
+        Text(
+            text = stringResource(id = R.string.themes_title),
+            style = TextStyle(
+                color = MaterialTheme.colors.primary,
+                fontSize = MaterialTheme.typography.h5.fontSize,
+                fontWeight = FontWeight.Bold
+            )
+        )
+    }
+
+    items(lessonThemes.chunked(2)) { oneOrTwoThemes ->
+        val space16dp = dimensionResource(id = R.dimen.space_16dp)
+
+        Row(horizontalArrangement = Arrangement.SpaceBetween) {
+            @Composable
+            fun LessonThemeCardUtil(themeIndex: Int) {
+                val heightLessonThemeCard = dimensionResource(id = R.dimen.lesson_theme_card_height)
+                LessonThemeCard(
+                    modifier = Modifier
+                        .height(heightLessonThemeCard)
+                        .weight(1f),
+                    lessonTheme = oneOrTwoThemes[themeIndex],
+                    onClick = { onLessonThemeClick(oneOrTwoThemes[themeIndex]) }
+                )
+            }
+
+            LessonThemeCardUtil(themeIndex = 0)
+            Spacer(modifier = Modifier.width(space16dp))
+            if (oneOrTwoThemes.size == 1) {
+                Spacer(modifier = Modifier.weight(1f))
+            } else {
+                LessonThemeCardUtil(themeIndex = 1)
+            }
+        }
     }
 }
 

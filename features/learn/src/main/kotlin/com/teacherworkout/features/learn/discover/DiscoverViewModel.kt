@@ -22,7 +22,7 @@ class DiscoverViewModel(
     override fun handleEvents(event: DiscoverContract.Event) {
         when(event) {
             is DiscoverContract.Event.SetSearchInput -> setSearchInput(event.searchInput)
-            is DiscoverContract.Event.SelectLessonTheme -> selectLessonTheme(event.lessonName)
+            is DiscoverContract.Event.SelectLessonTheme -> selectLessonTheme(event.lessonThemeName)
         }
     }
 
