@@ -4,4 +4,7 @@
     <string name="themes_title">Lesson themes</string>
     <string name="discover_lessons_title">Discover lessons</string>
     <string name="search_label">Search for a lesson theme</string>
+    <string name="start_lesson_label">START</string>
+    <string name="continue_lesson_label">CONTINUE</string>
+    <string name="save_lesson_label">SAVE</string>
 </resources>

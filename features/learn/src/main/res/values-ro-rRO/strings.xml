@@ -4,4 +4,7 @@
     <string name="themes_title">Categorii de lecții</string>
     <string name="discover_lessons_title">Descoperă lecțiile</string>
     <string name="search_label">Caută un subiect</string>
+    <string name="start_lesson_label">ÎNCEPE LECȚIA</string>
+    <string name="continue_lesson_label">CONTINUĂ LECȚIA</string>
+    <string name="save_lesson_label">SALVEAZĂ LECȚIA</string>
 </resources>
