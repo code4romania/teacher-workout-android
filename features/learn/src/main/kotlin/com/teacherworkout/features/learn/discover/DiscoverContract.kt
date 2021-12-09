@@ -4,7 +4,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import com.teacherworkout.commons.ui.base.ViewEvent
 import com.teacherworkout.commons.ui.base.ViewSideEffect
 import com.teacherworkout.commons.ui.base.ViewState
-import com.teacherworkout.features.learn.model.LessonTheme
+import com.teacherworkout.commons.ui.model.LessonTheme
 
 class DiscoverContract {
     sealed class Event : ViewEvent {

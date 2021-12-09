@@ -2,9 +2,7 @@ package com.teacherworkout.features.learn.discover
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.LazyListState
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -17,11 +15,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
-import com.teacherworkout.features.learn.LessonThemeCard
+import com.teacherworkout.commons.ui.composables.LessonThemes
+import com.teacherworkout.commons.ui.composables.SearchView
+import com.teacherworkout.commons.ui.data.impl.FakeLessonsRepository
 import com.teacherworkout.features.learn.R
-import com.teacherworkout.features.learn.SearchView
-import com.teacherworkout.features.learn.data.impl.FakeLessonsRepository
-import com.teacherworkout.features.learn.model.LessonTheme
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
@@ -117,49 +114,6 @@ fun DiscoverScreen(
             modifier = Modifier.align(Alignment.BottomCenter),
             hostState = snackbarHostState
         )
-    }
-}
-
-//TODO: reuse this in `HomeScreen`
-fun LazyListScope.LessonThemes(
-    lessonThemes: List<LessonTheme>,
-    onLessonThemeClick: (LessonTheme) -> Unit
-) {
-    item {
-        Text(
-            text = stringResource(id = R.string.themes_title),
-            style = TextStyle(
-                color = MaterialTheme.colors.primary,
-                fontSize = MaterialTheme.typography.h5.fontSize,
-                fontWeight = FontWeight.Bold
-            )
-        )
-    }
-
-    items(lessonThemes.chunked(2)) { oneOrTwoThemes ->
-        val space16dp = dimensionResource(id = R.dimen.space_16dp)
-
-        Row(horizontalArrangement = Arrangement.SpaceBetween) {
-            @Composable
-            fun LessonThemeCardUtil(themeIndex: Int) {
-                val heightLessonThemeCard = dimensionResource(id = R.dimen.lesson_theme_card_height)
-                LessonThemeCard(
-                    modifier = Modifier
-                        .height(heightLessonThemeCard)
-                        .weight(1f),
-                    lessonTheme = oneOrTwoThemes[themeIndex],
-                    onClick = { onLessonThemeClick(oneOrTwoThemes[themeIndex]) }
-                )
-            }
-
-            LessonThemeCardUtil(themeIndex = 0)
-            Spacer(modifier = Modifier.width(space16dp))
-            if (oneOrTwoThemes.size == 1) {
-                Spacer(modifier = Modifier.weight(1f))
-            } else {
-                LessonThemeCardUtil(themeIndex = 1)
-            }
-        }
     }
 }
 

@@ -1,4 +1,4 @@
-package com.teacherworkout.features.learn.model
+package com.teacherworkout.commons.ui.model
 
 import androidx.annotation.DrawableRes
 

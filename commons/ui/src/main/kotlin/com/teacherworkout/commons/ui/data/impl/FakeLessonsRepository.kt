@@ -1,9 +1,9 @@
-package com.teacherworkout.features.learn.data.impl
+package com.teacherworkout.commons.ui.data.impl
 
-import com.teacherworkout.features.learn.R
-import com.teacherworkout.features.learn.model.LessonTheme
-import com.teacherworkout.features.learn.data.LessonsRepository
-import com.teacherworkout.features.learn.data.Result
+import com.teacherworkout.commons.ui.R
+import com.teacherworkout.commons.ui.data.LessonsRepository
+import com.teacherworkout.commons.ui.model.LessonTheme
+import com.teacherworkout.commons.ui.data.Result
 import kotlinx.coroutines.delay
 
 class FakeLessonsRepository: LessonsRepository {

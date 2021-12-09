@@ -3,9 +3,9 @@ package com.teacherworkout.features.learn.discover
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.lifecycle.viewModelScope
 import com.teacherworkout.commons.ui.base.BaseViewModel
-import com.teacherworkout.features.learn.data.LessonsRepository
-import com.teacherworkout.features.learn.data.Result
-import com.teacherworkout.features.learn.model.LessonTheme
+import com.teacherworkout.commons.ui.data.LessonsRepository
+import com.teacherworkout.commons.ui.model.LessonTheme
+import com.teacherworkout.commons.ui.data.Result
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 

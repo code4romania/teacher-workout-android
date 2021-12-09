@@ -11,7 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun LandingScreen() {
     Text(
-        text = stringResource(id = R.string.themes_title),
+        text = stringResource(id = R.string.title_themes),
         style = TextStyle(
             color = MaterialTheme.colors.primary,
             fontSize = MaterialTheme.typography.h5.fontSize,
