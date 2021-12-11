@@ -1,7 +1,6 @@
 <resources>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello themes fragment</string>
-    <string name="themes_title">Lesson themes</string>
     <string name="discover_lessons_title">Discover lessons</string>
     <string name="search_label">Search for a lesson theme</string>
 </resources>
