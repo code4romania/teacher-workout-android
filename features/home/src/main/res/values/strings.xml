@@ -5,4 +5,5 @@
     <string name="search_lesson">Search for a lesson</string>
     <string name="search_subject">Search subject</string>
     <string name="lessons_in_progress">Lessons in progress</string>
+    <string name="new_lessons">New lessons</string>
 </resources>

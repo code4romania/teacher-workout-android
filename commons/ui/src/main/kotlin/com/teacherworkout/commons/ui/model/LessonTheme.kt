@@ -4,5 +4,6 @@ import androidx.annotation.DrawableRes
 
 data class LessonTheme(
     @DrawableRes val imageResourceId: Int,
-    val title: String
+    val title: String,
+    val subTitle: String? = "",
 )
