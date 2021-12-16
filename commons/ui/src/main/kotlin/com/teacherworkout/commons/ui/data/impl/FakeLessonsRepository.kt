@@ -11,17 +11,20 @@ class FakeLessonsRepository : LessonsRepository {
         LessonTheme(
             R.drawable.art1,
             "Dictie si vorbire",
-            "Cum discuți despre boli psihice"
+            "Cum discuți despre boli psihice",
+            "7 min"
         ),
         LessonTheme(
             R.drawable.art2,
             "Interactiunea la clasa",
-            "Interacțiunea la clasă"
+            "Interacțiunea la clasă",
+            "5 min"
         ),
         LessonTheme(
             R.drawable.art3,
             "Gestionarea crizelor",
-            "Interacțiunea la clasă"
+            "Interacțiunea la clasă",
+            "5 min"
         ),
         LessonTheme(
             R.drawable.art4,
