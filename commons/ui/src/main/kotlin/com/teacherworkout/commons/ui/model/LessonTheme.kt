@@ -6,5 +6,6 @@ data class LessonTheme(
     @DrawableRes val imageResourceId: Int,
     val title: String,
     val subTitle: String? = "",
-    val remainingTime: String? = ""
+    val remainingTime: Int? = 0,
+    val totalTime: Int? = 0
 )

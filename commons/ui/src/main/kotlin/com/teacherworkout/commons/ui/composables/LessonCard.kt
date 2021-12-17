@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.material.icons.filled.Timer
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -81,20 +82,26 @@ fun LessonCard(
 
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
-                        imageVector = Icons.Default.Timer,
+                        imageVector = Icons.Default.Schedule,
                         tint = MaterialTheme.colors.primaryVariant,
                         contentDescription = ""
                     )
                     Text(
-                        text = lessonTheme.remainingTime ?: "",
+                        text = lessonTheme.remainingTime.toString() + " min",
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                         modifier = Modifier.weight(1f)
                     )
-                    LinearProgressIndicator(progress = 0.5f, Modifier.weight(1f))
+                    LinearProgressIndicator(
+                        progress = lessonTheme.totalTime?.toFloat()?.let {
+                            lessonTheme.remainingTime?.toFloat()
+                                ?.div(it)
+                        } ?: 0f,
+                        Modifier.weight(1f)
+                    )
                 }
             }
         }
