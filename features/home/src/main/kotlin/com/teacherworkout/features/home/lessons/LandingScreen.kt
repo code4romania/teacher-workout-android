@@ -102,8 +102,7 @@ fun LandingScreen(
             } else {
                 lessonCard(
                     listTitle = R.string.lessons_in_progress,
-
-                    lessonThemes = state.lessonThemes.take(2),
+                    lessons = state.lessonThemes.take(2),
                     onLessonThemeClick = { lessonTheme ->
                         onSendEvent(HomeContract.Event.SelectLessonTheme(lessonTheme.title))
                     }
@@ -114,7 +113,7 @@ fun LandingScreen(
 
                 lessonCard(
                     listTitle = R.string.new_lessons,
-                    lessonThemes = state.lessonThemes.take(3),
+                    lessons = state.lessonThemes.take(3),
                     onLessonThemeClick = { lessonTheme ->
                         onSendEvent(HomeContract.Event.SelectLessonTheme(lessonTheme.title))
                     }

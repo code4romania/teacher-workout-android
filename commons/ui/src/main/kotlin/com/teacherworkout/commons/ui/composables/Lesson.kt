@@ -16,7 +16,7 @@ import com.teacherworkout.commons.ui.model.LessonTheme
 
 fun LazyListScope.lessonCard(
     listTitle: Int,
-    lessonThemes: List<LessonTheme>,
+    lessons: List<LessonTheme>,
     onLessonThemeClick: (LessonTheme) -> Unit
 ) {
     item {
@@ -30,23 +30,23 @@ fun LazyListScope.lessonCard(
         )
     }
 
-    items(lessonThemes.chunked(1)) { lessons ->
+    items(lessons) { lesson ->
         val space16dp = dimensionResource(id = R.dimen.space_16dp)
 
         Row(horizontalArrangement = Arrangement.SpaceBetween) {
             @Composable
-            fun LessonThemeCardUtil(themeIndex: Int) {
+            fun LessonThemeCardUtil() {
                 val heightLessonThemeCard = dimensionResource(id = R.dimen.lesson_card_height)
                 LessonCard(
                     modifier = Modifier
                         .height(heightLessonThemeCard)
                         .weight(1f),
-                    lessonTheme = lessons[themeIndex],
-                    onClick = { onLessonThemeClick(lessons[themeIndex]) }
+                    lessonTheme = lesson,
+                    onClick = { onLessonThemeClick(lesson) }
                 )
             }
 
-            LessonThemeCardUtil(themeIndex = 0)
+            LessonThemeCardUtil()
             Spacer(modifier = Modifier.width(space16dp))
         }
     }
