@@ -4,7 +4,7 @@
     <string name="default_label">Teacher Workout</string>
     <string name="profile">Profile screen</string>
     <string name="home_landing">Home landing screen</string>
-    <string name="search_lesson">Caută o lecție</string>
+    <string name="search_lesson_title">Caută o lecție</string>
     <string name="search_subject">Caută un subiect</string>
     <string name="lessons_in_progress">Lecții în curs </string>
     <string name="new_lessons">Lecții nou adăugate</string>

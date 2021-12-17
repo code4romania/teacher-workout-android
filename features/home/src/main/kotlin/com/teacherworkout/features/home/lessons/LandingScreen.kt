@@ -19,6 +19,8 @@ import com.teacherworkout.commons.ui.composables.LessonThemes
 import com.teacherworkout.commons.ui.composables.SearchView
 import com.teacherworkout.commons.ui.composables.lessonCard
 import com.teacherworkout.features.home.R
+import com.teacherworkout.features.home.lessons.CompanionObject.LessonInProgressItems
+import com.teacherworkout.features.home.lessons.CompanionObject.NewLessonsItems
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
@@ -33,19 +35,18 @@ fun LandingScreen(
     effects: Flow<HomeContract.Effect>,
     onNavigationRequest: (HomeContract.Effect.Navigation) -> Unit
 ) {
-    val space8dp = dimensionResource(id = com.teacherworkout.features.learn.R.dimen.space_8dp)
-    val space16dp = dimensionResource(id = com.teacherworkout.features.learn.R.dimen.space_16dp)
+    val space8dp = dimensionResource(id = R.dimen.space_8dp)
+    val space16dp = dimensionResource(id = R.dimen.space_16dp)
 
     val snackbarHostState = remember { SnackbarHostState() }
 
     LaunchedEffect(Unit) {
         effects.onEach { effect ->
             when (effect) {
-                is HomeContract.Effect.Navigation.ToLessonThemeDetails -> {
+                is HomeContract.Effect.Navigation.ToLessonDetails -> {
                     onNavigationRequest(effect)
-                    //TODO: remove the Snackbar related code when the navigation is fully implemented
                     snackbarHostState.showSnackbar(
-                        message = "Will navigate to \"${effect.lessonThemeName}\"",
+                        message = "This should navigate to \"${effect.lessonThemeName}\" details page",
                         duration = SnackbarDuration.Short,
                     )
                 }
@@ -54,7 +55,6 @@ fun LandingScreen(
     }
 
     Box {
-        //TODO: consider switching to LazyVerticalGrid if it becomes stable
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
@@ -65,7 +65,7 @@ fun LandingScreen(
             item {
                 Spacer(modifier = Modifier.height(space16dp))
                 Text(
-                    text = stringResource(id = R.string.search_lesson),
+                    text = stringResource(id = R.string.search_lesson_title),
                     style = TextStyle(
                         color = MaterialTheme.colors.primary,
                         fontSize = MaterialTheme.typography.h4.fontSize,
@@ -82,7 +82,7 @@ fun LandingScreen(
                     onClear = {
                         onSendEvent(HomeContract.Event.SetSearchInput(TextFieldValue("")))
                     },
-                    placeholderText = stringResource(id = com.teacherworkout.features.learn.R.string.search_label)
+                    placeholderText = stringResource(id = R.string.search_subject)
                 )
                 Spacer(modifier = Modifier.height(space16dp))
             }
@@ -90,7 +90,6 @@ fun LandingScreen(
             if (state.isLoading) {
                 item {
                     Box(
-                        //TODO: look for a better way to center the progress bar
                         modifier = Modifier
                             .fillMaxWidth()
                             .fillParentMaxHeight(0.5f),
@@ -102,7 +101,7 @@ fun LandingScreen(
             } else {
                 lessonCard(
                     listTitle = R.string.lessons_in_progress,
-                    lessons = state.lessonThemes.take(2),
+                    lessons = state.lessonThemes.take(LessonInProgressItems),
                     onLessonThemeClick = { lessonTheme ->
                         onSendEvent(HomeContract.Event.SelectLessonTheme(lessonTheme.title))
                     }
@@ -113,7 +112,7 @@ fun LandingScreen(
 
                 lessonCard(
                     listTitle = R.string.new_lessons,
-                    lessons = state.lessonThemes.take(3),
+                    lessons = state.lessonThemes.take(NewLessonsItems),
                     onLessonThemeClick = { lessonTheme ->
                         onSendEvent(HomeContract.Event.SelectLessonTheme(lessonTheme.title))
                     }
@@ -155,4 +154,9 @@ fun OnLandingScreenPreview() {
         effects = flow {},
         onNavigationRequest = {}
     )
+}
+
+object CompanionObject {
+    const val LessonInProgressItems = 2
+    const val NewLessonsItems = 3
 }

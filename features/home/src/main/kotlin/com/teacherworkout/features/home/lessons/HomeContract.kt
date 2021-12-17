@@ -15,12 +15,12 @@ class HomeContract {
     data class State(
         val searchInput: TextFieldValue = TextFieldValue(),
         val lessonThemes: List<LessonTheme> = emptyList(),
-        val isLoading: Boolean = false
+        val isLoading: Boolean = true
     ) : ViewState
 
     sealed class Effect : ViewSideEffect {
         sealed class Navigation : Effect() {
-            data class ToLessonThemeDetails(val lessonThemeName: String) : Navigation()
+            data class ToLessonDetails(val lessonThemeName: String) : Navigation()
         }
     }
 }

@@ -13,7 +13,7 @@ class HomeViewModel(
     private val lessonsRepository: LessonsRepository
 ) : BaseViewModel<HomeContract.Event, HomeContract.State, HomeContract.Effect>() {
 
-    private var allLessonThemes: List<LessonTheme> = emptyList()
+    private var lessons: List<LessonTheme> = emptyList()
 
     override fun setInitialState(): HomeContract.State {
         return HomeContract.State()
@@ -27,27 +27,24 @@ class HomeViewModel(
     }
 
     init {
-        refreshLessonThemes()
+        refreshLessons()
     }
 
-    private fun refreshLessonThemes() {
+    private fun refreshLessons() {
         viewModelScope.launch {
-            setState { copy(isLoading = true) }
             val result = lessonsRepository.getAllLessonThemes()
             setState { copy(isLoading = false) }
             when (result) {
                 is Result.Success -> {
-                    allLessonThemes = result.data
+                    lessons = result.data
                     setState {
                         copy(
                             searchInput = TextFieldValue(),
-                            lessonThemes = allLessonThemes
+                            lessonThemes = lessons
                         )
                     }
                 }
-                is Result.Error -> {
-
-                }
+                is Result.Error -> {}
             }
         }
     }
@@ -56,25 +53,24 @@ class HomeViewModel(
         val prevSearchInput = viewState.value.searchInput
         setState { copy(searchInput = searchInput) }
         if (prevSearchInput.text != searchInput.text) {
-            applyFilter(searchInput.text)
+            applyRandomFilter(searchInput.text)
         }
     }
 
     private fun selectLessonTheme(lessonThemeName: String) {
         setEffect {
-            HomeContract.Effect.Navigation.ToLessonThemeDetails(lessonThemeName)
+            HomeContract.Effect.Navigation.ToLessonDetails(lessonThemeName)
         }
     }
 
-    //TODO: This will be changed when we will integrate the app with the backend
-    private fun applyFilter(searchInput: String) {
+    private fun applyRandomFilter(searchInput: String) {
         if (searchInput.isBlank()) {
-            setState { copy(lessonThemes = allLessonThemes) }
+            setState { copy(lessonThemes = lessons) }
         } else {
-            val randomNumberOfLessonThemes = Random.nextInt(1, allLessonThemes.size)
+            val randomNumberOfLessonThemes = Random.nextInt(1, lessons.size)
             val someLessonThemes = mutableListOf<LessonTheme>()
             repeat(randomNumberOfLessonThemes) {
-                someLessonThemes.add(allLessonThemes[Random.nextInt(0, allLessonThemes.size)])
+                someLessonThemes.add(lessons[Random.nextInt(0, lessons.size)])
             }
             setState { copy(lessonThemes = someLessonThemes) }
         }

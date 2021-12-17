@@ -44,7 +44,7 @@ private fun HomeScreenDestination(navHostController: NavHostController) {
                 effects = viewModel.effect,
                 onNavigationRequest = { navigationEffect: HomeContract.Effect.Navigation ->
                     when (navigationEffect) {
-                        is HomeContract.Effect.Navigation.ToLessonThemeDetails -> {
+                        is HomeContract.Effect.Navigation.ToLessonDetails -> {
                             //val lessonThemeName = navigationEffect.lessonThemeName
                             //TODO: navigate to the details screen for the respective lesson theme
                         }
