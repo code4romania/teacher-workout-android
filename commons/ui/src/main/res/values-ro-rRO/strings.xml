@@ -5,4 +5,6 @@
     <string name="title_learn">Învață</string>
     <string name="title_profile">Profil</string>
     <string name="title_discover">Descoperă</string>
+    <string name="title_themes">Categorii de lecții</string>
+    <string name="min">min</string>
 </resources>
