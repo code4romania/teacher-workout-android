@@ -14,6 +14,8 @@
     <dimen name="profile_photo_size">128dp</dimen>
     <dimen name="lesson_photo_size">72dp</dimen>
     <dimen name="lesson_theme_card_height">72dp</dimen>
+    <dimen name="lesson_card_height">92dp</dimen>
+    <dimen name="lesson_in_progress_card_height">74dp</dimen>
     <dimen name="border_1dp">1dp</dimen>
     <dimen name="corner_4dp">4dp</dimen>
     <dimen name="corner_8dp">8dp</dimen>

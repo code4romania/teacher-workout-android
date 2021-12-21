@@ -2,4 +2,8 @@
     <string name="default_label">Teacher Workout</string>
     <string name="home_landing">Home landing screen</string>
     <string name="profile">Profile screen</string>
+    <string name="search_lesson_title">Search for a lesson</string>
+    <string name="search_subject">Search for a subject</string>
+    <string name="lessons_in_progress">Lessons in progress</string>
+    <string name="new_lessons">New lessons</string>
 </resources>
