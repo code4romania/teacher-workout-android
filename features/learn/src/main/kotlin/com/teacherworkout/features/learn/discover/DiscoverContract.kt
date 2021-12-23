@@ -9,7 +9,7 @@ import com.teacherworkout.commons.ui.model.LessonTheme
 class DiscoverContract {
     sealed class Event : ViewEvent {
         data class SetSearchInput(val searchInput: TextFieldValue) : Event()
-        data class SelectLessonTheme(val lessonThemeName: String): Event()
+        data class SelectLessonTheme(val lessonThemeId: Long): Event()
     }
 
     data class State(
@@ -20,7 +20,7 @@ class DiscoverContract {
 
     sealed class Effect : ViewSideEffect {
         sealed class Navigation: Effect() {
-            data class ToLessonThemeDetails(val lessonThemeName: String): Navigation()
+            data class ToLessonThemeDetails(val lessonThemeId: Long): Navigation()
         }
     }
 }

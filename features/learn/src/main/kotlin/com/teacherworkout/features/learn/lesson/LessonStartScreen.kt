@@ -22,6 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.teacherworkout.commons.ui.model.Lesson
 import com.teacherworkout.features.learn.R
 import com.teacherworkout.features.learn.lesson.LessonContract
 import kotlinx.coroutines.flow.Flow
@@ -57,11 +58,11 @@ fun LessonStartScreen(
                     .fillMaxWidth(0.8f)
             )
         }
-        LessonNameText(lessonName = state.lessonName)
+        LessonTitleText(title = state.lesson.title)
         Spacer(modifier = Modifier.height(space24dp))
-        LessonThemeText(lessonThemeName = state.lessonThemeName)
+        LessonThemeTitleText(title = state.lesson.lessonThemeTitle)
         Spacer(modifier = Modifier.height(space16dp))
-        DurationText(duration = state.duration)
+        DurationText(duration = state.lesson.durationInMinutes.toString() + " min")
         Spacer(modifier = Modifier.height(space24dp))
         StartContinueButton(
             lessonStarted = state.started,
@@ -95,10 +96,10 @@ private fun StartContinueButton(
 }
 
 @Composable
-private fun LessonNameText(lessonName: String) {
+private fun LessonTitleText(title: String) {
     Text(
         modifier = Modifier.fillMaxWidth(),
-        text = lessonName,
+        text = title,
         textAlign = TextAlign.Center,
         style = TextStyle(
             color = MaterialTheme.colors.primary,
@@ -109,10 +110,10 @@ private fun LessonNameText(lessonName: String) {
 }
 
 @Composable
-private fun LessonThemeText(lessonThemeName: String) {
+private fun LessonThemeTitleText(title: String) {
     Text(
         modifier = Modifier.fillMaxWidth(),
-        text = lessonThemeName,
+        text = title,
         textAlign = TextAlign.Center,
         color = MaterialTheme.colors.primary,
     )
@@ -170,7 +171,7 @@ private fun UnsaveButton(onClick: () -> Unit) {
         onClick = onClick,
         shape = RoundedCornerShape(50)
     ) {
-        //TODO: decide on a name for the `Unsave` Button
+        //TODO: decide on a display name for the `Unsave` Button
         Text("TODO")
     }
 }
@@ -180,9 +181,14 @@ private fun UnsaveButton(onClick: () -> Unit) {
 fun LessonStartScreenPreview() {
     LessonStartScreen(
         LessonContract.State(
-            lessonName = "Cum discuti cu elevii tai despre boli psihice",
-            lessonThemeName = "Cum discuti despre boli psihice",
-            duration = "7 min",
+            lesson = Lesson(
+                id = 1,
+                title = "Cum discuti cu elevii tai despre boli psihice",
+                lessonThemeTitle = "Cum discuti despre boli psihice",
+                imageResourceId = R.drawable.art1,
+                durationInMinutes = 7,
+                remainingMinutes = 4
+            ),
             started = false,
             saved = false
         ),

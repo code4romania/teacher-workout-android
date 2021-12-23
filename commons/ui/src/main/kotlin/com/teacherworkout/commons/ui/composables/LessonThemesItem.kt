@@ -11,17 +11,16 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import com.teacherworkout.commons.ui.R
 import com.teacherworkout.commons.ui.model.LessonTheme
+import com.teacherworkout.commons.ui.R
 
-fun LazyListScope.lessonCard(
-    listTitle: Int,
-    lessons: List<LessonTheme>,
+fun LazyListScope.lessonThemesItem(
+    lessonThemes: List<LessonTheme>,
     onLessonThemeClick: (LessonTheme) -> Unit
 ) {
     item {
         Text(
-            text = stringResource(id = listTitle),
+            text = stringResource(id = R.string.title_themes),
             style = TextStyle(
                 color = MaterialTheme.colors.primary,
                 fontSize = MaterialTheme.typography.h5.fontSize,
@@ -30,24 +29,29 @@ fun LazyListScope.lessonCard(
         )
     }
 
-    items(lessons) { lesson ->
+    items(lessonThemes.chunked(2)) { oneOrTwoThemes ->
         val space16dp = dimensionResource(id = R.dimen.space_16dp)
 
         Row(horizontalArrangement = Arrangement.SpaceBetween) {
             @Composable
-            fun LessonThemeCardUtil() {
-                val heightLessonThemeCard = dimensionResource(id = R.dimen.lesson_card_height)
-                LessonCard(
+            fun LessonThemeCardUtil(themeIndex: Int) {
+                val heightLessonThemeCard = dimensionResource(id = R.dimen.lesson_theme_card_height)
+                LessonThemeCard(
                     modifier = Modifier
                         .height(heightLessonThemeCard)
                         .weight(1f),
-                    lessonTheme = lesson,
-                    onClick = { onLessonThemeClick(lesson) }
+                    lessonTheme = oneOrTwoThemes[themeIndex],
+                    onClick = { onLessonThemeClick(oneOrTwoThemes[themeIndex]) }
                 )
             }
 
-            LessonThemeCardUtil()
+            LessonThemeCardUtil(themeIndex = 0)
             Spacer(modifier = Modifier.width(space16dp))
+            if (oneOrTwoThemes.size == 1) {
+                Spacer(modifier = Modifier.weight(1f))
+            } else {
+                LessonThemeCardUtil(themeIndex = 1)
+            }
         }
     }
 }

@@ -1,21 +1,27 @@
 package com.teacherworkout.features.learn.lesson
 
 import com.teacherworkout.commons.ui.base.BaseViewModel
+import com.teacherworkout.commons.ui.model.Lesson
+import com.teacherworkout.features.learn.R
 
 //TODO: properly implement the LessonViewModel
 class LessonViewModel(
-    private val lessonId: String
+    private val lessonId: Long
 ): BaseViewModel<LessonContract.Event, LessonContract.State, LessonContract.Effect>() {
     override fun setInitialState(): LessonContract.State {
         return LessonContract.State(
-            lessonName = "Cum discuti cu elevii tai despre boli psihice",
-            lessonThemeName = "Cum discuti despre boli psihice",
-            duration = "7 min",
+            lesson = Lesson(
+                id = 1,
+                title = "Cum discuti cu elevii tai despre boli psihice",
+                lessonThemeTitle = "Cum discuti despre boli psihice",
+                imageResourceId = R.drawable.art1,
+                durationInMinutes = 7,
+                remainingMinutes = 4
+            ),
             started = false,
             saved = false
         )
     }
-
     override fun handleEvents(event: LessonContract.Event) {
         when(event) {
             is LessonContract.Event.StartContinue -> { startContinue() }
@@ -23,7 +29,6 @@ class LessonViewModel(
             is LessonContract.Event.Unsave -> { unsave() }
         }
     }
-
     private fun startContinue() {
         setState { copy(started = !viewState.value.started) }
     }

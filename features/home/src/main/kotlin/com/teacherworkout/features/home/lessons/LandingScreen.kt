@@ -15,9 +15,9 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
-import com.teacherworkout.commons.ui.composables.LessonThemes
+import com.teacherworkout.commons.ui.composables.lessonThemesItem
 import com.teacherworkout.commons.ui.composables.SearchView
-import com.teacherworkout.commons.ui.composables.lessonCard
+import com.teacherworkout.commons.ui.composables.lessonsItem
 import com.teacherworkout.features.home.R
 import com.teacherworkout.features.home.lessons.CompanionObject.LessonInProgressItems
 import com.teacherworkout.features.home.lessons.CompanionObject.NewLessonsItems
@@ -46,7 +46,14 @@ fun LandingScreen(
                 is HomeContract.Effect.Navigation.ToLessonDetails -> {
                     onNavigationRequest(effect)
                     snackbarHostState.showSnackbar(
-                        message = "This should navigate to \"${effect.lessonThemeName}\" details page",
+                        message = "This should navigate to lesson with id ${effect.lessonId}",
+                        duration = SnackbarDuration.Short,
+                    )
+                }
+                is HomeContract.Effect.Navigation.ToLessonThemeDetails -> {
+                    onNavigationRequest(effect)
+                    snackbarHostState.showSnackbar(
+                        message = "This should navigate to lesson theme with id ${effect.lessonThemeId}",
                         duration = SnackbarDuration.Short,
                     )
                 }
@@ -99,32 +106,32 @@ fun LandingScreen(
                     }
                 }
             } else {
-                lessonCard(
+                lessonsItem(
                     listTitle = R.string.lessons_in_progress,
-                    lessons = state.lessonThemes.take(LessonInProgressItems),
-                    onLessonThemeClick = { lessonTheme ->
-                        onSendEvent(HomeContract.Event.SelectLessonTheme(lessonTheme.title))
+                    lessons = state.lessons.take(LessonInProgressItems),
+                    onLessonClick = { lesson ->
+                        onSendEvent(HomeContract.Event.SelectLesson(lesson.id))
                     }
                 )
                 item {
                     Spacer(modifier = Modifier.height(space16dp))
                 }
 
-                lessonCard(
+                lessonsItem(
                     listTitle = R.string.new_lessons,
-                    lessons = state.lessonThemes.take(NewLessonsItems),
-                    onLessonThemeClick = { lessonTheme ->
-                        onSendEvent(HomeContract.Event.SelectLessonTheme(lessonTheme.title))
+                    lessons = state.lessons.take(NewLessonsItems),
+                    onLessonClick = { lesson ->
+                        onSendEvent(HomeContract.Event.SelectLesson(lesson.id))
                     }
                 )
                 item {
                     Spacer(modifier = Modifier.height(space16dp))
                 }
 
-                LessonThemes(
+                lessonThemesItem(
                     lessonThemes = state.lessonThemes,
                     onLessonThemeClick = { lessonTheme ->
-                        onSendEvent(HomeContract.Event.SelectLessonTheme(lessonTheme.title))
+                        onSendEvent(HomeContract.Event.SelectLessonTheme(lessonTheme.id))
                     }
                 )
                 item {

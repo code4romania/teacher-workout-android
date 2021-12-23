@@ -5,7 +5,10 @@ import androidx.lifecycle.viewModelScope
 import com.teacherworkout.commons.ui.base.BaseViewModel
 import com.teacherworkout.commons.ui.data.LessonsRepository
 import com.teacherworkout.commons.ui.data.Result
+import com.teacherworkout.commons.ui.model.Lesson
 import com.teacherworkout.commons.ui.model.LessonTheme
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
@@ -13,7 +16,8 @@ class HomeViewModel(
     private val lessonsRepository: LessonsRepository
 ) : BaseViewModel<HomeContract.Event, HomeContract.State, HomeContract.Effect>() {
 
-    private var lessons: List<LessonTheme> = emptyList()
+    private var allLessons: List<Lesson> = emptyList()
+    private var allLessonThemes: List<LessonTheme> = emptyList()
 
     override fun setInitialState(): HomeContract.State {
         return HomeContract.State()
@@ -22,29 +26,39 @@ class HomeViewModel(
     override fun handleEvents(event: HomeContract.Event) {
         when (event) {
             is HomeContract.Event.SetSearchInput -> setSearchInput(event.searchInput)
-            is HomeContract.Event.SelectLessonTheme -> selectLessonTheme(event.lessonThemeName)
+            is HomeContract.Event.SelectLessonTheme -> selectLessonTheme(event.lessonThemeId)
+            is HomeContract.Event.SelectLesson -> selectLesson(event.lessonId)
         }
     }
 
     init {
-        refreshLessons()
+        refreshData()
     }
 
-    private fun refreshLessons() {
+    private fun refreshData() {
         viewModelScope.launch {
-            val result = lessonsRepository.getAllLessonThemes()
-            setState { copy(isLoading = false) }
-            when (result) {
-                is Result.Success -> {
-                    lessons = result.data
-                    setState {
-                        copy(
-                            searchInput = TextFieldValue(),
-                            lessonThemes = lessons
-                        )
-                    }
+            setState { copy(isLoading = true) }
+            lateinit var lessonThemesResult: Result<List<LessonTheme>>
+            lateinit var lessonsResult: Result<List<Lesson>>
+            awaitAll(
+                async {
+                    lessonThemesResult = lessonsRepository.getAllLessonThemes()
+                },
+                async {
+                    lessonsResult = lessonsRepository.getAllLessons()
                 }
-                is Result.Error -> {}
+            )
+            setState { copy(isLoading = false) }
+            if(lessonsResult is Result.Success && lessonThemesResult is Result.Success) {
+                allLessons = (lessonsResult as Result.Success<List<Lesson>>).data
+                allLessonThemes = (lessonThemesResult as Result.Success<List<LessonTheme>>).data
+                setState {
+                    copy(
+                        searchInput = TextFieldValue(),
+                        lessons = allLessons,
+                        lessonThemes = allLessonThemes
+                    )
+                }
             }
         }
     }
@@ -57,20 +71,27 @@ class HomeViewModel(
         }
     }
 
-    private fun selectLessonTheme(lessonThemeName: String) {
+    private fun selectLessonTheme(lessonThemeId: Long) {
         setEffect {
-            HomeContract.Effect.Navigation.ToLessonDetails(lessonThemeName)
+            HomeContract.Effect.Navigation.ToLessonThemeDetails(lessonThemeId)
         }
     }
 
+    private fun selectLesson(lessonId: Long) {
+        setEffect {
+            HomeContract.Effect.Navigation.ToLessonDetails(lessonId)
+        }
+    }
+
+    //TODO: change the method to filter through lessons. The UI part also needs to be modified to handle it
     private fun applyRandomFilter(searchInput: String) {
         if (searchInput.isBlank()) {
-            setState { copy(lessonThemes = lessons) }
+            setState { copy(lessonThemes = allLessonThemes) }
         } else {
-            val randomNumberOfLessonThemes = Random.nextInt(1, lessons.size)
+            val randomNumberOfLessonThemes = Random.nextInt(1, allLessonThemes.size)
             val someLessonThemes = mutableListOf<LessonTheme>()
             repeat(randomNumberOfLessonThemes) {
-                someLessonThemes.add(lessons[Random.nextInt(0, lessons.size)])
+                someLessonThemes.add(allLessonThemes[Random.nextInt(0, allLessonThemes.size)])
             }
             setState { copy(lessonThemes = someLessonThemes) }
         }

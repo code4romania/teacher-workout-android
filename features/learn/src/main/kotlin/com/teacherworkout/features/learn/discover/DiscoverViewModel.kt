@@ -22,7 +22,7 @@ class DiscoverViewModel(
     override fun handleEvents(event: DiscoverContract.Event) {
         when(event) {
             is DiscoverContract.Event.SetSearchInput -> setSearchInput(event.searchInput)
-            is DiscoverContract.Event.SelectLessonTheme -> selectLessonTheme(event.lessonThemeName)
+            is DiscoverContract.Event.SelectLessonTheme -> selectLessonTheme(event.lessonThemeId)
         }
     }
 
@@ -55,9 +55,9 @@ class DiscoverViewModel(
         }
     }
 
-    private fun selectLessonTheme(lessonThemeName: String) {
+    private fun selectLessonTheme(lessonThemeId: Long) {
         setEffect {
-            DiscoverContract.Effect.Navigation.ToLessonThemeDetails(lessonThemeName)
+            DiscoverContract.Effect.Navigation.ToLessonThemeDetails(lessonThemeId)
         }
     }
 

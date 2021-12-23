@@ -3,6 +3,7 @@ package com.teacherworkout.features.learn.lesson
 import com.teacherworkout.commons.ui.base.ViewEvent
 import com.teacherworkout.commons.ui.base.ViewSideEffect
 import com.teacherworkout.commons.ui.base.ViewState
+import com.teacherworkout.commons.ui.model.Lesson
 
 class LessonContract {
     sealed class Event : ViewEvent {
@@ -12,9 +13,7 @@ class LessonContract {
     }
 
     data class State(
-        val lessonName: String = "",
-        val lessonThemeName: String = "",
-        val duration: String = "",
+        val lesson: Lesson,
         val started: Boolean = false,
         val saved: Boolean = false
     ) : ViewState
