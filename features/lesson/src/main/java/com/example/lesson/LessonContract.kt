@@ -1,4 +1,4 @@
-package com.teacherworkout.features.learn.lesson
+package com.example.lesson
 
 import com.teacherworkout.commons.ui.base.ViewEvent
 import com.teacherworkout.commons.ui.base.ViewSideEffect

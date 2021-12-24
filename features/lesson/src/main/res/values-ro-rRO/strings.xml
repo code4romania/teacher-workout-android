@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="start_lesson_label">ÎNCEPE LECȚIA</string>
+    <string name="continue_lesson_label">CONTINUĂ LECȚIA</string>
+    <string name="save_lesson_label">SALVEAZĂ LECȚIA</string>
+</resources>

@@ -16,6 +16,7 @@ import com.teacherworkout.features.home.lessons.HomeViewModel
 import com.teacherworkout.features.home.lessons.LandingScreen
 import com.teacherworkout.features.learn.learnFeature
 import com.teacherworkout.features.profile.profileFeature
+import lessonFeature
 import org.koin.androidx.compose.getViewModel
 import org.koin.core.context.GlobalContext.loadKoinModules
 
@@ -30,6 +31,7 @@ fun NavGraphBuilder.homeFeature(navHostController: NavHostController) {
         }
         learnFeature(navHostController)
         profileFeature(navHostController)
+        lessonFeature(navHostController)
     }
 }
 
@@ -45,8 +47,8 @@ private fun HomeScreenDestination(navHostController: NavHostController) {
                 onNavigationRequest = { navigationEffect: HomeContract.Effect.Navigation ->
                     when (navigationEffect) {
                         is HomeContract.Effect.Navigation.ToLessonDetails -> {
-                            //val lessonThemeName = navigationEffect.lessonThemeName
-                            //TODO: navigate to the details screen for the respective lesson theme
+                            val lessonId = navigationEffect.lessonId
+                            navHostController.navigate("home-lesson-landing/${lessonId}")
                         }
                     }
                 }

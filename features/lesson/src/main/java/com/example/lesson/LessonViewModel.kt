@@ -1,8 +1,8 @@
-package com.teacherworkout.features.learn.lesson
+package com.example.lesson
 
 import com.teacherworkout.commons.ui.base.BaseViewModel
 import com.teacherworkout.commons.ui.model.Lesson
-import com.teacherworkout.features.learn.R
+import com.teacherworkout.features.lesson.R
 
 //TODO: properly implement the LessonViewModel
 class LessonViewModel(

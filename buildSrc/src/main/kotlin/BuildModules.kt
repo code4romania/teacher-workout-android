@@ -7,6 +7,7 @@ object BuildModules {
         const val HOME = ":features:home"
         const val LEARN = ":features:learn"
         const val PROFILE = ":features:profile"
+        const val LESSON = ":features:lesson"
     }
 
     object Commons {

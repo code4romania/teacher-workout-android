@@ -7,4 +7,5 @@ import org.koin.dsl.module
 
 val learnModule = module {
     viewModel { DiscoverViewModel(FakeLessonsRepository()) }
+    //viewModel { LessonViewModel() }
 }
