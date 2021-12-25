@@ -1,6 +1,7 @@
 import androidx.compose.runtime.Composable
 import androidx.navigation.*
 import androidx.navigation.compose.composable
+import com.example.lesson.LessonContract
 import com.example.lesson.LessonStartScreen
 import com.example.lesson.LessonViewModel
 import com.example.lesson.di.lessonModule
@@ -23,11 +24,18 @@ fun NavGraphBuilder.lessonFeature(navHostController: NavHostController) {
 }
 
 @Composable
-private fun LessonStartScreenDestination(navHostController: NavHostController, lessonId: Long) {
+private fun LessonStartScreenDestination(navController: NavController, lessonId: Long) {
     val viewModel: LessonViewModel = getViewModel { parametersOf(lessonId) }
     LessonStartScreen(
         state = viewModel.viewState.value,
         onSendEvent = { event -> viewModel.setEvent(event) },
-        effects = viewModel.effect
+        effects = viewModel.effect,
+        onNavigationRequest = { navRequest ->
+            when(navRequest) {
+                is LessonContract.Effect.Navigation.NavigateUp -> {
+                    navController.popBackStack()
+                }
+            }
+        }
     )
 }

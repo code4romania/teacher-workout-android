@@ -9,6 +9,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -27,67 +28,95 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import com.teacherworkout.features.account.composables.UpIcon
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.collect
 
 @Composable
 fun LessonStartScreen(
     state: LessonContract.State,
     onSendEvent: (LessonContract.Event) -> Unit,
-    effects: Flow<LessonContract.Effect>
+    effects: Flow<LessonContract.Effect>,
+    onNavigationRequest: (LessonContract.Effect.Navigation) -> Unit
 ) {
     val space16dp = dimensionResource(id = R.dimen.space_16dp)
     val space24dp = dimensionResource(id = R.dimen.space_24dp)
 
-    ConstraintLayout(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(color = colorResource(R.color.landing_background))
-            .padding(horizontal = space16dp, vertical = space24dp)
+     LaunchedEffect(Unit) {
+        effects.onEach { effect ->
+            when (effect) {
+                is LessonContract.Effect.Navigation.NavigateUp -> {
+                    onNavigationRequest(effect)
+                }
+            }
+        }.collect()
+    }
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                backgroundColor = colorResource(R.color.landing_background),
+                elevation = 0.dp
+            ) {
+                //TODO: in terms of design, maybe this isn't the best way to handle the up navigation
+                UpIcon(tint = MaterialTheme.colors.primary,) {
+                    onSendEvent(LessonContract.Event.NavigateUp)
+                }
+            }
+        }
     ) {
-        val (panel, image) = createRefs()
-
-        val painter = painterResource(R.drawable.rocket_boy)
-        Image(
+        ConstraintLayout(
             modifier = Modifier
-                .aspectRatio(
-                    ratio = painter.intrinsicSize.width / painter.intrinsicSize.height
-                )
-                .padding(space16dp)
-                .constrainAs(image) {
-                    top.linkTo(parent.top)
-                    bottom.linkTo(panel.top)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                    height = Dimension.preferredWrapContent
-                    width = Dimension.preferredWrapContent
-                },
-            painter = painter,
-            contentDescription = null,
-            contentScale = ContentScale.Fit
-        )
+                .fillMaxSize()
+                .background(color = colorResource(R.color.landing_background))
+                .padding(start = space16dp, end = space16dp, bottom = space24dp)
+        ) {
+            val (panel, image) = createRefs()
 
-        Column(Modifier.constrainAs(panel) {
-            bottom.linkTo(parent.bottom )
-            top.linkTo(image.bottom)
-            start.linkTo(parent.start)
-            end.linkTo(parent.end)
-            height = Dimension.wrapContent
-        }) {
-            LessonTitleText(title = state.lesson.title)
-            Spacer(modifier = Modifier.height(space24dp))
-            LessonThemeTitleText(title = state.lesson.lessonThemeTitle)
-            Spacer(modifier = Modifier.height(space16dp))
-            //TODO: determine which lesson attribute to use for the duration text
-            DurationText(duration = state.lesson.remainingMinutes.toString() + " min")
-            Spacer(modifier = Modifier.height(space24dp))
-            StartContinueButton(
-                lessonStarted = state.started,
-                onClick = { onSendEvent(LessonContract.Event.StartContinue()) }
+            val painter = painterResource(R.drawable.rocket_boy)
+            Image(
+                modifier = Modifier
+                    .aspectRatio(
+                        ratio = painter.intrinsicSize.width / painter.intrinsicSize.height
+                    )
+                    .padding(space16dp)
+                    .constrainAs(image) {
+                        top.linkTo(parent.top)
+                        bottom.linkTo(panel.top)
+                        start.linkTo(parent.start)
+                        end.linkTo(parent.end)
+                        height = Dimension.preferredWrapContent
+                        width = Dimension.preferredWrapContent
+                    },
+                painter = painter,
+                contentDescription = null,
+                contentScale = ContentScale.Fit
             )
-            Spacer(modifier = Modifier.height(space24dp))
-            if (state.saved) {
-                UnsaveButton(onClick = { onSendEvent(LessonContract.Event.Unsave()) })
-            } else {
-                SaveButton(onClick = { onSendEvent(LessonContract.Event.Save()) })
+
+            Column(Modifier.constrainAs(panel) {
+                bottom.linkTo(parent.bottom )
+                top.linkTo(image.bottom)
+                start.linkTo(parent.start)
+                end.linkTo(parent.end)
+                height = Dimension.wrapContent
+            }) {
+                LessonTitleText(title = state.lesson.title)
+                Spacer(modifier = Modifier.height(space24dp))
+                LessonThemeTitleText(title = state.lesson.lessonThemeTitle)
+                Spacer(modifier = Modifier.height(space16dp))
+                //TODO: determine which lesson attribute to use for the duration text
+                DurationText(duration = state.lesson.remainingMinutes.toString() + " min")
+                Spacer(modifier = Modifier.height(space24dp))
+                StartContinueButton(
+                    lessonStarted = state.started,
+                    onClick = { onSendEvent(LessonContract.Event.StartContinue()) }
+                )
+                Spacer(modifier = Modifier.height(space24dp))
+                if (state.saved) {
+                    UnsaveButton(onClick = { onSendEvent(LessonContract.Event.Unsave()) })
+                } else {
+                    SaveButton(onClick = { onSendEvent(LessonContract.Event.Save()) })
+                }
             }
         }
     }
@@ -141,7 +170,7 @@ private fun DurationText(duration: String) {
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.Center
     ) {
-        //TODO: set the content description
+        //TODO: set the content description to the duration icon
         Icon(
             imageVector = Icons.Default.Schedule,
             contentDescription = "",
@@ -208,6 +237,7 @@ fun LessonStartScreenPreview() {
             saved = false
         ),
         {},
-        flow {}
+        flow {},
+        {}
     )
 }

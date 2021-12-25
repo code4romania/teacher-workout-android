@@ -27,6 +27,7 @@ class LessonViewModel(
             is LessonContract.Event.StartContinue -> { startContinue() }
             is LessonContract.Event.Save -> { save() }
             is LessonContract.Event.Unsave -> { unsave() }
+            is LessonContract.Event.NavigateUp -> { navigateUp() }
         }
     }
     private fun startContinue() {
@@ -39,5 +40,9 @@ class LessonViewModel(
 
     private fun unsave() {
         setState { copy(saved = false) }
+    }
+
+    private fun navigateUp() {
+        setEffect { LessonContract.Effect.Navigation.NavigateUp }
     }
 }
