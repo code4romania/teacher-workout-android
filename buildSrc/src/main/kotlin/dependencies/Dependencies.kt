@@ -69,6 +69,8 @@ object Dependencies {
             const val LIVEDATA = "androidx.compose.runtime:runtime-livedata:$VERSION"
 
             const val PAGER = "com.google.accompanist:accompanist-pager:$ACCOMPANIST_PAGER_VERSION"
+
+            const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout-compose:1.0.0-rc02"
         }
     }
 

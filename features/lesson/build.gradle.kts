@@ -11,4 +11,5 @@ android {
 }
 dependencies {
     implementation(project(mapOf("path" to ":commons:ui")))
+    implementation(Dependencies.AndroidX.Compose.CONSTRAINT_LAYOUT)
 }
