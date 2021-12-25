@@ -1,10 +1,9 @@
+package com.teacherworkout.features.lesson
+
 import androidx.compose.runtime.Composable
 import androidx.navigation.*
 import androidx.navigation.compose.composable
-import com.example.lesson.LessonContract
-import com.example.lesson.LessonStartScreen
-import com.example.lesson.LessonViewModel
-import com.example.lesson.di.lessonModule
+import com.teacherworkout.features.lesson.di.lessonModule
 import com.teacherworkout.commons.ui.navigation.AppDestinations
 import org.koin.androidx.compose.getViewModel
 import org.koin.core.context.GlobalContext.loadKoinModules

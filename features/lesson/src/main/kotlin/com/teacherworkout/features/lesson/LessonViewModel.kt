@@ -1,11 +1,9 @@
-package com.example.lesson
+package com.teacherworkout.features.lesson
 
 import androidx.lifecycle.viewModelScope
 import com.teacherworkout.commons.ui.base.BaseViewModel
 import com.teacherworkout.commons.ui.data.LessonsRepository
 import com.teacherworkout.commons.ui.data.Result
-import com.teacherworkout.commons.ui.model.Lesson
-import com.teacherworkout.features.lesson.R
 import kotlinx.coroutines.launch
 
 //TODO: properly implement the LessonViewModel

@@ -1,4 +1,4 @@
-package com.example.lesson
+package com.teacherworkout.features.lesson
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -23,7 +23,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.teacherworkout.commons.ui.model.Lesson
-import com.teacherworkout.features.lesson.R
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import androidx.constraintlayout.compose.ConstraintLayout

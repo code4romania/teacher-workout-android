@@ -1,6 +1,6 @@
-package com.example.lesson.di
+package com.teacherworkout.features.lesson.di
 
-import com.example.lesson.LessonViewModel
+import com.teacherworkout.features.lesson.LessonViewModel
 import com.teacherworkout.commons.ui.data.impl.FakeLessonsRepository
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
