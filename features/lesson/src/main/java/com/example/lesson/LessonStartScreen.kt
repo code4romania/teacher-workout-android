@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Timer
+import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -76,7 +76,8 @@ fun LessonStartScreen(
             Spacer(modifier = Modifier.height(space24dp))
             LessonThemeTitleText(title = state.lesson.lessonThemeTitle)
             Spacer(modifier = Modifier.height(space16dp))
-            DurationText(duration = state.lesson.durationInMinutes.toString() + " min")
+            //TODO: determine which lesson attribute to use for the duration text
+            DurationText(duration = state.lesson.remainingMinutes.toString() + " min")
             Spacer(modifier = Modifier.height(space24dp))
             StartContinueButton(
                 lessonStarted = state.started,
@@ -140,15 +141,14 @@ private fun DurationText(duration: String) {
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.Center
     ) {
-        //TODO: pick the right icon
         //TODO: set the content description
         Icon(
-            imageVector = Icons.Default.Timer,
+            imageVector = Icons.Default.Schedule,
             contentDescription = "",
             tint = MaterialTheme.colors.primary
         )
         Text(
-            text = duration,
+            text = " ".plus(duration),
             color = MaterialTheme.colors.primary
         )
     }
