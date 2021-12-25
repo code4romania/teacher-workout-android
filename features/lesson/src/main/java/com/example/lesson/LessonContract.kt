@@ -14,9 +14,7 @@ class LessonContract {
     }
 
     data class State(
-        val lesson: Lesson,
-        val started: Boolean = false,
-        val saved: Boolean = false
+        val lesson: Lesson? = null
     ) : ViewState
 
     sealed class Effect : ViewSideEffect {

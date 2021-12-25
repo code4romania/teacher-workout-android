@@ -100,22 +100,24 @@ fun LessonStartScreen(
                 end.linkTo(parent.end)
                 height = Dimension.wrapContent
             }) {
-                LessonTitleText(title = state.lesson.title)
-                Spacer(modifier = Modifier.height(space24dp))
-                LessonThemeTitleText(title = state.lesson.lessonThemeTitle)
-                Spacer(modifier = Modifier.height(space16dp))
-                //TODO: determine which lesson attribute to use for the duration text
-                DurationText(duration = state.lesson.remainingMinutes.toString() + " min")
-                Spacer(modifier = Modifier.height(space24dp))
-                StartContinueButton(
-                    lessonStarted = state.started,
-                    onClick = { onSendEvent(LessonContract.Event.StartContinue()) }
-                )
-                Spacer(modifier = Modifier.height(space24dp))
-                if (state.saved) {
-                    UnsaveButton(onClick = { onSendEvent(LessonContract.Event.Unsave()) })
-                } else {
-                    SaveButton(onClick = { onSendEvent(LessonContract.Event.Save()) })
+                state.lesson?.let { lesson->
+                    LessonTitleText(title = lesson.title)
+                    Spacer(modifier = Modifier.height(space24dp))
+                    LessonThemeTitleText(title = lesson.lessonThemeTitle)
+                    Spacer(modifier = Modifier.height(space16dp))
+                    //TODO: determine which lesson attribute to use for the duration text
+                    DurationText(duration = lesson.remainingMinutes.toString() + " min")
+                    Spacer(modifier = Modifier.height(space24dp))
+                    StartContinueButton(
+                        lessonStarted = lesson.started,
+                        onClick = { onSendEvent(LessonContract.Event.StartContinue()) }
+                    )
+                    Spacer(modifier = Modifier.height(space24dp))
+                    if (lesson.saved) {
+                        UnsaveButton(onClick = { onSendEvent(LessonContract.Event.Unsave()) })
+                    } else {
+                        SaveButton(onClick = { onSendEvent(LessonContract.Event.Save()) })
+                    }
                 }
             }
         }
@@ -232,9 +234,7 @@ fun LessonStartScreenPreview() {
                 imageResourceId = R.drawable.art1,
                 durationInMinutes = 7,
                 remainingMinutes = 4
-            ),
-            started = false,
-            saved = false
+            )
         ),
         {},
         flow {},

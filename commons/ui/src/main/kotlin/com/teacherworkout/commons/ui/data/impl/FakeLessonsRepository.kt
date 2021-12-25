@@ -101,4 +101,13 @@ class FakeLessonsRepository : LessonsRepository {
         delay(1000)
         return Result.Success(dummyLessonThemes)
     }
+
+    override suspend fun getLesson(id: Long) =
+        try {
+            dummyLessons.first { lesson -> lesson.id == id }.let {
+                Result.Success(it)
+            }
+        } catch(e: Exception) {
+            Result.Error(e)
+        }
 }

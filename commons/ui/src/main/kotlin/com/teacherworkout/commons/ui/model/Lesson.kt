@@ -10,4 +10,6 @@ data class Lesson(
     @DrawableRes val imageResourceId: Int,
     val durationInMinutes: Int,
     val remainingMinutes: Int,
+    val started: Boolean = false,
+    val saved: Boolean = false
 )

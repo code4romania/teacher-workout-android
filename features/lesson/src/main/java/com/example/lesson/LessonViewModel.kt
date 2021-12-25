@@ -1,26 +1,20 @@
 package com.example.lesson
 
+import androidx.lifecycle.viewModelScope
 import com.teacherworkout.commons.ui.base.BaseViewModel
+import com.teacherworkout.commons.ui.data.LessonsRepository
+import com.teacherworkout.commons.ui.data.Result
 import com.teacherworkout.commons.ui.model.Lesson
 import com.teacherworkout.features.lesson.R
+import kotlinx.coroutines.launch
 
 //TODO: properly implement the LessonViewModel
 class LessonViewModel(
-    private val lessonId: Long
+    private val lessonId: Long,
+    private val lessonsRepository: LessonsRepository
 ): BaseViewModel<LessonContract.Event, LessonContract.State, LessonContract.Effect>() {
     override fun setInitialState(): LessonContract.State {
-        return LessonContract.State(
-            lesson = Lesson(
-                id = 1,
-                title = "Cum discuti cu elevii tai despre boli psihice",
-                lessonThemeTitle = "Cum discuti despre boli psihice",
-                imageResourceId = R.drawable.art1,
-                durationInMinutes = 7,
-                remainingMinutes = 4
-            ),
-            started = false,
-            saved = false
-        )
+        return LessonContract.State()
     }
     override fun handleEvents(event: LessonContract.Event) {
         when(event) {
@@ -30,16 +24,35 @@ class LessonViewModel(
             is LessonContract.Event.NavigateUp -> { navigateUp() }
         }
     }
+
+    init {
+        viewModelScope.launch {
+            val result = lessonsRepository.getLesson(lessonId)
+            when(result) {
+                is Result.Success -> {
+                    val lesson = result.data
+                    setState { copy(lesson = lesson) }
+                }
+                is Result.Error -> {
+
+                }
+            }
+        }
+    }
+
     private fun startContinue() {
-        setState { copy(started = !viewState.value.started) }
+        val lesson = viewState.value.lesson
+        setState { copy(lesson = lesson?.copy(started = !lesson.started)) }
     }
 
     private fun save() {
-        setState { copy(saved = true) }
+        val lesson = viewState.value.lesson
+        setState { copy(lesson = lesson?.copy(saved = true)) }
     }
 
     private fun unsave() {
-        setState { copy(saved = false) }
+        val lesson = viewState.value.lesson
+        setState { copy(lesson = lesson?.copy(saved = false)) }
     }
 
     private fun navigateUp() {
