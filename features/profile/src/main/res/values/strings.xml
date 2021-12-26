@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="cd_profile_photo" translatable="false">Your profile photo</string>
     <string name="experience_level" translatable="false">%1$s XP</string>
     <string name="tab_label_results">Results</string>
@@ -13,4 +13,6 @@
     <string name="setting_notification">Notifications</string>
     <string name="setting_logout">Logout</string>
     <string name="setting_delete_account">Delete account</string>
+    <string name="label_change_picture">Want to change your profile picture?</string>
+    <string name="label_upload_picture">UPLOAD PHOTO</string>
 </resources>

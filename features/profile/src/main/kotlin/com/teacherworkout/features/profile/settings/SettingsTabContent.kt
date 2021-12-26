@@ -1,9 +1,11 @@
 package com.teacherworkout.features.profile.settings
 
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import android.net.Uri
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringArrayResource
@@ -19,6 +21,17 @@ fun SettingsTabContent() {
     val settingLogout = stringResource(id = R.string.setting_logout)
     val settingDeleteAccount = stringResource(id = R.string.setting_delete_account)
     val space16dp = dimensionResource(id = R.dimen.space_16dp)
+
+    val isUpdatePictureDialogOpen = remember { mutableStateOf(false) }
+    val profilePictureUri = remember { mutableStateOf<Uri?>(null) }
+
+    UpdateProfilePictureDialog(
+        isOpen = isUpdatePictureDialogOpen.value,
+        onCloseRequest = { isUpdatePictureDialogOpen.value = false },
+        onDismissRequest = { isUpdatePictureDialogOpen.value = false },
+        onPictureTaken = { profilePictureUri.value = it }
+    )
+
     LazyColumn(
         modifier = Modifier
             .fillMaxWidth()
@@ -29,7 +42,7 @@ fun SettingsTabContent() {
                 SettingsRow(text = entry) { settingText ->
                     when (settingText) {
                         settingChangePhoto -> {
-                            /* TODO */
+                            isUpdatePictureDialogOpen.value = true
                         }
                         settingChangePassword -> {
                             /* TODO */
