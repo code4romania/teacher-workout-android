@@ -28,12 +28,12 @@ fun UpdateProfilePictureDialog(
     isOpen: Boolean,
     onCloseRequest: () -> Unit,
     onDismissRequest: () -> Unit,
-    onPictureTaken: (Uri) -> Unit
+    onNewPicture: (Uri) -> Unit
 ) {
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
 
     val imagePicker = rememberImagePicker {
-        onPictureTaken(it)
+        onNewPicture(it)
     }
 
     if(isOpen) {

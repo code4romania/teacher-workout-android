@@ -13,7 +13,9 @@ import androidx.compose.ui.res.stringResource
 import com.teacherworkout.features.profile.R
 
 @Composable
-fun SettingsTabContent() {
+fun SettingsTabContent(
+    onNewPicture: (Uri) -> Unit
+) {
     val settingsOptions = stringArrayResource(id = R.array.settings_options)
     val settingChangePhoto = stringResource(id = R.string.setting_change_photo)
     val settingChangePassword = stringResource(id = R.string.setting_change_password)
@@ -23,13 +25,12 @@ fun SettingsTabContent() {
     val space16dp = dimensionResource(id = R.dimen.space_16dp)
 
     val isUpdatePictureDialogOpen = remember { mutableStateOf(false) }
-    val profilePictureUri = remember { mutableStateOf<Uri?>(null) }
 
     UpdateProfilePictureDialog(
         isOpen = isUpdatePictureDialogOpen.value,
         onCloseRequest = { isUpdatePictureDialogOpen.value = false },
         onDismissRequest = { isUpdatePictureDialogOpen.value = false },
-        onPictureTaken = { profilePictureUri.value = it }
+        onNewPicture = { onNewPicture(it) }
     )
 
     LazyColumn(

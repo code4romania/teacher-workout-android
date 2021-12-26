@@ -5,6 +5,7 @@ object Dependencies {
     const val MATERIAL = "com.google.android.material:material:1.4.0"
     const val LOTTIE = "com.airbnb.android:lottie:4.2.0"
     const val COIL = "io.coil-kt:coil:1.4.0"
+    const val COIL_COMPOSE = "io.coil-kt:coil-compose:1.4.0"
 
     object Coroutines {
         const val VERSION = "1.5.2"

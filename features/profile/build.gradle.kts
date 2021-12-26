@@ -12,4 +12,5 @@ android {
 
 dependencies {
     implementation(project(BuildModules.Commons.UI))
+    implementation(Dependencies.COIL_COMPOSE)
 }
