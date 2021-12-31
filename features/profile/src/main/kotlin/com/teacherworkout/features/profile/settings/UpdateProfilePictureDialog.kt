@@ -83,7 +83,7 @@ fun UpdateProfilePictureDialog(
                     ) {
                         Text(text = stringResource(R.string.label_upload_picture))
                     }
-                    //TODO: maybe this should be converted to an actual button, because currently the click region is very small
+                    //TODO: maybe this should be converted to an actual Button, because currently the click region is very small
                     Text(
                         modifier = Modifier.clickable(onClick = onCloseRequest),
                         text = stringResource(R.string.cancel),

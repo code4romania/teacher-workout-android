@@ -11,15 +11,15 @@ import coil.compose.rememberImagePainter
 import coil.transform.CircleCropTransformation
 
 @Composable
-fun ProfileImage(
+fun ProfilePicture(
     modifier: Modifier = Modifier,
-    imageUri: Uri? = null
+    pictureUri: Uri? = null,
 ) {
-    val profilePhotoSize = dimensionResource(id = R.dimen.profile_photo_size)
-    val defaultProfileImageId = R.drawable.ic_profile_default
+    val profilePictureSize = dimensionResource(id = R.dimen.profile_photo_size)
+    val defaultProfilePictureId = R.drawable.ic_profile_default
     Image(
-        modifier = modifier.size(profilePhotoSize),
-        painter = rememberImagePainter(imageUri ?: defaultProfileImageId) {
+        modifier = modifier.size(profilePictureSize),
+        painter = rememberImagePainter(pictureUri ?: defaultProfilePictureId) {
             transformations(CircleCropTransformation())
         },
         contentDescription = stringResource(id = R.string.cd_profile_photo),

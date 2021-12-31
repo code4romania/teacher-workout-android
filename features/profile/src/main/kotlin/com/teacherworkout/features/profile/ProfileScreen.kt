@@ -18,14 +18,14 @@ fun ProfileScreen() {
     val space16dp = dimensionResource(id = R.dimen.space_16dp)
     val minTabHeight = dimensionResource(id = R.dimen.min_tab_height)
 
-    val profileImageUri = remember { mutableStateOf<Uri?>(null) }
+    val profilePictureUri = remember { mutableStateOf<Uri?>(null) }
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier
             .padding(top = space16dp)
             .fillMaxWidth()
     ) {
-        ProfileImage(imageUri = profileImageUri.value)
+        ProfilePicture(pictureUri = profilePictureUri.value)
         Spacer(Modifier.height(space16dp))
         ExperienceLevelText(level = 1024)
         Spacer(Modifier.height(space16dp))
@@ -45,7 +45,7 @@ fun ProfileScreen() {
         }
         when (tab) {
             0 -> ResultsTabContent(listOf("Category 1", "Category 2", "Category 3", "Category 4", "Category 5"))
-            1 -> SettingsTabContent(onNewPicture = { profileImageUri.value = it })
+            1 -> SettingsTabContent(onNewPicture = { profilePictureUri.value = it })
             else -> error("Unexpected tab requested: $tab")
         }
     }
