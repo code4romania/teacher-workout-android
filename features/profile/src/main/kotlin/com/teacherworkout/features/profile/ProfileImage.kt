@@ -2,8 +2,7 @@ package com.teacherworkout.features.profile
 
 import android.net.Uri
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
@@ -16,15 +15,13 @@ fun ProfileImage(
     modifier: Modifier = Modifier,
     imageUri: Uri? = null
 ) {
-    val profileSize = dimensionResource(id = R.dimen.profile_photo_size)
-    val defaultImageId = R.drawable.ic_profile_default
+    val profilePhotoSize = dimensionResource(id = R.dimen.profile_photo_size)
+    val defaultProfileImageId = R.drawable.ic_profile_default
     Image(
-        painter = rememberImagePainter(imageUri ?: defaultImageId) {
+        modifier = modifier.size(profilePhotoSize),
+        painter = rememberImagePainter(imageUri ?: defaultProfileImageId) {
             transformations(CircleCropTransformation())
         },
         contentDescription = stringResource(id = R.string.cd_profile_photo),
-        modifier = modifier
-            .width(profileSize)
-            .height(profileSize)
     )
 }
