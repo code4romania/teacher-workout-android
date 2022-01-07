@@ -2,6 +2,7 @@ package com.teacherworkout.features.profile.settings
 
 import android.net.Uri
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -13,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
@@ -44,8 +46,11 @@ fun UpdateProfilePictureDialog(
 
             Surface(shape = RoundedCornerShape(corner8dp)) {
                 Column(
-                    modifier = Modifier.padding(space24dp),
-                    verticalArrangement = Arrangement.spacedBy(space24dp),
+                    modifier = Modifier.padding(
+                        start = space24dp,
+                        top  = space24dp,
+                        end = space24dp
+                    ),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Box(
@@ -59,9 +64,10 @@ fun UpdateProfilePictureDialog(
                             imageVector = Icons.Outlined.AddPhotoAlternate,
                             tint = MaterialTheme.colors.onPrimary,
                             //TODO: update content description of the 'add photo' icon
-                            contentDescription = null
+                            contentDescription = ""
                         )
                     }
+                    Spacer(modifier = Modifier.height(space24dp))
                     Text(
                         modifier = Modifier.widthIn(max = screenWidth / 2),
                         text = stringResource(R.string.label_change_picture),
@@ -71,6 +77,7 @@ fun UpdateProfilePictureDialog(
                             fontWeight = FontWeight.Bold
                         )
                     )
+                    Spacer(modifier = Modifier.height(space24dp))
                     Button(
                         modifier = Modifier
                             .height(minTouchSize)
@@ -83,13 +90,25 @@ fun UpdateProfilePictureDialog(
                     ) {
                         Text(text = stringResource(R.string.label_upload_picture))
                     }
-                    //TODO: maybe this should be converted to an actual Button, because currently the click region is very small
-                    Text(
-                        modifier = Modifier.clickable(onClick = onCloseRequest),
-                        text = stringResource(R.string.cancel),
-                        color = MaterialTheme.colors.secondary,
-                        fontWeight = FontWeight.Bold
-                    )
+                    //TODO: find a not hard coded way to obtain the button's default pressed elevation
+                    val defaultPressedButtonElevation = 8.dp
+                    Spacer(modifier = Modifier.height(defaultPressedButtonElevation))
+                    Button(
+                        modifier = Modifier.height(minTouchSize),
+                        onClick = onCloseRequest,
+                        shape = RoundedCornerShape(50),
+                        colors = ButtonDefaults.buttonColors(
+                            backgroundColor = MaterialTheme.colors.surface
+                        ),
+                        elevation = ButtonDefaults.elevation(defaultElevation = 0.dp)
+                    ) {
+                        Text(
+                            text = stringResource(R.string.cancel),
+                            color = MaterialTheme.colors.secondary,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(defaultPressedButtonElevation))
                 }
             }
         }

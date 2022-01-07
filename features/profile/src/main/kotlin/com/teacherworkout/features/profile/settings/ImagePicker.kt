@@ -16,8 +16,8 @@ class ImagePicker(private val launcher: ManagedActivityResultLauncher<String, Ur
 
 @Composable
 fun rememberImagePicker(onImageResult: (Uri) -> Unit): ImagePicker {
-    val launcher = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) {
-        if(it != null) onImageResult(it)
+    val launcher = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+        if(uri != null) onImageResult(uri)
     }
     return remember { mutableStateOf(ImagePicker(launcher)) }.value
 }
