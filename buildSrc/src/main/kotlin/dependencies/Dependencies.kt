@@ -46,6 +46,7 @@ object Dependencies {
         object Compose {
             const val VERSION = "1.0.4"
             private const val ACCOMPANIST_PAGER_VERSION = "0.20.0"
+            private const val CONSTRAINTLAYOUT_VERSION = "1.0.0-rc02"
 
             const val UI = "androidx.compose.ui:ui:$VERSION"
 
@@ -70,7 +71,7 @@ object Dependencies {
 
             const val PAGER = "com.google.accompanist:accompanist-pager:$ACCOMPANIST_PAGER_VERSION"
 
-            const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout-compose:1.0.0-rc02"
+            const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout-compose:$CONSTRAINTLAYOUT_VERSION"
         }
     }
 

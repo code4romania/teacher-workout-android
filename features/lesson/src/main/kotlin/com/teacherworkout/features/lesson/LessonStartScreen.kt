@@ -57,8 +57,7 @@ fun LessonStartScreen(
                 backgroundColor = colorResource(R.color.landing_background),
                 elevation = 0.dp
             ) {
-                //TODO: in terms of design, maybe this isn't the best way to handle the up navigation
-                UpIcon(tint = MaterialTheme.colors.primary,) {
+                UpIcon(tint = MaterialTheme.colors.primary) {
                     onSendEvent(LessonContract.Event.NavigateUp)
                 }
             }
@@ -105,7 +104,7 @@ fun LessonStartScreen(
                     LessonThemeTitleText(title = lesson.lessonThemeTitle)
                     Spacer(modifier = Modifier.height(space16dp))
                     //TODO: determine which lesson attribute to use for the duration text
-                    DurationText(duration = lesson.remainingMinutes.toString() + " min")
+                    DurationText(duration = "${lesson.remainingMinutes} ${stringResource(R.string.min)}")
                     Spacer(modifier = Modifier.height(space24dp))
                     StartContinueButton(
                         lessonStarted = lesson.started,
