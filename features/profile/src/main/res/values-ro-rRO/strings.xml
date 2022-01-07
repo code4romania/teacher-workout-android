@@ -8,4 +8,6 @@
     <string name="setting_notification">Notificări</string>
     <string name="setting_logout">Log out</string>
     <string name="setting_delete_account">Șterge cont</string>
+    <string name="label_change_picture">Vrei să îți schimbi fotografia?</string>
+    <string name="label_upload_picture">ÎNCARCĂ FOTOGRAFIE</string>
 </resources>

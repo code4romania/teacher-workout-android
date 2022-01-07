@@ -1,5 +1,6 @@
 package com.teacherworkout.features.profile
 
+import android.net.Uri
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.TabRow
@@ -16,12 +17,15 @@ fun ProfileScreen() {
     var tab by remember { mutableStateOf(0) }
     val space16dp = dimensionResource(id = R.dimen.space_16dp)
     val minTabHeight = dimensionResource(id = R.dimen.min_tab_height)
+
+    val profilePictureUri = remember { mutableStateOf<Uri?>(null) }
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier
             .padding(top = space16dp)
             .fillMaxWidth()
     ) {
-        ProfileImage(imageId = R.drawable.ic_profile_default)
+        ProfilePicture(pictureUri = profilePictureUri.value)
         Spacer(Modifier.height(space16dp))
         ExperienceLevelText(level = 1024)
         Spacer(Modifier.height(space16dp))
@@ -41,7 +45,7 @@ fun ProfileScreen() {
         }
         when (tab) {
             0 -> ResultsTabContent(listOf("Category 1", "Category 2", "Category 3", "Category 4", "Category 5"))
-            1 -> SettingsTabContent()
+            1 -> SettingsTabContent(onNewPicture = { profilePictureUri.value = it })
             else -> error("Unexpected tab requested: $tab")
         }
     }

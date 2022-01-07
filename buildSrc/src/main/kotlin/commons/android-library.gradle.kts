@@ -98,6 +98,8 @@ dependencies {
     implementation(Dependencies.AndroidX.Lifecycle.VIEWMODEL_COMPOSE)
     implementation(Dependencies.AndroidX.Compose.LIVEDATA)
 
+    implementation(Dependencies.COIL_COMPOSE)
+
     implementation(Dependencies.Koin.CORE)
     implementation(Dependencies.Koin.ANDROID)
     implementation(Dependencies.Koin.COMPOSE)
