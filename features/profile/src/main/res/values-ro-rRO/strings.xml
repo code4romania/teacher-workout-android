@@ -8,6 +8,9 @@
     <string name="setting_notification">Notificări</string>
     <string name="setting_logout">Log out</string>
     <string name="setting_delete_account">Șterge cont</string>
-    <string name="label_change_picture">Vrei să îți schimbi fotografia?</string>
+    <string name="question_change_picture">Vrei să îți schimbi fotografia?</string>
     <string name="label_upload_picture">ÎNCARCĂ FOTOGRAFIE</string>
+    <string name="question_delete_account">Ești sigur că vrei să îți ștergi contul?</string>
+    <string name="warning_delete_account">Această acțiune este ireversibilă. Dacă îți ștergi contul vei pierde tot istoricul de lecții.</string>
+    <string name="label_delete_account">ȘTERGE CONT</string>
 </resources>

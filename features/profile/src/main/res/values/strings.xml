@@ -13,6 +13,9 @@
     <string name="setting_notification">Notifications</string>
     <string name="setting_logout">Logout</string>
     <string name="setting_delete_account">Delete account</string>
-    <string name="label_change_picture">Want to change your profile picture?</string>
+    <string name="question_change_picture">Want to change your profile picture?</string>
     <string name="label_upload_picture">UPLOAD PHOTO</string>
+    <string name="question_delete_account">Are you sure you want to delete your account?</string>
+    <string name="warning_delete_account">This action is irreversible. By deleting your account you will lose your lessons history.</string>
+    <string name="label_delete_account">DELETE ACCOUNT</string>
 </resources>

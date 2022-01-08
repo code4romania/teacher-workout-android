@@ -25,12 +25,20 @@ fun SettingsTabContent(
     val space16dp = dimensionResource(id = R.dimen.space_16dp)
 
     val isUpdatePictureDialogOpen = remember { mutableStateOf(false) }
+    val isDeleteAccountDialogOpen = remember { mutableStateOf(false) }
 
     UpdateProfilePictureDialog(
         isOpen = isUpdatePictureDialogOpen.value,
         onCloseRequest = { isUpdatePictureDialogOpen.value = false },
         onDismissRequest = { isUpdatePictureDialogOpen.value = false },
         onNewPicture = { onNewPicture(it) }
+    )
+
+    DeleteAccountDialog(
+        isOpen = isDeleteAccountDialogOpen.value,
+        onCloseRequest = { isDeleteAccountDialogOpen.value = false },
+        onDismissRequest = { isDeleteAccountDialogOpen.value = false },
+        onDelete = { }
     )
 
     LazyColumn(
@@ -55,7 +63,7 @@ fun SettingsTabContent(
                             /* TODO */
                         }
                         settingDeleteAccount -> {
-                            /* TODO */
+                            isDeleteAccountDialogOpen.value = true
                         }
                         else -> error("Unknown setting selected: $settingText")
                     }

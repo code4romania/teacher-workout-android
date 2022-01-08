@@ -102,7 +102,10 @@ fun GenericDialog(
                             backgroundColor = primaryColor
                         )
                     ) {
-                        Text(text = actionText)
+                        Text(
+                            text = actionText,
+                            color = MaterialTheme.colors.onPrimary
+                        )
                     }
                     //TODO: find a not hard coded way to obtain the button's default pressed elevation
                     val defaultPressedButtonElevation = 8.dp
