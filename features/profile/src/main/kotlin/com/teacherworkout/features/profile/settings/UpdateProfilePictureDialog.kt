@@ -32,85 +32,23 @@ fun UpdateProfilePictureDialog(
     onDismissRequest: () -> Unit,
     onNewPicture: (Uri) -> Unit
 ) {
-    val screenWidth = LocalConfiguration.current.screenWidthDp.dp
-
     val imagePicker = rememberImagePicker {
         onNewPicture(it)
     }
-
-    if(isOpen) {
-        Dialog(onDismissRequest = onDismissRequest) {
-            val space24dp = dimensionResource(id = R.dimen.space_24dp)
-            val corner8dp = dimensionResource(id = R.dimen.corner_8dp)
-            val minTouchSize = dimensionResource(id = R.dimen.min_touch_size)
-
-            Surface(shape = RoundedCornerShape(corner8dp)) {
-                Column(
-                    modifier = Modifier.padding(
-                        start = space24dp,
-                        top  = space24dp,
-                        end = space24dp
-                    ),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .size(minTouchSize)
-                            .clip(CircleShape)
-                            .background(MaterialTheme.colors.primary),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Icon(
-                            imageVector = Icons.Outlined.AddPhotoAlternate,
-                            tint = MaterialTheme.colors.onPrimary,
-                            //TODO: update content description of the 'add photo' icon
-                            contentDescription = ""
-                        )
-                    }
-                    Spacer(modifier = Modifier.height(space24dp))
-                    Text(
-                        modifier = Modifier.widthIn(max = screenWidth / 2),
-                        text = stringResource(R.string.label_change_picture),
-                        textAlign = TextAlign.Center,
-                        style = TextStyle(
-                            fontSize = MaterialTheme.typography.h6.fontSize,
-                            fontWeight = FontWeight.Bold
-                        )
-                    )
-                    Spacer(modifier = Modifier.height(space24dp))
-                    Button(
-                        modifier = Modifier
-                            .height(minTouchSize)
-                            .fillMaxWidth(),
-                        onClick = {
-                            onCloseRequest()
-                            imagePicker.launch()
-                        },
-                        shape = RoundedCornerShape(50)
-                    ) {
-                        Text(text = stringResource(R.string.label_upload_picture))
-                    }
-                    //TODO: find a not hard coded way to obtain the button's default pressed elevation
-                    val defaultPressedButtonElevation = 8.dp
-                    Spacer(modifier = Modifier.height(defaultPressedButtonElevation))
-                    Button(
-                        modifier = Modifier.height(minTouchSize),
-                        onClick = onCloseRequest,
-                        shape = RoundedCornerShape(50),
-                        colors = ButtonDefaults.buttonColors(
-                            backgroundColor = MaterialTheme.colors.surface
-                        ),
-                        elevation = ButtonDefaults.elevation(defaultElevation = 0.dp)
-                    ) {
-                        Text(
-                            text = stringResource(R.string.cancel),
-                            color = MaterialTheme.colors.secondary,
-                            fontWeight = FontWeight.Bold
-                        )
-                    }
-                    Spacer(modifier = Modifier.height(defaultPressedButtonElevation))
-                }
-            }
-        }
-    }
+    GenericDialog(
+        isOpen = isOpen,
+        onCloseRequest = onCloseRequest,
+        onDismissRequest = onDismissRequest,
+        iconImageVector = Icons.Outlined.AddPhotoAlternate,
+        //TODO: update content description of the 'add photo' icon
+        iconContentDescription = "",
+        mainText = stringResource(R.string.label_change_picture),
+        actionText = stringResource(R.string.label_upload_picture),
+        onAction = {
+            onCloseRequest()
+            imagePicker.launch()
+        },
+        primaryColor = MaterialTheme.colors.primary,
+        secondaryColor = MaterialTheme.colors.secondary
+    )
 }
