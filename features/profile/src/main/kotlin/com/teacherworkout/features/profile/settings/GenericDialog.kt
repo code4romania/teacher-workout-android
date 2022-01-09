@@ -17,9 +17,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.teacherworkout.features.profile.R
+import java.util.*
 
 @Composable
 fun GenericDialog(
@@ -99,7 +101,7 @@ fun GenericDialog(
                         )
                     ) {
                         Text(
-                            text = actionText,
+                            text = actionText.uppercase(),
                             color = MaterialTheme.colors.onPrimary
                         )
                     }
@@ -116,7 +118,7 @@ fun GenericDialog(
                         elevation = ButtonDefaults.elevation(defaultElevation = 0.dp)
                     ) {
                         Text(
-                            text = stringResource(R.string.cancel),
+                            text = stringResource(android.R.string.cancel).uppercase(),
                             color = secondaryColor,
                             fontWeight = FontWeight.Bold
                         )
