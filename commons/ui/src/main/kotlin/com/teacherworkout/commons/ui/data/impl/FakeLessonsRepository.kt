@@ -3,80 +3,111 @@ package com.teacherworkout.commons.ui.data.impl
 import com.teacherworkout.commons.ui.R
 import com.teacherworkout.commons.ui.data.LessonsRepository
 import com.teacherworkout.commons.ui.data.Result
+import com.teacherworkout.commons.ui.model.Lesson
 import com.teacherworkout.commons.ui.model.LessonTheme
 import kotlinx.coroutines.delay
 
 class FakeLessonsRepository : LessonsRepository {
-    val dummyLessonThemes = listOf(
-        LessonTheme(
-            R.drawable.art1,
+    val dummyLessons = listOf(
+        Lesson(
+            1,
             "Dictie si vorbire",
             "Cum discuți despre boli psihice",
-            7,
-            14
+            R.drawable.art1,
+            10,
+            9
         ),
-        LessonTheme(
-            R.drawable.art2,
+        Lesson(
+            2,
             "Interactiunea la clasa",
             "Interacțiunea la clasă",
-            5,
-            15
+            R.drawable.art2,
+            10,
+            4
         ),
-        LessonTheme(
-            R.drawable.art3,
+        Lesson(
+            3,
             "Gestionarea crizelor",
             "Interacțiunea la clasă",
-            5,
-            5
-        ),
-        LessonTheme(
-            R.drawable.art4,
-            "ADHD"
-        ),
-        LessonTheme(
-            R.drawable.art1,
-            "Incluziune"
-        ),
-        LessonTheme(
             R.drawable.art3,
-            "Dizabilitati motorii"
-        ),
-        LessonTheme(
-            R.drawable.art2,
-            "Cum discuti despre boli psihice"
-        ),
-        LessonTheme(
-            R.drawable.art1,
-            "Dictie si vorbire"
-        ),
-        LessonTheme(
-            R.drawable.art2,
-            "Interactiunea la clasa"
-        ),
-        LessonTheme(
-            R.drawable.art3,
-            "Gestionarea crizelor"
-        ),
-        LessonTheme(
-            R.drawable.art4,
-            "ADHD"
-        ),
-        LessonTheme(
-            R.drawable.art1,
-            "Incluziune"
-        ),
-        LessonTheme(
-            R.drawable.art3,
-            "Dizabilitati motorii"
-        ),
-        LessonTheme(
-            R.drawable.art2,
-            "Cum discuti despre boli psihice"
+            10,
+            1
         ),
     )
+    val dummyLessonThemes = listOf(
+        LessonTheme(
+            1,
+            "ADHD",
+            R.drawable.art4
+        ),
+        LessonTheme(
+            2,
+            "Incluziune",
+            R.drawable.art1
+        ),
+        LessonTheme(
+            3,
+            "Dizabilitati motorii",
+            R.drawable.art3
+        ),
+        LessonTheme(
+            4,
+            "Cum discuti despre boli psihice",
+            R.drawable.art2
+        ),
+        LessonTheme(
+            5,
+            "Dictie si vorbire",
+            R.drawable.art1
+        ),
+        LessonTheme(
+            6,
+            "Interactiunea la clasa",
+            R.drawable.art2
+        ),
+        LessonTheme(
+            7,
+            "Gestionarea crizelor",
+            R.drawable.art3
+        ),
+        LessonTheme(
+            8,
+            "ADHD",
+            R.drawable.art4
+        ),
+        LessonTheme(
+            9,
+            "Incluziune",
+            R.drawable.art1
+        ),
+        LessonTheme(
+            10,
+            "Dizabilitati motorii",
+            R.drawable.art3
+        ),
+        LessonTheme(
+            11,
+            "Cum discuti despre boli psihice",
+            R.drawable.art2
+        ),
+    )
+
+    override suspend fun getAllLessons(): Result<List<Lesson>> {
+        delay(800)
+        return Result.Success(dummyLessons)
+    }
 
     override suspend fun getAllLessonThemes(): Result<List<LessonTheme>> {
         delay(1000)
         return Result.Success(dummyLessonThemes)
     }
+
+    override suspend fun getLesson(id: Long) =
+        try {
+            dummyLessons.first { lesson -> lesson.id == id }.let {
+                Result.Success(it)
+            }
+        } catch(e: Exception) {
+            Result.Error(e)
+        }
 }

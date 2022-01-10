@@ -1,0 +1,5 @@
+<resources>
+    <string name="start_lesson_label">START</string>
+    <string name="continue_lesson_label">CONTINUE</string>
+    <string name="save_lesson_label">SAVE</string>
+</resources>

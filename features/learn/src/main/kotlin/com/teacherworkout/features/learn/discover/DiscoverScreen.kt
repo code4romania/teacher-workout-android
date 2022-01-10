@@ -15,7 +15,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
-import com.teacherworkout.commons.ui.composables.LessonThemes
+import com.teacherworkout.commons.ui.composables.lessonThemesItem
 import com.teacherworkout.commons.ui.composables.SearchView
 import com.teacherworkout.commons.ui.data.impl.FakeLessonsRepository
 import com.teacherworkout.features.learn.R
@@ -45,7 +45,7 @@ fun DiscoverScreen(
                     onNavigationRequest(effect)
                     //TODO: remove the Snackbar related code when the navigation is fully implemented
                     snackbarHostState.showSnackbar(
-                        message = "Will navigate to \"${effect.lessonThemeName}\"",
+                        message = "Will navigate to lesson theme with id ${effect.lessonThemeId}",
                         duration = SnackbarDuration.Short,
                     )
                 }
@@ -99,10 +99,10 @@ fun DiscoverScreen(
                     }
                 }
             } else {
-                LessonThemes(
+                lessonThemesItem(
                     lessonThemes = state.lessonThemes,
                     onLessonThemeClick = { lessonTheme ->
-                        onSendEvent(DiscoverContract.Event.SelectLessonTheme(lessonTheme.title))
+                        onSendEvent(DiscoverContract.Event.SelectLessonTheme(lessonTheme.id))
                     }
                 )
                 item {

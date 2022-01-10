@@ -19,12 +19,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import com.teacherworkout.commons.ui.R
+import com.teacherworkout.commons.ui.model.Lesson
 import com.teacherworkout.commons.ui.model.LessonTheme
 
 @Composable
 fun LessonCard(
     modifier: Modifier = Modifier,
-    lessonTheme: LessonTheme,
+    lesson: Lesson,
     onClick: () -> Unit = {}
 ) {
     val corner8dp = dimensionResource(id = R.dimen.corner_8dp)
@@ -43,8 +44,8 @@ fun LessonCard(
             Image(
                 modifier = Modifier.fillMaxHeight(),
                 contentScale = ContentScale.FillHeight,
-                painter = painterResource(id = lessonTheme.imageResourceId),
-                contentDescription = lessonTheme.title
+                painter = painterResource(id = lesson.imageResourceId),
+                contentDescription = lesson.title
             )
 
             Column(
@@ -58,7 +59,7 @@ fun LessonCard(
                 )
                 {
                     Text(
-                        text = lessonTheme.title,
+                        text = lesson.title,
                         style = TextStyle(
                             color = Color.Black,
                             fontSize = MaterialTheme.typography.body1.fontSize
@@ -72,7 +73,7 @@ fun LessonCard(
                         .fillMaxSize()
                 ) {
                     Text(
-                        text = lessonTheme.subTitle ?: "",
+                        text = lesson.lessonThemeTitle,
                         style = TextStyle(
                             color = MaterialTheme.colors.primary,
                             fontSize = MaterialTheme.typography.body1.fontSize
@@ -90,7 +91,7 @@ fun LessonCard(
                         contentDescription = ""
                     )
                     Text(
-                        text = lessonTheme.remainingTime.toString().plus(
+                        text = lesson.durationInMinutes.toString().plus(
                             stringResource(id = R.string.min)
                         ),
                         maxLines = 1,
@@ -98,11 +99,8 @@ fun LessonCard(
                         modifier = Modifier.weight(1f)
                     )
                     LinearProgressIndicator(
-                        progress = lessonTheme.totalTime?.toFloat()?.let {
-                            lessonTheme.remainingTime?.toFloat()
-                                ?.div(it)
-                        } ?: 0f,
-                        Modifier.weight(1f)
+                        progress = lesson.remainingMinutes.toFloat().div(lesson.durationInMinutes.toFloat()),
+                        modifier = Modifier.weight(1f)
                     )
                 }
             }

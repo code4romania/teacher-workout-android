@@ -2,10 +2,7 @@ package com.teacherworkout.commons.ui.navigation
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.AccountCircle
-import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.Person
-import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material.icons.outlined.*
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.teacherworkout.commons.ui.R
 
@@ -33,6 +30,8 @@ object AppDestinations {
          * The profile feature
          */
         const val profile = "profile"
+
+        const val lesson = "lesson"
     }
 
     object Account {
@@ -61,5 +60,11 @@ object AppDestinations {
 
     object Profile {
         object Profile : Screen("home-profile", R.string.title_profile, Icons.Outlined.Person)
+    }
+
+    object Lesson {
+        //TODO: update resourceId
+        //TODO: make the nav argument to not be hard coded
+        object Landing: Screen("home-lesson-landing/{lessonId}", -1, Icons.Outlined.Book)
     }
 }

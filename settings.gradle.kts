@@ -9,3 +9,4 @@ include(
     ":features:learn",
     ":features:profile"
 )
+include(":features:lesson")
