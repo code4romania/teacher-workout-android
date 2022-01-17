@@ -7,6 +7,6 @@ include(
     ":features:account",
     ":features:home",
     ":features:learn",
-    ":features:profile"
+    ":features:profile",
+    ":features:lesson"
 )
-include(":features:lesson")

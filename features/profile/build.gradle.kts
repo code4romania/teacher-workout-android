@@ -12,4 +12,5 @@ android {
 
 dependencies {
     implementation(project(BuildModules.Commons.UI))
+    implementation(project(BuildModules.CORE))
 }

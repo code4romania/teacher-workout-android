@@ -14,4 +14,5 @@ dependencies {
     implementation(project(BuildModules.Features.PROFILE))
     implementation(project(BuildModules.Features.LESSON))
     implementation(project(BuildModules.Commons.UI))
+    implementation(project(BuildModules.CORE))
 }

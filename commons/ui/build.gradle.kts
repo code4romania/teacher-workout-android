@@ -6,5 +6,8 @@ plugins {
 
 android {
     addProductFlavours(this)
+}
 
+dependencies {
+    implementation(project(BuildModules.CORE))
 }

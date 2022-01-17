@@ -11,4 +11,5 @@ android {
 }
 dependencies {
     implementation(project(mapOf("path" to ":commons:ui")))
+    implementation(project(BuildModules.CORE))
 }

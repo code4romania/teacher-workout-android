@@ -3,14 +3,14 @@ package com.teacherworkout.features.lesson
 import com.teacherworkout.commons.ui.base.ViewEvent
 import com.teacherworkout.commons.ui.base.ViewSideEffect
 import com.teacherworkout.commons.ui.base.ViewState
-import com.teacherworkout.commons.ui.model.Lesson
+import com.teacherworkout.core.fragment.Lesson
 
 class LessonContract {
     sealed class Event : ViewEvent {
-        object NavigateUp: Event()
-        class StartContinue() : Event()
-        class Save() : Event()
-        class Unsave(): Event()
+        object NavigateUp : Event()
+        object StartContinue : Event()
+        object Save : Event()
+        object Unsave : Event()
     }
 
     data class State(

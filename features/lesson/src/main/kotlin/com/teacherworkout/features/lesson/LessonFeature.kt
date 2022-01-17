@@ -16,16 +16,16 @@ fun NavGraphBuilder.lessonFeature(navHostController: NavHostController) {
         route = AppDestinations.Lesson.Landing.route,
         //TODO: make the nav argument to not be hard coded
         arguments = listOf(
-            navArgument(name = "lessonId") { type = NavType.LongType }
+            navArgument(name = "lessonId") { type = NavType.StringType }
         )
     ) { backStackEntry ->
-        val lessonId = backStackEntry.arguments?.getLong("lessonId")!!
+        val lessonId = backStackEntry.arguments?.getString("lessonId")!!
         LessonStartScreenDestination(navHostController, lessonId)
     }
 }
 
 @Composable
-private fun LessonStartScreenDestination(navController: NavController, lessonId: Long) {
+private fun LessonStartScreenDestination(navController: NavController, lessonId: String) {
     val viewModel: LessonViewModel = getViewModel { parametersOf(lessonId) }
     LessonStartScreen(
         state = viewModel.viewState.value,

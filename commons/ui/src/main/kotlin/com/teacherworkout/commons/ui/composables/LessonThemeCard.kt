@@ -16,9 +16,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.painterResource
+import coil.compose.rememberImagePainter
 import com.teacherworkout.commons.ui.R
-import com.teacherworkout.commons.ui.model.LessonTheme
+import com.teacherworkout.core.fragment.LessonTheme
 
 @Composable
 fun LessonThemeCard(
@@ -41,8 +41,8 @@ fun LessonThemeCard(
             Image(
                 modifier = Modifier.fillMaxHeight(),
                 contentScale = ContentScale.FillHeight,
-                painter = painterResource(id = lessonTheme.imageResourceId),
-                contentDescription = lessonTheme.title
+                painter = rememberImagePainter(lessonTheme.thumbnail.url),
+                contentDescription = lessonTheme.thumbnail.description
             )
             Row(
                 modifier = Modifier

@@ -1,0 +1,6 @@
+fragment LessonStatus on LessonStatus {
+    lesson {
+        ...Lesson
+    }
+    percentCompleted
+}

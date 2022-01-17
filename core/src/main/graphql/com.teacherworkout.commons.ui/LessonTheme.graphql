@@ -1,0 +1,8 @@
+fragment LessonTheme on Theme {
+    id
+    title
+    thumbnail {
+        description
+        url
+    }
+}

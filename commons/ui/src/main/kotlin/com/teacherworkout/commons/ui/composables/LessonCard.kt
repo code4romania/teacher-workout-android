@@ -9,25 +9,26 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
+import coil.compose.rememberImagePainter
 import com.teacherworkout.commons.ui.R
-import com.teacherworkout.commons.ui.model.Lesson
-import com.teacherworkout.commons.ui.model.LessonTheme
+import com.teacherworkout.core.fragment.LessonStatus
 
 @Composable
 fun LessonCard(
     modifier: Modifier = Modifier,
-    lesson: Lesson,
+    lessonStatus: LessonStatus,
     onClick: () -> Unit = {}
 ) {
+    val lesson = remember { lessonStatus.lesson }
+
     val corner8dp = dimensionResource(id = R.dimen.corner_8dp)
     val space8dp = dimensionResource(id = R.dimen.space_8dp)
     val space4dp = dimensionResource(id = R.dimen.space_4dp)
@@ -44,7 +45,7 @@ fun LessonCard(
             Image(
                 modifier = Modifier.fillMaxHeight(),
                 contentScale = ContentScale.FillHeight,
-                painter = painterResource(id = lesson.imageResourceId),
+                painter = rememberImagePainter(lesson.thumbnail.url),
                 contentDescription = lesson.title
             )
 
@@ -73,7 +74,7 @@ fun LessonCard(
                         .fillMaxSize()
                 ) {
                     Text(
-                        text = lesson.lessonThemeTitle,
+                        text = lesson.theme.title,
                         style = TextStyle(
                             color = MaterialTheme.colors.primary,
                             fontSize = MaterialTheme.typography.body1.fontSize
@@ -91,15 +92,13 @@ fun LessonCard(
                         contentDescription = ""
                     )
                     Text(
-                        text = lesson.durationInMinutes.toString().plus(
-                            stringResource(id = R.string.min)
-                        ),
+                        text = lesson.duration.displayValue,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                         modifier = Modifier.weight(1f)
                     )
                     LinearProgressIndicator(
-                        progress = lesson.remainingMinutes.toFloat().div(lesson.durationInMinutes.toFloat()),
+                        progress = lessonStatus.percentCompleted / 100f,
                         modifier = Modifier.weight(1f)
                     )
                 }

@@ -1,0 +1,15 @@
+fragment Lesson on Lesson {
+    id
+    title
+    thumbnail {
+        url
+        description
+    }
+    duration {
+        value
+        displayValue
+    }
+    theme {
+        title
+    }
+}

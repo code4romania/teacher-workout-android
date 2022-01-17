@@ -3,9 +3,9 @@ package com.teacherworkout.features.learn.discover
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.lifecycle.viewModelScope
 import com.teacherworkout.commons.ui.base.BaseViewModel
-import com.teacherworkout.commons.ui.data.LessonsRepository
-import com.teacherworkout.commons.ui.model.LessonTheme
-import com.teacherworkout.commons.ui.data.Result
+import com.teacherworkout.core.data.repositories.LessonsRepository
+import com.teacherworkout.core.data.Result
+import com.teacherworkout.core.fragment.LessonTheme
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
@@ -33,7 +33,7 @@ class DiscoverViewModel(
     private fun refreshLessonThemes() {
         viewModelScope.launch {
             setState { copy(isLoading = true) }
-            val result = lessonsRepository.getAllLessonThemes()
+            val result = lessonsRepository.getLessonThemes()
             setState { copy(isLoading = false) }
             when(result) {
                 is Result.Success -> {
@@ -55,7 +55,7 @@ class DiscoverViewModel(
         }
     }
 
-    private fun selectLessonTheme(lessonThemeId: Long) {
+    private fun selectLessonTheme(lessonThemeId: String) {
         setEffect {
             DiscoverContract.Effect.Navigation.ToLessonThemeDetails(lessonThemeId)
         }

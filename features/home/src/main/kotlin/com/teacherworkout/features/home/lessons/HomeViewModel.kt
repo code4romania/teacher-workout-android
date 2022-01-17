@@ -3,10 +3,10 @@ package com.teacherworkout.features.home.lessons
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.lifecycle.viewModelScope
 import com.teacherworkout.commons.ui.base.BaseViewModel
-import com.teacherworkout.commons.ui.data.LessonsRepository
-import com.teacherworkout.commons.ui.data.Result
-import com.teacherworkout.commons.ui.model.Lesson
-import com.teacherworkout.commons.ui.model.LessonTheme
+import com.teacherworkout.core.data.repositories.LessonsRepository
+import com.teacherworkout.core.data.Result
+import com.teacherworkout.core.fragment.LessonStatus
+import com.teacherworkout.core.fragment.LessonTheme
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
@@ -16,7 +16,7 @@ class HomeViewModel(
     private val lessonsRepository: LessonsRepository
 ) : BaseViewModel<HomeContract.Event, HomeContract.State, HomeContract.Effect>() {
 
-    private var allLessons: List<Lesson> = emptyList()
+    private var allLessonStatuses: List<LessonStatus> = emptyList()
     private var allLessonThemes: List<LessonTheme> = emptyList()
 
     override fun setInitialState(): HomeContract.State {
@@ -39,23 +39,23 @@ class HomeViewModel(
         viewModelScope.launch {
             setState { copy(isLoading = true) }
             lateinit var lessonThemesResult: Result<List<LessonTheme>>
-            lateinit var lessonsResult: Result<List<Lesson>>
+            lateinit var lessonStatusesResult: Result<List<LessonStatus>>
             awaitAll(
                 async {
-                    lessonThemesResult = lessonsRepository.getAllLessonThemes()
+                    lessonThemesResult = lessonsRepository.getLessonThemes()
                 },
                 async {
-                    lessonsResult = lessonsRepository.getAllLessons()
+                    lessonStatusesResult = lessonsRepository.getLessonStatuses(null)
                 }
             )
             setState { copy(isLoading = false) }
-            if(lessonsResult is Result.Success && lessonThemesResult is Result.Success) {
-                allLessons = (lessonsResult as Result.Success<List<Lesson>>).data
+            if(lessonStatusesResult is Result.Success && lessonThemesResult is Result.Success) {
+                allLessonStatuses = (lessonStatusesResult as Result.Success<List<LessonStatus>>).data
                 allLessonThemes = (lessonThemesResult as Result.Success<List<LessonTheme>>).data
                 setState {
                     copy(
                         searchInput = TextFieldValue(),
-                        lessons = allLessons,
+                        lessonStatuses = allLessonStatuses,
                         lessonThemes = allLessonThemes
                     )
                 }
@@ -71,13 +71,13 @@ class HomeViewModel(
         }
     }
 
-    private fun selectLessonTheme(lessonThemeId: Long) {
+    private fun selectLessonTheme(lessonThemeId: String) {
         setEffect {
             HomeContract.Effect.Navigation.ToLessonThemeDetails(lessonThemeId)
         }
     }
 
-    private fun selectLesson(lessonId: Long) {
+    private fun selectLesson(lessonId: String) {
         setEffect {
             HomeContract.Effect.Navigation.ToLessonDetails(lessonId)
         }
