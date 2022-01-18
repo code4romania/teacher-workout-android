@@ -3,10 +3,7 @@ package com.teacherworkout.commons.ui.composables
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
@@ -39,9 +36,13 @@ fun LessonThemeCard(
             modifier = Modifier.fillMaxSize()
         ){
             Image(
-                modifier = Modifier.fillMaxHeight(),
-                contentScale = ContentScale.FillHeight,
-                painter = rememberImagePainter(lessonTheme.thumbnail.url),
+                modifier = Modifier
+                    .aspectRatio(1f)
+                    .fillMaxHeight(),
+                contentScale = ContentScale.Crop,
+                painter = rememberImagePainter(lessonTheme.thumbnail.url) {
+                    error(R.drawable.art1)
+                },
                 contentDescription = lessonTheme.thumbnail.description
             )
             Row(

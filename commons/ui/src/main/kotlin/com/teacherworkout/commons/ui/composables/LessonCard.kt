@@ -43,9 +43,13 @@ fun LessonCard(
             modifier = Modifier.fillMaxSize()
         ) {
             Image(
-                modifier = Modifier.fillMaxHeight(),
-                contentScale = ContentScale.FillHeight,
-                painter = rememberImagePainter(lesson.thumbnail.url),
+                modifier = Modifier
+                    .aspectRatio(1f)
+                    .fillMaxHeight(),
+                contentScale = ContentScale.Crop,
+                painter = rememberImagePainter(lesson.thumbnail.url) {
+                    error(R.drawable.art1)
+                },
                 contentDescription = lesson.title
             )
 
