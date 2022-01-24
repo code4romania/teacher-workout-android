@@ -102,15 +102,14 @@ fun LessonStartScreen(
                     Spacer(modifier = Modifier.height(space24dp))
                     LessonThemeTitleText(title = lesson.theme.title)
                     Spacer(modifier = Modifier.height(space16dp))
-                    //TODO: determine which lesson attribute to use for the duration text
                     DurationText(duration = lesson.duration.displayValue)
                     Spacer(modifier = Modifier.height(space24dp))
                     StartContinueButton(
-                        lessonStarted = true,
+                        lessonStarted = false,
                         onClick = { onSendEvent(LessonContract.Event.StartContinue) }
                     )
                     Spacer(modifier = Modifier.height(space24dp))
-                    if (true) {
+                    if (false) {
                         UnsaveButton(onClick = { onSendEvent(LessonContract.Event.Unsave) })
                     } else {
                         SaveButton(onClick = { onSendEvent(LessonContract.Event.Save) })
@@ -135,7 +134,7 @@ private fun StartContinueButton(
         onClick = onClick,
         shape = RoundedCornerShape(50)
     ) {
-        Text(stringResource(if (lessonStarted) R.string.start_lesson_label else R.string.continue_lesson_label))
+        Text(stringResource(if (!lessonStarted) R.string.start_lesson_label else R.string.continue_lesson_label))
     }
 }
 
