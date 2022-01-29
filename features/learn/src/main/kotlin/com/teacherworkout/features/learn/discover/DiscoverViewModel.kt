@@ -1,12 +1,14 @@
 package com.teacherworkout.features.learn.discover
 
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.toLowerCase
 import androidx.lifecycle.viewModelScope
 import com.teacherworkout.commons.ui.base.BaseViewModel
 import com.teacherworkout.commons.ui.data.LessonsRepository
 import com.teacherworkout.commons.ui.model.LessonTheme
 import com.teacherworkout.commons.ui.data.Result
 import kotlinx.coroutines.launch
+import java.util.*
 import kotlin.random.Random
 
 class DiscoverViewModel(
@@ -63,12 +65,7 @@ class DiscoverViewModel(
         if (searchInput.isBlank()) {
              setState{ copy(lessonThemes = allLessonThemes) }
         } else {
-            val randomNumberOfLessonThemes = Random.nextInt(1, allLessonThemes.size)
-            val someLessonThemes = mutableListOf<LessonTheme>()
-            repeat(randomNumberOfLessonThemes) {
-                someLessonThemes.add(allLessonThemes[Random.nextInt(0, allLessonThemes.size)])
-            }
-            setState{ copy(lessonThemes = someLessonThemes) }
+            setState{ copy(lessonThemes = allLessonThemes.filter { it.title.lowercase().contains(searchInput.lowercase()) }) }
         }
     }
 }

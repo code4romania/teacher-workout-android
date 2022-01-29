@@ -3,7 +3,12 @@ package dependencies
 object TestDependencies {
     const val JUNIT = "junit:junit:4.13.2"
 
-    const val MOCKITO = "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
+    object MOCKK {
+        private const val VERSION = "1.12.2"
+
+        const val MOCKK = "io.mockk:mockk:${VERSION}"
+        const val AGENT = "io.mockk:mockk-agent-jvm:${VERSION}"
+    }
 
     const val TRUTH = "com.google.truth:truth:1.1.3"
 

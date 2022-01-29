@@ -105,6 +105,8 @@ dependencies {
     implementation(Dependencies.Koin.COMPOSE)
 
     testImplementation(TestDependencies.JUNIT)
+    testImplementation(TestDependencies.MOCKK.MOCKK)
+    testImplementation(TestDependencies.MOCKK.AGENT)
     testImplementation(TestDependencies.TRUTH)
     testImplementation(TestDependencies.AndroidX.CORE_TESTING)
     testImplementation(TestDependencies.COROUTINES_TEST)
