@@ -36,20 +36,20 @@ class HomeViewModel(
     private fun refreshData() {
         viewModelScope.launch {
             setState { copy(isLoading = true) }
-            lateinit var lessonThemesResult: Result<List<LessonTheme>>
+            lateinit var lessonThemeResult: Result<List<LessonTheme>>
             lateinit var lessonsResult: Result<List<Lesson>>
             awaitAll(
                 async {
-                    lessonThemesResult = lessonsRepository.getAllLessonThemes()
+                    lessonThemeResult = lessonsRepository.getAllLessonThemes()
                 },
                 async {
                     lessonsResult = lessonsRepository.getAllLessons()
                 }
             )
             setState { copy(isLoading = false) }
-            if(lessonsResult is Result.Success && lessonThemesResult is Result.Success) {
+            if(lessonsResult is Result.Success && lessonThemeResult is Result.Success) {
                 allLessons = (lessonsResult as Result.Success<List<Lesson>>).data
-                allLessonThemes = (lessonThemesResult as Result.Success<List<LessonTheme>>).data
+                allLessonThemes = (lessonThemeResult as Result.Success<List<LessonTheme>>).data
                 setState {
                     copy(
                         searchInput = TextFieldValue(),

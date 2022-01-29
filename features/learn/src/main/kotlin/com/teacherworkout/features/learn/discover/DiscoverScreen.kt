@@ -2,7 +2,6 @@ package com.teacherworkout.features.learn.discover
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -18,7 +17,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.teacherworkout.commons.ui.composables.HandleEffects
 import com.teacherworkout.commons.ui.composables.SearchView
 import com.teacherworkout.commons.ui.composables.lessonThemesItem
-import com.teacherworkout.commons.ui.data.impl.FakeLessonsRepository
 import com.teacherworkout.commons.ui.model.LessonTheme
 import com.teacherworkout.features.learn.R
 import kotlinx.coroutines.flow.Flow
@@ -33,6 +31,7 @@ fun DiscoverScreen(
     effects: Flow<DiscoverContract.Effect>,
     onNavigationRequest: (DiscoverContract.Effect.Navigation) -> Unit
 ) {
+    val space8dp = dimensionResource(id = R.dimen.space_8dp)
     val space16dp = dimensionResource(id = R.dimen.space_16dp)
 
     val snackbarHostState = remember { SnackbarHostState() }
@@ -50,6 +49,7 @@ fun DiscoverScreen(
     }
 
     Box {
+        //TODO: consider switching to LazyVerticalGrid if it becomes stable
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
@@ -57,13 +57,37 @@ fun DiscoverScreen(
             verticalArrangement = Arrangement.spacedBy(space16dp),
             state = listState
         ) {
-            titleAndSearchBarItem(state, onSendEvent)
+            item {
+                Spacer(modifier = Modifier.height(space16dp))
+                Text(
+                    text = stringResource(id = R.string.discover_lessons_title),
+                    style = TextStyle(
+                        color = MaterialTheme.colors.primary,
+                        fontSize = MaterialTheme.typography.h4.fontSize,
+                        fontWeight = FontWeight.Bold
+                    )
+                )
+                Spacer(modifier = Modifier.height(space8dp))
+                SearchView(
+                    modifier = Modifier.fillMaxWidth(),
+                    searchInput = state.searchInput,
+                    onSearchInputChange = {
+                        onSendEvent(DiscoverContract.Event.SetSearchInput(it))
+                    },
+                    onClear = {
+                        onSendEvent(DiscoverContract.Event.SetSearchInput(TextFieldValue("")))
+                    },
+                    placeholderText = stringResource(id = R.string.search_label)
+                )
+                Spacer(modifier = Modifier.height(space16dp))
+            }
             if (state.isLoading) {
                 item {
                     Box(
+                        //TODO: look for a better way to center the progress bar
                         modifier = Modifier
                             .fillMaxWidth()
-                            .fillParentMaxHeight(fraction = 0.5f),
+                            .fillParentMaxHeight(0.5f),
                         contentAlignment = Alignment.Center
                     ) {
                         CircularProgressIndicator()
@@ -71,7 +95,7 @@ fun DiscoverScreen(
                 }
             } else {
                 lessonThemesItem(
-                    lessonThemes = state.themes.map { LessonTheme(id = it.id, title = it.title, imageResourceId = com.teacherworkout.commons.ui.R.drawable.art2) },
+                    lessonThemes = state.themes.toViewModels(),
                     onLessonThemeClick = { lessonTheme ->
                         onSendEvent(DiscoverContract.Event.SelectLessonTheme(lessonTheme.id))
                     }
@@ -85,39 +109,6 @@ fun DiscoverScreen(
             modifier = Modifier.align(Alignment.BottomCenter),
             hostState = snackbarHostState
         )
-    }
-}
-
-private fun LazyListScope.titleAndSearchBarItem(
-    state: DiscoverContract.State,
-    onSendEvent: (DiscoverContract.Event) -> Unit
-) {
-    item {
-        val space8dp = dimensionResource(id = R.dimen.space_8dp)
-        val space16dp = dimensionResource(id = R.dimen.space_16dp)
-
-        Spacer(modifier = Modifier.height(space16dp))
-        Text(
-            text = stringResource(id = R.string.discover_lessons_title),
-            style = TextStyle(
-                color = MaterialTheme.colors.primary,
-                fontSize = MaterialTheme.typography.h4.fontSize,
-                fontWeight = FontWeight.Bold
-            )
-        )
-        Spacer(modifier = Modifier.height(space8dp))
-        SearchView(
-            modifier = Modifier.fillMaxWidth(),
-            searchInput = state.searchInput,
-            onSearchInputChange = {
-                onSendEvent(DiscoverContract.Event.SetSearchInput(it))
-            },
-            onClear = {
-                onSendEvent(DiscoverContract.Event.SetSearchInput(TextFieldValue("")))
-            },
-            placeholderText = stringResource(id = R.string.search_label)
-        )
-        Spacer(modifier = Modifier.height(space16dp))
     }
 }
 
@@ -150,3 +141,12 @@ fun DiscoverScreenLoadingPreview() {
         onNavigationRequest = {}
     )
 }
+
+private fun List<Theme>.toViewModels(): List<LessonTheme> =
+    this.map {
+        LessonTheme(
+            id = it.id,
+            title = it.title,
+            imageResourceId = com.teacherworkout.commons.ui.R.drawable.art2
+        )
+    }
