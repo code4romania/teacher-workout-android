@@ -10,15 +10,16 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.teacherworkout.commons.ui.composables.BottomBarScaffold
 import com.teacherworkout.commons.ui.navigation.AppDestinations
-import com.teacherworkout.features.learn.di.learnModule
+import com.teacherworkout.core.dataModule
 import com.teacherworkout.features.learn.discover.DiscoverContract
 import com.teacherworkout.features.learn.discover.DiscoverScreen
 import com.teacherworkout.features.learn.discover.DiscoverViewModel
+import com.teacherworkout.features.learn.discover.discoveryModule
 import org.koin.androidx.compose.getViewModel
 import org.koin.core.context.GlobalContext.loadKoinModules
 
 fun NavGraphBuilder.learnFeature(navHostController: NavHostController) {
-    loadKoinModules(learnModule)
+    loadKoinModules(listOf(dataModule, discoveryModule))
     navigation(
         startDestination = AppDestinations.Learn.Discover.route,
         route = AppDestinations.Features.learn

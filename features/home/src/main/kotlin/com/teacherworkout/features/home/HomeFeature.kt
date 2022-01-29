@@ -15,8 +15,8 @@ import com.teacherworkout.features.home.lessons.HomeContract
 import com.teacherworkout.features.home.lessons.HomeViewModel
 import com.teacherworkout.features.home.lessons.LandingScreen
 import com.teacherworkout.features.learn.learnFeature
-import com.teacherworkout.features.profile.profileFeature
 import com.teacherworkout.features.lesson.lessonFeature
+import com.teacherworkout.features.profile.profileFeature
 import org.koin.androidx.compose.getViewModel
 import org.koin.core.context.GlobalContext.loadKoinModules
 
