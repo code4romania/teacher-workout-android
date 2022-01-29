@@ -1,21 +1,16 @@
 package com.teacherworkout.features.learn.discover
 
+import android.util.Log
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.text.toLowerCase
 import androidx.lifecycle.viewModelScope
 import com.teacherworkout.commons.ui.base.BaseViewModel
-import com.teacherworkout.commons.ui.data.LessonsRepository
-import com.teacherworkout.commons.ui.model.LessonTheme
-import com.teacherworkout.commons.ui.data.Result
 import kotlinx.coroutines.launch
-import java.util.*
-import kotlin.random.Random
 
 class DiscoverViewModel(
-    private val lessonsRepository: LessonsRepository
+    private val themesRepository: ThemesRepository
 ): BaseViewModel<DiscoverContract.Event, DiscoverContract.State, DiscoverContract.Effect>() {
 
-    private var allLessonThemes: List<LessonTheme> = emptyList()
+    private var allLessonThemes: List<Theme> = emptyList()
 
     override fun setInitialState(): DiscoverContract.State = DiscoverContract.State()
 
@@ -33,15 +28,15 @@ class DiscoverViewModel(
     private fun refreshLessonThemes() {
         viewModelScope.launch {
             setState { copy(isLoading = true) }
-            val result = lessonsRepository.getAllLessonThemes()
+            val result = themesRepository.all()
             setState { copy(isLoading = false) }
-            when(result) {
-                is Result.Success -> {
-                    allLessonThemes = result.data
-                    setState { copy(searchInput = TextFieldValue(), lessonThemes = allLessonThemes) }
+            when(result.isSuccess) {
+                true -> {
+                    allLessonThemes = result.getOrDefault(emptyList())
+                    setState { copy(searchInput = TextFieldValue(), themes = allLessonThemes) }
                 }
-                is Result.Error -> {
-
+                false -> {
+                    Log.e("DiscoveryViewModel", result.exceptionOrNull()?.message ?: "")
                 }
             }
         }
@@ -63,9 +58,9 @@ class DiscoverViewModel(
 
     private fun applyFilter(searchInput: String) {
         if (searchInput.isBlank()) {
-             setState{ copy(lessonThemes = allLessonThemes) }
+             setState{ copy(themes = allLessonThemes) }
         } else {
-            setState{ copy(lessonThemes = allLessonThemes.filter { it.title.lowercase().contains(searchInput.lowercase()) }) }
+            setState{ copy(themes = allLessonThemes.filter { it.title.lowercase().contains(searchInput.lowercase()) }) }
         }
     }
 }

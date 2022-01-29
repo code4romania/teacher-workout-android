@@ -19,6 +19,7 @@ import com.teacherworkout.commons.ui.composables.HandleEffects
 import com.teacherworkout.commons.ui.composables.SearchView
 import com.teacherworkout.commons.ui.composables.lessonThemesItem
 import com.teacherworkout.commons.ui.data.impl.FakeLessonsRepository
+import com.teacherworkout.commons.ui.model.LessonTheme
 import com.teacherworkout.features.learn.R
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -70,7 +71,7 @@ fun DiscoverScreen(
                 }
             } else {
                 lessonThemesItem(
-                    lessonThemes = state.lessonThemes,
+                    lessonThemes = state.themes.map { LessonTheme(id = it.id, title = it.title, imageResourceId = com.teacherworkout.commons.ui.R.drawable.art2) },
                     onLessonThemeClick = { lessonTheme ->
                         onSendEvent(DiscoverContract.Event.SelectLessonTheme(lessonTheme.id))
                     }
@@ -126,7 +127,7 @@ fun DiscoverScreenPreview() {
     DiscoverScreen(
         state = DiscoverContract.State(
             searchInput = TextFieldValue(),
-            lessonThemes = FakeLessonsRepository().dummyLessonThemes,
+            themes = listOf(Theme(id = 1, "Some theme"), Theme(2, "Other theme")),
             isLoading = false
         ),
         onSendEvent = {},
@@ -141,7 +142,7 @@ fun DiscoverScreenLoadingPreview() {
     DiscoverScreen(
         state = DiscoverContract.State(
             searchInput = TextFieldValue(),
-            lessonThemes = emptyList(),
+            themes = emptyList(),
             isLoading = true
         ),
         onSendEvent = {},
