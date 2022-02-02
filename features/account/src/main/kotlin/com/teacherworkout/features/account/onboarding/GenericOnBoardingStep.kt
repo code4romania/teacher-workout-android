@@ -56,10 +56,10 @@ fun GenericOnBoardingStep(
             Image(
                 painter = painterResource(id = onboardingImageId),
                 contentDescription = "TODO - when creating the actual onboarding",
-                contentScale = ContentScale.FillBounds,
+                contentScale = ContentScale.Fit,
                 modifier = Modifier
                     .align(Alignment.Center)
-                    .fillMaxWidth(0.4f)
+                    .fillMaxWidth(0.9f)
                     .fillMaxHeight(0.5f)
             )
         }
