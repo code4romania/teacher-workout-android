@@ -33,8 +33,12 @@ fun OnBoardingScreen(onNavigateToMain: () -> Unit) {
     val pagerState = rememberPagerState()
     val localScope = rememberCoroutineScope()
     Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Top) {
-        HorizontalPager(count = pageCount, state = pagerState, modifier = Modifier.weight(1f)) {
-            val imageId = when (pagerState.currentPage) {
+        HorizontalPager(
+            count = pageCount,
+            state = pagerState,
+            modifier = Modifier.weight(1f)
+        ) { page ->
+            val imageId = when (page) {
                 0 -> R.drawable.onboarding_0_placeholder
                 1 -> R.drawable.onboarding_1_placeholder
                 2 -> R.drawable.onboarding_2_placeholder
