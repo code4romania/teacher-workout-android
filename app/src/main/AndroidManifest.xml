@@ -16,6 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Teacherworkout"
+        android:usesCleartextTraffic="true"
         tools:targetApi="s">
         <activity
             android:name="com.teacherworkout.android.MainActivity"

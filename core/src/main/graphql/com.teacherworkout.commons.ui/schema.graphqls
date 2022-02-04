@@ -1,0 +1,178 @@
+type Answer {
+    id: ID
+    title: String!
+}
+
+type AnswerResult {
+    answer: Answer!
+    status: AnswerStatus!
+}
+
+enum AnswerStatus {
+    CORRECT
+    INCORRECT
+    NONE
+    Correct
+    Incorrect
+    None
+}
+
+type Duration {
+    value: Int!
+    unit: DurationUnit!
+    displayValue: String!
+}
+
+enum DurationUnit {
+    MINUTES
+    HOURS
+    Minutes
+    Hours
+}
+
+type ExerciseStep implements LessonStep {
+    id: ID
+    question: String!
+    answers: [Answer]!
+}
+
+type ExerciseSummaryStep implements LessonStep {
+    id: ID
+    results: [AnswerResult]!
+}
+
+type Image {
+    url: String!
+    description: String!
+}
+
+type Lesson {
+    id: ID
+    title: String!
+    description: String!
+    thumbnail: Image!
+    theme: Theme!
+    duration: Duration!
+    state: LessonState!
+}
+
+type LessonConnection {
+    totalCount: Int
+    pageInfo: PageInfo!
+    edges: [LessonEdge]
+    items: [Lesson!]
+}
+
+type LessonEdge {
+    cursor: String!
+    node: Lesson!
+}
+
+input LessonSaveInput {
+    lessonId: ID!
+}
+
+type LessonSavePayload {
+    lesson: Lesson!
+}
+
+enum LessonState {
+    DRAFT
+    PUBLISHED
+}
+
+type LessonStatus {
+    lesson: Lesson!
+    percentCompleted: Int!
+    currentLessonStep: LessonStep!
+}
+
+interface LessonStep {
+    id: ID
+}
+
+type LessonSummaryStep implements LessonStep {
+    id: ID
+    experiencePoints: Int!
+}
+
+type Mutation {
+    lessonSave(input: LessonSaveInput!): LessonSavePayload!
+    stepComplete(input: StepCompleteInput!): StepCompletePayload
+    themeCreate(input: ThemeCreateInput!): ThemeCreatePayload
+}
+
+type PageInfo {
+    hasNextPage: Boolean!
+    hasPreviousPage: Boolean!
+    startCursor: String
+    endCursor: String
+}
+
+type Query {
+    themes(
+        after: String
+        first: Int
+        before: String
+        last: Int
+    ): ThemeConnection
+    lessons(
+        after: String
+        first: Int
+        themeId: ID
+        state: LessonState
+    ): LessonConnection
+    step(id: ID!): StepUnion!
+    lessonStatuses(lessonIds: [ID!]!): [LessonStatus!]
+}
+
+type SlideStep implements LessonStep {
+    id: ID
+    title: String!
+    description: String!
+    image: Image!
+    previousStep: LessonStep
+}
+
+input StepCompleteInput {
+    stepId: ID!
+}
+
+type StepCompletePayload {
+    step: StepUnion
+    lessonStatus: LessonStatus!
+}
+
+union StepUnion =
+    SlideStep
+    | ExerciseStep
+    | LessonSummaryStep
+    | ExerciseSummaryStep
+
+type Theme {
+    id: ID
+    title: String!
+    thumbnail: Image!
+}
+
+type ThemeConnection {
+    totalCount: Int
+    pageInfo: PageInfo!
+    edges: [ThemeEdge]
+    items: [Theme!]
+}
+
+input ThemeCreateInput {
+    thumbnailId: ID
+    title: String!
+}
+
+type ThemeCreatePayload {
+    theme: Theme!
+}
+
+type ThemeEdge {
+    cursor: String!
+    node: Theme!
+}
+

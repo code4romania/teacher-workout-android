@@ -91,10 +91,10 @@ object Dependencies {
         const val VIEWMODEL = "io.insert-koin:koin-android-viewmodel:$VERSION"
     }
 
-    object Apollo {
-        const val VERSION = "2.5.4"
+    object Apollo3 {
+        const val VERSION = "3.0.0"
 
-        const val RUNTIME = "com.apollographql.apollo:apollo-runtime:$VERSION"
-        const val COROUTINES_SUPPORT = "com.apollographql.apollo:apollo-coroutines-support:$VERSION"
+        const val RUNTIME = "com.apollographql.apollo3:apollo-runtime:$VERSION"
+        const val COROUTINES_SUPPORT = "com.apollographql.apollo3:apollo-coroutines-support:$VERSION"
     }
 }

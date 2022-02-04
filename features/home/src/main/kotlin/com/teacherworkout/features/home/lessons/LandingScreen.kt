@@ -108,9 +108,9 @@ fun LandingScreen(
             } else {
                 lessonsItem(
                     listTitle = R.string.lessons_in_progress,
-                    lessons = state.lessons.take(LessonInProgressItems),
+                    lessonStatuses = state.lessonStatuses.take(LessonInProgressItems),
                     onLessonClick = { lesson ->
-                        onSendEvent(HomeContract.Event.SelectLesson(lesson.id))
+                        onSendEvent(HomeContract.Event.SelectLesson(lesson.id!!))
                     }
                 )
                 item {
@@ -119,9 +119,9 @@ fun LandingScreen(
 
                 lessonsItem(
                     listTitle = R.string.new_lessons,
-                    lessons = state.lessons.take(NewLessonsItems),
+                    lessonStatuses = state.lessonStatuses.take(NewLessonsItems),
                     onLessonClick = { lesson ->
-                        onSendEvent(HomeContract.Event.SelectLesson(lesson.id))
+                        onSendEvent(HomeContract.Event.SelectLesson(lesson.id!!))
                     }
                 )
                 item {
@@ -131,7 +131,7 @@ fun LandingScreen(
                 lessonThemesItem(
                     lessonThemes = state.lessonThemes,
                     onLessonThemeClick = { lessonTheme ->
-                        onSendEvent(HomeContract.Event.SelectLessonTheme(lessonTheme.id))
+                        onSendEvent(HomeContract.Event.SelectLessonTheme(lessonTheme.id!!))
                     }
                 )
                 item {

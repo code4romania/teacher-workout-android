@@ -22,7 +22,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.teacherworkout.commons.ui.model.Lesson
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -101,20 +100,19 @@ fun LessonStartScreen(
                 state.lesson?.let { lesson->
                     LessonTitleText(title = lesson.title)
                     Spacer(modifier = Modifier.height(space24dp))
-                    LessonThemeTitleText(title = lesson.lessonThemeTitle)
+                    LessonThemeTitleText(title = lesson.theme.title)
                     Spacer(modifier = Modifier.height(space16dp))
-                    //TODO: determine which lesson attribute to use for the duration text
-                    DurationText(duration = "${lesson.remainingMinutes} ${stringResource(R.string.min)}")
+                    DurationText(duration = lesson.duration.displayValue)
                     Spacer(modifier = Modifier.height(space24dp))
                     StartContinueButton(
-                        lessonStarted = lesson.started,
-                        onClick = { onSendEvent(LessonContract.Event.StartContinue()) }
+                        lessonStarted = false,
+                        onClick = { onSendEvent(LessonContract.Event.StartContinue) }
                     )
                     Spacer(modifier = Modifier.height(space24dp))
-                    if (lesson.saved) {
-                        UnsaveButton(onClick = { onSendEvent(LessonContract.Event.Unsave()) })
+                    if (false) {
+                        UnsaveButton(onClick = { onSendEvent(LessonContract.Event.Unsave) })
                     } else {
-                        SaveButton(onClick = { onSendEvent(LessonContract.Event.Save()) })
+                        SaveButton(onClick = { onSendEvent(LessonContract.Event.Save) })
                     }
                 }
             }
@@ -136,7 +134,7 @@ private fun StartContinueButton(
         onClick = onClick,
         shape = RoundedCornerShape(50)
     ) {
-        Text(stringResource(if (lessonStarted) R.string.start_lesson_label else R.string.continue_lesson_label))
+        Text(stringResource(if (!lessonStarted) R.string.start_lesson_label else R.string.continue_lesson_label))
     }
 }
 
@@ -218,24 +216,4 @@ private fun UnsaveButton(onClick: () -> Unit) {
         //TODO: decide on a display name for the `Unsave` Button
         Text("TODO")
     }
-}
-
-@Preview
-@Composable
-fun LessonStartScreenPreview() {
-    LessonStartScreen(
-        LessonContract.State(
-            lesson = Lesson(
-                id = 1,
-                title = "Cum discuti cu elevii tai despre boli psihice",
-                lessonThemeTitle = "Cum discuti despre boli psihice",
-                imageResourceId = R.drawable.art1,
-                durationInMinutes = 7,
-                remainingMinutes = 4
-            )
-        ),
-        {},
-        flow {},
-        {}
-    )
 }

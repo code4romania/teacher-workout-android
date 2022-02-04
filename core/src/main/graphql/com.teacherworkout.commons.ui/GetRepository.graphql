@@ -1,0 +1,42 @@
+query ThemeList {
+    themes {
+        totalCount
+        items {
+            ...LessonTheme
+        }
+    }
+}
+
+query LessonIdList($themeId: ID) {
+    lessons(themeId: $themeId) {
+        items {
+            id
+        }
+    }
+}
+
+query LessonEntity($lessonId: ID!) {
+    lessonStatuses(lessonIds: [$lessonId]) {
+        lesson {
+            ...Lesson
+        }
+    }
+    #for some reason, the lessonStatuses are not fetched properly without adding another query
+    lessons {
+        items {
+            id
+        }
+    }
+}
+
+query LessonStatusList($lessonIds: [ID!]!) {
+    lessonStatuses(lessonIds: $lessonIds) {
+        ...LessonStatus
+    }
+    #for some reason, the lessonStatuses are not fetched properly without adding another query
+    lessons {
+        items {
+            id
+        }
+    }
+}

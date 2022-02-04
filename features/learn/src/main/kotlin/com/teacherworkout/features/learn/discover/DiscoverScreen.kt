@@ -17,7 +17,6 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import com.teacherworkout.commons.ui.composables.lessonThemesItem
 import com.teacherworkout.commons.ui.composables.SearchView
-import com.teacherworkout.commons.ui.data.impl.FakeLessonsRepository
 import com.teacherworkout.features.learn.R
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
@@ -102,7 +101,7 @@ fun DiscoverScreen(
                 lessonThemesItem(
                     lessonThemes = state.lessonThemes,
                     onLessonThemeClick = { lessonTheme ->
-                        onSendEvent(DiscoverContract.Event.SelectLessonTheme(lessonTheme.id))
+                        onSendEvent(DiscoverContract.Event.SelectLessonTheme(lessonTheme.id!!))
                     }
                 )
                 item {
@@ -115,21 +114,6 @@ fun DiscoverScreen(
             hostState = snackbarHostState
         )
     }
-}
-
-@Preview
-@Composable
-fun DiscoverScreenPreview() {
-    DiscoverScreen(
-        state = DiscoverContract.State(
-            searchInput = TextFieldValue(),
-            lessonThemes = FakeLessonsRepository().dummyLessonThemes,
-            isLoading = false
-        ),
-        onSendEvent = {},
-        effects = flow {},
-        onNavigationRequest = {}
-    )
 }
 
 @Preview

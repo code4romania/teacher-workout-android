@@ -2,13 +2,13 @@ package com.teacherworkout.features.lesson
 
 import androidx.lifecycle.viewModelScope
 import com.teacherworkout.commons.ui.base.BaseViewModel
-import com.teacherworkout.commons.ui.data.LessonsRepository
-import com.teacherworkout.commons.ui.data.Result
+import com.teacherworkout.core.data.repositories.LessonsRepository
+import com.teacherworkout.core.data.Result
 import kotlinx.coroutines.launch
 
 //TODO: properly implement the LessonViewModel
 class LessonViewModel(
-    private val lessonId: Long,
+    private val lessonId: String,
     private val lessonsRepository: LessonsRepository
 ): BaseViewModel<LessonContract.Event, LessonContract.State, LessonContract.Effect>() {
     override fun setInitialState(): LessonContract.State {
@@ -25,8 +25,7 @@ class LessonViewModel(
 
     init {
         viewModelScope.launch {
-            val result = lessonsRepository.getLesson(lessonId)
-            when(result) {
+            when(val result = lessonsRepository.getLesson(lessonId)) {
                 is Result.Success -> {
                     val lesson = result.data
                     setState { copy(lesson = lesson) }
@@ -39,18 +38,15 @@ class LessonViewModel(
     }
 
     private fun startContinue() {
-        val lesson = viewState.value.lesson
-        setState { copy(lesson = lesson?.copy(started = !lesson.started)) }
+
     }
 
     private fun save() {
-        val lesson = viewState.value.lesson
-        setState { copy(lesson = lesson?.copy(saved = true)) }
+
     }
 
     private fun unsave() {
-        val lesson = viewState.value.lesson
-        setState { copy(lesson = lesson?.copy(saved = false)) }
+
     }
 
     private fun navigateUp() {

@@ -11,8 +11,8 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import com.teacherworkout.commons.ui.model.LessonTheme
 import com.teacherworkout.commons.ui.R
+import com.teacherworkout.core.fragment.LessonTheme
 
 fun LazyListScope.lessonThemesItem(
     lessonThemes: List<LessonTheme>,

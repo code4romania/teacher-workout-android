@@ -12,4 +12,9 @@ object BuildPlugins {
     const val KTLINT = "plugins.ktlint"
     const val SPOTLESS = "plugins.spotless"
     const val UPDATE_DEPENDENCIES = "plugins.update-dependencies"
+
+    object Apollo3 {
+        const val VERSION = "3.0.0"
+        const val ID = "com.apollographql.apollo3"
+    }
 }

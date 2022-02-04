@@ -3,10 +3,7 @@ package com.teacherworkout.commons.ui.composables
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
@@ -16,9 +13,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.painterResource
+import coil.compose.rememberImagePainter
 import com.teacherworkout.commons.ui.R
-import com.teacherworkout.commons.ui.model.LessonTheme
+import com.teacherworkout.core.fragment.LessonTheme
 
 @Composable
 fun LessonThemeCard(
@@ -39,10 +36,14 @@ fun LessonThemeCard(
             modifier = Modifier.fillMaxSize()
         ){
             Image(
-                modifier = Modifier.fillMaxHeight(),
-                contentScale = ContentScale.FillHeight,
-                painter = painterResource(id = lessonTheme.imageResourceId),
-                contentDescription = lessonTheme.title
+                modifier = Modifier
+                    .aspectRatio(1f)
+                    .fillMaxHeight(),
+                contentScale = ContentScale.Crop,
+                painter = rememberImagePainter(lessonTheme.thumbnail.url) {
+                    error(R.drawable.art1)
+                },
+                contentDescription = lessonTheme.thumbnail.description
             )
             Row(
                 modifier = Modifier
