@@ -107,7 +107,6 @@ private fun LessonScreenBody(
                 Spacer(modifier = Modifier.height(space24dp))
                 LessonThemeTitleText(title = lesson.lessonThemeTitle)
                 Spacer(modifier = Modifier.height(space16dp))
-                //TODO: determine which lesson attribute to use for the duration text
                 DurationText(duration = "${lesson.remainingMinutes} ${stringResource(R.string.min)}")
                 Spacer(modifier = Modifier.height(space24dp))
                 StartContinueButton(
@@ -116,7 +115,7 @@ private fun LessonScreenBody(
                 )
                 Spacer(modifier = Modifier.height(space24dp))
                 if (lesson.saved) {
-                    UnsaveButton(onClick = { onSendEvent(LessonContract.Event.Unsave) })
+                    DeleteButton(onClick = { onSendEvent(LessonContract.Event.Unsave) })
                 } else {
                     SaveButton(onClick = { onSendEvent(LessonContract.Event.Save) })
                 }
@@ -183,10 +182,9 @@ private fun DurationText(duration: String) {
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.Center
     ) {
-        //TODO: set the content description to the duration icon
         Icon(
             imageVector = Icons.Default.Schedule,
-            contentDescription = "",
+            contentDescription = stringResource(id = R.string.schedule_content_description),
             tint = MaterialTheme.colors.primary
         )
         Text(
@@ -217,7 +215,7 @@ private fun SaveButton(onClick: () -> Unit) {
 }
 
 @Composable
-private fun UnsaveButton(onClick: () -> Unit) {
+private fun DeleteButton(onClick: () -> Unit) {
     val minTouchSize = dimensionResource(id = R.dimen.min_touch_size)
 
     Button(
@@ -227,8 +225,7 @@ private fun UnsaveButton(onClick: () -> Unit) {
         onClick = onClick,
         shape = MaterialTheme.shapes.large
     ) {
-        //TODO: decide on a display name for the `Unsave` Button
-        Text("TODO")
+        Text(stringResource(id = R.string.delete_lesson_label))
     }
 }
 

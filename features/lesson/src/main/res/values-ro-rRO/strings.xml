@@ -3,4 +3,7 @@
     <string name="start_lesson_label">ÎNCEPE LECȚIA</string>
     <string name="continue_lesson_label">CONTINUĂ LECȚIA</string>
     <string name="save_lesson_label">SALVEAZĂ LECȚIA</string>
+    <string name="delete_lesson_label">STERGE LECȚIA</string>
+
+    <string name="schedule_content_description">calendar</string>
 </resources>
