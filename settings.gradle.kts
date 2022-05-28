@@ -1,4 +1,5 @@
 rootProject.name = "teacher-workout"
+
 include(
     ":app",
     ":core",
@@ -6,7 +7,7 @@ include(
     ":commons:views",
     ":features:account",
     ":features:home",
-    ":features:learn",
-    ":features:profile"
+    ":features:discover",
+    ":features:profile",
+    ":features:lesson"
 )
-include(":features:lesson")

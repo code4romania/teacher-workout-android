@@ -19,14 +19,13 @@
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/features" />
             <option value="$PROJECT_DIR$/features/account" />
+            <option value="$PROJECT_DIR$/features/discover" />
             <option value="$PROJECT_DIR$/features/home" />
-            <option value="$PROJECT_DIR$/features/learn" />
             <option value="$PROJECT_DIR$/features/lesson" />
             <option value="$PROJECT_DIR$/features/profile" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
-        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>

@@ -1,0 +1,13 @@
+query ThemesQuery {
+    themes {
+        edges {
+            node {
+                id,
+                thumbnail {
+                   url
+                }
+                title
+            }
+        }
+    }
+}

@@ -1,0 +1,1930 @@
+{
+  "__schema": {
+    "queryType": {
+      "name": "Query"
+    },
+    "mutationType": {
+      "name": "Mutation"
+    },
+    "types": [
+      {
+        "kind": "ENUM",
+        "name": "AnswerStatus",
+        "enumValues": [
+          {
+            "name": "CORRECT",
+            "isDeprecated": false
+          },
+          {
+            "name": "INCORRECT",
+            "isDeprecated": false
+          },
+          {
+            "name": "NONE",
+            "isDeprecated": false
+          },
+          {
+            "name": "Correct",
+            "description": "Correct.",
+            "isDeprecated": false
+          },
+          {
+            "name": "Incorrect",
+            "description": "Incorrect.",
+            "isDeprecated": false
+          },
+          {
+            "name": "None",
+            "description": "None.",
+            "isDeprecated": false
+          }
+        ]
+      },
+      {
+        "kind": "ENUM",
+        "name": "DurationUnit",
+        "enumValues": [
+          {
+            "name": "MINUTES",
+            "isDeprecated": false
+          },
+          {
+            "name": "HOURS",
+            "isDeprecated": false
+          },
+          {
+            "name": "Minutes",
+            "description": "Minutes.",
+            "isDeprecated": false
+          },
+          {
+            "name": "Hours",
+            "description": "Hours.",
+            "isDeprecated": false
+          }
+        ]
+      },
+      {
+        "kind": "ENUM",
+        "name": "LessonState",
+        "enumValues": [
+          {
+            "name": "DRAFT",
+            "isDeprecated": false
+          },
+          {
+            "name": "PUBLISHED",
+            "isDeprecated": false
+          }
+        ]
+      },
+      {
+        "kind": "ENUM",
+        "name": "__DirectiveLocation",
+        "description": "A Directive can be adjacent to many parts of the GraphQL language, a __DirectiveLocation describes one such possible adjacencies.",
+        "enumValues": [
+          {
+            "name": "QUERY",
+            "description": "Location adjacent to a query operation.",
+            "isDeprecated": false
+          },
+          {
+            "name": "MUTATION",
+            "description": "Location adjacent to a mutation operation.",
+            "isDeprecated": false
+          },
+          {
+            "name": "SUBSCRIPTION",
+            "description": "Location adjacent to a subscription operation.",
+            "isDeprecated": false
+          },
+          {
+            "name": "FIELD",
+            "description": "Location adjacent to a field.",
+            "isDeprecated": false
+          },
+          {
+            "name": "FRAGMENT_DEFINITION",
+            "description": "Location adjacent to a fragment definition.",
+            "isDeprecated": false
+          },
+          {
+            "name": "FRAGMENT_SPREAD",
+            "description": "Location adjacent to a fragment spread.",
+            "isDeprecated": false
+          },
+          {
+            "name": "INLINE_FRAGMENT",
+            "description": "Location adjacent to an inline fragment.",
+            "isDeprecated": false
+          },
+          {
+            "name": "SCHEMA",
+            "description": "Location adjacent to a schema definition.",
+            "isDeprecated": false
+          },
+          {
+            "name": "SCALAR",
+            "description": "Location adjacent to a scalar definition.",
+            "isDeprecated": false
+          },
+          {
+            "name": "OBJECT",
+            "description": "Location adjacent to an object type definition.",
+            "isDeprecated": false
+          },
+          {
+            "name": "FIELD_DEFINITION",
+            "description": "Location adjacent to a field definition.",
+            "isDeprecated": false
+          },
+          {
+            "name": "ARGUMENT_DEFINITION",
+            "description": "Location adjacent to an argument definition.",
+            "isDeprecated": false
+          },
+          {
+            "name": "INTERFACE",
+            "description": "Location adjacent to an interface definition.",
+            "isDeprecated": false
+          },
+          {
+            "name": "UNION",
+            "description": "Location adjacent to a union definition.",
+            "isDeprecated": false
+          },
+          {
+            "name": "ENUM",
+            "description": "Location adjacent to an enum definition",
+            "isDeprecated": false
+          },
+          {
+            "name": "ENUM_VALUE",
+            "description": "Location adjacent to an enum value definition",
+            "isDeprecated": false
+          },
+          {
+            "name": "INPUT_OBJECT",
+            "description": "Location adjacent to an input object type definition.",
+            "isDeprecated": false
+          },
+          {
+            "name": "INPUT_FIELD_DEFINITION",
+            "description": "Location adjacent to an input object field definition.",
+            "isDeprecated": false
+          }
+        ]
+      },
+      {
+        "kind": "ENUM",
+        "name": "__TypeKind",
+        "description": "An enum describing what kind of type a given __Type is.",
+        "enumValues": [
+          {
+            "name": "SCALAR",
+            "description": "Indicates this type is a scalar.",
+            "isDeprecated": false
+          },
+          {
+            "name": "OBJECT",
+            "description": "Indicates this type is an object. `fields` and `possibleTypes` are valid fields.",
+            "isDeprecated": false
+          },
+          {
+            "name": "INTERFACE",
+            "description": "Indicates this type is an interface. `fields` and `possibleTypes` are valid fields.",
+            "isDeprecated": false
+          },
+          {
+            "name": "UNION",
+            "description": "Indicates this type is a union. `possibleTypes` is a valid field.",
+            "isDeprecated": false
+          },
+          {
+            "name": "ENUM",
+            "description": "Indicates this type is an enum. `enumValues` is a valid field.",
+            "isDeprecated": false
+          },
+          {
+            "name": "INPUT_OBJECT",
+            "description": "Indicates this type is an input object. `inputFields` is a valid field.",
+            "isDeprecated": false
+          },
+          {
+            "name": "LIST",
+            "description": "Indicates this type is a list. `ofType` is a valid field.",
+            "isDeprecated": false
+          },
+          {
+            "name": "NON_NULL",
+            "description": "Indicates this type is a non-null. `ofType` is a valid field.",
+            "isDeprecated": false
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "__EnumValue",
+        "description": "One possible value for a given Enum. Enum values are unique values, not a placeholder for a string or numeric value. However an Enum value is returned in a JSON response as a string.",
+        "fields": [
+          {
+            "name": "name",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "description",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String"
+            },
+            "args": []
+          },
+          {
+            "name": "isDeprecated",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "deprecationReason",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String"
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "SCALAR",
+        "name": "String"
+      },
+      {
+        "kind": "SCALAR",
+        "name": "Boolean"
+      },
+      {
+        "kind": "OBJECT",
+        "name": "__Directive",
+        "description": "A Directive provides a way to describe alternate runtime execution and type validation behavior in a GraphQL document.\n\nIn some cases, you need to provide options to alter GraphQL's execution behavior in ways field arguments will not suffice, such as conditionally including or skipping a field. Directives provide this by describing additional information to the executor.",
+        "fields": [
+          {
+            "name": "name",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "description",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String"
+            },
+            "args": []
+          },
+          {
+            "name": "locations",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "ENUM",
+                    "name": "__DirectiveLocation"
+                  }
+                }
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "args",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "__InputValue"
+                  }
+                }
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "onOperation",
+            "isDeprecated": true,
+            "deprecationReason": "Use 'locations'.",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "onFragment",
+            "isDeprecated": true,
+            "deprecationReason": "Use 'locations'.",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "onField",
+            "isDeprecated": true,
+            "deprecationReason": "Use 'locations'.",
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean"
+              }
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "__InputValue",
+        "description": "Arguments provided to Fields or Directives and the input fields of an InputObject are represented as Input Values which describe their type and optionally a default value.",
+        "fields": [
+          {
+            "name": "name",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "description",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String"
+            },
+            "args": []
+          },
+          {
+            "name": "type",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "__Type"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "defaultValue",
+            "description": "A GraphQL-formatted string representing the default value for this input value.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String"
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "__Type",
+        "description": "The fundamental unit of any GraphQL Schema is the type. There are many kinds of types in GraphQL as represented by the `__TypeKind` enum.\n\nDepending on the kind of a type, certain fields describe information about that type. Scalar types provide no information beyond a name and description, while Enum types provide their values. Object and Interface types provide the fields they describe. Abstract types, Union and Interface, provide the Object types possible at runtime. List and NonNull types compose other types.",
+        "fields": [
+          {
+            "name": "kind",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "ENUM",
+                "name": "__TypeKind"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "name",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String"
+            },
+            "args": []
+          },
+          {
+            "name": "description",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String"
+            },
+            "args": []
+          },
+          {
+            "name": "fields",
+            "isDeprecated": false,
+            "type": {
+              "kind": "LIST",
+              "ofType": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "__Field"
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "includeDeprecated",
+                "isDeprecated": false,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Boolean"
+                },
+                "defaultValue": "false"
+              }
+            ]
+          },
+          {
+            "name": "interfaces",
+            "isDeprecated": false,
+            "type": {
+              "kind": "LIST",
+              "ofType": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "__Type"
+                }
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "possibleTypes",
+            "isDeprecated": false,
+            "type": {
+              "kind": "LIST",
+              "ofType": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "__Type"
+                }
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "enumValues",
+            "isDeprecated": false,
+            "type": {
+              "kind": "LIST",
+              "ofType": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "__EnumValue"
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "includeDeprecated",
+                "isDeprecated": false,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Boolean"
+                },
+                "defaultValue": "false"
+              }
+            ]
+          },
+          {
+            "name": "inputFields",
+            "isDeprecated": false,
+            "type": {
+              "kind": "LIST",
+              "ofType": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "__InputValue"
+                }
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "ofType",
+            "isDeprecated": false,
+            "type": {
+              "kind": "OBJECT",
+              "name": "__Type"
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "__Field",
+        "description": "Object and Interface types are described by a list of Fields, each of which has a name, potentially a list of arguments, and a return type.",
+        "fields": [
+          {
+            "name": "name",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "description",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String"
+            },
+            "args": []
+          },
+          {
+            "name": "args",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "__InputValue"
+                  }
+                }
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "type",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "__Type"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "isDeprecated",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "deprecationReason",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String"
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "__Schema",
+        "description": "A GraphQL Schema defines the capabilities of a GraphQL server. It exposes all available types and directives on the server, as well as the entry points for query, mutation, and subscription operations.",
+        "fields": [
+          {
+            "name": "description",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String"
+            },
+            "args": []
+          },
+          {
+            "name": "types",
+            "description": "A list of all types supported by this server.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "__Type"
+                  }
+                }
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "queryType",
+            "description": "The type that query operations will be rooted at.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "__Type"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "mutationType",
+            "description": "If this server supports mutation, the type that mutation operations will be rooted at.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "OBJECT",
+              "name": "__Type"
+            },
+            "args": []
+          },
+          {
+            "name": "subscriptionType",
+            "description": "If this server supports subscription, the type that subscription operations will be rooted at.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "OBJECT",
+              "name": "__Type"
+            },
+            "args": []
+          },
+          {
+            "name": "directives",
+            "description": "A list of all directives supported by this server.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "__Directive"
+                  }
+                }
+              }
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Answer",
+        "fields": [
+          {
+            "name": "id",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID"
+            },
+            "args": []
+          },
+          {
+            "name": "title",
+            "description": "The Title of the Answer.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String"
+              }
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "SCALAR",
+        "name": "ID"
+      },
+      {
+        "kind": "OBJECT",
+        "name": "AnswerResult",
+        "fields": [
+          {
+            "name": "answer",
+            "description": "The actual answer.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Answer"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "status",
+            "description": "The outcome for the answer.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "ENUM",
+                "name": "AnswerStatus"
+              }
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Duration",
+        "fields": [
+          {
+            "name": "value",
+            "description": "The amount.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "unit",
+            "description": "The Unit of the amount.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "ENUM",
+                "name": "DurationUnit"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "displayValue",
+            "description": "Formatted duration.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String"
+              }
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "SCALAR",
+        "name": "Int"
+      },
+      {
+        "kind": "OBJECT",
+        "name": "ExerciseStep",
+        "fields": [
+          {
+            "name": "id",
+            "description": "The id of the step.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID"
+            },
+            "args": []
+          },
+          {
+            "name": "question",
+            "description": "The question",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "answers",
+            "description": "The possible possible answers",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Answer"
+                }
+              }
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "LessonStep",
+        "fields": [
+          {
+            "name": "id",
+            "description": "The id of the step.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID"
+            },
+            "args": []
+          }
+        ],
+        "possibleTypes": [
+          {
+            "kind": "OBJECT",
+            "name": "ExerciseStep"
+          },
+          {
+            "kind": "OBJECT",
+            "name": "ExerciseSummaryStep"
+          },
+          {
+            "kind": "OBJECT",
+            "name": "LessonSummaryStep"
+          },
+          {
+            "kind": "OBJECT",
+            "name": "SlideStep"
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "ExerciseSummaryStep",
+        "fields": [
+          {
+            "name": "id",
+            "description": "The id of the step.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID"
+            },
+            "args": []
+          },
+          {
+            "name": "results",
+            "description": "Answer Results",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "LIST",
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "AnswerResult"
+                }
+              }
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Image",
+        "fields": [
+          {
+            "name": "url",
+            "description": "URL to the image.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String"
+            },
+            "args": []
+          },
+          {
+            "name": "description",
+            "description": "Image description for accessibility.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String"
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Lesson",
+        "fields": [
+          {
+            "name": "id",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID"
+            },
+            "args": []
+          },
+          {
+            "name": "title",
+            "description": "The title of the Lesson",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String"
+            },
+            "args": []
+          },
+          {
+            "name": "description",
+            "description": "The description of the Lesson",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String"
+            },
+            "args": []
+          },
+          {
+            "name": "thumbnail",
+            "description": "The thumbnail of the Lesson",
+            "isDeprecated": false,
+            "type": {
+              "kind": "OBJECT",
+              "name": "Image"
+            },
+            "args": []
+          },
+          {
+            "name": "theme",
+            "description": "The Theme of the Lesson",
+            "isDeprecated": false,
+            "type": {
+              "kind": "OBJECT",
+              "name": "Theme"
+            },
+            "args": []
+          },
+          {
+            "name": "duration",
+            "description": "The duration of the Lesson",
+            "isDeprecated": false,
+            "type": {
+              "kind": "OBJECT",
+              "name": "Duration"
+            },
+            "args": []
+          },
+          {
+            "name": "state",
+            "description": "The state of the Lesson.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "ENUM",
+                "name": "LessonState"
+              }
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Theme",
+        "fields": [
+          {
+            "name": "id",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID"
+            },
+            "args": []
+          },
+          {
+            "name": "title",
+            "description": "The title of the Theme",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String"
+            },
+            "args": []
+          },
+          {
+            "name": "thumbnail",
+            "description": "The thumbnail of the Theme",
+            "isDeprecated": false,
+            "type": {
+              "kind": "OBJECT",
+              "name": "Image"
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "LessonStatus",
+        "fields": [
+          {
+            "name": "lesson",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Lesson"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "percentCompleted",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "currentLessonStep",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "INTERFACE",
+                "name": "LessonStep"
+              }
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "LessonSummaryStep",
+        "fields": [
+          {
+            "name": "id",
+            "description": "The id of the step.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID"
+            },
+            "args": []
+          },
+          {
+            "name": "experiencePoints",
+            "description": "Total experience points for the lesson",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int"
+              }
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "SlideStep",
+        "fields": [
+          {
+            "name": "id",
+            "description": "The id of the step.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID"
+            },
+            "args": []
+          },
+          {
+            "name": "title",
+            "description": "The Lesson Title",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "description",
+            "description": "The Lesson Description",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "image",
+            "description": "The Lesson Image",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Image"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "previousStep",
+            "description": "The Previous Step",
+            "isDeprecated": false,
+            "type": {
+              "kind": "INTERFACE",
+              "name": "LessonStep"
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Query",
+        "fields": [
+          {
+            "name": "themes",
+            "isDeprecated": false,
+            "type": {
+              "kind": "OBJECT",
+              "name": "ThemeConnection"
+            },
+            "args": [
+              {
+                "name": "after",
+                "description": "Only look at connected edges with cursors greater than the value of `after`.",
+                "isDeprecated": false,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String"
+                }
+              },
+              {
+                "name": "first",
+                "description": "Specifies the number of edges to return starting from `after` or the first entry if `after` is not specified.",
+                "isDeprecated": false,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int"
+                }
+              },
+              {
+                "name": "before",
+                "description": "Only look at connected edges with cursors smaller than the value of `before`.",
+                "isDeprecated": false,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String"
+                }
+              },
+              {
+                "name": "last",
+                "description": "Specifies the number of edges to return counting reversely from `before`, or the last entry if `before` is not specified.",
+                "isDeprecated": false,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int"
+                }
+              }
+            ]
+          },
+          {
+            "name": "lessons",
+            "isDeprecated": false,
+            "type": {
+              "kind": "OBJECT",
+              "name": "LessonConnection"
+            },
+            "args": [
+              {
+                "name": "after",
+                "description": "Only look at connected edges with cursors greater than the value of `after`.",
+                "isDeprecated": false,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String"
+                }
+              },
+              {
+                "name": "first",
+                "description": "Specifies the number of edges to return starting from `after` or the first entry if `after` is not specified.",
+                "isDeprecated": false,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int"
+                }
+              },
+              {
+                "name": "themeId",
+                "description": "The id of the theme. Keep it null to ignore filtering.",
+                "isDeprecated": false,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "ID"
+                }
+              },
+              {
+                "name": "state",
+                "description": "The state of the lesson. Keep it null to ignore filtering.",
+                "isDeprecated": false,
+                "type": {
+                  "kind": "ENUM",
+                  "name": "LessonState"
+                }
+              }
+            ]
+          },
+          {
+            "name": "step",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "UNION",
+                "name": "StepUnion"
+              }
+            },
+            "args": [
+              {
+                "name": "id",
+                "description": "id of the step",
+                "isDeprecated": false,
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "ID"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "lessonStatuses",
+            "isDeprecated": false,
+            "type": {
+              "kind": "LIST",
+              "ofType": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "LessonStatus"
+                }
+              }
+            },
+            "args": [
+              {
+                "name": "lessonIds",
+                "description": "Ids of ",
+                "isDeprecated": false,
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "LIST",
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "ID"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "ThemeConnection",
+        "description": "A connection from an object to a list of objects of type `Theme`.",
+        "fields": [
+          {
+            "name": "totalCount",
+            "description": "A count of the total number of objects in this connection, ignoring pagination. This allows a client to fetch the first five objects by passing \"5\" as the argument to `first`, then fetch the total count so it could display \"5 of 83\", for example. In cases where we employ infinite scrolling or don't have an exact count of entries, this field will return `null`.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int"
+            },
+            "args": []
+          },
+          {
+            "name": "pageInfo",
+            "description": "Information to aid in pagination.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "PageInfo"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "edges",
+            "description": "A list of all of the edges returned in the connection.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "LIST",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "ThemeEdge"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "items",
+            "description": "A list of all of the objects returned in the connection. This is a convenience field provided for quickly exploring the API; rather than querying for \"{ edges { node } }\" when no edge data is needed, this field can be used instead. Note that when clients like Relay need to fetch the \"cursor\" field on the edge to enable efficient pagination, this shortcut cannot be used, and the full \"{ edges { node } } \" version should be used instead.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "LIST",
+              "ofType": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Theme"
+                }
+              }
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "PageInfo",
+        "description": "Information about pagination in a connection.",
+        "fields": [
+          {
+            "name": "hasNextPage",
+            "description": "When paginating forwards, are there more items?",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "hasPreviousPage",
+            "description": "When paginating backwards, are there more items?",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "startCursor",
+            "description": "When paginating backwards, the cursor to continue.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String"
+            },
+            "args": []
+          },
+          {
+            "name": "endCursor",
+            "description": "When paginating forwards, the cursor to continue.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String"
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "ThemeEdge",
+        "description": "An edge in a connection from an object to another object of type `Theme`.",
+        "fields": [
+          {
+            "name": "cursor",
+            "description": "A cursor for use in pagination",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "node",
+            "description": "The item at the end of the edge",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Theme"
+              }
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "LessonConnection",
+        "description": "A connection from an object to a list of objects of type `Lesson`.",
+        "fields": [
+          {
+            "name": "totalCount",
+            "description": "A count of the total number of objects in this connection, ignoring pagination. This allows a client to fetch the first five objects by passing \"5\" as the argument to `first`, then fetch the total count so it could display \"5 of 83\", for example. In cases where we employ infinite scrolling or don't have an exact count of entries, this field will return `null`.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int"
+            },
+            "args": []
+          },
+          {
+            "name": "pageInfo",
+            "description": "Information to aid in pagination.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "PageInfo"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "edges",
+            "description": "A list of all of the edges returned in the connection.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "LIST",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "LessonEdge"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "items",
+            "description": "A list of all of the objects returned in the connection. This is a convenience field provided for quickly exploring the API; rather than querying for \"{ edges { node } }\" when no edge data is needed, this field can be used instead. Note that when clients like Relay need to fetch the \"cursor\" field on the edge to enable efficient pagination, this shortcut cannot be used, and the full \"{ edges { node } } \" version should be used instead.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "LIST",
+              "ofType": {
+                "kind": "NON_NULL",
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Lesson"
+                }
+              }
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "LessonEdge",
+        "description": "An edge in a connection from an object to another object of type `Lesson`.",
+        "fields": [
+          {
+            "name": "cursor",
+            "description": "A cursor for use in pagination",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String"
+              }
+            },
+            "args": []
+          },
+          {
+            "name": "node",
+            "description": "The item at the end of the edge",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Lesson"
+              }
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "StepUnion",
+        "possibleTypes": [
+          {
+            "kind": "OBJECT",
+            "name": "SlideStep"
+          },
+          {
+            "kind": "OBJECT",
+            "name": "ExerciseStep"
+          },
+          {
+            "kind": "OBJECT",
+            "name": "LessonSummaryStep"
+          },
+          {
+            "kind": "OBJECT",
+            "name": "ExerciseSummaryStep"
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Mutation",
+        "fields": [
+          {
+            "name": "lessonSave",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "LessonSavePayload"
+              }
+            },
+            "args": [
+              {
+                "name": "input",
+                "isDeprecated": false,
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "LessonSaveInput"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "stepComplete",
+            "isDeprecated": false,
+            "type": {
+              "kind": "OBJECT",
+              "name": "StepCompletePayload"
+            },
+            "args": [
+              {
+                "name": "input",
+                "isDeprecated": false,
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "StepCompleteInput"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "themeCreate",
+            "isDeprecated": false,
+            "type": {
+              "kind": "OBJECT",
+              "name": "ThemeCreatePayload"
+            },
+            "args": [
+              {
+                "name": "input",
+                "isDeprecated": false,
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "ThemeCreateInput"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "themeUpdate",
+            "isDeprecated": false,
+            "type": {
+              "kind": "OBJECT",
+              "name": "ThemeUpdatePayload"
+            },
+            "args": [
+              {
+                "name": "input",
+                "isDeprecated": false,
+                "type": {
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "ThemeUpdateInput"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "LessonSavePayload",
+        "fields": [
+          {
+            "name": "lesson",
+            "description": "The newly created lesson.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Lesson"
+              }
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "LessonSaveInput",
+        "inputFields": [
+          {
+            "name": "lessonId",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "StepCompletePayload",
+        "fields": [
+          {
+            "name": "step",
+            "description": "The completed step.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "UNION",
+              "name": "StepUnion"
+            },
+            "args": []
+          },
+          {
+            "name": "lessonStatus",
+            "description": "The status of the lesson.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "LessonStatus"
+              }
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "StepCompleteInput",
+        "inputFields": [
+          {
+            "name": "stepId",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "ThemeCreatePayload",
+        "fields": [
+          {
+            "name": "theme",
+            "description": "The Theme.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Theme"
+              }
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "ThemeCreateInput",
+        "inputFields": [
+          {
+            "name": "thumbnailId",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID"
+            }
+          },
+          {
+            "name": "title",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "ThemeUpdatePayload",
+        "fields": [
+          {
+            "name": "theme",
+            "description": "The Theme.",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Theme"
+              }
+            },
+            "args": []
+          }
+        ]
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "ThemeUpdateInput",
+        "inputFields": [
+          {
+            "name": "id",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID"
+            }
+          },
+          {
+            "name": "thumbnailId",
+            "isDeprecated": false,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID"
+            }
+          },
+          {
+            "name": "title",
+            "isDeprecated": false,
+            "type": {
+              "kind": "NON_NULL",
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

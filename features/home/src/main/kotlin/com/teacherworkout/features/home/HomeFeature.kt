@@ -11,12 +11,12 @@ import androidx.navigation.navigation
 import com.teacherworkout.commons.ui.composables.BottomBarScaffold
 import com.teacherworkout.commons.ui.navigation.AppDestinations
 import com.teacherworkout.features.home.di.homeModule
-import com.teacherworkout.features.home.lessons.HomeContract
-import com.teacherworkout.features.home.lessons.HomeViewModel
-import com.teacherworkout.features.home.lessons.LandingScreen
-import com.teacherworkout.features.learn.learnFeature
-import com.teacherworkout.features.profile.profileFeature
+import com.teacherworkout.features.home.landing.LandingContract
+import com.teacherworkout.features.home.landing.LandingViewModel
+import com.teacherworkout.features.home.landing.LandingScreen
+import com.teacherworkout.features.discover.discoverFeature
 import com.teacherworkout.features.lesson.lessonFeature
+import com.teacherworkout.features.profile.profileFeature
 import org.koin.androidx.compose.getViewModel
 import org.koin.core.context.GlobalContext.loadKoinModules
 
@@ -26,27 +26,32 @@ fun NavGraphBuilder.homeFeature(navHostController: NavHostController) {
         startDestination = AppDestinations.Home.Landing.route,
         route = AppDestinations.Features.home
     ) {
-        composable(route = AppDestinations.Home.Landing.route) {
-            HomeScreenDestination(navHostController)
-        }
-        learnFeature(navHostController)
+        landingFeature(navHostController)
+        discoverFeature(navHostController)
         profileFeature(navHostController)
+
         lessonFeature(navHostController)
+    }
+}
+
+private fun NavGraphBuilder.landingFeature(navHostController: NavHostController) {
+    composable(route = AppDestinations.Home.Landing.route) {
+        HomeScreenDestination(navHostController)
     }
 }
 
 @Composable
 private fun HomeScreenDestination(navHostController: NavHostController) {
-    val viewModel: HomeViewModel = getViewModel()
+    val viewModel: LandingViewModel = getViewModel()
     BottomBarScaffold(navHostController) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
             LandingScreen(
                 state = viewModel.viewState.value,
-                onSendEvent = { event -> viewModel.setEvent(event) },
+                sendEvent = { event -> viewModel.setEvent(event) },
                 effects = viewModel.effect,
-                onNavigationRequest = { navigationEffect: HomeContract.Effect.Navigation ->
+                onNavigationRequest = { navigationEffect: LandingContract.Effect.Navigation ->
                     when (navigationEffect) {
-                        is HomeContract.Effect.Navigation.ToLessonDetails -> {
+                        is LandingContract.Effect.Navigation.ToLessonDetails -> {
                             val lessonId = navigationEffect.lessonId
                             navHostController.navigate("home-lesson-landing/${lessonId}")
                         }

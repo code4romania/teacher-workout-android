@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
                 Scaffold {
                     NavHost(
                         navController = navHostController,
-                        startDestination = AppDestinations.Features.account
+                        startDestination = AppDestinations.Features.home
                     ) {
                         accountFeature(navHostController)
                         homeFeature(navHostController)

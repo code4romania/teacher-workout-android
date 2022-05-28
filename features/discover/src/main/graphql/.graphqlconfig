@@ -1,0 +1,15 @@
+{
+  "name": "Teacherworkout GraphQL Schema",
+  "schemaPath": "../../../../../schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "Default GraphQL Endpoint": {
+        "url": "https://teacher.heroesof.tech/graphql",
+        "headers": {
+          "user-agent": "JS GraphQL"
+        },
+        "introspect": false
+      }
+    }
+  }
+}

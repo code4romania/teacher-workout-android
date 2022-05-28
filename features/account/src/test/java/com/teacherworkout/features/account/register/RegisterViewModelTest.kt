@@ -23,7 +23,6 @@ class RegisterViewModelTest {
         viewModel = RegisterViewModel()
     }
 
-
     @Test
     fun `initialState is expected state`() {
         assertThat(viewModel.setInitialState()).isEqualTo(RegisterContract.State())

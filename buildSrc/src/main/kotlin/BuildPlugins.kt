@@ -6,6 +6,8 @@ object BuildPlugins {
     const val KOTLIN_ANDROID = "kotlin-android"
     const val KOTLIN_KAPT = "kotlin-kapt"
 
+    const val APOLLO = "com.apollographql.apollo3"
+
     const val NAVIGATION_SAFE_ARGS = "androidx.navigation.safeargs.kotlin"
 
     const val DETEKT = "plugins.detekt"

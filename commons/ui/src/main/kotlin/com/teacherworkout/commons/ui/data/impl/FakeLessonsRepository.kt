@@ -36,57 +36,57 @@ class FakeLessonsRepository : LessonsRepository {
     )
     val dummyLessonThemes = listOf(
         LessonTheme(
-            1,
+            "1",
             "ADHD",
             R.drawable.art4
         ),
         LessonTheme(
-            2,
+            "2",
             "Incluziune",
             R.drawable.art1
         ),
         LessonTheme(
-            3,
+            "3",
             "Dizabilitati motorii",
             R.drawable.art3
         ),
         LessonTheme(
-            4,
+            "4",
             "Cum discuti despre boli psihice",
             R.drawable.art2
         ),
         LessonTheme(
-            5,
+            "5",
             "Dictie si vorbire",
             R.drawable.art1
         ),
         LessonTheme(
-            6,
+            "6",
             "Interactiunea la clasa",
             R.drawable.art2
         ),
         LessonTheme(
-            7,
+            "7",
             "Gestionarea crizelor",
             R.drawable.art3
         ),
         LessonTheme(
-            8,
+            "8",
             "ADHD",
             R.drawable.art4
         ),
         LessonTheme(
-            9,
+            "9",
             "Incluziune",
             R.drawable.art1
         ),
         LessonTheme(
-            10,
+            "10",
             "Dizabilitati motorii",
             R.drawable.art3
         ),
         LessonTheme(
-            11,
+            "11",
             "Cum discuti despre boli psihice",
             R.drawable.art2
         ),

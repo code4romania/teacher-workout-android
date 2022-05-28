@@ -1,0 +1,265 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+interface LessonStep {
+    "The id of the step."
+    id: ID
+}
+
+union StepUnion = ExerciseStep | ExerciseSummaryStep | LessonSummaryStep | SlideStep
+
+type Answer {
+    id: ID
+    "The Title of the Answer."
+    title: String!
+}
+
+type AnswerResult {
+    "The actual answer."
+    answer: Answer!
+    "The outcome for the answer."
+    status: AnswerStatus!
+}
+
+type Duration {
+    "Formatted duration."
+    displayValue: String!
+    "The Unit of the amount."
+    unit: DurationUnit!
+    "The amount."
+    value: Int!
+}
+
+type ExerciseStep implements LessonStep {
+    "The possible possible answers"
+    answers: [Answer]!
+    "The id of the step."
+    id: ID
+    "The question"
+    question: String!
+}
+
+type ExerciseSummaryStep implements LessonStep {
+    "The id of the step."
+    id: ID
+    "Answer Results"
+    results: [AnswerResult]!
+}
+
+type Image {
+    "Image description for accessibility."
+    description: String
+    "URL to the image."
+    url: String
+}
+
+type Lesson {
+    "The description of the Lesson"
+    description: String
+    "The duration of the Lesson"
+    duration: Duration
+    id: ID
+    "The state of the Lesson."
+    state: LessonState!
+    "The Theme of the Lesson"
+    theme: Theme
+    "The thumbnail of the Lesson"
+    thumbnail: Image
+    "The title of the Lesson"
+    title: String
+}
+
+"A connection from an object to a list of objects of type `Lesson`."
+type LessonConnection {
+    "A list of all of the edges returned in the connection."
+    edges: [LessonEdge]
+    "A list of all of the objects returned in the connection. This is a convenience field provided for quickly exploring the API; rather than querying for \"{ edges { node } }\" when no edge data is needed, this field can be used instead. Note that when clients like Relay need to fetch the \"cursor\" field on the edge to enable efficient pagination, this shortcut cannot be used, and the full \"{ edges { node } } \" version should be used instead."
+    items: [Lesson!]
+    "Information to aid in pagination."
+    pageInfo: PageInfo!
+    "A count of the total number of objects in this connection, ignoring pagination. This allows a client to fetch the first five objects by passing \"5\" as the argument to `first`, then fetch the total count so it could display \"5 of 83\", for example. In cases where we employ infinite scrolling or don't have an exact count of entries, this field will return `null`."
+    totalCount: Int
+}
+
+"An edge in a connection from an object to another object of type `Lesson`."
+type LessonEdge {
+    "A cursor for use in pagination"
+    cursor: String!
+    "The item at the end of the edge"
+    node: Lesson!
+}
+
+type LessonSavePayload {
+    "The newly created lesson."
+    lesson: Lesson!
+}
+
+type LessonStatus {
+    currentLessonStep: LessonStep!
+    lesson: Lesson!
+    percentCompleted: Int!
+}
+
+type LessonSummaryStep implements LessonStep {
+    "Total experience points for the lesson"
+    experiencePoints: Int!
+    "The id of the step."
+    id: ID
+}
+
+type Mutation {
+    lessonSave(input: LessonSaveInput!): LessonSavePayload!
+    stepComplete(input: StepCompleteInput!): StepCompletePayload
+    themeCreate(input: ThemeCreateInput!): ThemeCreatePayload
+    themeUpdate(input: ThemeUpdateInput!): ThemeUpdatePayload
+}
+
+"Information about pagination in a connection."
+type PageInfo {
+    "When paginating forwards, the cursor to continue."
+    endCursor: String
+    "When paginating forwards, are there more items?"
+    hasNextPage: Boolean!
+    "When paginating backwards, are there more items?"
+    hasPreviousPage: Boolean!
+    "When paginating backwards, the cursor to continue."
+    startCursor: String
+}
+
+type Query {
+    lessonStatuses(
+        "Ids of "
+        lessonIds: [ID!]!
+    ): [LessonStatus!]
+    lessons(
+        "Only look at connected edges with cursors greater than the value of `after`."
+        after: String,
+        "Specifies the number of edges to return starting from `after` or the first entry if `after` is not specified."
+        first: Int,
+        "The state of the lesson. Keep it null to ignore filtering."
+        state: LessonState,
+        "The id of the theme. Keep it null to ignore filtering."
+        themeId: ID
+    ): LessonConnection
+    step(
+        "id of the step"
+        id: ID!
+    ): StepUnion!
+    themes(
+        "Only look at connected edges with cursors greater than the value of `after`."
+        after: String,
+        "Only look at connected edges with cursors smaller than the value of `before`."
+        before: String,
+        "Specifies the number of edges to return starting from `after` or the first entry if `after` is not specified."
+        first: Int,
+        "Specifies the number of edges to return counting reversely from `before`, or the last entry if `before` is not specified."
+        last: Int
+    ): ThemeConnection
+}
+
+type SlideStep implements LessonStep {
+    "The Lesson Description"
+    description: String!
+    "The id of the step."
+    id: ID
+    "The Lesson Image"
+    image: Image!
+    "The Previous Step"
+    previousStep: LessonStep
+    "The Lesson Title"
+    title: String!
+}
+
+type StepCompletePayload {
+    "The status of the lesson."
+    lessonStatus: LessonStatus!
+    "The completed step."
+    step: StepUnion
+}
+
+type Theme {
+    id: ID
+    "The thumbnail of the Theme"
+    thumbnail: Image
+    "The title of the Theme"
+    title: String
+}
+
+"A connection from an object to a list of objects of type `Theme`."
+type ThemeConnection {
+    "A list of all of the edges returned in the connection."
+    edges: [ThemeEdge]
+    "A list of all of the objects returned in the connection. This is a convenience field provided for quickly exploring the API; rather than querying for \"{ edges { node } }\" when no edge data is needed, this field can be used instead. Note that when clients like Relay need to fetch the \"cursor\" field on the edge to enable efficient pagination, this shortcut cannot be used, and the full \"{ edges { node } } \" version should be used instead."
+    items: [Theme!]
+    "Information to aid in pagination."
+    pageInfo: PageInfo!
+    "A count of the total number of objects in this connection, ignoring pagination. This allows a client to fetch the first five objects by passing \"5\" as the argument to `first`, then fetch the total count so it could display \"5 of 83\", for example. In cases where we employ infinite scrolling or don't have an exact count of entries, this field will return `null`."
+    totalCount: Int
+}
+
+type ThemeCreatePayload {
+    "The Theme."
+    theme: Theme!
+}
+
+"An edge in a connection from an object to another object of type `Theme`."
+type ThemeEdge {
+    "A cursor for use in pagination"
+    cursor: String!
+    "The item at the end of the edge"
+    node: Theme!
+}
+
+type ThemeUpdatePayload {
+    "The Theme."
+    theme: Theme!
+}
+
+enum AnswerStatus {
+    CORRECT
+    "Correct."
+    Correct
+    INCORRECT
+    "Incorrect."
+    Incorrect
+    NONE
+    "None."
+    None
+}
+
+enum DurationUnit {
+    HOURS
+    "Hours."
+    Hours
+    MINUTES
+    "Minutes."
+    Minutes
+}
+
+enum LessonState {
+    DRAFT
+    PUBLISHED
+}
+
+input LessonSaveInput {
+    lessonId: ID!
+}
+
+input StepCompleteInput {
+    stepId: ID!
+}
+
+input ThemeCreateInput {
+    thumbnailId: ID
+    title: String!
+}
+
+input ThemeUpdateInput {
+    id: ID
+    thumbnailId: ID
+    title: String!
+}
