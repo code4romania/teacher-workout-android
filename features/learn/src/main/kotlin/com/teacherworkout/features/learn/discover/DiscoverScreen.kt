@@ -118,7 +118,7 @@ fun DiscoverScreenPreview() {
     DiscoverScreen(
         state = DiscoverContract.State(
             searchInput = TextFieldValue(),
-            themes = listOf(Theme(id = 1, "Some theme"), Theme(2, "Other theme")),
+            themes = listOf(Theme(id = "1", "Some theme"), Theme("2", "Other theme")),
             isLoading = false
         ),
         onSendEvent = {},

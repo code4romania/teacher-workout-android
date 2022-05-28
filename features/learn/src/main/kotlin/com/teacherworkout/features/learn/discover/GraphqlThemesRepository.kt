@@ -17,7 +17,7 @@ class GraphqlThemesRepository(private val client: ApolloClient) : ThemesReposito
     fun List<ThemesQuery.Edge?>.toThemes(): List<Theme> =
         this.map {
             with(it?.node) {
-                Theme(id = 1, title = this?.title ?: "")
+                Theme(id = this?.id ?: "", title = this?.title ?: "")
             }
         }
 }

@@ -69,7 +69,7 @@ class HomeViewModel(
         }
     }
 
-    private fun selectLessonTheme(lessonThemeId: Long) {
+    private fun selectLessonTheme(lessonThemeId: String) {
         setEffect {
             HomeContract.Effect.Navigation.ToLessonThemeDetails(lessonThemeId)
         }

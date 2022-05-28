@@ -10,7 +10,7 @@ import com.teacherworkout.commons.ui.model.LessonTheme
 class HomeContract {
     sealed class Event : ViewEvent {
         data class SetSearchInput(val searchInput: TextFieldValue) : Event()
-        data class SelectLessonTheme(val lessonThemeId: Long) : Event()
+        data class SelectLessonTheme(val lessonThemeId: String) : Event()
         data class SelectLesson(val lessonId: Long): Event()
     }
 
@@ -24,7 +24,7 @@ class HomeContract {
     sealed class Effect : ViewSideEffect {
         sealed class Navigation : Effect() {
             data class ToLessonDetails(val lessonId: Long) : Navigation()
-            data class ToLessonThemeDetails(val lessonThemeId: Long) : Navigation()
+            data class ToLessonThemeDetails(val lessonThemeId: String) : Navigation()
         }
     }
 }

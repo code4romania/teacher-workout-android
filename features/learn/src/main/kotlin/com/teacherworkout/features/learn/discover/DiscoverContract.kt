@@ -8,7 +8,7 @@ import com.teacherworkout.commons.ui.base.ViewState
 class DiscoverContract {
     sealed class Event : ViewEvent {
         data class SetSearchInput(val searchInput: TextFieldValue) : Event()
-        data class SelectLessonTheme(val lessonThemeId: Long): Event()
+        data class SelectLessonTheme(val lessonThemeId: String): Event()
     }
 
     data class State(
@@ -19,7 +19,7 @@ class DiscoverContract {
 
     sealed class Effect : ViewSideEffect {
         sealed class Navigation: Effect() {
-            data class ToLessonThemeDetails(val lessonThemeId: Long): Navigation()
+            data class ToLessonThemeDetails(val lessonThemeId: String): Navigation()
         }
     }
 }

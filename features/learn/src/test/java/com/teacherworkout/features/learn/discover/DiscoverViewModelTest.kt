@@ -54,13 +54,13 @@ class DiscoverViewModelTest {
             DiscoverViewModel(repository)
         }
 
-        viewModel.setEvent(DiscoverContract.Event.SelectLessonTheme(42))
+        viewModel.setEvent(DiscoverContract.Event.SelectLessonTheme("42"))
 
         val effect = runBlocking {
             viewModel.effect.first()
         }
 
-        assertThat(effect).isEqualTo(DiscoverContract.Effect.Navigation.ToLessonThemeDetails(42))
+        assertThat(effect).isEqualTo(DiscoverContract.Effect.Navigation.ToLessonThemeDetails("42"))
     }
 
     private fun mockResult(): Result<List<Theme>> =
@@ -70,5 +70,5 @@ class DiscoverViewModelTest {
         Result.success(emptyList())
 
     private fun mockLessonTheme(title: String = "Sample"): Theme =
-        Theme(id = 42, title = title)
+        Theme(id = "42", title = title)
 }

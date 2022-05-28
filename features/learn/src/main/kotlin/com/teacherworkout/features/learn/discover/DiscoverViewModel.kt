@@ -50,7 +50,7 @@ class DiscoverViewModel(
         }
     }
 
-    private fun selectLessonTheme(lessonThemeId: Long) {
+    private fun selectLessonTheme(lessonThemeId: String) {
         setEffect {
             DiscoverContract.Effect.Navigation.ToLessonThemeDetails(lessonThemeId)
         }
