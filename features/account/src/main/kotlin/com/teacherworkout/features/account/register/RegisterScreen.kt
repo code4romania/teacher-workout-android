@@ -68,10 +68,8 @@ fun RegisterScreen(
                     shape = RoundedCornerShape(50),
                     enabled = state.isNotStarted,
                     onClick = {
-                        if (state.hasAcceptedTos) {
-                            if (confirmedPassword == state.password) {
-                                onEventSent(RegisterContract.Event.CreateAccount)
-                            }
+                        if (state.hasAcceptedTos && confirmedPassword == state.password) {
+                            onEventSent(RegisterContract.Event.CreateAccount)
                         }
                     },
                     modifier = Modifier

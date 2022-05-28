@@ -26,13 +26,20 @@ class PasswordValidator : FieldValidator<PasswordValidationStatus> {
             if ("`~!@#$%^&*()_+-={}|[]\\;:'\"<>?,./".contains(it)) hasSpecialChar = true
         }
 
-        when {
-            !hasLowercase -> NoLowercase
-            !hasUppercase -> NoUppercase
-            !hasDigit -> NoDigit
-            !hasSpecialChar -> NoSpecialChar
-            else -> Valid
-        }
+        mapToStatus(hasLowercase, hasUppercase, hasDigit, hasSpecialChar)
+    }
+
+    private fun mapToStatus(
+        hasLowercase: Boolean,
+        hasUppercase: Boolean,
+        hasDigit: Boolean,
+        hasSpecialChar: Boolean
+    ) = when {
+        !hasLowercase -> NoLowercase
+        !hasUppercase -> NoUppercase
+        !hasDigit -> NoDigit
+        !hasSpecialChar -> NoSpecialChar
+        else -> Valid
     }
 }
 
