@@ -24,8 +24,7 @@ fun UpdateProfilePictureDialog(
         onCloseRequest = onCloseRequest,
         onDismissRequest = onDismissRequest,
         iconImageVector = Icons.Outlined.AddPhotoAlternate,
-        //TODO: update the content description of the 'add photo' icon
-        iconContentDescription = "",
+        iconContentDescription = stringResource(R.string.question_change_description),
         mainText = stringResource(R.string.question_change_picture),
         actionText = stringResource(R.string.label_upload_picture),
         onAction = {

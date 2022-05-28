@@ -19,8 +19,7 @@ fun DeleteAccountDialog(
         onCloseRequest = onCloseRequest,
         onDismissRequest = onDismissRequest,
         iconImageVector = Icons.Outlined.Warning,
-        //TODO: update the content description of the 'delete' icon
-        iconContentDescription = "",
+        iconContentDescription = stringResource(R.string.question_delete_description),
         mainText = stringResource(R.string.question_delete_account),
         secondaryText = stringResource(R.string.warning_delete_account),
         actionText = stringResource(R.string.label_delete_account),

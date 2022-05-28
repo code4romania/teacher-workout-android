@@ -6,7 +6,6 @@ import com.teacherworkout.commons.ui.data.LessonsRepository
 import com.teacherworkout.commons.ui.data.Result
 import kotlinx.coroutines.launch
 
-//TODO: properly implement the LessonViewModel
 class LessonViewModel(
     private val lessonId: Long,
     private val lessonsRepository: LessonsRepository
@@ -25,8 +24,7 @@ class LessonViewModel(
 
     init {
         viewModelScope.launch {
-            val result = lessonsRepository.getLesson(lessonId)
-            when(result) {
+            when(val result = lessonsRepository.getLesson(lessonId)) {
                 is Result.Success -> {
                     val lesson = result.data
                     setState { copy(lesson = lesson) }

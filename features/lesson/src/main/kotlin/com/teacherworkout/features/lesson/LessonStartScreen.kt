@@ -108,13 +108,13 @@ fun LessonStartScreen(
                     Spacer(modifier = Modifier.height(space24dp))
                     StartContinueButton(
                         lessonStarted = lesson.started,
-                        onClick = { onSendEvent(LessonContract.Event.StartContinue()) }
+                        onClick = { onSendEvent(LessonContract.Event.StartContinue) }
                     )
                     Spacer(modifier = Modifier.height(space24dp))
                     if (lesson.saved) {
-                        UnsaveButton(onClick = { onSendEvent(LessonContract.Event.Unsave()) })
+                        UnsaveButton(onClick = { onSendEvent(LessonContract.Event.Unsave) })
                     } else {
-                        SaveButton(onClick = { onSendEvent(LessonContract.Event.Save()) })
+                        SaveButton(onClick = { onSendEvent(LessonContract.Event.Save) })
                     }
                 }
             }

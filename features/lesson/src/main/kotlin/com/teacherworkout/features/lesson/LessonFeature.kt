@@ -1,15 +1,18 @@
 package com.teacherworkout.features.lesson
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.*
+import androidx.navigation.NavController
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.teacherworkout.features.lesson.di.lessonModule
 import com.teacherworkout.commons.ui.navigation.AppDestinations
 import org.koin.androidx.compose.getViewModel
 import org.koin.core.context.GlobalContext.loadKoinModules
 import org.koin.core.parameter.parametersOf
 
-//TODO: add a navigation graph instead of a simple `composable`
 fun NavGraphBuilder.lessonFeature(navHostController: NavHostController) {
     loadKoinModules(lessonModule)
     composable(

@@ -8,9 +8,9 @@ import com.teacherworkout.commons.ui.model.Lesson
 class LessonContract {
     sealed class Event : ViewEvent {
         object NavigateUp: Event()
-        class StartContinue() : Event()
-        class Save() : Event()
-        class Unsave(): Event()
+        object StartContinue : Event()
+        object Save : Event()
+        object Unsave : Event()
     }
 
     data class State(

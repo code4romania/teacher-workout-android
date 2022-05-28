@@ -48,9 +48,7 @@ fun SettingsTabContent(
             item {
                 SettingsRow(text = entry) { settingText ->
                     when (settingText) {
-                        settingChangePhoto -> {
-                            isUpdatePictureDialogOpen = true
-                        }
+                        settingChangePhoto -> isUpdatePictureDialogOpen = true
                         settingChangePassword -> {
                             /* TODO */
                         }
@@ -60,9 +58,7 @@ fun SettingsTabContent(
                         settingLogout -> {
                             /* TODO */
                         }
-                        settingDeleteAccount -> {
-                            isDeleteAccountDialogOpen = true
-                        }
+                        settingDeleteAccount -> isDeleteAccountDialogOpen = true
                         else -> error("Unknown setting selected: $settingText")
                     }
                 }
