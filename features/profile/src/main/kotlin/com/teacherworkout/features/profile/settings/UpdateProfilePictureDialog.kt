@@ -9,24 +9,23 @@ import com.teacherworkout.features.profile.R
 
 @Composable
 fun UpdateProfilePictureDialog(
-    isOpen: Boolean,
-    onCloseRequest: () -> Unit,
-    onDismissRequest: () -> Unit,
+    onDismiss: () -> Unit,
     onNewPicture: (Uri) -> Unit
 ) {
     val imagePicker = rememberImagePicker {
         onNewPicture(it)
     }
     GenericDialog(
-        isOpen = isOpen,
-        onCloseRequest = onCloseRequest,
-        onDismissRequest = onDismissRequest,
         iconImageVector = Icons.Outlined.AddPhotoAlternate,
         iconContentDescription = stringResource(R.string.question_change_description),
-        mainText = stringResource(R.string.question_change_picture),
+        title = stringResource(R.string.question_change_picture),
         actionText = stringResource(R.string.label_upload_picture)
     ) {
-        onCloseRequest()
-        imagePicker.launch()
+        if (it == DialogResult.ACTION) {
+            imagePicker.launch()
+        }
+        else {
+            onDismiss()
+        }
     }
 }

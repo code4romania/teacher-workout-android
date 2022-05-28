@@ -134,7 +134,7 @@ private fun StartContinueButton(
             .fillMaxWidth()
             .height(minTouchSize),
         onClick = onClick,
-        shape = RoundedCornerShape(50)
+        shape = MaterialTheme.shapes.large
     ) {
         Text(stringResource(if (lessonStarted) R.string.start_lesson_label else R.string.continue_lesson_label))
     }
@@ -192,7 +192,7 @@ private fun SaveButton(onClick: () -> Unit) {
             .fillMaxWidth()
             .height(minTouchSize),
         onClick = onClick,
-        shape = RoundedCornerShape(50),
+        shape = MaterialTheme.shapes.large,
         border = BorderStroke(1.dp, MaterialTheme.colors.primary),
         colors = ButtonDefaults.buttonColors(
             backgroundColor = colorResource(R.color.landing_background),
@@ -213,7 +213,7 @@ private fun UnsaveButton(onClick: () -> Unit) {
             .fillMaxWidth()
             .height(minTouchSize),
         onClick = onClick,
-        shape = RoundedCornerShape(50)
+        shape = MaterialTheme.shapes.large
     ) {
         //TODO: decide on a display name for the `Unsave` Button
         Text("TODO")
