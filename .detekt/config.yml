@@ -565,7 +565,7 @@ style:
   UseIfInsteadOfWhen:
     active: true
   UseRequire:
-    active: truez
+    active: true
   UselessCallOnNotNull:
     active: true
   UtilityClassWithPublicConstructor:
