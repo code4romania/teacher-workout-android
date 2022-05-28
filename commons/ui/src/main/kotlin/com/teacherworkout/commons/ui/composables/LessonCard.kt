@@ -20,7 +20,6 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import com.teacherworkout.commons.ui.R
 import com.teacherworkout.commons.ui.model.Lesson
-import com.teacherworkout.commons.ui.model.LessonTheme
 
 @Composable
 fun LessonCard(
@@ -29,8 +28,6 @@ fun LessonCard(
     onClick: () -> Unit = {}
 ) {
     val corner8dp = dimensionResource(id = R.dimen.corner_8dp)
-    val space8dp = dimensionResource(id = R.dimen.space_8dp)
-    val space4dp = dimensionResource(id = R.dimen.space_4dp)
     val border1dp = dimensionResource(id = R.dimen.border_1dp)
 
     Card(
@@ -41,69 +38,85 @@ fun LessonCard(
         Row(
             modifier = Modifier.fillMaxSize()
         ) {
-            Image(
-                modifier = Modifier.fillMaxHeight(),
-                contentScale = ContentScale.FillHeight,
-                painter = painterResource(id = lesson.imageResourceId),
+            LessonCardImage(
+                imageResourceId = lesson.imageResourceId,
                 contentDescription = lesson.title
             )
+            LessonCardBody(lesson = lesson)
+        }
+    }
+}
 
-            Column(
-                modifier = Modifier.padding(space8dp, space4dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Row(
-                    modifier = Modifier
-                        .weight(1f)
-                        .fillMaxSize()
+@Composable
+private fun LessonCardImage(imageResourceId: Int, contentDescription: String) {
+    Image(
+        modifier = Modifier.fillMaxHeight(),
+        contentScale = ContentScale.FillHeight,
+        painter = painterResource(id = imageResourceId),
+        contentDescription = contentDescription
+    )
+}
+
+@Composable
+private fun LessonCardBody(lesson: Lesson) {
+    val space8dp = dimensionResource(id = R.dimen.space_8dp)
+    val space4dp = dimensionResource(id = R.dimen.space_4dp)
+
+    Column(
+        modifier = Modifier.padding(space8dp, space4dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Row(
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxSize()
+        )
+        {
+            Text(
+                text = lesson.title,
+                style = TextStyle(
+                    color = Color.Black,
+                    fontSize = MaterialTheme.typography.body1.fontSize
                 )
-                {
-                    Text(
-                        text = lesson.title,
-                        style = TextStyle(
-                            color = Color.Black,
-                            fontSize = MaterialTheme.typography.body1.fontSize
-                        )
-                    )
+            )
 
-                }
-                Row(
-                    modifier = Modifier
-                        .weight(1f)
-                        .fillMaxSize()
-                ) {
-                    Text(
-                        text = lesson.lessonThemeTitle,
-                        style = TextStyle(
-                            color = MaterialTheme.colors.primary,
-                            fontSize = MaterialTheme.typography.body1.fontSize
-                        )
-                    )
-                }
+        }
+        Row(
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxSize()
+        ) {
+            Text(
+                text = lesson.lessonThemeTitle,
+                style = TextStyle(
+                    color = MaterialTheme.colors.primary,
+                    fontSize = MaterialTheme.typography.body1.fontSize
+                )
+            )
+        }
 
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Schedule,
-                        tint = MaterialTheme.colors.primaryVariant,
-                        contentDescription = ""
-                    )
-                    Text(
-                        text = lesson.durationInMinutes.toString().plus(
-                            stringResource(id = R.string.min)
-                        ),
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                        modifier = Modifier.weight(1f)
-                    )
-                    LinearProgressIndicator(
-                        progress = lesson.remainingMinutes.toFloat().div(lesson.durationInMinutes.toFloat()),
-                        modifier = Modifier.weight(1f)
-                    )
-                }
-            }
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(
+                imageVector = Icons.Default.Schedule,
+                tint = MaterialTheme.colors.primaryVariant,
+                contentDescription = ""
+            )
+            Text(
+                text = lesson.durationInMinutes.toString().plus(
+                    stringResource(id = R.string.min)
+                ),
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.weight(1f)
+            )
+            LinearProgressIndicator(
+                progress = lesson.remainingMinutes.toFloat()
+                    .div(lesson.durationInMinutes.toFloat()),
+                modifier = Modifier.weight(1f)
+            )
         }
     }
 }
