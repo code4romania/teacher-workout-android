@@ -2,9 +2,9 @@ package com.teacherworkout.features.account.auth
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
@@ -37,7 +37,7 @@ fun AuthScreen(
             PasswordField(state, onEventSent)
             TextButton(
                 onClick = { navController.navigate(AppDestinations.Account.ResetPassword.route) },
-                shape = RoundedCornerShape(50),
+                shape = MaterialTheme.shapes.large,
                 modifier = Modifier.heightIn(min = minTouchSize)
             ) {
                 Text(text = stringResource(id = R.string.auth_btn_forgot_password))
@@ -56,7 +56,7 @@ fun AuthScreen(
                     navController.navigate(AppDestinations.Account.Onboarding.route)
                 }
                 NotInitiated -> Button(
-                    shape = RoundedCornerShape(50),
+                    shape = MaterialTheme.shapes.large,
                     onClick = { onEventSent(AuthContract.Event.Auth) },
                     modifier = Modifier
                         .fillMaxWidth()

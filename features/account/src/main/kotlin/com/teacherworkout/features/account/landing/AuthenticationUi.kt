@@ -2,7 +2,6 @@ package com.teacherworkout.features.account.landing
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
@@ -27,7 +26,7 @@ fun AuthenticationUi(modifier: Modifier = Modifier, onAuthenticationRequest: () 
         TextButton(
             onClick = onAuthenticationRequest,
             modifier = Modifier.alignByBaseline(),
-            shape = RoundedCornerShape(50)
+            shape = MaterialTheme.shapes.large
         ) {
             Text(
                 stringResource(id = R.string.landing_btn_auth),

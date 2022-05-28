@@ -28,7 +28,7 @@ fun RegistrationLoadingUi(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
         modifier = modifier
-            .background(Color(0xfff5f5f5), shape = RoundedCornerShape(space8dp)),
+            .background(Color(color = 0xfff5f5f5), shape = RoundedCornerShape(space8dp)),
     ) {
         CircularProgressIndicator(
             color = MaterialTheme.colors.secondary,

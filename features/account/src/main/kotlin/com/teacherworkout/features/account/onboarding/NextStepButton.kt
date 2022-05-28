@@ -1,11 +1,7 @@
 package com.teacherworkout.features.account.onboarding
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.layout.IntrinsicSize
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -19,7 +15,6 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.teacherworkout.features.account.R
 
 @Composable
@@ -60,7 +55,7 @@ private fun nextLabelText(hasMoreSteps: Boolean) =
 fun NextStepButtonPreview() {
     NextStepButton(
         hasMoreSteps = true, onNext = { /*TODO*/ }, modifier = Modifier
-            .width(124.dp)
-            .height(64.dp)
+            .width(dimensionResource(id = R.dimen.space_128dp))
+            .height(dimensionResource(id = R.dimen.space_64dp))
     )
 }

@@ -7,6 +7,8 @@
     <dimen name="space_16dp">16dp</dimen>
     <dimen name="space_24dp">24dp</dimen>
     <dimen name="space_32dp">32dp</dimen>
+    <dimen name="space_64dp">64dp</dimen>
+    <dimen name="space_128dp">128dp</dimen>
 
     <dimen name="min_touch_size">48dp</dimen>
     <dimen name="min_tab_height">48dp</dimen>

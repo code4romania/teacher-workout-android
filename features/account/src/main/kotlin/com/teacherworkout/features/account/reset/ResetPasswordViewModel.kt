@@ -13,6 +13,10 @@ class ResetPasswordViewModel :
             ResetPasswordContract.State,
             ResetPasswordContract.Effect>() {
 
+    companion object {
+        const val SIMULATED_DELAY_MILLIS: Long = 1000
+    }
+
     private val emailValidator = EmailValidator()
     private var count = 0
 
@@ -32,7 +36,7 @@ class ResetPasswordViewModel :
             setState { viewState.value.copy(resetOutcome = InProgress) }
             val emailStatus = emailValidator.validate(viewState.value.email)
             if (emailStatus.isValid) {
-                delay(1000)
+                delay(SIMULATED_DELAY_MILLIS)
                 if (count == 0) {
                     setState { viewState.value.copy(resetOutcome = Failed) }
                     count++

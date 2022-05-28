@@ -25,11 +25,11 @@ fun RequestFailedUi(
     modifier: Modifier = Modifier,
     onRetry: () -> Unit
 ) {
-    val space8dp = dimensionResource(id =  R.dimen.space_8dp)
-    val space16dp = dimensionResource(id =  R.dimen.space_16dp)
+    val space8dp = dimensionResource(id = R.dimen.space_8dp)
+    val space16dp = dimensionResource(id = R.dimen.space_16dp)
     Column(
         modifier = modifier.background(
-            Color(0xfff5f5f5),
+            Color(color = 0xfff5f5f5),
             shape = RoundedCornerShape(space8dp)
         ),
         horizontalAlignment = Alignment.CenterHorizontally

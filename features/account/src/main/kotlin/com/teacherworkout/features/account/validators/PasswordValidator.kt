@@ -12,7 +12,11 @@ import com.teacherworkout.features.account.validators.PasswordValidationStatus.V
  * contain at least 1 lowercase, 1 uppercase, 1 digit and 1 special character.
  */
 class PasswordValidator : FieldValidator<PasswordValidationStatus> {
-    override fun validate(input: String): PasswordValidationStatus = if (input.length < 8) {
+    companion object {
+        const val MIN_PASSWORD_LENGTH = 8
+    }
+
+    override fun validate(input: String): PasswordValidationStatus = if (input.length < MIN_PASSWORD_LENGTH) {
         TooShort
     } else {
         var hasLowercase = false
