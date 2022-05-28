@@ -5,7 +5,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,9 +23,7 @@ import com.teacherworkout.features.home.lessons.CompanionObject.LessonInProgress
 import com.teacherworkout.features.home.lessons.CompanionObject.NewLessonsItems
 import com.teacherworkout.features.home.lessons.CompanionObject.ProgressBarHeightFraction
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.onEach
 
 private val listState = LazyListState()
 
