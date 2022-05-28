@@ -7,4 +7,7 @@
     <string name="title_profile">Profile</string>
     <string name="title_themes">Lesson themes</string>
     <string name="min">min</string>
+
+    <string name="search_content_description">search</string>
+    <string name="close_content_description">close</string>
 </resources>

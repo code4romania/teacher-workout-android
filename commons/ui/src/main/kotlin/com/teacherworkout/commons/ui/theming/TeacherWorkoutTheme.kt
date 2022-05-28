@@ -12,7 +12,7 @@ fun TeacherWorkoutTheme(isDarkTheme: Boolean = isSystemInDarkTheme(), content: @
     MaterialTheme(
         colors = if (isDarkTheme) darkThemeColors else lightThemeColors,
         shapes = Shapes(
-            large = RoundedCornerShape(50)
+            large = RoundedCornerShape(percent = 50)
         ),
         content = content
     )

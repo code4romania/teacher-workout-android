@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
 import com.teacherworkout.commons.ui.R
@@ -47,8 +48,7 @@ fun SearchView(
         leadingIcon = {
             Icon(
                 imageVector = Icons.Default.Search,
-                //TODO: add a string resource for the Search icon's content description
-                contentDescription = ""
+                contentDescription = stringResource(id = R.string.search_content_description)
             )
         },
         trailingIcon = {
@@ -56,8 +56,7 @@ fun SearchView(
                 Icon(
                     modifier = Modifier.clickable { onClear() },
                     imageVector = Icons.Default.Close,
-                    //TODO: add a string resource for the Close icon's content description
-                    contentDescription = "",
+                    contentDescription = stringResource(id = R.string.close_content_description),
                 )
             }
         }

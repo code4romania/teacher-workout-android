@@ -8,7 +8,7 @@ import com.teacherworkout.commons.ui.model.LessonTheme
 import kotlinx.coroutines.delay
 
 class FakeLessonsRepository : LessonsRepository {
-    val dummyLessons = listOf(
+    private val dummyLessons = listOf(
         Lesson(
             1,
             "Dictie si vorbire",
@@ -93,12 +93,12 @@ class FakeLessonsRepository : LessonsRepository {
     )
 
     override suspend fun getAllLessons(): Result<List<Lesson>> {
-        delay(800)
+        delay(timeMillis = 800)
         return Result.Success(dummyLessons)
     }
 
     override suspend fun getAllLessonThemes(): Result<List<LessonTheme>> {
-        delay(1000)
+        delay(timeMillis = 1000)
         return Result.Success(dummyLessonThemes)
     }
 
