@@ -7,4 +7,7 @@
     <string name="title_discover">Descoperă</string>
     <string name="title_themes">Categorii de lecții</string>
     <string name="min">min</string>
+
+    <string name="search_content_description">caută</string>
+    <string name="close_content_description">închide</string>
 </resources>

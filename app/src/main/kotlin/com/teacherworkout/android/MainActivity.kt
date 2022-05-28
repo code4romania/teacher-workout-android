@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
 
             TeacherWorkoutTheme {
                 Scaffold {
-                    // TODO: startDestination will probably need to be dynamic depending if the user is logged or not
                     NavHost(
                         navController = navHostController,
                         startDestination = AppDestinations.Features.account

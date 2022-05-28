@@ -11,17 +11,18 @@ class EmailValidator : FieldValidator<EmailValidationStatus> {
 
     override fun validate(input: String): EmailValidationStatus {
         val emailParts = input.split("@")
-        if (emailParts.size != 2) {
-            return Invalid
+        return if (emailParts.size != 2) {
+            Invalid
         } else {
             val arePartsEmpty = emailParts[0].isEmpty() || emailParts[1].isEmpty()
             val hasDomainPoint = emailParts[1].contains(".")
             val hasDomainPartsEmpty = emailParts[1].split(".").any { it.isEmpty() }
             if (arePartsEmpty || !hasDomainPoint || hasDomainPartsEmpty) {
-                return Invalid
+                Invalid
+            } else {
+                Valid
             }
         }
-        return Valid
     }
 }
 

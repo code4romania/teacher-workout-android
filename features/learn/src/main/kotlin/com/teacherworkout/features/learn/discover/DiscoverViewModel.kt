@@ -15,9 +15,7 @@ class DiscoverViewModel(
 
     private var allLessonThemes: List<LessonTheme> = emptyList()
 
-    override fun setInitialState(): DiscoverContract.State {
-        return DiscoverContract.State()
-    }
+    override fun setInitialState(): DiscoverContract.State = DiscoverContract.State()
 
     override fun handleEvents(event: DiscoverContract.Event) {
         when(event) {
@@ -61,7 +59,6 @@ class DiscoverViewModel(
         }
     }
 
-    //TODO: This will be changed when we will integrate the app with the backend
     private fun applyFilter(searchInput: String) {
         if (searchInput.isBlank()) {
              setState{ copy(lessonThemes = allLessonThemes) }

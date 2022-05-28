@@ -16,6 +16,7 @@ allprojects {
 buildscript {
     val kotlinVersion by extra("1.5.31")
     val androidGradleVersion by extra("7.0.3")
+
     repositories {
         google()
         mavenCentral()

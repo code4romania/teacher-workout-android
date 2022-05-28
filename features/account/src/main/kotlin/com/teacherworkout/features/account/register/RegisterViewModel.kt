@@ -11,9 +11,13 @@ import kotlinx.coroutines.launch
 class RegisterViewModel :
     BaseViewModel<RegisterContract.Event, RegisterContract.State, RegisterContract.Effect>() {
 
+    companion object {
+        const val SIMULATED_DELAY_MILLIS: Long = 1000
+    }
+
     private val emailValidator = EmailValidator()
     private val passwordValidator = PasswordValidator()
-    var count = 0
+    private var count = 0
 
     override fun setInitialState(): RegisterContract.State =
         RegisterContract.State()
@@ -39,7 +43,7 @@ class RegisterViewModel :
             val passwordStatus = passwordValidator.validate(viewState.value.password)
 
             if (emailStatus.isValid && passwordStatus.isValid) {
-                delay(1000)
+                delay(SIMULATED_DELAY_MILLIS)
                 if (count == 0) {
                     setState {
                         viewState.value.copy(registrationOutcome = Failed)

@@ -2,4 +2,7 @@
     <string name="start_lesson_label">START</string>
     <string name="continue_lesson_label">CONTINUE</string>
     <string name="save_lesson_label">SAVE</string>
+    <string name="delete_lesson_label">DELETE</string>
+
+    <string name="schedule_content_description">schedule</string>
 </resources>

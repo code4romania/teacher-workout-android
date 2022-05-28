@@ -1,25 +1,29 @@
 package com.teacherworkout.features.lesson
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.*
+import androidx.navigation.NavController
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.teacherworkout.features.lesson.di.lessonModule
 import com.teacherworkout.commons.ui.navigation.AppDestinations
 import org.koin.androidx.compose.getViewModel
 import org.koin.core.context.GlobalContext.loadKoinModules
 import org.koin.core.parameter.parametersOf
 
-//TODO: add a navigation graph instead of a simple `composable`
 fun NavGraphBuilder.lessonFeature(navHostController: NavHostController) {
     loadKoinModules(lessonModule)
+
+    val lessonIdArgumentName = "lessonId"
     composable(
         route = AppDestinations.Lesson.Landing.route,
-        //TODO: make the nav argument to not be hard coded
         arguments = listOf(
-            navArgument(name = "lessonId") { type = NavType.LongType }
+            navArgument(name = lessonIdArgumentName) { type = NavType.LongType }
         )
     ) { backStackEntry ->
-        val lessonId = backStackEntry.arguments?.getLong("lessonId")!!
+        val lessonId = backStackEntry.arguments?.getLong(lessonIdArgumentName)!!
         LessonStartScreenDestination(navHostController, lessonId)
     }
 }
@@ -33,9 +37,7 @@ private fun LessonStartScreenDestination(navController: NavController, lessonId:
         effects = viewModel.effect,
         onNavigationRequest = { navRequest ->
             when(navRequest) {
-                is LessonContract.Effect.Navigation.NavigateUp -> {
-                    navController.popBackStack()
-                }
+                is LessonContract.Effect.Navigation.NavigateUp -> navController.popBackStack()
             }
         }
     )

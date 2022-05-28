@@ -1,7 +1,6 @@
 package com.teacherworkout.features.account.landing
 
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -16,7 +15,7 @@ import com.teacherworkout.features.account.R
 fun RegistrationButton(modifier: Modifier = Modifier, onRegistrationRequest: () -> Unit) {
     val space8dp = dimensionResource(id =  R.dimen.space_8dp)
     Button(
-        onClick = onRegistrationRequest, modifier = modifier, shape = RoundedCornerShape(50)
+        onClick = onRegistrationRequest, modifier = modifier, shape = MaterialTheme.shapes.large
     ) {
         Text(
             stringResource(id = R.string.landing_btn_register),

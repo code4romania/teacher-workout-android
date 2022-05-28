@@ -19,9 +19,7 @@ class HomeViewModel(
     private var allLessons: List<Lesson> = emptyList()
     private var allLessonThemes: List<LessonTheme> = emptyList()
 
-    override fun setInitialState(): HomeContract.State {
-        return HomeContract.State()
-    }
+    override fun setInitialState(): HomeContract.State = HomeContract.State()
 
     override fun handleEvents(event: HomeContract.Event) {
         when (event) {
@@ -83,7 +81,6 @@ class HomeViewModel(
         }
     }
 
-    //TODO: change the method to filter through lessons. The UI part also needs to be modified to handle it
     private fun applyRandomFilter(searchInput: String) {
         if (searchInput.isBlank()) {
             setState { copy(lessonThemes = allLessonThemes) }

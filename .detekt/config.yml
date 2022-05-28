@@ -80,7 +80,7 @@ complexity:
   LongParameterList:
     active: true
     threshold: 6
-    ignoreDefaultParameters: false
+    ignoreDefaultParameters: true
   MethodOverloading:
     active: false
     threshold: 6
@@ -323,9 +323,9 @@ naming:
   FunctionNaming:
     active: true
     excludes: "**/test/**,**/androidTest/**,**/*.Test.kt,**/*.Spec.kt,**/*.Spek.kt"
-    functionPattern: '^([a-z$][a-zA-Z$0-9]*)|(`.*`)$'
     excludeClassPattern: '$^'
     ignoreOverridden: true
+    ignoreAnnotated: ['Composable']
   FunctionParameterNaming:
     active: true
     excludes: "**/test/**,**/androidTest/**,**/*.Test.kt,**/*.Spec.kt,**/*.Spek.kt"
@@ -474,7 +474,7 @@ style:
     excludes: "**/test/**,**/androidTest/**,**/*.Test.kt,**/*.Spec.kt,**/*.Spek.kt"
     ignoreNumbers: '-1,0,1,2'
     ignoreHashCodeFunction: true
-    ignorePropertyDeclaration: false
+    ignorePropertyDeclaration: true
     ignoreConstantDeclaration: true
     ignoreCompanionObjectPropertyDeclaration: true
     ignoreAnnotation: false
@@ -565,7 +565,7 @@ style:
   UseIfInsteadOfWhen:
     active: true
   UseRequire:
-    active: truez
+    active: true
   UselessCallOnNotNull:
     active: true
   UtilityClassWithPublicConstructor:
@@ -575,4 +575,4 @@ style:
   WildcardImport:
     active: true
     excludes: "**/test/**,**/androidTest/**,**/*.Test.kt,**/*.Spec.kt,**/*.Spek.kt"
-    excludeImports: 'java.util.*,kotlinx.android.synthetic.*'
+    excludeImports: 'java.util.*,kotlinx.android.synthetic.*,androidx.compose.foundation.layout.*,androidx.compose.material.*,androidx.compose.runtime.*,com.teacherworkout.features.account.composables.*,kotlinx.coroutines.flow.*'

@@ -1,8 +1,6 @@
 package com.teacherworkout.features.profile.settings
 
 import android.net.Uri
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AddPhotoAlternate
 import androidx.compose.runtime.Composable
@@ -11,28 +9,23 @@ import com.teacherworkout.features.profile.R
 
 @Composable
 fun UpdateProfilePictureDialog(
-    isOpen: Boolean,
-    onCloseRequest: () -> Unit,
-    onDismissRequest: () -> Unit,
+    onDismiss: () -> Unit,
     onNewPicture: (Uri) -> Unit
 ) {
     val imagePicker = rememberImagePicker {
         onNewPicture(it)
     }
     GenericDialog(
-        isOpen = isOpen,
-        onCloseRequest = onCloseRequest,
-        onDismissRequest = onDismissRequest,
         iconImageVector = Icons.Outlined.AddPhotoAlternate,
-        //TODO: update the content description of the 'add photo' icon
-        iconContentDescription = "",
-        mainText = stringResource(R.string.question_change_picture),
-        actionText = stringResource(R.string.label_upload_picture),
-        onAction = {
-            onCloseRequest()
+        iconContentDescription = stringResource(R.string.question_change_description),
+        title = stringResource(R.string.question_change_picture),
+        actionText = stringResource(R.string.label_upload_picture)
+    ) {
+        if (it == DialogResult.ACTION) {
             imagePicker.launch()
-        },
-        primaryColor = MaterialTheme.colors.primary,
-        secondaryColor = MaterialTheme.colors.secondary
-    )
+        }
+        else {
+            onDismiss()
+        }
+    }
 }

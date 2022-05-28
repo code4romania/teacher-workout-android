@@ -42,7 +42,6 @@ private fun DiscoverScreenDestination(navHostController: NavHostController) {
                     when(navigationEffect) {
                         is DiscoverContract.Effect.Navigation.ToLessonThemeDetails -> {
                             //val lessonThemeName = navigationEffect.lessonThemeName
-                            //TODO: navigate to the details screen for the respective lesson theme
                         }
                     }
                 }
