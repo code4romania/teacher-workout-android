@@ -1,6 +1,5 @@
 package com.teacherworkout.features.profile.settings
 
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Warning
 import androidx.compose.runtime.Composable
@@ -22,12 +21,9 @@ fun DeleteAccountDialog(
         iconContentDescription = stringResource(R.string.question_delete_description),
         mainText = stringResource(R.string.question_delete_account),
         secondaryText = stringResource(R.string.warning_delete_account),
-        actionText = stringResource(R.string.label_delete_account),
-        onAction = {
-            onCloseRequest()
-            onDelete()
-        },
-        primaryColor = MaterialTheme.colors.secondary,
-        secondaryColor = MaterialTheme.colors.primary
-    )
+        actionText = stringResource(R.string.label_delete_account)
+    ) {
+        onCloseRequest()
+        onDelete()
+    }
 }

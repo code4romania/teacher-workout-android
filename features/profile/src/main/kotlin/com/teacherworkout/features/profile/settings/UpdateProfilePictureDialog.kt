@@ -1,8 +1,6 @@
 package com.teacherworkout.features.profile.settings
 
 import android.net.Uri
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AddPhotoAlternate
 import androidx.compose.runtime.Composable
@@ -26,12 +24,9 @@ fun UpdateProfilePictureDialog(
         iconImageVector = Icons.Outlined.AddPhotoAlternate,
         iconContentDescription = stringResource(R.string.question_change_description),
         mainText = stringResource(R.string.question_change_picture),
-        actionText = stringResource(R.string.label_upload_picture),
-        onAction = {
-            onCloseRequest()
-            imagePicker.launch()
-        },
-        primaryColor = MaterialTheme.colors.primary,
-        secondaryColor = MaterialTheme.colors.secondary
-    )
+        actionText = stringResource(R.string.label_upload_picture)
+    ) {
+        onCloseRequest()
+        imagePicker.launch()
+    }
 }

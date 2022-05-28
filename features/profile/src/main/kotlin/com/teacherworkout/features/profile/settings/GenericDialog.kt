@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.dimensionResource
@@ -22,6 +21,7 @@ import androidx.compose.ui.window.Dialog
 import com.teacherworkout.features.profile.R
 
 @Composable
+@SuppressWarnings("LongParameterList", "LongMethod")
 fun GenericDialog(
     isOpen: Boolean,
     onCloseRequest: () -> Unit,
@@ -31,14 +31,13 @@ fun GenericDialog(
     mainText: String,
     secondaryText: String? = null,
     actionText: String,
-    onAction: () -> Unit,
-    primaryColor: Color,
-    secondaryColor: Color
+    onAction: () -> Unit
 ) {
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
 
     if (isOpen) {
         Dialog(onDismissRequest = onDismissRequest) {
+            val space8dp = dimensionResource(id = R.dimen.space_8dp)
             val space16dp = dimensionResource(id = R.dimen.space_16dp)
             val space24dp = dimensionResource(id = R.dimen.space_24dp)
             val corner8dp = dimensionResource(id = R.dimen.corner_8dp)
@@ -51,13 +50,14 @@ fun GenericDialog(
                         top = space24dp,
                         end = space24dp
                     ),
+
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Box(
                         modifier = Modifier
                             .size(minTouchSize)
                             .clip(CircleShape)
-                            .background(primaryColor),
+                            .background(MaterialTheme.colors.primary),
                         contentAlignment = Alignment.Center
                     ) {
                         Icon(
@@ -93,9 +93,9 @@ fun GenericDialog(
                             .height(minTouchSize)
                             .fillMaxWidth(),
                         onClick = onAction,
-                        shape = RoundedCornerShape(50),
+                        shape = MaterialTheme.shapes.large,
                         colors = ButtonDefaults.buttonColors(
-                            backgroundColor = primaryColor
+                            backgroundColor = MaterialTheme.colors.primary
                         )
                     ) {
                         Text(
@@ -103,12 +103,11 @@ fun GenericDialog(
                             color = MaterialTheme.colors.onPrimary
                         )
                     }
-                    val defaultPressedButtonElevation = 8.dp
-                    Spacer(modifier = Modifier.height(defaultPressedButtonElevation))
+                    Spacer(modifier = Modifier.height(space8dp))
                     Button(
                         modifier = Modifier.height(minTouchSize),
                         onClick = onCloseRequest,
-                        shape = RoundedCornerShape(50),
+                        shape = MaterialTheme.shapes.large,
                         colors = ButtonDefaults.buttonColors(
                             backgroundColor = MaterialTheme.colors.surface
                         ),
@@ -116,11 +115,11 @@ fun GenericDialog(
                     ) {
                         Text(
                             text = stringResource(android.R.string.cancel).uppercase(),
-                            color = secondaryColor,
+                            color = MaterialTheme.colors.secondary,
                             fontWeight = FontWeight.Bold
                         )
                     }
-                    Spacer(modifier = Modifier.height(defaultPressedButtonElevation))
+                    Spacer(modifier = Modifier.height(space8dp))
                 }
             }
         }
