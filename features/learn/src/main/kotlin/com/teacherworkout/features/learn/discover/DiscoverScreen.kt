@@ -19,6 +19,7 @@ import com.teacherworkout.commons.ui.composables.SearchView
 import com.teacherworkout.commons.ui.composables.lessonThemesItem
 import com.teacherworkout.commons.ui.model.LessonTheme
 import com.teacherworkout.features.learn.R
+import com.teacherworkout.features.learn.discover.Companion.PROGRESS_HEIGHT_FRACTION
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -31,9 +32,7 @@ fun DiscoverScreen(
     effects: Flow<DiscoverContract.Effect>,
     onNavigationRequest: (DiscoverContract.Effect.Navigation) -> Unit
 ) {
-    val space8dp = dimensionResource(id = R.dimen.space_8dp)
     val space16dp = dimensionResource(id = R.dimen.space_16dp)
-
     val snackbarHostState = remember { SnackbarHostState() }
 
     HandleEffects(effects) { effect ->
@@ -57,39 +56,11 @@ fun DiscoverScreen(
             state = listState
         ) {
             item {
-                Spacer(modifier = Modifier.height(space16dp))
-                Text(
-                    text = stringResource(id = R.string.discover_lessons_title),
-                    style = TextStyle(
-                        color = MaterialTheme.colors.primary,
-                        fontSize = MaterialTheme.typography.h4.fontSize,
-                        fontWeight = FontWeight.Bold
-                    )
-                )
-                Spacer(modifier = Modifier.height(space8dp))
-                SearchView(
-                    modifier = Modifier.fillMaxWidth(),
-                    searchInput = state.searchInput,
-                    onSearchInputChange = {
-                        onSendEvent(DiscoverContract.Event.SetSearchInput(it))
-                    },
-                    onClear = {
-                        onSendEvent(DiscoverContract.Event.SetSearchInput(TextFieldValue("")))
-                    },
-                    placeholderText = stringResource(id = R.string.search_label)
-                )
-                Spacer(modifier = Modifier.height(space16dp))
+                Header(state, onSendEvent)
             }
             if (state.isLoading) {
                 item {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .fillParentMaxHeight(0.5f),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        CircularProgressIndicator()
-                    }
+                    Loading(Modifier.fillParentMaxHeight(PROGRESS_HEIGHT_FRACTION))
                 }
             } else {
                 lessonThemesItem(
@@ -107,6 +78,46 @@ fun DiscoverScreen(
             modifier = Modifier.align(Alignment.BottomCenter),
             hostState = snackbarHostState
         )
+    }
+}
+
+@Composable
+fun Header(state: DiscoverContract.State, onSendEvent: (DiscoverContract.Event) -> Unit) {
+    val space8dp = dimensionResource(id = R.dimen.space_8dp)
+    val space16dp = dimensionResource(id = R.dimen.space_16dp)
+
+    Spacer(modifier = Modifier.height(space16dp))
+    Text(
+        text = stringResource(id = R.string.discover_lessons_title),
+        style = TextStyle(
+            color = MaterialTheme.colors.primary,
+            fontSize = MaterialTheme.typography.h4.fontSize,
+            fontWeight = FontWeight.Bold
+        )
+    )
+    Spacer(modifier = Modifier.height(space8dp))
+    SearchView(
+        modifier = Modifier.fillMaxWidth(),
+        searchInput = state.searchInput,
+        onSearchInputChange = {
+            onSendEvent(DiscoverContract.Event.SetSearchInput(it))
+        },
+        onClear = {
+            onSendEvent(DiscoverContract.Event.SetSearchInput(TextFieldValue("")))
+        },
+        placeholderText = stringResource(id = R.string.search_label)
+    )
+    Spacer(modifier = Modifier.height(space16dp))
+}
+
+@Composable
+fun Loading(modifier: Modifier = Modifier) {
+    Box(
+        modifier = modifier
+            .fillMaxWidth(),
+        contentAlignment = Alignment.Center
+    ) {
+        CircularProgressIndicator()
     }
 }
 
@@ -148,3 +159,7 @@ private fun List<Theme>.toViewModels(): List<LessonTheme> =
             imageResourceId = com.teacherworkout.commons.ui.R.drawable.art2
         )
     }
+
+private object Companion {
+    const val PROGRESS_HEIGHT_FRACTION = 0.5f
+}
