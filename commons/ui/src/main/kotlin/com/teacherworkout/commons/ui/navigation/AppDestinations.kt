@@ -25,16 +25,18 @@ object AppDestinations {
         const val home = "home"
 
         /**
-         * The learn feature
+         * The discover feature
          */
-        const val learn = "learn"
-
+        const val discover = "discover"
 
         /**
          * The profile feature
          */
         const val profile = "profile"
 
+        /**
+         * The lesson feature
+         */
         const val lesson = "lesson"
     }
 
@@ -50,7 +52,7 @@ object AppDestinations {
 
         object Authentication : AccountScreen("account-authentication")
 
-        object ResetPassword : AccountScreen("ac    count-reset-password")
+        object ResetPassword : AccountScreen("account-reset-password")
 
         object ResetPasswordSucceeded : AccountScreen("account-reset-password-succeeded")
     }
@@ -59,15 +61,15 @@ object AppDestinations {
         object Landing : Screen("home-landing", R.string.title_home, Icons.Outlined.Home)
     }
 
-    object Learn {
-        object Discover : Screen("home-discover", R.string.title_discover, Icons.Outlined.Search)
+    object Discover {
+        object Landing : Screen("discover-landing", R.string.title_discover, Icons.Outlined.Search)
     }
 
     object Profile {
-        object Profile : Screen("home-profile", R.string.title_profile, Icons.Outlined.Person)
+        object Landing : Screen("profile-landing", R.string.title_profile, Icons.Outlined.Person)
     }
 
     object Lesson {
-        object Landing : Screen("home-lesson-landing/{lessonId}", -1, Icons.Outlined.Book)
+        object Landing : Screen("lesson-landing/{lessonId}", -1, Icons.Outlined.Book)
     }
 }

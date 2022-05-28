@@ -36,8 +36,8 @@ fun BottomBar(navBackStackEntry: NavBackStackEntry?, navHostController: NavHostC
     BottomNavigation {
         val items = listOf(
             AppDestinations.Home.Landing,
-            AppDestinations.Learn.Discover,
-            AppDestinations.Profile.Profile
+            AppDestinations.Discover.Landing,
+            AppDestinations.Profile.Landing
         )
         val currentDestination = navBackStackEntry.destination
 
