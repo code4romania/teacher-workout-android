@@ -43,7 +43,6 @@ fun DiscoverScreen(
             when(effect) {
                 is DiscoverContract.Effect.Navigation.ToLessonThemeDetails -> {
                     onNavigationRequest(effect)
-                    //TODO: remove the Snackbar related code when the navigation is fully implemented
                     snackbarHostState.showSnackbar(
                         message = "Will navigate to lesson theme with id ${effect.lessonThemeId}",
                         duration = SnackbarDuration.Short,
@@ -54,7 +53,6 @@ fun DiscoverScreen(
     }
 
     Box {
-        //TODO: consider switching to LazyVerticalGrid if it becomes stable
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
@@ -89,10 +87,9 @@ fun DiscoverScreen(
             if(state.isLoading) {
                 item {
                     Box(
-                        //TODO: look for a better way to center the progress bar
                         modifier = Modifier
                             .fillMaxWidth()
-                            .fillParentMaxHeight(0.5f),
+                            .fillParentMaxHeight(fraction = 0.5f),
                         contentAlignment = Alignment.Center
                     ) {
                         CircularProgressIndicator()
