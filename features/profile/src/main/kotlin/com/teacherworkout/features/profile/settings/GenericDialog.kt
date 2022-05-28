@@ -25,12 +25,6 @@ import androidx.compose.ui.window.Dialog
 import com.teacherworkout.commons.ui.theming.TeacherWorkoutTheme
 import com.teacherworkout.features.profile.R
 
-enum class DialogResult {
-    ACTION,
-    CLOSED,
-    DISMISSED
-}
-
 @Composable
 fun GenericDialog(
     iconImageVector: ImageVector,
@@ -157,6 +151,12 @@ private fun DialogBody(
     Spacer(modifier = Modifier.height(space24dp))
 }
 
+enum class DialogResult {
+    ACTION,
+    CLOSED,
+    DISMISSED
+}
+
 @Preview
 @Composable
 fun GenericDialogPreview() {
@@ -169,5 +169,4 @@ fun GenericDialogPreview() {
             "action"
         ) {}
     }
-
 }
