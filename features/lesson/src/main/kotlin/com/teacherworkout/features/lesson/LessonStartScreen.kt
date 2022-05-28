@@ -8,7 +8,6 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
@@ -22,13 +21,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
-import com.teacherworkout.commons.ui.base.ViewSideEffect
+import com.teacherworkout.commons.ui.composables.HandleEffects
 import com.teacherworkout.commons.ui.model.Lesson
 import com.teacherworkout.features.account.composables.UpIcon
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.onEach
 
 @Composable
 fun LessonStartScreen(
@@ -121,16 +118,6 @@ private fun LessonScreenBody(
                 }
             }
         }
-    }
-}
-
-@Composable
-private fun <SideEffect : ViewSideEffect> HandleEffects(
-    effects: Flow<SideEffect>,
-    handleEffect: (SideEffect) -> Unit
-) {
-    LaunchedEffect(Unit) {
-        effects.onEach { handleEffect(it) }.collect()
     }
 }
 

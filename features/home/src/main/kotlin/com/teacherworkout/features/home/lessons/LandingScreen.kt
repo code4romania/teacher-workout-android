@@ -15,6 +15,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
+import com.teacherworkout.commons.ui.composables.HandleEffects
 import com.teacherworkout.commons.ui.composables.SearchView
 import com.teacherworkout.commons.ui.composables.lessonThemesItem
 import com.teacherworkout.commons.ui.composables.lessonsItem
@@ -41,10 +42,8 @@ fun LandingScreen(
 
     val snackbarHostState = remember { SnackbarHostState() }
 
-    LaunchedEffect(Unit) {
-        effects.onEach { effect ->
-            handleEffect(effect, onNavigationRequest, snackbarHostState)
-        }.collect()
+    HandleEffects(effects) {
+        handleEffect(it, onNavigationRequest, snackbarHostState)
     }
 
     Box {

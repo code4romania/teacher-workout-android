@@ -15,6 +15,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
+import com.teacherworkout.commons.ui.composables.HandleEffects
 import com.teacherworkout.commons.ui.composables.lessonThemesItem
 import com.teacherworkout.commons.ui.composables.SearchView
 import com.teacherworkout.commons.ui.data.impl.FakeLessonsRepository
@@ -38,18 +39,16 @@ fun DiscoverScreen(
 
     val snackbarHostState = remember { SnackbarHostState() }
 
-    LaunchedEffect(Unit) {
-        effects.onEach { effect ->
-            when(effect) {
-                is DiscoverContract.Effect.Navigation.ToLessonThemeDetails -> {
-                    onNavigationRequest(effect)
-                    snackbarHostState.showSnackbar(
-                        message = "Will navigate to lesson theme with id ${effect.lessonThemeId}",
-                        duration = SnackbarDuration.Short,
-                    )
-                }
+    HandleEffects(effects) { effect ->
+        when (effect) {
+            is DiscoverContract.Effect.Navigation.ToLessonThemeDetails -> {
+                onNavigationRequest(effect)
+                snackbarHostState.showSnackbar(
+                    message = "Will navigate to lesson theme with id ${effect.lessonThemeId}",
+                    duration = SnackbarDuration.Short,
+                )
             }
-        }.collect()
+        }
     }
 
     Box {
@@ -87,9 +86,10 @@ fun DiscoverScreen(
             if(state.isLoading) {
                 item {
                     Box(
+                        //TODO: look for a better way to center the progress bar
                         modifier = Modifier
                             .fillMaxWidth()
-                            .fillParentMaxHeight(fraction = 0.5f),
+                            .fillParentMaxHeight(0.5f),
                         contentAlignment = Alignment.Center
                     ) {
                         CircularProgressIndicator()
