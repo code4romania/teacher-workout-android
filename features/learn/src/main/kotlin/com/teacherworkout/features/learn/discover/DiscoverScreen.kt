@@ -49,7 +49,6 @@ fun DiscoverScreen(
     }
 
     Box {
-        //TODO: consider switching to LazyVerticalGrid if it becomes stable
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
@@ -84,7 +83,6 @@ fun DiscoverScreen(
             if (state.isLoading) {
                 item {
                     Box(
-                        //TODO: look for a better way to center the progress bar
                         modifier = Modifier
                             .fillMaxWidth()
                             .fillParentMaxHeight(0.5f),

@@ -35,9 +35,7 @@ class DiscoverViewModel(
                     allLessonThemes = result.getOrDefault(emptyList())
                     setState { copy(searchInput = TextFieldValue(), themes = allLessonThemes) }
                 }
-                false -> {
-                    Log.e("DiscoveryViewModel", result.exceptionOrNull()?.message ?: "")
-                }
+                false -> Log.e("DiscoveryViewModel", result.exceptionOrNull()?.message ?: "")
             }
         }
     }
