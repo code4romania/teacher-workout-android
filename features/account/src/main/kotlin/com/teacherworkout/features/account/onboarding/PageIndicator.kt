@@ -22,7 +22,7 @@ fun PageIndicator(pageCount: Int, selected: Int, modifier: Modifier = Modifier) 
         val indicatorRadius = min((size.width - spaceBetween * (2 + pageCount - 1)) / pageCount, size.height) / 2
         repeat(pageCount) { index ->
             val calculatedCenter = Offset(
-                x = spaceBetween + indicatorRadius + (index * 2 * indicatorRadius) + spaceBetween * index,
+                x = spaceBetween + indicatorRadius + index * 2 * indicatorRadius + spaceBetween * index,
                 y = center.y
             )
             val calculatedStyle = if (index == selected) Fill else Stroke()

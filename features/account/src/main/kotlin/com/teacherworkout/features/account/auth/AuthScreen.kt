@@ -75,21 +75,17 @@ fun AuthScreen(
                     failureTextId = R.string.auth_failure_label,
                     modifier = Modifier.fillMaxWidth()
                 ) { onEventSent(AuthContract.Event.Auth) }
-                Succeeded -> {
-                    LaunchedEffect(Unit) {
-                        navController.navigate(AppDestinations.Account.Onboarding.route)
-                    }
+                Succeeded -> LaunchedEffect(Unit) {
+                    navController.navigate(AppDestinations.Account.Onboarding.route)
                 }
-                NotInitiated -> {
-                    Button(
-                        shape = RoundedCornerShape(50),
-                        onClick = { onEventSent(AuthContract.Event.Auth) },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .heightIn(min = minTouchSize)
-                    ) {
-                        Text(text = stringResource(id = R.string.auth_btn_auth))
-                    }
+                NotInitiated -> Button(
+                    shape = RoundedCornerShape(50),
+                    onClick = { onEventSent(AuthContract.Event.Auth) },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .heightIn(min = minTouchSize)
+                ) {
+                    Text(text = stringResource(id = R.string.auth_btn_auth))
                 }
             }
             Spacer(modifier = Modifier.height(space16dp))

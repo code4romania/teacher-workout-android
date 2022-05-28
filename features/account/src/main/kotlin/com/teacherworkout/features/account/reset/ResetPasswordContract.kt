@@ -4,7 +4,6 @@ import com.teacherworkout.commons.ui.base.ViewEvent
 import com.teacherworkout.commons.ui.base.ViewSideEffect
 import com.teacherworkout.commons.ui.base.ViewState
 import com.teacherworkout.features.account.validators.EmailValidationStatus
-import com.teacherworkout.features.account.validators.PasswordValidationStatus
 
 class ResetPasswordContract {
     sealed class Event : ViewEvent {

@@ -12,26 +12,27 @@ import com.teacherworkout.features.account.validators.PasswordValidationStatus.V
  * contain at least 1 lowercase, 1 uppercase, 1 digit and 1 special character.
  */
 class PasswordValidator : FieldValidator<PasswordValidationStatus> {
-    override fun validate(input: String): PasswordValidationStatus {
-        if (input.length < 8) {
-            return TooShort
-        } else {
-            var hasLowercase = false
-            var hasUppercase = false
-            var hasDigit = false
-            var hasSpecialChar = false
-            input.forEach {
-                if (it.isLowerCase()) hasLowercase = true
-                if (it.isUpperCase()) hasUppercase = true
-                if (it.isDigit()) hasDigit = true
-                if ("`~!@#$%^&*()_+-={}|[]\\;:'\"<>?,./".contains(it)) hasSpecialChar = true
-            }
-            if (!hasLowercase) return NoLowercase
-            if (!hasUppercase) return NoUppercase
-            if (!hasDigit) return NoDigit
-            if (!hasSpecialChar) return NoSpecialChar
+    override fun validate(input: String): PasswordValidationStatus = if (input.length < 8) {
+        TooShort
+    } else {
+        var hasLowercase = false
+        var hasUppercase = false
+        var hasDigit = false
+        var hasSpecialChar = false
+        input.forEach {
+            if (it.isLowerCase()) hasLowercase = true
+            if (it.isUpperCase()) hasUppercase = true
+            if (it.isDigit()) hasDigit = true
+            if ("`~!@#$%^&*()_+-={}|[]\\;:'\"<>?,./".contains(it)) hasSpecialChar = true
         }
-        return Valid
+
+        when {
+            !hasLowercase -> NoLowercase
+            !hasUppercase -> NoUppercase
+            !hasDigit -> NoDigit
+            !hasSpecialChar -> NoSpecialChar
+            else -> Valid
+        }
     }
 }
 

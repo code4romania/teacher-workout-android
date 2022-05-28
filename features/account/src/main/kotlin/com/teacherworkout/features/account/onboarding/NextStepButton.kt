@@ -27,15 +27,17 @@ fun NextStepButton(hasMoreSteps: Boolean, onNext: () -> Unit, modifier: Modifier
     val space1dp = dimensionResource(R.dimen.space_1dp)
     val space4dp = dimensionResource(R.dimen.space_4dp)
     val space24dp = dimensionResource(R.dimen.space_24dp)
-    val labelText =
-        stringResource(id = if (hasMoreSteps) R.string.onboarding_btn_next_step else R.string.onboarding_btn_next_finish)
+    val labelText = nextLabelText(hasMoreSteps)
     OutlinedButton(
         onClick = onNext,
         modifier = modifier,
         border = BorderStroke(space1dp, MaterialTheme.colors.primary),
         shape = RoundedCornerShape(space24dp),
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.height(IntrinsicSize.Min)) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.height(IntrinsicSize.Min)
+        ) {
             Text(labelText)
             Spacer(modifier = Modifier.width(space4dp))
             Icon(
@@ -48,6 +50,10 @@ fun NextStepButton(hasMoreSteps: Boolean, onNext: () -> Unit, modifier: Modifier
         }
     }
 }
+
+@Composable
+private fun nextLabelText(hasMoreSteps: Boolean) =
+    stringResource(id = if (hasMoreSteps) R.string.onboarding_btn_next_step else R.string.onboarding_btn_next_finish)
 
 @Preview
 @Composable
