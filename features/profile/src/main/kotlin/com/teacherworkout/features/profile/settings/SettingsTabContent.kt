@@ -10,6 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
+import com.teacherworkout.commons.ui.theming.TeacherWorkoutTheme
 import com.teacherworkout.features.profile.R
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -28,24 +30,18 @@ fun SettingsTabContent(
     var isUpdatePictureDialogOpen by remember { mutableStateOf(false) }
     var isDeleteAccountDialogOpen by remember { mutableStateOf(false) }
 
-    AnimatedVisibility (isUpdatePictureDialogOpen) {
+    AnimatedVisibility(isUpdatePictureDialogOpen) {
         UpdateProfilePictureDialog(
-            onDismiss = { isUpdatePictureDialogOpen = false },
-            onNewPicture = {
-                onNewPicture(it)
-                isUpdatePictureDialogOpen = false
-            }
+            onNewPicture = { onNewPicture(it) },
+            onDismiss = { isUpdatePictureDialogOpen = false }
         )
     }
 
-    AnimatedVisibility (isDeleteAccountDialogOpen) {
-        DeleteAccountDialog()
-        {
-            isDeleteAccountDialogOpen = false
-            if (it == DialogResult.ACTION) {
-                // implement account deletion
-            }
-        }
+    AnimatedVisibility(isDeleteAccountDialogOpen) {
+        DeleteAccountDialog(
+            onAccountDelete = {},
+            onDismiss = { isDeleteAccountDialogOpen = false }
+        )
     }
 
     LazyColumn(
@@ -73,5 +69,13 @@ fun SettingsTabContent(
                 }
             }
         }
+    }
+}
+
+@Preview
+@Composable
+fun SettingsTabContentPreview() {
+    TeacherWorkoutTheme {
+        SettingsTabContent(onNewPicture = {})
     }
 }

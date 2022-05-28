@@ -15,4 +15,5 @@
     <string name="question_delete_description">șterge</string>
     <string name="warning_delete_account">Această acțiune este ireversibilă. Dacă îți ștergi contul vei pierde tot istoricul de lecții.</string>
     <string name="label_delete_account">@string/setting_delete_account</string>
+    <string name="cancel">Renunță</string>
 </resources>
