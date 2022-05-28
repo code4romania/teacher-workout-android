@@ -15,14 +15,15 @@ import org.koin.core.parameter.parametersOf
 
 fun NavGraphBuilder.lessonFeature(navHostController: NavHostController) {
     loadKoinModules(lessonModule)
+
+    val lessonIdArgumentName = "lessonId"
     composable(
         route = AppDestinations.Lesson.Landing.route,
-        //TODO: make the nav argument to not be hard coded
         arguments = listOf(
-            navArgument(name = "lessonId") { type = NavType.LongType }
+            navArgument(name = lessonIdArgumentName) { type = NavType.LongType }
         )
     ) { backStackEntry ->
-        val lessonId = backStackEntry.arguments?.getLong("lessonId")!!
+        val lessonId = backStackEntry.arguments?.getLong(lessonIdArgumentName)!!
         LessonStartScreenDestination(navHostController, lessonId)
     }
 }
@@ -36,9 +37,7 @@ private fun LessonStartScreenDestination(navController: NavController, lessonId:
         effects = viewModel.effect,
         onNavigationRequest = { navRequest ->
             when(navRequest) {
-                is LessonContract.Effect.Navigation.NavigateUp -> {
-                    navController.popBackStack()
-                }
+                is LessonContract.Effect.Navigation.NavigateUp -> navController.popBackStack()
             }
         }
     )
