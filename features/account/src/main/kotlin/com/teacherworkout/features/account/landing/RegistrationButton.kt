@@ -13,7 +13,7 @@ import com.teacherworkout.features.account.R
 
 @Composable
 fun RegistrationButton(modifier: Modifier = Modifier, onRegistrationRequest: () -> Unit) {
-    val space8dp = dimensionResource(id =  R.dimen.space_8dp)
+    val space8dp = dimensionResource(id =  com.teacherworkout.commons.ui.R.dimen.space_8dp)
     Button(
         onClick = onRegistrationRequest, modifier = modifier, shape = MaterialTheme.shapes.large
     ) {

@@ -10,11 +10,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.teacherworkout.commons.ui.composables.BottomBarScaffold
 import com.teacherworkout.commons.ui.navigation.AppDestinations
+import com.teacherworkout.features.discover.discoverFeature
 import com.teacherworkout.features.home.di.homeModule
 import com.teacherworkout.features.home.landing.LandingContract
-import com.teacherworkout.features.home.landing.LandingViewModel
 import com.teacherworkout.features.home.landing.LandingScreen
-import com.teacherworkout.features.discover.discoverFeature
+import com.teacherworkout.features.home.landing.LandingViewModel
 import com.teacherworkout.features.lesson.lessonFeature
 import com.teacherworkout.features.profile.profileFeature
 import org.koin.androidx.compose.getViewModel
@@ -55,6 +55,8 @@ private fun HomeScreenDestination(navHostController: NavHostController) {
                             val lessonId = navigationEffect.lessonId
                             navHostController.navigate("home-lesson-landing/${lessonId}")
                         }
+
+                        is LandingContract.Effect.Navigation.ToLessonThemeDetails -> TODO()
                     }
                 }
             )

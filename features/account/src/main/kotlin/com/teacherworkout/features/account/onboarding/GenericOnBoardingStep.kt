@@ -4,7 +4,15 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -31,18 +39,18 @@ fun GenericOnBoardingStep(
     @StringRes onboardingText: Int,
     modifier: Modifier = Modifier
 ) {
-    val space8dp = dimensionResource(id = R.dimen.space_8dp)
-    val space16dp = dimensionResource(id = R.dimen.space_16dp)
+    val space8dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_8dp)
+    val space16dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_16dp)
     Column(
         modifier = modifier
-            .background(colorResource(id = R.color.white))
+            .background(colorResource(id = com.teacherworkout.commons.ui.R.color.white))
             .fillMaxSize()
     ) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight(fraction = 0.5f)
-                .background(colorResource(id = R.color.landing_background))
+                .background(colorResource(id = com.teacherworkout.commons.ui.R.color.landing_background))
         ) {
             Image(
                 painter = painterResource(id = onboardingImageId),
@@ -68,7 +76,7 @@ fun GenericOnBoardingStep(
         Text(
             text = stringResource(id = onboardingText),
             style = TextStyle(
-                color = colorResource(id = R.color.onboarding_text_description),
+                color = colorResource(id = com.teacherworkout.commons.ui.R.color.onboarding_text_description),
                 fontSize = MaterialTheme.typography.body2.fontSize,
             ),
             modifier = Modifier.padding(horizontal = space16dp)
@@ -80,7 +88,7 @@ fun GenericOnBoardingStep(
 @Composable
 fun GenericOnBoardingStepPreview() {
     GenericOnBoardingStep(
-        onboardingImageId = R.drawable.onboarding_0_placeholder,
+        onboardingImageId = com.teacherworkout.commons.ui.R.drawable.onboarding_0_placeholder,
         onboardingTitle = R.string.onboarding_0_title,
         onboardingText = R.string.onboarding_0_description,
         modifier = Modifier

@@ -3,9 +3,18 @@ package com.teacherworkout.commons.ui.composables
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.Card
+import androidx.compose.material.Icon
+import androidx.compose.material.LinearProgressIndicator
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.runtime.Composable
@@ -59,7 +68,7 @@ private fun LessonCardImage(imageResourceId: Int, contentDescription: String) {
 
 @Composable
 private fun LessonCardBody(lesson: Lesson) {
-    val space8dp = dimensionResource(id = R.dimen.space_8dp)
+    val space8dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_8dp)
     val space4dp = dimensionResource(id = R.dimen.space_4dp)
 
     Column(

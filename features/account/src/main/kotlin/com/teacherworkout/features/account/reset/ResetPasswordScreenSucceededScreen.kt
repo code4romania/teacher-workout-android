@@ -21,7 +21,7 @@ import com.teacherworkout.features.account.composables.AccountScreenScaffold
 
 @Composable
 fun ResetPasswordSucceededScreen(navHostController: NavHostController) {
-    val space16dp = dimensionResource(id = R.dimen.space_16dp)
+    val space16dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_16dp)
     AccountScreenScaffold(titleId = R.string.reset_password_succeeded_title, navController = navHostController) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -30,8 +30,8 @@ fun ResetPasswordSucceededScreen(navHostController: NavHostController) {
                 .padding(all = space16dp)
         ) {
             Image(
-                colorFilter = ColorFilter.tint(colorResource(id = R.color.colorPrimary)),
-                painter = painterResource(id = R.drawable.ic_email),
+                colorFilter = ColorFilter.tint(colorResource(id = com.teacherworkout.commons.ui.R.color.colorPrimary)),
+                painter = painterResource(id = com.teacherworkout.commons.ui.R.drawable.ic_email),
                 contentDescription = stringResource(id = R.string.reset_password_cd_email)
             )
             Spacer(modifier = Modifier.width(space16dp))

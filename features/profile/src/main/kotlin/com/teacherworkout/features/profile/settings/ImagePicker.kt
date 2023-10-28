@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 
-class ImagePicker(private val launcher: ManagedActivityResultLauncher<String, Uri>){
+class ImagePicker(private val launcher: ManagedActivityResultLauncher<String, Uri?>){
     fun launch() {
         launcher.launch("image/")
     }

@@ -30,7 +30,7 @@ fun TermsAndConditions(
     enabled: Boolean = true,
     onTosStatusChange: (Boolean) -> Unit
 ) {
-    val space16dp = dimensionResource(id = R.dimen.space_16dp)
+    val space16dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_16dp)
     Column(modifier = modifier.fillMaxWidth()) {
         Row(
             modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically

@@ -3,7 +3,7 @@ import extensions.addProductFlavours
 
 plugins {
     id("commons.android-library")
-    id(BuildPlugins.APOLLO).version("3.0.0")
+    id(BuildPlugins.APOLLO).version("3.8.2")
 }
 
 android {

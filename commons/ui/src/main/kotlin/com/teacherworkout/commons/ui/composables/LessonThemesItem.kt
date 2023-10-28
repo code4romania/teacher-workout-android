@@ -1,6 +1,10 @@
 package com.teacherworkout.commons.ui.composables
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
@@ -30,7 +34,7 @@ fun LazyListScope.lessonThemesItem(
     }
 
     items(lessonThemes.chunked(2)) { oneOrTwoThemes ->
-        val space16dp = dimensionResource(id = R.dimen.space_16dp)
+        val space16dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_16dp)
 
         Row(horizontalArrangement = Arrangement.SpaceBetween) {
             @Composable

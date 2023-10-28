@@ -1,10 +1,22 @@
 package com.teacherworkout.features.profile.settings
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Warning
 import androidx.compose.runtime.Composable
@@ -22,8 +34,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
+import com.teacherworkout.commons.ui.R
 import com.teacherworkout.commons.ui.theming.TeacherWorkoutTheme
-import com.teacherworkout.features.profile.R
 
 @Composable
 fun GenericDialog(
@@ -34,9 +46,9 @@ fun GenericDialog(
     actionText: String,
     onDialogResult: (DialogResult) -> Unit
 ) {
-    val space24dp = dimensionResource(id = R.dimen.space_24dp)
+    val space24dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_24dp)
     val corner8dp = dimensionResource(id = R.dimen.corner_8dp)
-    val minTouchSize = dimensionResource(id = R.dimen.min_touch_size)
+    val minTouchSize = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.min_touch_size)
 
     Dialog(onDismissRequest = { onDialogResult(DialogResult.DISMISSED) }) {
         Surface(shape = RoundedCornerShape(corner8dp)) {
@@ -67,7 +79,7 @@ private fun DialogButtons(
     onDialogResult: (DialogResult) -> Unit,
     actionText: String
 ) {
-    val space8dp = dimensionResource(id = R.dimen.space_8dp)
+    val space8dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_8dp)
 
     Button(
         modifier = Modifier
@@ -112,8 +124,8 @@ private fun DialogBody(
     secondaryText: String?,
 ) {
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
-    val space16dp = dimensionResource(id = R.dimen.space_16dp)
-    val space24dp = dimensionResource(id = R.dimen.space_24dp)
+    val space16dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_16dp)
+    val space24dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_24dp)
     Box(
         modifier = Modifier
             .size(minTouchSize)

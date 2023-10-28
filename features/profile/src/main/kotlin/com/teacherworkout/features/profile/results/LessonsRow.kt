@@ -2,7 +2,12 @@ package com.teacherworkout.features.profile.results
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
@@ -23,10 +28,10 @@ fun LessonRow(
     totalLessons: Int,
     onSelection: () -> Unit
 ) {
-    val space4dp = dimensionResource(id = R.dimen.space_4dp)
-    val space8dp = dimensionResource(id = R.dimen.space_8dp)
-    val space16dp = dimensionResource(id = R.dimen.space_16dp)
-    val lessonPhotoSize = dimensionResource(id = R.dimen.lesson_photo_size)
+    val space4dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_4dp)
+    val space8dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_8dp)
+    val space16dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_16dp)
+    val lessonPhotoSize = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.lesson_photo_size)
     Column(modifier = Modifier.clickable { onSelection() }) {
         Row(modifier = Modifier.padding(space16dp)) {
             Image(

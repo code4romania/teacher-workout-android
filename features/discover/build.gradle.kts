@@ -1,10 +1,10 @@
-import extensions.addProductFlavours
 import dependencies.Dependencies
+import extensions.addProductFlavours
 
 plugins {
     id("commons.android-library")
     id("kotlin-android")
-    id(BuildPlugins.APOLLO).version("3.0.0")
+    id(BuildPlugins.APOLLO).version("3.8.2")
 }
 
 android {

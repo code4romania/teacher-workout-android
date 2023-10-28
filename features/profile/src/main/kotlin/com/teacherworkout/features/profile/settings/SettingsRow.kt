@@ -13,7 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.style.TextAlign
-import com.teacherworkout.features.profile.R
+import com.teacherworkout.commons.ui.R
 
 @Composable
 fun SettingsRow(text: String, onSelection: (String) -> Unit) {

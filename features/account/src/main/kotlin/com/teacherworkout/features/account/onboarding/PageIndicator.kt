@@ -11,7 +11,6 @@ import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.teacherworkout.features.account.R
 import kotlin.math.min
 
 // set 30% of the available space as margin between the circles, should probably calculate this
@@ -39,7 +38,7 @@ fun PageIndicator(pageCount: Int, selected: Int, modifier: Modifier = Modifier) 
 fun PageIndicatorPreview() {
     PageIndicator(
         pageCount = 3, selected = 0, modifier = Modifier
-            .height(dimensionResource(id = R.dimen.space_32dp))
-            .width(dimensionResource(id = R.dimen.space_64dp))
+            .height(dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_32dp))
+            .width(dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_64dp))
     )
 }
