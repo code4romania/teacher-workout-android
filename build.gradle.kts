@@ -9,7 +9,6 @@ allprojects {
     }
 
     plugins.apply(BuildPlugins.DETEKT)
-    plugins.apply(BuildPlugins.KTLINT)
     plugins.apply(BuildPlugins.SPOTLESS)
 }
 

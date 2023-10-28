@@ -12,7 +12,9 @@ android {
     namespace = "com.teacherworkout.features.discover"
 
     apollo {
-        packageName.set("com.teacherworkout.discover.dtos")
+        service("service") {
+            packageName.set("com.teacherworkout.discover.dtos")
+        }
     }
 
 }

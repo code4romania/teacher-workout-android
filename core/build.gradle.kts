@@ -11,8 +11,10 @@ android {
     namespace = "com.teacherworkout.core"
 
     apollo {
-        packageName.set("com.teacherworkout.dtos")
-        generateApolloMetadata.set(true)
+        service("service") {
+            packageName.set("com.teacherworkout.dtos")
+            generateApolloMetadata.set(true)
+        }
     }
 }
 

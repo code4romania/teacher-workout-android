@@ -22,13 +22,10 @@ jobs:
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
-          java-version: '11'
+          java-version: '17'
 
       - name: Run Detekt
         run: ./gradlew detekt
-
-      - name: Run Kotlin Linter
-        run: ./gradlew ktlint
 
       - name: Run Android Linter
         run: ./gradlew lint --stacktrace

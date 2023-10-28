@@ -66,13 +66,14 @@ fun LessonStartScreen(
                 }
             }
         }
-    ) {
-        LessonScreenBody(state, onSendEvent)
+    ) { paddingValues ->
+        LessonScreenBody(Modifier.padding(paddingValues), state, onSendEvent)
     }
 }
 
 @Composable
 private fun LessonScreenBody(
+    modifier: Modifier = Modifier,
     state: LessonContract.State,
     onSendEvent: (LessonContract.Event) -> Unit
 ) {
@@ -80,7 +81,7 @@ private fun LessonScreenBody(
     val space24dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_24dp)
 
     ConstraintLayout(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(color = colorResource(com.teacherworkout.commons.ui.R.color.landing_background))
             .padding(start = space16dp, end = space16dp, bottom = space24dp)
@@ -115,11 +116,12 @@ private fun LessonScreenBody(
             height = Dimension.wrapContent
         }) {
             state.lesson?.let { lesson ->
+                val minutesString = stringResource(com.teacherworkout.commons.ui.R.string.min)
                 LessonTitleText(title = lesson.title)
                 Spacer(modifier = Modifier.height(space24dp))
                 LessonThemeTitleText(title = lesson.lessonThemeTitle)
                 Spacer(modifier = Modifier.height(space16dp))
-                DurationText(duration = "${lesson.remainingMinutes} ${stringResource(com.teacherworkout.commons.ui.R.string.min)}")
+                DurationText(duration = "${lesson.remainingMinutes} $minutesString")
                 Spacer(modifier = Modifier.height(space24dp))
                 StartContinueButton(
                     lessonStarted = lesson.started,
