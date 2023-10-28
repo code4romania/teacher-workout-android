@@ -12,10 +12,10 @@ repositories {
 }
 
 object PluginsVersions {
-    const val GRADLE_ANDROID = "7.0.3"
-    const val UPDATE_VERSIONS = "0.33.0"
-    const val KOTLIN = "1.5.31"
-    const val NAVIGATION = "2.4.0-alpha10"
+    const val GRADLE_ANDROID = "8.1.2"
+    const val UPDATE_VERSIONS = "0.49.0"
+    const val KOTLIN = "1.9.10"
+    const val NAVIGATION = "2.7.4"
     const val KTLINT = "0.40.0"
     const val SPOTLESS = "5.7.0"
     const val DETEKT = "1.14.2"

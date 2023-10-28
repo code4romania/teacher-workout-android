@@ -8,6 +8,7 @@ plugins {
 
 android {
     addProductFlavours(this)
+    namespace = "com.teacherworkout.core"
 
     apollo {
         packageName.set("com.teacherworkout.dtos")

@@ -12,7 +12,7 @@ tasks {
         group = BuildTasksGroups.VERIFICATION
         description = "Check Kotlin code style."
         classpath = ktlint
-        main = "com.pinterest.ktlint.Main"
+        // main = "com.pinterest.ktlint.Main"
         args("--android", "src/main/*.kt")
     }
 
@@ -20,7 +20,7 @@ tasks {
         group = BuildTasksGroups.FORMATTING
         description = "Fix Kotlin code style deviations."
         classpath = ktlint
-        main = "com.pinterest.ktlint.Main"
+        // main = "com.pinterest.ktlint.Main"
         args("--android", "-F", "src/main/*.kt")
     }
 }

@@ -7,6 +7,7 @@ plugins {
 
 android {
     addProductFlavours(this)
+    namespace = "com.teacherworkout.features.account"
 }
 
 dependencies {

@@ -8,6 +8,7 @@ plugins {
 
 android {
     addProductFlavours(this)
+    namespace = "com.teacherworkout.features.lesson"
 }
 dependencies {
     implementation(project(mapOf("path" to ":commons:ui")))

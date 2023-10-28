@@ -1,5 +1,4 @@
 import extensions.addProductFlavours
-import dependencies.Dependencies
 
 plugins {
     id("commons.android-library")
@@ -8,6 +7,7 @@ plugins {
 
 android {
     addProductFlavours(this)
+    namespace = "com.teacherworkout.features.home"
 }
 dependencies {
     implementation(project(BuildModules.Features.DISCOVER))
