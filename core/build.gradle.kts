@@ -21,4 +21,3 @@ android {
 dependencies {
     implementation(Dependencies.Apollo.RUNTIME)
 }
-
