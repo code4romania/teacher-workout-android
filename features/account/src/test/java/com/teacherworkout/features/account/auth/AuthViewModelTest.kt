@@ -1,14 +1,19 @@
 package com.teacherworkout.features.account.auth
 
 import com.google.common.truth.Truth.assertThat
+import com.teacherworkout.features.account.MainDispatcherRule
 import com.teacherworkout.features.account.data.AccountTestData.VALID_EMAIL
 import com.teacherworkout.features.account.data.AccountTestData.VALID_PASSWORD
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
 class AuthViewModelTest {
 
     private lateinit var viewModel: AuthViewModel
+
+    @get:Rule
+    val mainDispatcherRule = MainDispatcherRule()
 
     @Before
     fun setUp() {

@@ -1,6 +1,7 @@
 package com.teacherworkout.features.account.register
 
 import com.google.common.truth.Truth.assertThat
+import com.teacherworkout.features.account.MainDispatcherRule
 import com.teacherworkout.features.account.data.AccountTestData.EMPTY
 import com.teacherworkout.features.account.data.AccountTestData.INVALID_EMAIL
 import com.teacherworkout.features.account.data.AccountTestData.INVALID_PASSWORD_NO_DIGIT
@@ -12,11 +13,15 @@ import com.teacherworkout.features.account.data.AccountTestData.VALID_PASSWORD
 import com.teacherworkout.features.account.validators.EmailValidationStatus
 import com.teacherworkout.features.account.validators.PasswordValidationStatus
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
 class RegisterViewModelTest {
 
     private lateinit var viewModel: RegisterViewModel
+
+    @get:Rule
+    val mainDispatcherRule = MainDispatcherRule()
 
     @Before
     fun setUp() {

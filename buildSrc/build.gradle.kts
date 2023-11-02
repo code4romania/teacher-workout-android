@@ -15,8 +15,7 @@ object PluginsVersions {
     const val GRADLE_ANDROID = "8.1.2"
     const val UPDATE_VERSIONS = "0.49.0"
     const val KOTLIN = "1.9.10"
-    const val NAVIGATION = "2.7.4"
-    const val KTLINT = "0.40.0"
+    const val NAVIGATION = "2.7.5"
     const val SPOTLESS = "5.7.0"
     const val DETEKT = "1.14.2"
 }
@@ -26,7 +25,6 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:${PluginsVersions.KOTLIN}")
     implementation("com.github.ben-manes:gradle-versions-plugin:${PluginsVersions.UPDATE_VERSIONS}")
     implementation("androidx.navigation:navigation-safe-args-gradle-plugin:${PluginsVersions.NAVIGATION}")
-    implementation("com.pinterest:ktlint:${PluginsVersions.KTLINT}")
     implementation("com.diffplug.spotless:spotless-plugin-gradle:${PluginsVersions.SPOTLESS}")
     implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${PluginsVersions.DETEKT}")
 }
