@@ -19,9 +19,9 @@ import com.teacherworkout.features.profile.R
 
 @Composable
 fun DeleteAccountDialog(onAccountDelete: () -> Unit, onDismiss: () -> Unit) {
-    val space8dp = dimensionResource(id = R.dimen.space_8dp)
-    val space24dp = dimensionResource(id = R.dimen.space_24dp)
-    val corner8dp = dimensionResource(id = R.dimen.corner_8dp)
+    val space8dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_8dp)
+    val space24dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_24dp)
+    val corner8dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.corner_8dp)
 
     Dialog(onDismissRequest = onDismiss) {
         Surface(shape = RoundedCornerShape(corner8dp)) {
