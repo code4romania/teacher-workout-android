@@ -20,6 +20,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import com.teacherworkout.features.profile.R
+import com.teacherworkout.commons.ui.R as CommonRes
+
 
 @Composable
 fun LessonRow(
@@ -28,10 +30,10 @@ fun LessonRow(
     totalLessons: Int,
     onSelection: () -> Unit
 ) {
-    val space4dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_4dp)
-    val space8dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_8dp)
-    val space16dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_16dp)
-    val lessonPhotoSize = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.lesson_photo_size)
+    val space4dp = dimensionResource(id = CommonRes.dimen.space_4dp)
+    val space8dp = dimensionResource(id = CommonRes.dimen.space_8dp)
+    val space16dp = dimensionResource(id = CommonRes.dimen.space_16dp)
+    val lessonPhotoSize = dimensionResource(id = CommonRes.dimen.lesson_photo_size)
     Column(modifier = Modifier.clickable { onSelection() }) {
         Row(modifier = Modifier.padding(space16dp)) {
             Image(

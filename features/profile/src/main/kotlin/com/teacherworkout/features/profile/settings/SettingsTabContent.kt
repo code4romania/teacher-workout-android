@@ -17,6 +17,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.teacherworkout.commons.ui.theming.TeacherWorkoutTheme
 import com.teacherworkout.features.profile.R
+import com.teacherworkout.commons.ui.R as CommonRes
+
 
 @Composable
 fun SettingsTabContent(
@@ -28,7 +30,7 @@ fun SettingsTabContent(
     val settingNotifications = stringResource(id = R.string.setting_notification)
     val settingLogout = stringResource(id = R.string.setting_logout)
     val settingDeleteAccount = stringResource(id = R.string.setting_delete_account)
-    val space16dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_16dp)
+    val space16dp = dimensionResource(id = CommonRes.dimen.space_16dp)
 
     var isUpdatePictureDialogOpen by remember { mutableStateOf(false) }
     var isDeleteAccountDialogOpen by remember { mutableStateOf(false) }

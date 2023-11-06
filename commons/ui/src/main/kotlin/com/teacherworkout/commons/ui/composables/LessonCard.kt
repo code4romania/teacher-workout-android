@@ -68,7 +68,7 @@ private fun LessonCardImage(imageResourceId: Int, contentDescription: String) {
 
 @Composable
 private fun LessonCardBody(lesson: Lesson) {
-    val space8dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_8dp)
+    val space8dp = dimensionResource(id = R.dimen.space_8dp)
     val space4dp = dimensionResource(id = R.dimen.space_4dp)
 
     Column(

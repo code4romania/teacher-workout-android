@@ -21,6 +21,8 @@ import androidx.compose.ui.text.style.TextDecoration
 import com.teacherworkout.features.account.BuildConfig
 import com.teacherworkout.features.account.R
 import com.teacherworkout.features.account.composables.ErrorText
+import com.teacherworkout.commons.ui.R as CommonRes
+
 
 @Composable
 fun TermsAndConditions(
@@ -30,7 +32,7 @@ fun TermsAndConditions(
     enabled: Boolean = true,
     onTosStatusChange: (Boolean) -> Unit
 ) {
-    val space16dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_16dp)
+    val space16dp = dimensionResource(id = CommonRes.dimen.space_16dp)
     Column(modifier = modifier.fillMaxWidth()) {
         Row(
             modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically

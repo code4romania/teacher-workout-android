@@ -16,14 +16,16 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import com.teacherworkout.commons.ui.R
+import com.teacherworkout.commons.ui.R as CommonRes
+
 
 @Composable
 fun LessonProgress(progress: Float) {
     val space1dp = dimensionResource(id = R.dimen.space_1dp)
-    val space8dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_8dp)
+    val space8dp = dimensionResource(id = CommonRes.dimen.space_8dp)
     val border1dp = dimensionResource(id = R.dimen.border_1dp)
     val corner4dp = dimensionResource(id = R.dimen.corner_4dp)
-    val white = colorResource(id = com.teacherworkout.commons.ui.R.color.white)
+    val white = colorResource(id = CommonRes.color.white)
     Box(modifier = Modifier.height(space8dp)) {
         Row(
             modifier = Modifier

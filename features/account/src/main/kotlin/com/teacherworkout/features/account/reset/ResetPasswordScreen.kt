@@ -22,6 +22,8 @@ import com.teacherworkout.features.account.composables.EmailField
 import com.teacherworkout.features.account.composables.RegistrationLoadingUi
 import com.teacherworkout.features.account.composables.RequestFailedUi
 import com.teacherworkout.features.account.validators.EmailValidationStatus
+import com.teacherworkout.commons.ui.R as CommonRes
+
 
 @Composable
 fun ResetPasswordScreen(
@@ -29,9 +31,9 @@ fun ResetPasswordScreen(
     onEventSent: (event: ResetPasswordContract.Event) -> Unit,
     navController: NavController,
 ) {
-    val space8dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_8dp)
-    val space16dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_16dp)
-    val minTouchSize = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.min_touch_size)
+    val space8dp = dimensionResource(id = CommonRes.dimen.space_8dp)
+    val space16dp = dimensionResource(id = CommonRes.dimen.space_16dp)
+    val minTouchSize = dimensionResource(id = CommonRes.dimen.min_touch_size)
 
     AccountScreenScaffold(titleId = R.string.reset_password_title, navController = navController) {
         Column(

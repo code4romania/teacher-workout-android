@@ -21,12 +21,14 @@ import androidx.compose.ui.res.dimensionResource
 import com.teacherworkout.features.profile.R
 import com.teacherworkout.features.profile.results.ResultsTabContent
 import com.teacherworkout.features.profile.settings.SettingsTabContent
+import com.teacherworkout.commons.ui.R as CommonRes
+
 
 @Composable
 fun Screen() {
     var tab by remember { mutableStateOf(0) }
-    val space16dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_16dp)
-    val minTabHeight = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.min_tab_height)
+    val space16dp = dimensionResource(id = CommonRes.dimen.space_16dp)
+    val minTabHeight = dimensionResource(id = CommonRes.dimen.min_tab_height)
 
     var profilePictureUri by remember { mutableStateOf<Uri?>(null) }
 

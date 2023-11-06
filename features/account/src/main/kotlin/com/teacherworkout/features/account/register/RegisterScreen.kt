@@ -29,6 +29,8 @@ import com.teacherworkout.features.account.composables.RegistrationLoadingUi
 import com.teacherworkout.features.account.composables.RequestFailedUi
 import com.teacherworkout.features.account.composables.RequestSuccessfulUi
 import com.teacherworkout.features.account.validators.PasswordValidationStatus
+import com.teacherworkout.commons.ui.R as CommonRes
+
 
 @Composable
 fun RegisterScreen(
@@ -37,9 +39,9 @@ fun RegisterScreen(
     navController: NavHostController,
 ) {
     val confirmedPassword by rememberSaveable { mutableStateOf("") }
-    val space16dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_16dp)
-    val space24dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_24dp)
-    val minTouchSize = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.min_touch_size)
+    val space16dp = dimensionResource(id = CommonRes.dimen.space_16dp)
+    val space24dp = dimensionResource(id = CommonRes.dimen.space_24dp)
+    val minTouchSize = dimensionResource(id = CommonRes.dimen.min_touch_size)
 
     AccountScreenScaffold(titleId = R.string.register_title, navController = navController) {
         Column(
@@ -102,8 +104,8 @@ private fun PasswordFields(
     var confirmedPassword by rememberSaveable { mutableStateOf("") }
     var confirmedPasswordHasError by rememberSaveable { mutableStateOf(false) }
 
-    val space8dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_8dp)
-    val space24dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_24dp)
+    val space8dp = dimensionResource(id = CommonRes.dimen.space_8dp)
+    val space24dp = dimensionResource(id = CommonRes.dimen.space_24dp)
 
     Text(text = stringResource(id = R.string.input_password_label))
     Spacer(modifier = Modifier.height(space8dp))
@@ -146,8 +148,8 @@ private fun EmailField(
     state: RegisterContract.State,
     onEventSent: (event: RegisterContract.Event) -> Unit
 ) {
-    val space8dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_8dp)
-    val space24dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_24dp)
+    val space8dp = dimensionResource(id = CommonRes.dimen.space_8dp)
+    val space24dp = dimensionResource(id = CommonRes.dimen.space_24dp)
 
     Text(text = stringResource(id = R.string.input_email_label))
     Spacer(modifier = Modifier.height(space8dp))

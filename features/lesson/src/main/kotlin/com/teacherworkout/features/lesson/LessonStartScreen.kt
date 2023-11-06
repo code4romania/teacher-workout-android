@@ -41,6 +41,8 @@ import com.teacherworkout.commons.ui.model.Lesson
 import com.teacherworkout.features.account.composables.UpIcon
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import com.teacherworkout.commons.ui.R as CommonRes
+
 
 @Composable
 fun LessonStartScreen(
@@ -58,7 +60,7 @@ fun LessonStartScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                backgroundColor = colorResource(com.teacherworkout.commons.ui.R.color.landing_background),
+                backgroundColor = colorResource(CommonRes.color.landing_background),
                 elevation = 0.dp
             ) {
                 UpIcon(tint = MaterialTheme.colors.primary) {
@@ -77,13 +79,13 @@ private fun LessonScreenBody(
     state: LessonContract.State,
     onSendEvent: (LessonContract.Event) -> Unit
 ) {
-    val space16dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_16dp)
-    val space24dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_24dp)
+    val space16dp = dimensionResource(id = CommonRes.dimen.space_16dp)
+    val space24dp = dimensionResource(id = CommonRes.dimen.space_24dp)
 
     ConstraintLayout(
         modifier = modifier
             .fillMaxSize()
-            .background(color = colorResource(com.teacherworkout.commons.ui.R.color.landing_background))
+            .background(color = colorResource(CommonRes.color.landing_background))
             .padding(start = space16dp, end = space16dp, bottom = space24dp)
     ) {
         val (panel, image) = createRefs()
@@ -116,7 +118,7 @@ private fun LessonScreenBody(
             height = Dimension.wrapContent
         }) {
             state.lesson?.let { lesson ->
-                val minutesString = stringResource(com.teacherworkout.commons.ui.R.string.min)
+                val minutesString = stringResource(CommonRes.string.min)
                 LessonTitleText(title = lesson.title)
                 Spacer(modifier = Modifier.height(space24dp))
                 LessonThemeTitleText(title = lesson.lessonThemeTitle)
@@ -143,7 +145,7 @@ private fun StartContinueButton(
     lessonStarted: Boolean,
     onClick: () -> Unit
 ) {
-    val minTouchSize = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.min_touch_size)
+    val minTouchSize = dimensionResource(id = CommonRes.dimen.min_touch_size)
 
     Button(
         modifier = Modifier
@@ -200,7 +202,7 @@ private fun DurationText(duration: String) {
 
 @Composable
 private fun SaveButton(onClick: () -> Unit) {
-    val minTouchSize = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.min_touch_size)
+    val minTouchSize = dimensionResource(id = CommonRes.dimen.min_touch_size)
 
     OutlinedButton(
         modifier = Modifier
@@ -210,7 +212,7 @@ private fun SaveButton(onClick: () -> Unit) {
         shape = MaterialTheme.shapes.large,
         border = BorderStroke(1.dp, MaterialTheme.colors.primary),
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = colorResource(com.teacherworkout.commons.ui.R.color.landing_background),
+            backgroundColor = colorResource(CommonRes.color.landing_background),
             contentColor = MaterialTheme.colors.onBackground
         )
     ) {
@@ -220,7 +222,7 @@ private fun SaveButton(onClick: () -> Unit) {
 
 @Composable
 private fun DeleteButton(onClick: () -> Unit) {
-    val minTouchSize = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.min_touch_size)
+    val minTouchSize = dimensionResource(id = CommonRes.dimen.min_touch_size)
 
     Button(
         modifier = Modifier
@@ -242,7 +244,7 @@ fun LessonStartScreenPreview() {
                 id = 1,
                 title = "Cum discuti cu elevii tai despre boli psihice",
                 lessonThemeTitle = "Cum discuti despre boli psihice",
-                imageResourceId = com.teacherworkout.commons.ui.R.drawable.art1,
+                imageResourceId = CommonRes.drawable.art1,
                 durationInMinutes = 7,
                 remainingMinutes = 4
             )

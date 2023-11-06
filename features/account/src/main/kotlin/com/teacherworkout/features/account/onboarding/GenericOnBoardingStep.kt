@@ -27,6 +27,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.teacherworkout.features.account.R
+import com.teacherworkout.commons.ui.R as CommonRes
+
 
 /**
  * Because the mockups for the 3 pages are almost the same, currently there is only this composable to describe the
@@ -39,18 +41,18 @@ fun GenericOnBoardingStep(
     @StringRes onboardingText: Int,
     modifier: Modifier = Modifier
 ) {
-    val space8dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_8dp)
-    val space16dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_16dp)
+    val space8dp = dimensionResource(id = CommonRes.dimen.space_8dp)
+    val space16dp = dimensionResource(id = CommonRes.dimen.space_16dp)
     Column(
         modifier = modifier
-            .background(colorResource(id = com.teacherworkout.commons.ui.R.color.white))
+            .background(colorResource(id = CommonRes.color.white))
             .fillMaxSize()
     ) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight(fraction = 0.5f)
-                .background(colorResource(id = com.teacherworkout.commons.ui.R.color.landing_background))
+                .background(colorResource(id = CommonRes.color.landing_background))
         ) {
             Image(
                 painter = painterResource(id = onboardingImageId),
@@ -76,7 +78,7 @@ fun GenericOnBoardingStep(
         Text(
             text = stringResource(id = onboardingText),
             style = TextStyle(
-                color = colorResource(id = com.teacherworkout.commons.ui.R.color.onboarding_text_description),
+                color = colorResource(id = CommonRes.color.onboarding_text_description),
                 fontSize = MaterialTheme.typography.body2.fontSize,
             ),
             modifier = Modifier.padding(horizontal = space16dp)
@@ -88,7 +90,7 @@ fun GenericOnBoardingStep(
 @Composable
 fun GenericOnBoardingStepPreview() {
     GenericOnBoardingStep(
-        onboardingImageId = com.teacherworkout.commons.ui.R.drawable.onboarding_0_placeholder,
+        onboardingImageId = CommonRes.drawable.onboarding_0_placeholder,
         onboardingTitle = R.string.onboarding_0_title,
         onboardingText = R.string.onboarding_0_description,
         modifier = Modifier

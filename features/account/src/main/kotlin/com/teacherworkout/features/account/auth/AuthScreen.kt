@@ -25,6 +25,8 @@ import com.teacherworkout.features.account.composables.EmailField
 import com.teacherworkout.features.account.composables.PasswordField
 import com.teacherworkout.features.account.composables.RegistrationLoadingUi
 import com.teacherworkout.features.account.composables.RequestFailedUi
+import com.teacherworkout.commons.ui.R as CommonRes
+
 
 @Composable
 fun AuthScreen(
@@ -32,8 +34,8 @@ fun AuthScreen(
     onEventSent: (event: AuthContract.Event) -> Unit,
     navController: NavHostController,
 ) {
-    val space16dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_16dp)
-    val minTouchSize = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.min_touch_size)
+    val space16dp = dimensionResource(id = CommonRes.dimen.space_16dp)
+    val minTouchSize = dimensionResource(id = CommonRes.dimen.min_touch_size)
 
     AccountScreenScaffold(titleId = R.string.auth_title, navController = navController) {
         Column(
@@ -84,8 +86,8 @@ private fun PasswordField(
     state: AuthContract.State,
     onEventSent: (event: AuthContract.Event) -> Unit
 ) {
-    val space16dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_16dp)
-    val space8dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_8dp)
+    val space16dp = dimensionResource(id = CommonRes.dimen.space_16dp)
+    val space8dp = dimensionResource(id = CommonRes.dimen.space_8dp)
 
     Text(text = stringResource(id = R.string.input_password_label))
     Spacer(modifier = Modifier.height(space16dp))
@@ -101,8 +103,8 @@ private fun EmailField(
     state: AuthContract.State,
     onEventSent: (event: AuthContract.Event) -> Unit
 ) {
-    val space8dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_8dp)
-    val space24dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_24dp)
+    val space8dp = dimensionResource(id = CommonRes.dimen.space_8dp)
+    val space24dp = dimensionResource(id = CommonRes.dimen.space_24dp)
 
     Text(text = stringResource(id = R.string.input_email_label))
     Spacer(modifier = Modifier.height(space8dp))

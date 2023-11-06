@@ -11,13 +11,15 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import coil.compose.rememberAsyncImagePainter
 import com.teacherworkout.features.profile.R
+import com.teacherworkout.commons.ui.R as CommonRes
+
 
 @Composable
 fun ProfilePicture(
     modifier: Modifier = Modifier,
     pictureUri: Uri? = null,
 ) {
-    val profilePictureSize = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.profile_photo_size)
+    val profilePictureSize = dimensionResource(id = CommonRes.dimen.profile_photo_size)
     val defaultProfilePictureId = R.drawable.ic_profile_default
     Image(
         modifier = modifier.size(profilePictureSize).clip(CircleShape),

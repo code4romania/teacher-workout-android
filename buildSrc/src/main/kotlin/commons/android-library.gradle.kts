@@ -16,6 +16,7 @@
 
 package commons
 
+import BuildAndroidConfig
 import dependencies.Dependencies
 import dependencies.TestAndroidDependencies
 import dependencies.TestDependencies
@@ -63,8 +64,8 @@ android {
 
     lint {
         lintConfig = rootProject.file(".lint/config.xml")
-        // isCheckAllWarnings = true
-        // isWarningsAsErrors = true
+        checkAllWarnings = true
+        warningsAsErrors = true
     }
 
     testOptions {

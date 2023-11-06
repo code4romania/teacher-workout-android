@@ -34,7 +34,7 @@ fun LazyListScope.lessonThemesItem(
     }
 
     items(lessonThemes.chunked(2)) { oneOrTwoThemes ->
-        val space16dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_16dp)
+        val space16dp = dimensionResource(id = R.dimen.space_16dp)
 
         Row(horizontalArrangement = Arrangement.SpaceBetween) {
             @Composable

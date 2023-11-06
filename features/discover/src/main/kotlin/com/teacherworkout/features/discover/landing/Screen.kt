@@ -33,6 +33,7 @@ import com.teacherworkout.features.discover.R
 import com.teacherworkout.features.discover.landing.Companion.PROGRESS_HEIGHT_FRACTION
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import com.teacherworkout.commons.ui.R as CommonRes
 
 private val listState = LazyListState()
 
@@ -43,7 +44,7 @@ fun Screen(
     effects: Flow<Contract.Effect>,
     onNavigationRequest: (Contract.Effect.Navigation) -> Unit
 ) {
-    val space16dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_16dp)
+    val space16dp = dimensionResource(id = CommonRes.dimen.space_16dp)
     val snackbarHostState = remember { SnackbarHostState() }
 
     HandleEffects(effects) { effect ->
@@ -94,8 +95,8 @@ fun Screen(
 
 @Composable
 fun Header(state: Contract.State, onSendEvent: (Contract.Event) -> Unit) {
-    val space8dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_8dp)
-    val space16dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_16dp)
+    val space8dp = dimensionResource(id = CommonRes.dimen.space_8dp)
+    val space16dp = dimensionResource(id = CommonRes.dimen.space_16dp)
 
     Spacer(modifier = Modifier.height(space16dp))
     Text(
@@ -167,7 +168,7 @@ private fun List<Theme>.toViewModels(): List<LessonTheme> =
         LessonTheme(
             id = it.id,
             title = it.title,
-            imageResourceId = com.teacherworkout.commons.ui.R.drawable.art2
+            imageResourceId = CommonRes.drawable.art2
         )
     }
 

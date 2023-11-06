@@ -56,7 +56,9 @@ private fun HomeScreenDestination(navHostController: NavHostController) {
                             navHostController.navigate("home-lesson-landing/${lessonId}")
                         }
 
-                        is LandingContract.Effect.Navigation.ToLessonThemeDetails -> TODO()
+                        is LandingContract.Effect.Navigation.ToLessonThemeDetails -> {
+                            // TODO navigate to theme details
+                        }
                     }
                 }
             )

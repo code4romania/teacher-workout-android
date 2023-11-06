@@ -36,6 +36,7 @@ import com.teacherworkout.features.home.landing.CompanionObject.NewLessonsItems
 import com.teacherworkout.features.home.landing.CompanionObject.ProgressBarHeightFraction
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import com.teacherworkout.commons.ui.R as CommonRes
 
 private val listState = LazyListState()
 
@@ -47,7 +48,7 @@ fun LandingScreen(
     effects: Flow<LandingContract.Effect>,
     onNavigationRequest: (LandingContract.Effect.Navigation) -> Unit
 ) {
-    val space16dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_16dp)
+    val space16dp = dimensionResource(id = CommonRes.dimen.space_16dp)
 
     val snackbarHostState = remember { SnackbarHostState() }
 
@@ -145,8 +146,8 @@ private fun Header(
     state: LandingContract.State,
     onSendEvent: (LandingContract.Event) -> Unit,
 ) {
-    val space8dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_8dp)
-    val space16dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_16dp)
+    val space8dp = dimensionResource(id = CommonRes.dimen.space_8dp)
+    val space16dp = dimensionResource(id = CommonRes.dimen.space_16dp)
 
     Spacer(modifier = Modifier.height(space16dp))
     Text(

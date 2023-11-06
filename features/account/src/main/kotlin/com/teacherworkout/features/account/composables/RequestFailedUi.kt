@@ -17,6 +17,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import com.teacherworkout.commons.ui.R as CommonRes
+
 
 @Composable
 fun RequestFailedUi(
@@ -24,8 +26,8 @@ fun RequestFailedUi(
     modifier: Modifier = Modifier,
     onRetry: () -> Unit
 ) {
-    val space8dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_8dp)
-    val space16dp = dimensionResource(id = com.teacherworkout.commons.ui.R.dimen.space_16dp)
+    val space8dp = dimensionResource(id = CommonRes.dimen.space_8dp)
+    val space16dp = dimensionResource(id = CommonRes.dimen.space_16dp)
     Column(
         modifier = modifier.background(
             Color(color = 0xfff5f5f5),
