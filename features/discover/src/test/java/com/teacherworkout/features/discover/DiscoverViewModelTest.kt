@@ -3,16 +3,21 @@ package com.teacherworkout.features.discover
 import androidx.compose.ui.text.input.TextFieldValue
 import com.google.common.truth.Truth.assertThat
 import com.teacherworkout.features.discover.landing.Contract
-import com.teacherworkout.features.discover.landing.ViewModel
 import com.teacherworkout.features.discover.landing.Theme
 import com.teacherworkout.features.discover.landing.ThemesRepository
+import com.teacherworkout.features.discover.landing.ViewModel
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
+import org.junit.Rule
 import org.junit.Test
 
 class DiscoverViewModelTest {
+
+    @get:Rule
+    val mainDispatcherRule = MainDispatcherRule()
+
     @Test
     fun `will populate lesson themes`() {
         val repository: ThemesRepository = mockk()

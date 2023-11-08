@@ -1,6 +1,11 @@
 package com.teacherworkout.features.account.auth
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
@@ -15,7 +20,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import com.teacherworkout.commons.ui.navigation.AppDestinations
 import com.teacherworkout.features.account.R
-import com.teacherworkout.features.account.composables.*
+import com.teacherworkout.features.account.composables.AccountScreenScaffold
+import com.teacherworkout.features.account.composables.EmailField
+import com.teacherworkout.features.account.composables.PasswordField
+import com.teacherworkout.features.account.composables.RegistrationLoadingUi
+import com.teacherworkout.features.account.composables.RequestFailedUi
+import com.teacherworkout.commons.ui.R as CommonRes
+
 
 @Composable
 fun AuthScreen(
@@ -23,8 +34,8 @@ fun AuthScreen(
     onEventSent: (event: AuthContract.Event) -> Unit,
     navController: NavHostController,
 ) {
-    val space16dp = dimensionResource(id = R.dimen.space_16dp)
-    val minTouchSize = dimensionResource(id = R.dimen.min_touch_size)
+    val space16dp = dimensionResource(id = CommonRes.dimen.space_16dp)
+    val minTouchSize = dimensionResource(id = CommonRes.dimen.min_touch_size)
 
     AccountScreenScaffold(titleId = R.string.auth_title, navController = navController) {
         Column(
@@ -75,8 +86,8 @@ private fun PasswordField(
     state: AuthContract.State,
     onEventSent: (event: AuthContract.Event) -> Unit
 ) {
-    val space16dp = dimensionResource(id = R.dimen.space_16dp)
-    val space8dp = dimensionResource(id = R.dimen.space_8dp)
+    val space16dp = dimensionResource(id = CommonRes.dimen.space_16dp)
+    val space8dp = dimensionResource(id = CommonRes.dimen.space_8dp)
 
     Text(text = stringResource(id = R.string.input_password_label))
     Spacer(modifier = Modifier.height(space16dp))
@@ -92,8 +103,8 @@ private fun EmailField(
     state: AuthContract.State,
     onEventSent: (event: AuthContract.Event) -> Unit
 ) {
-    val space8dp = dimensionResource(id = R.dimen.space_8dp)
-    val space24dp = dimensionResource(id = R.dimen.space_24dp)
+    val space8dp = dimensionResource(id = CommonRes.dimen.space_8dp)
+    val space24dp = dimensionResource(id = CommonRes.dimen.space_24dp)
 
     Text(text = stringResource(id = R.string.input_email_label))
     Spacer(modifier = Modifier.height(space8dp))

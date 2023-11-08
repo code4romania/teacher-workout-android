@@ -16,6 +16,7 @@
 
 package commons
 
+import BuildAndroidConfig
 import dependencies.Dependencies
 import dependencies.TestAndroidDependencies
 import dependencies.TestDependencies
@@ -31,7 +32,6 @@ android {
 
     defaultConfig {
         minSdk = BuildAndroidConfig.MIN_SDK_VERSION
-        targetSdk = BuildAndroidConfig.TARGET_SDK_VERSION
         // TODO get this from env properties file
         buildConfigField("String", "TOS_URL", "\"code4.ro\"")
     }
@@ -47,6 +47,7 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 
     sourceSets {
@@ -63,8 +64,8 @@ android {
 
     lint {
         lintConfig = rootProject.file(".lint/config.xml")
-        isCheckAllWarnings = true
-        isWarningsAsErrors = true
+        checkAllWarnings = true
+        warningsAsErrors = true
     }
 
     testOptions {

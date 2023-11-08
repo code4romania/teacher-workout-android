@@ -6,5 +6,5 @@ plugins {
 
 android {
     addProductFlavours(this)
-
+    namespace = "com.teacherworkout.commons.ui"
 }

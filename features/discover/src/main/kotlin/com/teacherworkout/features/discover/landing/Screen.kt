@@ -1,9 +1,20 @@
 package com.teacherworkout.features.discover.landing
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
-import androidx.compose.material.*
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.SnackbarDuration
+import androidx.compose.material.SnackbarHost
+import androidx.compose.material.SnackbarHostState
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -22,6 +33,7 @@ import com.teacherworkout.features.discover.R
 import com.teacherworkout.features.discover.landing.Companion.PROGRESS_HEIGHT_FRACTION
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import com.teacherworkout.commons.ui.R as CommonRes
 
 private val listState = LazyListState()
 
@@ -32,7 +44,7 @@ fun Screen(
     effects: Flow<Contract.Effect>,
     onNavigationRequest: (Contract.Effect.Navigation) -> Unit
 ) {
-    val space16dp = dimensionResource(id = R.dimen.space_16dp)
+    val space16dp = dimensionResource(id = CommonRes.dimen.space_16dp)
     val snackbarHostState = remember { SnackbarHostState() }
 
     HandleEffects(effects) { effect ->
@@ -83,8 +95,8 @@ fun Screen(
 
 @Composable
 fun Header(state: Contract.State, onSendEvent: (Contract.Event) -> Unit) {
-    val space8dp = dimensionResource(id = R.dimen.space_8dp)
-    val space16dp = dimensionResource(id = R.dimen.space_16dp)
+    val space8dp = dimensionResource(id = CommonRes.dimen.space_8dp)
+    val space16dp = dimensionResource(id = CommonRes.dimen.space_16dp)
 
     Spacer(modifier = Modifier.height(space16dp))
     Text(
@@ -156,7 +168,7 @@ private fun List<Theme>.toViewModels(): List<LessonTheme> =
         LessonTheme(
             id = it.id,
             title = it.title,
-            imageResourceId = com.teacherworkout.commons.ui.R.drawable.art2
+            imageResourceId = CommonRes.drawable.art2
         )
     }
 

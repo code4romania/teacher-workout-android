@@ -9,7 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import com.teacherworkout.features.profile.R
+import com.teacherworkout.commons.ui.R as CommonRes
+
 
 @Composable
 fun ProfileTab(
@@ -18,7 +19,7 @@ fun ProfileTab(
     onTabSelected: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val fadedGray = colorResource(id = R.color.dark_gray)
+    val fadedGray = colorResource(id = CommonRes.color.dark_gray)
     Tab(
         selected = isSelected,
         onClick = onTabSelected,

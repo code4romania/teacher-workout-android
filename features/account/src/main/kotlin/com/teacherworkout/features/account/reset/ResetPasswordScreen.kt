@@ -1,6 +1,11 @@
 package com.teacherworkout.features.account.reset
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -17,6 +22,8 @@ import com.teacherworkout.features.account.composables.EmailField
 import com.teacherworkout.features.account.composables.RegistrationLoadingUi
 import com.teacherworkout.features.account.composables.RequestFailedUi
 import com.teacherworkout.features.account.validators.EmailValidationStatus
+import com.teacherworkout.commons.ui.R as CommonRes
+
 
 @Composable
 fun ResetPasswordScreen(
@@ -24,9 +31,9 @@ fun ResetPasswordScreen(
     onEventSent: (event: ResetPasswordContract.Event) -> Unit,
     navController: NavController,
 ) {
-    val space8dp = dimensionResource(id = R.dimen.space_8dp)
-    val space16dp = dimensionResource(id = R.dimen.space_16dp)
-    val minTouchSize = dimensionResource(id = R.dimen.min_touch_size)
+    val space8dp = dimensionResource(id = CommonRes.dimen.space_8dp)
+    val space16dp = dimensionResource(id = CommonRes.dimen.space_16dp)
+    val minTouchSize = dimensionResource(id = CommonRes.dimen.min_touch_size)
 
     AccountScreenScaffold(titleId = R.string.reset_password_title, navController = navController) {
         Column(

@@ -2,10 +2,14 @@ package com.teacherworkout.features.profile.settings
 
 import android.net.Uri
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringArrayResource
@@ -13,8 +17,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.teacherworkout.commons.ui.theming.TeacherWorkoutTheme
 import com.teacherworkout.features.profile.R
+import com.teacherworkout.commons.ui.R as CommonRes
 
-@OptIn(ExperimentalAnimationApi::class)
+
 @Composable
 fun SettingsTabContent(
     onNewPicture: (Uri) -> Unit
@@ -25,7 +30,7 @@ fun SettingsTabContent(
     val settingNotifications = stringResource(id = R.string.setting_notification)
     val settingLogout = stringResource(id = R.string.setting_logout)
     val settingDeleteAccount = stringResource(id = R.string.setting_delete_account)
-    val space16dp = dimensionResource(id = R.dimen.space_16dp)
+    val space16dp = dimensionResource(id = CommonRes.dimen.space_16dp)
 
     var isUpdatePictureDialogOpen by remember { mutableStateOf(false) }
     var isDeleteAccountDialogOpen by remember { mutableStateOf(false) }

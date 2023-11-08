@@ -1,7 +1,11 @@
 package com.teacherworkout.features.account.onboarding
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -16,12 +20,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.teacherworkout.features.account.R
+import com.teacherworkout.commons.ui.R as CommonRes
+
 
 @Composable
 fun NextStepButton(hasMoreSteps: Boolean, onNext: () -> Unit, modifier: Modifier = Modifier) {
-    val space1dp = dimensionResource(R.dimen.space_1dp)
-    val space4dp = dimensionResource(R.dimen.space_4dp)
-    val space24dp = dimensionResource(R.dimen.space_24dp)
+    val space1dp = dimensionResource(CommonRes.dimen.space_1dp)
+    val space4dp = dimensionResource(CommonRes.dimen.space_4dp)
+    val space24dp = dimensionResource(CommonRes.dimen.space_24dp)
     val labelText = nextLabelText(hasMoreSteps)
     OutlinedButton(
         onClick = onNext,
@@ -39,7 +45,7 @@ fun NextStepButton(hasMoreSteps: Boolean, onNext: () -> Unit, modifier: Modifier
                 modifier = Modifier.height(with(LocalDensity.current) {
                     MaterialTheme.typography.button.fontSize.toDp()
                 }),
-                painter = painterResource(id = R.drawable.ic_forward),
+                painter = painterResource(id = CommonRes.drawable.ic_forward),
                 contentDescription = stringResource(id = R.string.onboarding_cd_forward)
             )
         }
@@ -55,7 +61,7 @@ private fun nextLabelText(hasMoreSteps: Boolean) =
 fun NextStepButtonPreview() {
     NextStepButton(
         hasMoreSteps = true, onNext = { /*TODO*/ }, modifier = Modifier
-            .width(dimensionResource(id = R.dimen.space_128dp))
-            .height(dimensionResource(id = R.dimen.space_64dp))
+            .width(dimensionResource(id = CommonRes.dimen.space_128dp))
+            .height(dimensionResource(id = CommonRes.dimen.space_64dp))
     )
 }

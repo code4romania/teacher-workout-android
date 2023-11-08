@@ -34,7 +34,7 @@
     <string name="register_btn_complete">Create account</string>
     <string name="register_failure_label">There was a problem creating your account. Please try again!</string>
     <string name="register_loading_label">Creating account…</string>
-    <string name="register_success_label">Your account was created! We\'ve sent you an email with an activation link.
+    <string name="register_success_label">Your account was created! We\’ve sent you an email with an activation link.
         After clicking that link you can sign in into your account!</string>
     <!-- Authentication screen related strings -->
     <string name="auth_title">Sign into your account</string>
@@ -50,7 +50,7 @@
     <string name="reset_password_failure_label">Could not reset your password. Please try again!</string>
     <string name="reset_password_succeeded_title">Verify your email</string>
     <string name="reset_password_cd_email">Email icon</string>
-    <string name="reset_password_success_label">We\'ve sent a confirmation link to the email you provided. After
+    <string name="reset_password_success_label">We\’ve sent a confirmation link to the email you provided. After
         clicking that link you can then sign in using the new password!</string>
 
     <!-- OnBoarding screen related strings -->

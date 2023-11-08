@@ -1,32 +1,32 @@
 package dependencies
 
 object Dependencies {
-    const val OKHTTP = "com.squareup.okhttp3:okhttp:4.9.1"
-    const val MATERIAL = "com.google.android.material:material:1.4.0"
-    const val LOTTIE = "com.airbnb.android:lottie:4.2.0"
-    const val COIL = "io.coil-kt:coil:1.4.0"
-    const val COIL_COMPOSE = "io.coil-kt:coil-compose:1.4.0"
+    const val OKHTTP = "com.squareup.okhttp3:okhttp:4.12.0"
+    const val MATERIAL = "com.google.android.material:material:1.10.0"
+    const val LOTTIE = "com.airbnb.android:lottie:6.1.0"
+    const val COIL = "io.coil-kt:coil:2.4.0"
+    const val COIL_COMPOSE = "io.coil-kt:coil-compose:2.4.0"
 
     object Coroutines {
-        const val VERSION = "1.5.2"
+        const val VERSION = "1.7.3"
 
         const val CORE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$VERSION"
         const val ANDROID = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$VERSION"
     }
 
     object AndroidX {
-        const val CORE = "androidx.core:core-ktx:1.6.0"
-        const val APPCOMPAT = "androidx.appcompat:appcompat:1.3.1"
+        const val CORE = "androidx.core:core-ktx:1.12.0"
+        const val APPCOMPAT = "androidx.appcompat:appcompat:1.6.1"
 
         object Navigation {
-            private const val VERSION = "2.4.0-alpha10"
+            private const val VERSION = "2.7.4"
 
             const val UI = "androidx.navigation:navigation-ui-ktx:$VERSION"
             const val COMPOSE = "androidx.navigation:navigation-compose:$VERSION"
         }
 
         object Lifecycle {
-            private const val VERSION = "2.4.0-rc01"
+            private const val VERSION = "2.6.2"
 
             const val VIEWMODEL = "androidx.lifecycle:lifecycle-viewmodel-ktx:$VERSION"
             // ViewModel utilities for Compose
@@ -39,15 +39,15 @@ object Dependencies {
         }
 
         object Paging {
-            private const val VERSION = "3.0.1"
+            private const val VERSION = "3.2.1"
 
             const val RUNTIME = "androidx.paging:paging-runtime-ktx:$VERSION"
         }
 
         object Compose {
-            const val VERSION = "1.0.4"
-            private const val ACCOMPANIST_PAGER_VERSION = "0.20.0"
-            private const val CONSTRAINTLAYOUT_VERSION = "1.0.0-rc02"
+            const val VERSION = "1.5.3"
+            private const val ACCOMPANIST_PAGER_VERSION = "0.32.0"
+            private const val CONSTRAINTLAYOUT_VERSION = "1.0.1"
 
             const val UI = "androidx.compose.ui:ui:$VERSION"
 
@@ -77,7 +77,7 @@ object Dependencies {
     }
 
     object Koin {
-        const val VERSION = "3.1.2"
+        const val VERSION = "3.5.0"
 
         // Koin core features
         const val CORE = "io.insert-koin:koin-core:$VERSION"
@@ -92,7 +92,7 @@ object Dependencies {
     }
 
     object Apollo {
-        const val VERSION = "3.0.0"
+        const val VERSION = "3.8.2"
 
         const val RUNTIME = "com.apollographql.apollo3:apollo-runtime:$VERSION"
     }

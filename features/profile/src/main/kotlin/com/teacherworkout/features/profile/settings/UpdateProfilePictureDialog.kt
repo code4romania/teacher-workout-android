@@ -17,6 +17,8 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.window.Dialog
 import com.teacherworkout.features.profile.R
+import com.teacherworkout.commons.ui.R as CommonRes
+
 
 @Composable
 fun UpdateProfilePictureDialog(
@@ -25,9 +27,9 @@ fun UpdateProfilePictureDialog(
 ) {
     val imagePicker = rememberImagePicker { onNewPicture(it) }
 
-    val space8dp = dimensionResource(id = R.dimen.space_8dp)
-    val space24dp = dimensionResource(id = R.dimen.space_24dp)
-    val corner8dp = dimensionResource(id = R.dimen.corner_8dp)
+    val space8dp = dimensionResource(id = CommonRes.dimen.space_8dp)
+    val space24dp = dimensionResource(id = CommonRes.dimen.space_24dp)
+    val corner8dp = dimensionResource(id = CommonRes.dimen.corner_8dp)
 
     Dialog(onDismissRequest = onDismiss) {
         Surface(shape = RoundedCornerShape(corner8dp)) {

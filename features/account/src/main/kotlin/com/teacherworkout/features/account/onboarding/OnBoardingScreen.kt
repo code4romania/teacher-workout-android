@@ -1,6 +1,13 @@
 package com.teacherworkout.features.account.onboarding
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
@@ -18,6 +25,8 @@ import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
 import com.teacherworkout.features.account.R
 import kotlinx.coroutines.launch
+import com.teacherworkout.commons.ui.R as CommonRes
+
 
 const val PAGE_COUNT = 3
 
@@ -31,9 +40,9 @@ fun OnBoardingScreen(onNavigateToMain: () -> Unit) {
             modifier = Modifier.weight(1f)
         ) { page ->
             val imageId = when (page) {
-                0 -> R.drawable.onboarding_0_placeholder
-                1 -> R.drawable.onboarding_1_placeholder
-                2 -> R.drawable.onboarding_2_placeholder
+                0 -> CommonRes.drawable.onboarding_0_placeholder
+                1 -> CommonRes.drawable.onboarding_1_placeholder
+                2 -> CommonRes.drawable.onboarding_2_placeholder
                 else -> error("Unexpected onboarding page requested: ${pagerState.currentPage}")
             }
             GenericOnBoardingStep(
@@ -52,8 +61,8 @@ private fun NavigationButtons(
     pagerState: PagerState
 ) {
     val localScope = rememberCoroutineScope()
-    val space16dp = dimensionResource(R.dimen.space_16dp)
-    val space24dp = dimensionResource(R.dimen.space_24dp)
+    val space16dp = dimensionResource(CommonRes.dimen.space_16dp)
+    val space24dp = dimensionResource(CommonRes.dimen.space_24dp)
 
     Box(
         modifier = Modifier

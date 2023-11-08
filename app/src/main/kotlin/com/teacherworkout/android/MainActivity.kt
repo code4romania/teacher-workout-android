@@ -3,7 +3,9 @@ package com.teacherworkout.android
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
+import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.teacherworkout.commons.ui.navigation.AppDestinations
@@ -19,10 +21,11 @@ class MainActivity : AppCompatActivity() {
             val navHostController = rememberNavController()
 
             TeacherWorkoutTheme {
-                Scaffold {
+                Scaffold { paddingValues ->
                     NavHost(
                         navController = navHostController,
-                        startDestination = AppDestinations.Features.home
+                        startDestination = AppDestinations.Features.home,
+                        modifier = Modifier.padding(paddingValues)
                     ) {
                         accountFeature(navHostController)
                         homeFeature(navHostController)

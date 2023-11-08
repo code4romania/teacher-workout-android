@@ -13,7 +13,6 @@ android {
         applicationId = BuildAndroidConfig.APPLICATION_ID
         minSdk = BuildAndroidConfig.MIN_SDK_VERSION
         targetSdk = BuildAndroidConfig.TARGET_SDK_VERSION
-        buildToolsVersion = BuildAndroidConfig.BUILD_TOOLS_VERSION
 
         versionCode = BuildAndroidConfig.VERSION_CODE
         versionName = BuildAndroidConfig.VERSION_NAME
@@ -42,6 +41,7 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 
     compileOptions {
@@ -55,8 +55,8 @@ android {
 
     lint {
         lintConfig = rootProject.file(".lint/config.xml")
-        isCheckAllWarnings = true
-        isWarningsAsErrors = true
+        checkAllWarnings = true
+        warningsAsErrors = true
     }
 
     testOptions {
@@ -78,6 +78,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = Dependencies.AndroidX.Compose.VERSION
     }
+    namespace = "com.teacherworkout.android"
 }
 
 dependencies {

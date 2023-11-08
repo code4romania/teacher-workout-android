@@ -1,4 +1,3 @@
-import dependencies.Dependencies
 import extensions.addProductFlavours
 
 plugins {
@@ -7,4 +6,5 @@ plugins {
 
 android {
     addProductFlavours(this)
+    namespace = "com.teacherworkout.commons.views"
 }
