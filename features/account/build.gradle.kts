@@ -8,11 +8,6 @@ plugins {
 android {
     addProductFlavours(this)
     namespace = "com.teacherworkout.features.account"
-
-
-    lint {
-        disable += "DuplicateStrings"
-    }
 }
 
 dependencies {
