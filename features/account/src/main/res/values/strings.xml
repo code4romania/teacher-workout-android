@@ -29,7 +29,8 @@
     <string name="landing_btn_auth">Log in</string>
     <!-- Register screen related screen -->
     <string name="register_title">Create an account</string>
-    <string name="register_tos">I have read and I accept the terms and conditions.</string>
+    <string name="register_tos">I have read and I accept the %s.</string>
+    <string name="register_tos_terms">terms and conditions</string>
     <string name="register_tos_error">You must accept the terms and conditions to create an account!</string>
     <string name="register_btn_complete">Create account</string>
     <string name="register_failure_label">There was a problem creating your account. Please try again!</string>
@@ -43,6 +44,7 @@
     <string name="auth_loading_label">Signing in into your account…</string>
     <string name="auth_failure_label">There was a problem signing in. Make sure the credentials are correct and
         try again!</string>
+    <string name="auth_retry">Retry</string>
     <!-- Reset password screen related strings -->
     <string name="reset_password_title">Reset the account password</string>
     <string name="reset_password_btn_complete">Reset Password</string>

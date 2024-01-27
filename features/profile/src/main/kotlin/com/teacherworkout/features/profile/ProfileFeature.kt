@@ -14,7 +14,7 @@ fun NavGraphBuilder.profileFeature(navHostController: NavHostController) {
         route = AppDestinations.Features.profile
     ) {
         composable(route = AppDestinations.Profile.Landing.route) {
-            BottomBarScaffold(navHostController) { Screen() }
+            BottomBarScaffold(navHostController) { Screen(navHostController) }
         }
     }
 }

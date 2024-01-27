@@ -4,6 +4,7 @@ import android.view.View
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -13,7 +14,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusDirection
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import com.teacherworkout.features.account.R
 
@@ -28,6 +32,7 @@ fun EmailField(
     onValueChanged: (String) -> Unit = { },
 ) {
     Column(modifier = modifier) {
+        val focusManager = LocalFocusManager.current
         OutlinedTextField(
             value = value,
             enabled = enabled,
@@ -39,10 +44,16 @@ fun EmailField(
                     contentDescription = stringResource(id = R.string.cd_email_icon)
                 )
             },
-            label = { Text(text = stringResource(labelTextId)) },
+            placeholder = { Text(text = stringResource(labelTextId)) },
             modifier = Modifier.fillMaxWidth(),
             onValueChange = onValueChanged,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Email,
+                imeAction = ImeAction.Next
+            ),
+            keyboardActions = KeyboardActions(onNext = {
+                focusManager.moveFocus(FocusDirection.Down)
+            })
         )
         if (hasError) {
             ErrorText(errorTextId = errorTextId)

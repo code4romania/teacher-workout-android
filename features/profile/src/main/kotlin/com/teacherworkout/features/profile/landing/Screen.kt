@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
+import androidx.navigation.NavHostController
 import com.teacherworkout.features.profile.R
 import com.teacherworkout.features.profile.results.ResultsTabContent
 import com.teacherworkout.features.profile.settings.SettingsTabContent
@@ -25,7 +26,7 @@ import com.teacherworkout.commons.ui.R as CommonRes
 
 
 @Composable
-fun Screen() {
+fun Screen(navController: NavHostController) {
     var tab by remember { mutableStateOf(0) }
     val space16dp = dimensionResource(id = CommonRes.dimen.space_16dp)
     val minTabHeight = dimensionResource(id = CommonRes.dimen.min_tab_height)
@@ -57,7 +58,10 @@ fun Screen() {
         }
         when (tab) {
             0 -> ResultsTabContent(listOf("Category 1", "Category 2", "Category 3", "Category 4", "Category 5"))
-            1 -> SettingsTabContent(onNewPicture = { uri -> profilePictureUri = uri })
+            1 -> SettingsTabContent(
+                onNewPicture = { uri -> profilePictureUri = uri },
+                navController = navController
+            )
             else -> error("Unexpected tab requested: $tab")
         }
     }

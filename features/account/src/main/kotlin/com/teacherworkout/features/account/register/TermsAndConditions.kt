@@ -44,12 +44,11 @@ fun TermsAndConditions(
                 colors = CheckboxDefaults.colors(checkedColor = MaterialTheme.colors.primary)
             )
             val annotatedLinkString: AnnotatedString = buildAnnotatedString {
-                // TODO find a way to handle translated strings when creating the link
-                val target = "terms and conditions"
-                val entireString = stringResource(id = R.string.register_tos)
-                val startIndex = entireString.indexOf(target)
-                val endIndex = startIndex + target.length
-                append(entireString)
+                val terms = stringResource(id = R.string.register_tos_terms)
+                val termsText = stringResource(id = R.string.register_tos, terms)
+                val startIndex = termsText.indexOf(terms)
+                val endIndex = startIndex + terms.length
+                append(termsText)
                 addStyle(
                     style = SpanStyle(
                         color = MaterialTheme.colors.secondary,
