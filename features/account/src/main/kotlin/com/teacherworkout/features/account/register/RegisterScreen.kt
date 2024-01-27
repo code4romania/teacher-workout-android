@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.navigation.NavHostController
 import com.teacherworkout.commons.ui.navigation.AppDestinations
 import com.teacherworkout.features.account.R
@@ -68,44 +69,54 @@ fun RegisterScreen(
                 onEventSent(RegisterContract.Event.SetTos(newStatus))
             }
             Spacer(modifier = Modifier.height(space24dp))
-            when (state.registrationOutcome) {
-                InProgress -> RegistrationLoadingUi(
-                    loadingTextId = R.string.register_loading_label,
-                    modifier = Modifier.fillMaxWidth()
-                )
-                Failed -> RequestFailedUi(
-                    failureTextId = R.string.register_failure_label,
-                    modifier = Modifier.fillMaxWidth()
-                ) { onEventSent(RegisterContract.Event.CreateAccount) }
-                Succeeded -> RequestSuccessfulUi(
-                    successTextId = R.string.register_success_label,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    navController.navigate(AppDestinations.Account.Authentication.route) {
-                        popUpTo(AppDestinations.Account.Landing.route)
-                    }
-                }
-                NotInitiated -> Button(
-                    shape = MaterialTheme.shapes.large,
-                    enabled = state.isNotStarted,
-                    onClick = {
-                        if (state.hasAcceptedTos && confirmedPassword == state.password) {
-                            onEventSent(RegisterContract.Event.CreateAccount)
-                        }
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .heightIn(min = minTouchSize)
-                ) {
-                    Text(text = stringResource(id = R.string.register_btn_complete))
-                }
-            }
+            RegistrationOutcome(state, onEventSent, navController, confirmedPassword, minTouchSize)
             Spacer(modifier = Modifier.height(space16dp))
-            AuthenticationUi(Modifier.fillMaxWidth(), onAuthenticationRequest = {
-                navController.navigate(AppDestinations.Account.Authentication.route) {
-                    popUpTo(AppDestinations.Account.Landing.route)
+            AuthenticationLink(navController)
+        }
+    }
+}
+
+@Composable
+private fun RegistrationOutcome(
+    state: RegisterContract.State,
+    onEventSent: (event: RegisterContract.Event) -> Unit,
+    navController: NavHostController,
+    confirmedPassword: String,
+    minTouchSize: Dp
+) {
+    when (state.registrationOutcome) {
+        InProgress -> RegistrationLoadingUi(
+            loadingTextId = R.string.register_loading_label,
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        Failed -> RequestFailedUi(
+            failureTextId = R.string.register_failure_label,
+            modifier = Modifier.fillMaxWidth()
+        ) { onEventSent(RegisterContract.Event.CreateAccount) }
+
+        Succeeded -> RequestSuccessfulUi(
+            successTextId = R.string.register_success_label,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            navController.navigate(AppDestinations.Account.Authentication.route) {
+                popUpTo(AppDestinations.Account.Landing.route)
+            }
+        }
+
+        NotInitiated -> Button(
+            shape = MaterialTheme.shapes.large,
+            enabled = state.isNotStarted,
+            onClick = {
+                if (state.hasAcceptedTos && confirmedPassword == state.password) {
+                    onEventSent(RegisterContract.Event.CreateAccount)
                 }
-            })
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .heightIn(min = minTouchSize)
+        ) {
+            Text(text = stringResource(id = R.string.register_btn_complete))
         }
     }
 }
@@ -178,9 +189,9 @@ private fun EmailField(
 }
 
 @Composable
-fun AuthenticationUi(modifier: Modifier = Modifier, onAuthenticationRequest: () -> Unit) {
+fun AuthenticationLink(navController: NavHostController) {
     Row(
-        modifier = modifier,
+        modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.Center
     ) {
         Text(
@@ -190,7 +201,11 @@ fun AuthenticationUi(modifier: Modifier = Modifier, onAuthenticationRequest: () 
             modifier = Modifier.alignByBaseline()
         )
         TextButton(
-            onClick = onAuthenticationRequest,
+            onClick = {
+                navController.navigate(AppDestinations.Account.Authentication.route) {
+                    popUpTo(AppDestinations.Account.Landing.route)
+                }
+            },
             modifier = Modifier.alignByBaseline(),
             shape = MaterialTheme.shapes.large
         ) {

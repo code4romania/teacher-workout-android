@@ -69,9 +69,7 @@ fun SettingsTabContent(
                         settingNotifications -> {
                             /* TODO */
                         }
-                        settingLogout -> {
-                            navController.navigate(AppDestinations.Account.Landing.route)
-                        }
+                        settingLogout -> navController.navigate(AppDestinations.Account.Landing.route)
                         settingDeleteAccount -> isDeleteAccountDialogOpen = true
                         else -> error("Unknown setting selected: $settingText")
                     }
