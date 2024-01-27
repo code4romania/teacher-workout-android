@@ -11,10 +11,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import com.teacherworkout.commons.ui.navigation.AppDestinations
 import com.teacherworkout.commons.ui.theming.TeacherWorkoutTheme
 import com.teacherworkout.features.profile.R
 import com.teacherworkout.commons.ui.R as CommonRes
@@ -22,7 +25,8 @@ import com.teacherworkout.commons.ui.R as CommonRes
 
 @Composable
 fun SettingsTabContent(
-    onNewPicture: (Uri) -> Unit
+    onNewPicture: (Uri) -> Unit,
+    navController: NavHostController
 ) {
     val settingsOptions = stringArrayResource(id = R.array.settings_options)
     val settingChangePhoto = stringResource(id = R.string.setting_change_photo)
@@ -65,9 +69,7 @@ fun SettingsTabContent(
                         settingNotifications -> {
                             /* TODO */
                         }
-                        settingLogout -> {
-                            /* TODO */
-                        }
+                        settingLogout -> navController.navigate(AppDestinations.Account.Landing.route)
                         settingDeleteAccount -> isDeleteAccountDialogOpen = true
                         else -> error("Unknown setting selected: $settingText")
                     }
@@ -81,6 +83,9 @@ fun SettingsTabContent(
 @Composable
 fun SettingsTabContentPreview() {
     TeacherWorkoutTheme {
-        SettingsTabContent(onNewPicture = {})
+        SettingsTabContent(
+            onNewPicture = {},
+            navController = NavHostController(LocalContext.current)
+        )
     }
 }

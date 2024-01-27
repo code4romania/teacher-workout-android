@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
                 Scaffold { paddingValues ->
                     NavHost(
                         navController = navHostController,
-                        startDestination = AppDestinations.Features.home,
+                        startDestination = AppDestinations.Features.account,
                         modifier = Modifier.padding(paddingValues)
                     ) {
                         accountFeature(navHostController)

@@ -20,7 +20,7 @@ fun RegistrationButton(modifier: Modifier = Modifier, onRegistrationRequest: () 
         onClick = onRegistrationRequest, modifier = modifier, shape = MaterialTheme.shapes.large
     ) {
         Text(
-            stringResource(id = R.string.landing_btn_register),
+            stringResource(id = R.string.landing_btn_register).uppercase(),
             modifier = Modifier.padding(vertical = space8dp),
             fontSize = MaterialTheme.typography.button.fontSize,
             fontWeight = FontWeight.ExtraBold

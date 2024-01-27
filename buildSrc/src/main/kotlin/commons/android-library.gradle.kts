@@ -33,7 +33,7 @@ android {
     defaultConfig {
         minSdk = BuildAndroidConfig.MIN_SDK_VERSION
         // TODO get this from env properties file
-        buildConfigField("String", "TOS_URL", "\"code4.ro\"")
+        buildConfigField("String", "TOS_URL", "\"https://code4.ro\"")
     }
 
     compileOptions {

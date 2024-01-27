@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="DuplicateStrings">
     <string name="default_label">Teacher Workout</string>
     <string name="cd_logo">Logo</string>
     <string name="email_invalid_error">Adresa de e-mail introdusă este invalidă.</string>
@@ -14,22 +15,24 @@
     <string name="input_confirm_password_label">Confirmă parola</string>
     <string name="input_password_label">Parola</string>
     <string name="input_password_placeholder">********</string>
-    <string name="landing_btn_register">Înregistrare</string>
+    <string name="landing_btn_register">Înregistrează-te</string>
     <string name="landing_label_question">Ai deja cont?</string>
-    <string name="landing_btn_auth">Autentificare</string>
+    <string name="landing_btn_auth">Autentifică-te</string>
     <string name="register_title">Creează-ți contul</string>
-    <string name="register_tos">Sunt de acord cu termenii si conditiile acestei aplicatii GDPR si alte detalii go BRRR and you know it</string>
+    <string name="register_tos">Sunt de acord cu %s acestei aplicații.</string>
+    <string name="register_tos_terms">termenii și condițiile</string>
     <string name="register_tos_error">Trebuie să acceptați termenii și condițiile pentru a vă crea un cont!</string>
     <string name="register_btn_complete">Înregistrează-te</string>
     <string name="register_failure_label">Ceva nu a mers bine, te rugăm să reîncerci.</string>
     <string name="register_loading_label">Creare cont</string>
     <string name="register_success_label">Contul dvs. a fost creat! V-am trimis un e-mail cu un link de activare.
         După ce faceți clic pe acel link, vă puteți conecta la contul dvs.!</string>
-    <string name="auth_title">Logheaza-te în contul tau</string>
+    <string name="auth_title">Autentifică-te</string>
     <string name="auth_btn_forgot_password">Ți-ai uitat parola?</string>
-    <string name="auth_loading_label">Logheaza-te în contul tau…</string>
+    <string name="auth_loading_label">Autentificare în curs…</string>
     <string name="auth_btn_auth">Autentifică-te</string>
     <string name="auth_failure_label">E-mail-ul sau parola sunt incorecte.</string>
+    <string name="auth_retry">Reîncearcă</string>
     <!-- Reset password screen related strings -->
     <string name="reset_password_title">Resetează-ți parola</string>
     <string name="reset_password_btn_complete">Setează noua parolă</string>

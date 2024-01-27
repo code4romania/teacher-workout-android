@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import com.teacherworkout.features.account.R
 import com.teacherworkout.commons.ui.R as CommonRes
 
 
@@ -48,7 +49,7 @@ fun RequestFailedUi(
                 .padding(start = space16dp, end = space16dp)
                 .fillMaxWidth()
         ) {
-            Text("Retry")
+            Text(stringResource(id = R.string.auth_retry))
         }
         Spacer(modifier = Modifier.height(space8dp))
     }
